@@ -81,12 +81,13 @@ rect_list = [x for x in drawings_list if x["items"][0][0] == "re"]
 rects = []
 words = page.get_text("words")  # list of words on page
 
+# create rect list
 for re in rect_list:
     rect_tuple = re["items"][0]
     rect_struct = rect_tuple[1]
     rects.append(rect_struct)
-    print(rect_struct.get_area())
 
+# find words that intersect each rect
 for rect in rects:
     rect_words = [w for w in words if fitz.Rect(w[:4]).intersects(rect)]
     sorted_rect_words = make_text(rect_words)
