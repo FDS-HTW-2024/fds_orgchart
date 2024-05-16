@@ -21,7 +21,7 @@ def make_text(words):
     return "\n".join([" ".join(sorted_rect_words[1]) for sorted_rect_words in lines])
 
 
-doc = fitz.open("example_orgcharts/orgchart.pdf")
+doc = fitz.open("example_orgcharts/org1.pdf")
 page = doc[0]  # we want text from this page
 
 print(page)
@@ -41,7 +41,7 @@ technical info (block number, sorted_rect_words number, word number).
 The term 'word' here stands for any string without space.
 """
 
-words = page.get_text("words")  # list of words on page
+words = page.get_text("blocks", sort=True)  # list of words on page
 
 """
 We will subselect from this list, demonstrating two alternatives:
