@@ -21,14 +21,14 @@ def make_text(words):
     return "\n".join([" ".join(sorted_rect_words[1]) for sorted_rect_words in lines])
 
 
-doc = fitz.open("example_orgcharts/org1.pdf")
+doc = fitz.open("example_orgcharts/org_kultur.pdf")
 page = doc[0]  # we want text from this page
 
 print(page)
 """
 -------------------------------------------------------------------------------
 Identify the rectangle.
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 """
 # rect = page.first_annot.rect  # this annot has been prepared for us!
 # Now we have the rectangle ---------------------------------------------------
@@ -76,6 +76,10 @@ for d in drawings_list:
     if d["items"][0][0] == "re":
         print(d["items"][0])
         print("---------")
+    elif d["items"][0][0] == "l":
+        print(d["items"][0])
+        print("---------")
+
 
 rect_list = [x for x in drawings_list if x["items"][0][0] == "re"]
 rects = []
