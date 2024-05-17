@@ -1,4 +1,6 @@
 import fitz
+import pprint
+from data import Point, Rectangle, TextBlock, ContentNode
 
 
 def make_text(words):
@@ -24,76 +26,33 @@ def make_text(words):
 doc = fitz.open("example_orgcharts/org_kultur.pdf")
 page = doc[0]  # we want text from this page
 
-print(page)
-"""
--------------------------------------------------------------------------------
-Identify the rectangle.
-------------------------------------------------------------------------------
-"""
-# rect = page.first_annot.rect  # this annot has been prepared for us!
-# Now we have the rectangle ---------------------------------------------------
-
-"""
-Get all words on page in a list of lists. Each word is represented by:
-[x0, y0, x1, y1, word, bno, lno, wno]
-The first 4 entries are the word's rectangle coordinates, the last 3 are just
-technical info (block number, sorted_rect_words number, word number).
-The term 'word' here stands for any string without space.
-"""
-
-words = page.get_text("blocks", sort=True)  # list of words on page
-
-"""
-We will subselect from this list, demonstrating two alternatives:
-(1) only words inside above rectangle
-(2) only words insertecting the rectangle
-
-The resulting sublist is then converted to a string by calling above funtion.
-"""
-
-# # ---------------------------------------------------------------------------
-# # Case 1: select the words *fully contained* in the rect
-# # ---------------------------------------------------------------------------
-# mywords = [w for w in words if fitz.Rect(w[:4]) in rect]
-#
-# print("Select the words strictly contained in rectangle")
-# print("------------------------------------------------")
-# print(make_text(mywords))
-
-# ----------------------------------------------------------------------------
-# Case 2: select the words *intersecting* the rect
-# ----------------------------------------------------------------------------
-# mywords = [w for w in words if fitz.Rect(w[:4]).intersects(rect)]
-
-print("\nSelect the words intersecting the rectangle")
-print("-------------------------------------------")
-# print(make_text(mywords))
-
-
 drawings_list = page.get_drawings()
 
-for d in drawings_list:
-    if d["items"][0][0] == "re":
-        print(d["items"][0])
-        print("---------")
-    elif d["items"][0][0] == "l":
-        print(d["items"][0])
-        print("---------")
+# for d in drawings_list:
+#     if d["items"][0][0] == "re":
+#         print(d["items"][0])
+#         print("---------")
+#     elif d["items"][0][0] == "l":
+#         print(d["items"][0])
+#         print("---------")
 
 
 rect_list = [x for x in drawings_list if x["items"][0][0] == "re"]
-rects = []
-words = page.get_text("words")  # list of words on page
+words = page.get_text("blocks", sort=True)  # list of words on page
 
-# create rect list
-for re in rect_list:
-    rect_tuple = re["items"][0]
-    rect_struct = rect_tuple[1]
-    rects.append(rect_struct)
-
-# find words that intersect each rect
-for rect in rects:
-    rect_words = [w for w in words if fitz.Rect(w[:4]).intersects(rect)]
-    sorted_rect_words = make_text(rect_words)
-    print(sorted_rect_words)
-    print("-------")
+# create ContentNodes
+for rect in rect_list:
+    rect_tuple = rect["items"][0]
+    rectangle = Rectangle(
+        top_left=Point(rect_tuple[1].x0, rect_tuple[1].y0),
+        bottom_right=Point(rect_tuple[1].x1, rect_tuple[1].y1))
+    rect_words = [w for w in words if fitz.Rect(
+        w[:4]).intersects(rect_tuple[1])]
+    text_blocks = list()
+    for (x0, y0, x1, y1, word, _, _) in rect_words:
+        text_block = TextBlock(bounding_box=Rectangle(
+            Point(x0, y0), Point(x1, y1)), content=word)
+        text_blocks.append(text_block)
+    content_node = ContentNode(rect=rectangle, content=text_blocks)
+    pprint.pp(content_node)
+    print("################")
