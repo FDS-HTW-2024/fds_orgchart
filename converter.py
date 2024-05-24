@@ -27,28 +27,28 @@ doc = fitz.open("example_orgcharts/org_kultur.pdf")
 page = doc[0]  # we want text from this page
 
 drawings_list = page.get_drawings()
-
-# for d in drawings_list:
-#     if d["items"][0][0] == "re":
-#         print(d["items"][0])
-#         print("---------")
-#     elif d["items"][0][0] == "l":
-#         print(d["items"][0])
-#         print("---------")
-
-rect_list = [x for x in drawings_list if x["items"][0][0] == "re"]
+rect_list = list()
 words = page.get_text("blocks", sort=True)  # list of words on page
+lines_list = list()
 
-lines_list = [x["items"] for x in drawings_list if x["items"][0][0] == "l"]
+for d in drawings_list:
+    for item in d["items"]:
+        match item[0]:
+            case "re":
+                rect_list.append(item[1])
+            case "l":
+                lines_list.append((item[1], item[2]))
+            case _:
+                pass
+
 print(len(lines_list))
 # create ContentNodes
 for rect in rect_list:
-    rect_tuple = rect["items"][0]
     rectangle = Rectangle(
-        top_left=Point(rect_tuple[1].x0, rect_tuple[1].y0),
-        bottom_right=Point(rect_tuple[1].x1, rect_tuple[1].y1))
+        top_left=Point(rect.x0, rect.y0),
+        bottom_right=Point(rect.x1, rect.y1))
     rect_words = [w for w in words if fitz.Rect(
-        w[:4]).intersects(rect_tuple[1])]
+        w[:4]).intersects(rect)]
     text_blocks = list()
     for (x0, y0, x1, y1, word, _, _) in rect_words:
         text_block = TextBlock(bounding_box=Rectangle(
@@ -101,43 +101,38 @@ def is_node_point(rect, point):
     rect2 = (x0 - 1, y0 - 1, x1 + 1, y1 + 1)
     return fitz.Rect(rect2).contains(point)
 
-
-# for line in lines_list:
-#    for line_segment in line:
-#       shape.draw_line(line_segment[1], line_segment[2])
-
 node_points = []
 graph_lines = []
 
 for rect in rect_list:
-    shape.draw_rect(rect["items"][0][1])
+    shape.draw_rect(rect)
     for line in lines_list:
-        for line_segment in line:
-            if is_node_point(rect["items"][0][1], line_segment[1]):
-                print("intersects")
-                shape.draw_circle(line_segment[1], 4)
-                node_points.append(Point._make(line_segment[1]))
-            if is_node_point(rect["items"][0][1], line_segment[2]):
-                print("intersects")
-                shape.draw_circle(line_segment[2], 4)
-                node_points.append(Point._make(line_segment[2]))
-            if (not is_node_point(rect["items"][0][1], line_segment[1]) and
-                    not is_node_point(rect["items"][0][1], line_segment[2])):
-                print("line not in graph")
-            else:
-                shape.draw_line(line_segment[1], line_segment[2])
+        if is_node_point(rect, line[0]):
+            print("intersects")
+            shape.draw_circle(line[0], 4)
+            node_points.append(Point._make(line[0]))
+        if is_node_point(rect, line[1]):
+            print("intersects")
+            shape.draw_circle(line[1], 4)
+            node_points.append(Point._make(line[1]))
+        if (not is_node_point(rect, line[0]) and
+                not is_node_point(rect, line[1])):
+            print("line not in graph")
+        else:
+            shape.draw_line(line[0], line[0])
 
 
-for i, line1 in enumerate(lines_list):
+for i in range(0, len(lines_list)):
+    line1 = lines_list[i]
     for j in range(0, len(lines_list)):
+        if i == j:
+            continue
+
         line2 = lines_list[j]
-        for segment1 in line1:
-            for segment2 in line2:
-                intersection = line_intersection(segment1[1:], segment2[1:])
-                if intersection:
-                    print("lines intersect")
-                    shape.draw_circle(segment1[1], 4)
-                    node_points.append(Point._make(segment1[1]))
+        intersection = line_intersection(line1, line2)
+        if intersection:
+            print("lines intersect")
+            shape.draw_circle(intersection, 4)
 
 
 shape.finish()
