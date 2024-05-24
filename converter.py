@@ -119,7 +119,7 @@ for rect in rect_list:
                 not is_node_point(rect, line[1])):
             print("line not in graph")
         else:
-            shape.draw_line(line[0], line[0])
+            shape.draw_line(line[0], line[1])
 
 
 for i in range(0, len(lines_list)):
