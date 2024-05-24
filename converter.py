@@ -37,7 +37,7 @@ for d in drawings_list:
             case "re":
                 rect_list.append(item[1])
             case "l":
-                lines_list.append((item[1], item[2]))
+                lines_list.append((Point._make(item[1]), Point._make(item[2])))
             case _:
                 pass
 
@@ -95,10 +95,34 @@ def line_intersection(line1, line2, tolerance=5):
 
     return None
 
+# Kurbo Library Source: https://github.com/linebender/kurbo/blob/884483b3de412c7c10e2fff4f43dbe96304c0dbd/src/line.rs#L44
+def get_line_intersection(line0, line1, threshold = 5):
+    lengthAB = sqrt(pow(line0.p1.x - line0.p0.x, 2) + pow(line0.p1.y - line0.p0.y, 2))
+    lengthCD = sqrt(pow(line1.p1.x - line1.p0.x, 2) + pow(line1.p1.y - line1.p0.y, 2))
 
-def is_node_point(rect, point):
+    normalized_ab = Point((line0.p1.x - line0.p0.x) / lengthAB, (line0.p1.y - line0.p0.y) / lengthAB)
+    normalized_cd = Point((line1.p1.x - line1.p0.x) / lengthCD, (line1.p1.y - line1.p0.y) / lengthCD)
+
+    a = Point(line0.p0.x + -normalized_ab.x * (lengthAB + threshold), line0.p0.y + -normalized_ab.y * (lengthAB + threshold))
+    b = Point(line0.p1.x + normalized_ab.x * (lengthAB + threshold), line0.p1.y + normalized_ab.y * (lengthAB + threshold))
+    c = Point(line1.p0.x + -normalized_cd.x * (lengthCD + threshold), line1.p0.y + -normalized_cd.y * (lengthCD + threshold))
+    d = Point(line1.p1.x + normalized_cd.x * (lengthCD + threshold), line1.p1.y + normalized_cd.y * (lengthCD + threshold))
+
+    ab = Point(b.x - a.x, b.y - a.y)
+    cd = Point(d.x - c.x, d.y - c.y)
+    d = ab.x * cd.y - ab.y * cd.x
+
+    if d == 0:
+        return None
+
+    ac = Point(line0.p0.x - line1.p0.x, line0.p1.y - line1.p1.y)
+    h = (ab.x * ac.y - ab.y * ac.x) / d
+
+    Point(line1.p0.x + cd.x * h, line1.p0.y + cd.y * h)
+
+def is_node_point(rect, point, threshold = 1):
     (x0, y0, x1, y1) = rect
-    rect2 = (x0 - 1, y0 - 1, x1 + 1, y1 + 1)
+    rect2 = (x0 - threshold, y0 - threshold, x1 + threshold, y1 + threshold)
     return fitz.Rect(rect2).contains(point)
 
 node_points = []
@@ -129,7 +153,7 @@ for i in range(0, len(lines_list)):
             continue
 
         line2 = lines_list[j]
-        intersection = line_intersection(line1, line2)
+        intersection = get_line_intersection(Line(line1[0], line1[1]), Line(line2[0], line2[1]))
         if intersection:
             print("lines intersect")
             shape.draw_circle(intersection, 4)
