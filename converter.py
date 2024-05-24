@@ -96,31 +96,32 @@ def line_intersection(line1, line2, tolerance=5):
     return None
 
 # Kurbo Library Source: https://github.com/linebender/kurbo/blob/884483b3de412c7c10e2fff4f43dbe96304c0dbd/src/line.rs#L44
-def get_line_intersection(line0, line1, threshold = 5):
+def get_line_intersection(line0, line1, threshold = 5.0):
     lengthAB = sqrt(pow(line0.p1.x - line0.p0.x, 2) + pow(line0.p1.y - line0.p0.y, 2))
     lengthCD = sqrt(pow(line1.p1.x - line1.p0.x, 2) + pow(line1.p1.y - line1.p0.y, 2))
 
     normalized_ab = Point((line0.p1.x - line0.p0.x) / lengthAB, (line0.p1.y - line0.p0.y) / lengthAB)
     normalized_cd = Point((line1.p1.x - line1.p0.x) / lengthCD, (line1.p1.y - line1.p0.y) / lengthCD)
 
-    a = Point(line0.p0.x + -normalized_ab.x * (lengthAB + threshold), line0.p0.y + -normalized_ab.y * (lengthAB + threshold))
-    b = Point(line0.p1.x + normalized_ab.x * (lengthAB + threshold), line0.p1.y + normalized_ab.y * (lengthAB + threshold))
-    c = Point(line1.p0.x + -normalized_cd.x * (lengthCD + threshold), line1.p0.y + -normalized_cd.y * (lengthCD + threshold))
-    d = Point(line1.p1.x + normalized_cd.x * (lengthCD + threshold), line1.p1.y + normalized_cd.y * (lengthCD + threshold))
+    a = Point(line0.p1.x - normalized_ab.x * (lengthAB + threshold), line0.p1.y - normalized_ab.y * (lengthAB + threshold))
+    b = Point(line0.p0.x + normalized_ab.x * (lengthAB + threshold), line0.p0.y + normalized_ab.y * (lengthAB + threshold))
+    c = Point(line1.p1.x - normalized_cd.x * (lengthCD + threshold), line1.p1.y - normalized_cd.y * (lengthCD + threshold))
+    d = Point(line1.p0.x + normalized_cd.x * (lengthCD + threshold), line1.p0.y + normalized_cd.y * (lengthCD + threshold))
 
     ab = Point(b.x - a.x, b.y - a.y)
     cd = Point(d.x - c.x, d.y - c.y)
-    d = ab.x * cd.y - ab.y * cd.x
+    ab_cross_cd = ab.x * cd.y - ab.y * cd.x
 
-    if d == 0:
+    if ab_cross_cd == 0.0:
         return None
 
-    ac = Point(line0.p0.x - line1.p0.x, line0.p1.y - line1.p1.y)
-    h = (ab.x * ac.y - ab.y * ac.x) / d
+    ac = Point(a.x - c.x, a.y - c.y)
+    ab_cross_ac = ab.x * ac.y - ab.y * ac.x
+    h = ab_cross_ac / ab_cross_cd
 
-    Point(line1.p0.x + cd.x * h, line1.p0.y + cd.y * h)
+    return Point(c.x + cd.x * h, c.y + cd.y * h)
 
-def is_node_point(rect, point, threshold = 1):
+def is_node_point(rect, point, threshold = 1.0):
     (x0, y0, x1, y1) = rect
     rect2 = (x0 - threshold, y0 - threshold, x1 + threshold, y1 + threshold)
     return fitz.Rect(rect2).contains(point)
