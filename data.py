@@ -26,14 +26,16 @@ class Line(typing.NamedTuple):
     def intersection(self, line: "Line", tolerance: float = 0.0):
         lengthAB = sqrt(pow(self.p1.x - self.p0.x, 2) + pow(self.p1.y - self.p0.y, 2))
         lengthCD = sqrt(pow(line.p1.x - line.p0.x, 2) + pow(line.p1.y - line.p0.y, 2))
+        newLengthAB = lengthAB + tolerance
+        newLengthCD = lengthCD + tolerance
 
-        normalized_ab = Point((self.p1.x - self.p0.x) / lengthAB, (self.p1.y - self.p0.y) / lengthAB)
-        normalized_cd = Point((line.p1.x - line.p0.x) / lengthCD, (line.p1.y - line.p0.y) / lengthCD)
+        offset_ab = Point((self.p1.x - self.p0.x) / lengthAB * newLengthAB, (self.p1.y - self.p0.y) / lengthAB * newLengthAB)
+        offset_cd = Point((line.p1.x - line.p0.x) / lengthCD * newLengthCD, (line.p1.y - line.p0.y) / lengthCD * newLengthCD)
 
-        a = Point(self.p1.x - normalized_ab.x * (lengthAB + tolerance), self.p1.y - normalized_ab.y * (lengthAB + tolerance))
-        b = Point(self.p0.x + normalized_ab.x * (lengthAB + tolerance), self.p0.y + normalized_ab.y * (lengthAB + tolerance))
-        c = Point(line.p1.x - normalized_cd.x * (lengthCD + tolerance), line.p1.y - normalized_cd.y * (lengthCD + tolerance))
-        d = Point(line.p0.x + normalized_cd.x * (lengthCD + tolerance), line.p0.y + normalized_cd.y * (lengthCD + tolerance))
+        a = Point(self.p1.x - offset_ab.x, self.p1.y - offset_ab.y)
+        b = Point(self.p0.x + offset_ab.x, self.p0.y + offset_ab.y)
+        c = Point(line.p1.x - offset_cd.x, line.p1.y - offset_cd.y)
+        d = Point(line.p0.x + offset_cd.x, line.p0.y + offset_cd.y)
 
         ab = Point(b.x - a.x, b.y - a.y)
         cd = Point(d.x - c.x, d.y - c.y)
