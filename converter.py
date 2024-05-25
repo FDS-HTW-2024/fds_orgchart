@@ -63,38 +63,6 @@ outpage = outpdf.new_page(width=page.rect.width, height=page.rect.height)
 shape = outpage.new_shape()
 
 
-# Function to calculate the Euclidean distance between two points
-def distance(p1, p2):
-    return sqrt((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2)
-
-
-# Function to check if two points are within a threshold distance
-def within_threshold(p1, p2, threshold):
-    return distance(p1, p2) <= threshold
-
-
-def line_intersection(line1, line2, tolerance=5):
-    (x1, y1), (x2, y2) = line1
-    (x3, y3), (x4, y4) = line2
-
-    denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1)
-    if denom == 0:
-        # Check if endpoints are within the tolerance
-        if within_threshold((x1, y1), (x3, y3), tolerance) or within_threshold((x1, y1), (x4, y4), tolerance) or \
-           within_threshold((x2, y2), (x3, y3), tolerance) or within_threshold((x2, y2), (x4, y4), tolerance):
-            return True  # Treat as intersecting due to close endpoints
-        return None  # Parallel lines with no intersection
-
-    ua = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / denom
-    ub = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / denom
-
-    if 0 <= ua <= 1 and 0 <= ub <= 1:
-        x = x1 + ua * (x2 - x1)
-        y = y1 + ua * (y2 - y1)
-        return (x, y)
-
-    return None
-
 # Kurbo Library Source: https://github.com/linebender/kurbo/blob/884483b3de412c7c10e2fff4f43dbe96304c0dbd/src/line.rs#L44
 def get_line_intersection(line0, line1, threshold = 5.0):
     lengthAB = sqrt(pow(line0.p1.x - line0.p0.x, 2) + pow(line0.p1.y - line0.p0.y, 2))
@@ -115,11 +83,20 @@ def get_line_intersection(line0, line1, threshold = 5.0):
     if ab_cross_cd == 0.0:
         return None
 
-    ac = Point(a.x - c.x, a.y - c.y)
-    ab_cross_ac = ab.x * ac.y - ab.y * ac.x
-    h = ab_cross_ac / ab_cross_cd
+    ca = Point(a.x - c.x, a.y - c.y)
+    ab_cross_ca = ab.x * ca.y - ab.y * ca.x
+    cd_cross_ca = cd.x * ca.y - cd.y * ca.x
+    # h and g are the factors how much a point should be moved along the line.
+    g = cd_cross_ca / ab_cross_cd
+    h = ab_cross_ca / ab_cross_cd
 
-    return Point(c.x + cd.x * h, c.y + cd.y * h)
+    # The values of g and h must be between 0 and 1, otherwise the point will
+    # be outside the lines.
+    if 0.0 <= g <= 1.0 and 0.0 <= h <= 1.0:
+        return Point(c.x + cd.x * h, c.y + cd.y * h)
+
+    return None
+
 
 def is_node_point(rect, point, threshold = 1.0):
     (x0, y0, x1, y1) = rect
