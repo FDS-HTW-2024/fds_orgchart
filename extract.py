@@ -54,6 +54,7 @@ page = pymupdf.open("example_orgcharts/org_kultur.pdf")[0]
 rectangles: list[Rectangle] = list()
 lines: list[Line] = list()
 
+# Extract rectangles and lines
 for drawing in page.get_drawings():
     for item in drawing["items"]:
         match item[0]:
@@ -72,9 +73,8 @@ for drawing in page.get_drawings():
 
 # Line intersecting with line
 junctions: list[tuple[int, int, Point]] = list()
-# Line intersecting with rectangle
-nodes = list()
 
+# Find line intersections
 lines.sort()
 for l_i in range(0, len(lines)):
     line_i = lines[l_i]
@@ -98,11 +98,12 @@ for (l_i, intersections) in sorted_array_group_by(junctions, lambda j: j[0]):
 
     line_i = lines[l_i]
 
+    # Look for common connected line of intersecting lines
     for (_, l_j, intersection) in intersections:
         if (line_i.p0 - intersection).distance() <= tolerance:
             for (_, l_k0, _) in sorted_array_find_range(junctions[j_i:], lambda j: j[0] == l_j):
                 print(l_i, l_j, l_k0)
         if (line_i.p1 - intersection).distance() <= tolerance:
             for (_, l_k1, _) in sorted_array_find_range(junctions[j_i:], lambda j: j[0] == l_j):
-                print(l_i, l_j, l_k0)
+                print(l_i, l_j, l_k1)
 
