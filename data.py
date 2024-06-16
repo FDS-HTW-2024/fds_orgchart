@@ -78,7 +78,7 @@ class TextBlock:
 @dataclass
 class ContentNode:
     rect: Rectangle
-    content: list[TextBlock]
+    text_blocks: list[TextBlock]
 
     def __hash__(self):
-        return hash((tuple(self.content)))
+        return hash((tuple(self.text_blocks)))
