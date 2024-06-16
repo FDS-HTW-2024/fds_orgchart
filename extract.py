@@ -2,7 +2,7 @@ from typing import Callable, Generator
 
 import pymupdf
     
-from data import Line, Point, Rectangle, TextBlock
+from data import Line, Point, Rectangle, TextBlock, ContentNode
 
 def sorted_array_group_by[T, K](
     array: list[T],
@@ -48,7 +48,7 @@ def sorted_array_find_range[T](
     return array[start:end]
 
 tolerance = 0.0
-page = pymupdf.open("example_orgcharts/org_kultur.pdf")[0]
+page = pymupdf.open("/home/chi/Dokumente/Uni/Projekt 1/bmf-orgcharts/bmf-orgplan_11_november_2010.pdf")[0]
 
 rectangles: list[Rectangle] = list()
 lines: list[Line] = list()
@@ -109,7 +109,7 @@ for (l_i, intersections) in sorted_array_group_by(junctions, lambda j: j[0]):
             for (_, l_k1, intersection_k1) in sorted_array_find_range(junctions[j_i:], lambda j: j[0] == l_j):
                 line_k1_intersections.setdefault(l_k1, list()).append((intersection_j, intersection_k1))
 
-    for (line_index, values0) in line_k0_intersections:
+    for (line_index, values0) in line_k0_intersections.items():
         values1 = line_k1_intersections.get(line_index, None)
 
         if values1 == None:
@@ -126,3 +126,15 @@ for (l_i, intersections) in sorted_array_group_by(junctions, lambda j: j[0]):
         # TODO: Remove lines that make up a rectangle by setting line to None at index
 
 
+words = page.get_text("blocks", sort=True)  # list of words on page
+
+for rect in rectangles:
+    rect_words = [w for w in words if pymupdf.Rect(
+        w[:4]).intersects(rect)]
+    text_blocks = list()
+    for (x0, y0, x1, y1, word, _, _) in rect_words:
+        text_block = TextBlock(bounding_box=Rectangle(
+            Point(x0, y0), Point(x1, y1)), content=word)
+        text_blocks.append(text_block)
+    content_node = ContentNode(rect=rect, content=text_blocks)
+    print(content_node)
