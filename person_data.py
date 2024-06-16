@@ -4,6 +4,7 @@ import csv
 import re
 from spacy import displacy
 from data import Rectangle, TextBlock, ContentNode, Point
+from extract import extract
 
 nlp = spacy.load("de_core_news_lg")
 
@@ -25,7 +26,7 @@ def textblock_from_dict(data: dict) -> TextBlock:
 def contentnode_from_dict(data: dict) -> ContentNode:
     return ContentNode(
         rect=rectangle_from_dict(data['rect']),
-        text_blocks=[textblock_from_dict(tb) for tb in data['content']]
+        content=[textblock_from_dict(tb) for tb in data['content']]
     )
 
 def load_content_nodes(path: str):
@@ -40,7 +41,8 @@ def load_art_elements(path: str):
 
 art_elements = load_art_elements("./example_data/art_elements.json")
 person_prefix = load_art_elements("./example_data/person_prefixes.json")
-content_nodes = load_content_nodes('./example_data/content_nodes.json') 
+# content_nodes = load_content_nodes('./example_data/content_nodes.json') 
+
 
 def find_best_art(text):
     for element in art_elements:
@@ -65,6 +67,10 @@ csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datu
 
 records = []
 
+(rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_kultur.pdf")
+# print(content_nodes)
+
+
 def parse_node(node):
     art = None
     bezeichnung = None
@@ -74,9 +80,8 @@ def parse_node(node):
     persons = []
     titel = None
     zusatzbezeichnung = None
-    for text_block in node.text_blocks:
+    for text_block in node.content:
         text = text_block.content
-        print(text)
         if not art:
             art = find_best_art(text)
             if art: 
@@ -92,13 +97,28 @@ def parse_node(node):
 
 
 for node in content_nodes:
-    records.append(parse_node(node))
+    (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
+    records.append([art, bezeichnung, persons, titel, zusatzbezeichnung])
 
-print(records)
 
-text_blocks = content_nodes
+unique_records = []
+seen = set()
 
-combined_text= " ".join(block.content for node in content_nodes for block in node.text_blocks)
+for record in records:
+    record_tuple = (record[0], record[1], tuple(record[2]), record[3], record[4])  # Convert the list to a tuple so it can be added to a set
+    if record_tuple not in seen:
+        unique_records.append(record)
+        seen.add(record_tuple)
+
+for rec in unique_records:
+    print(rec)
+    print('=====')
+
+print(len(unique_records))
+
+
+
+# combined_text= " ".join(block.content for node in content_nodes for block in node.content)
 # doc = nlp(combined_text)
 # html = displacy.render(doc, style="ent")
 
