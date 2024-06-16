@@ -92,10 +92,8 @@ for l_i in range(0, len(lines)):
             junctions.append((l_i, l_j, intersection))
 
 # Search for rectangles made up of 4 lines
-j_i = 0
 for (l_i, intersections) in sorted_array_group_by(junctions, lambda j: j[0]):
     intersection_count = len(intersections)
-    j_i += intersection_count
 
     if intersection_count < 2:
         continue
@@ -108,10 +106,10 @@ for (l_i, intersections) in sorted_array_group_by(junctions, lambda j: j[0]):
     # TODO: Check that the it is not a triangle
     for (_, l_j, intersection_j) in intersections:
         if (line_i.p0 - intersection_j).distance() <= tolerance:
-            for (_, l_k0, intersection_k0) in sorted_array_find_range(junctions[j_i:], lambda j: j[0] == l_j):
+            for (_, l_k0, intersection_k0) in sorted_array_find_range(junctions, lambda j: j[0] == l_j):
                 line_k0_intersections.setdefault(l_k0, list()).append((intersection_j, intersection_k0))
         elif (line_i.p1 - intersection_j).distance() <= tolerance:
-            for (_, l_k1, intersection_k1) in sorted_array_find_range(junctions[j_i:], lambda j: j[0] == l_j):
+            for (_, l_k1, intersection_k1) in sorted_array_find_range(junctions, lambda j: j[0] == l_j):
                 line_k1_intersections.setdefault(l_k1, list()).append((intersection_j, intersection_k1))
 
     for (line_index, values0) in line_k0_intersections.items():
@@ -123,9 +121,18 @@ for (l_i, intersections) in sorted_array_group_by(junctions, lambda j: j[0]):
         for ((p0, p1), (p2, p3)) in zip(values0, values1):
             points = [p0, p1, p2, p3]
             points.sort()
+            top_left = points[0]
+            bottom_right=points[3]
+
+            (width, height) = bottom_right - top_left
+
+            # FIXME: Floating number 0 check is done by doing less than EPSILON
+            if width == 0.0 or height == 0.0:
+                continue
+            
             rectangles.append(Rectangle(
-                top_left=points[0],
-                bottom_right=points[3]
+                top_left=top_left,
+                bottom_right=bottom_right
             ))
 
         # TODO: Remove lines that make up a rectangle by setting line to None at index
