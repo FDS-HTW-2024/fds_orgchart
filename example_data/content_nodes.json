@@ -11,14 +11,21 @@
                 }
             },
             {
-                "content": "Zentralabteilung",
+                "content": "MD'in Dr. Stahl-Hoepner",
                 "bounding_box": {
                     "top_left": { "x" : 0, "y" : 0 },
                     "bottom_right": { "x" : 10, "y" : 10 }
                 }
             },
             {
-                "content": "MD'in Dr. Stahl-Hoepner",
+                "content": "MD'in Dr. Jimmy-Tran",
+                "bounding_box": {
+                    "top_left": { "x" : 0, "y" : 0 },
+                    "bottom_right": { "x" : 10, "y" : 10 }
+                }
+            },
+            {
+                "content": "Zentralabteilung",
                 "bounding_box": {
                     "top_left": { "x" : 0, "y" : 0 },
                     "bottom_right": { "x" : 10, "y" : 10 }
