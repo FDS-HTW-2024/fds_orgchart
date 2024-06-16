@@ -47,8 +47,10 @@ def sorted_array_find_range[T](
 
     return array[start:end]
 
-tolerance = 0.0
-page = pymupdf.open("/home/chi/Dokumente/Uni/Projekt 1/bmf-orgcharts/bmf-orgplan_11_november_2010.pdf")[0]
+tolerance = 1.0
+page = pymupdf.open("example_orgcharts/bmf-orgplan_11_november_2010.pdf")[0]
+output = pymupdf.open()
+shape = output.new_page(width=page.rect.width, height=page.rect.height).new_shape()
 
 rectangles: list[Rectangle] = list()
 lines: list[Line] = list()
@@ -63,10 +65,13 @@ for drawing in page.get_drawings():
                     bottom_right=Point._make(item[1].bottom_right)                 
                 ))
             case "l":
-                lines.append(Line(
-                    p0=Point._make(item[1]),
-                    p1=Point._make(item[2])                 
-                ))
+                p0 = Point._make(item[1])
+                p1 = Point._make(item[2])
+
+                if p0 <= p1:
+                    lines.append(Line(p0=p0, p1=p1))
+                else:
+                    lines.append(Line(p0=p1, p1=p0))
             case _:
                 pass
 
@@ -78,7 +83,7 @@ lines.sort()
 for l_i in range(0, len(lines)):
     line_i = lines[l_i]
 
-    for l_j in range(l_i + 1, len(lines)):
+    for l_j in range(0, len(lines)):
         line_j = lines[l_j]
 
         intersection = line_i.intersection(line_j, tolerance)
@@ -129,6 +134,7 @@ for (l_i, intersections) in sorted_array_group_by(junctions, lambda j: j[0]):
 words = page.get_text("blocks", sort=True)  # list of words on page
 
 for rect in rectangles:
+    shape.draw_rect(rect)
     rect_words = [w for w in words if pymupdf.Rect(
         w[:4]).intersects(rect)]
     text_blocks = list()
@@ -138,3 +144,7 @@ for rect in rectangles:
         text_blocks.append(text_block)
     content_node = ContentNode(rect=rect, content=text_blocks)
     print(content_node)
+
+shape.finish()
+shape.commit()
+output.save("example_orgcharts/reconstructed_lines.pdf")
