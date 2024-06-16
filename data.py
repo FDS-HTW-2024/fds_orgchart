@@ -34,7 +34,6 @@ class Line(NamedTuple):
     p1: Point
 
     # Kurbo Library Source: https://github.com/linebender/kurbo/blob/884483b3de412c7c10e2fff4f43dbe96304c0dbd/src/line.rs#L44
-<<<<<<< HEAD
     def intersection(self, line: Self, tolerance: float = 0.0) -> Self:
         ab = self.p1 - self.p0
         cd = line.p1 - line.p0
