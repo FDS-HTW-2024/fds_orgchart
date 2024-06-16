@@ -14,7 +14,8 @@ class Rectangle(typing.NamedTuple):
     def inflate(self, value: float):
         return Rectangle(
             top_left=Point(self.top_left.x - value, self.top_left.y - value),
-            bottom_right=Point(self.bottom_right.x + value, self.bottom_right.y + value)
+            bottom_right=Point(self.bottom_right.x + value,
+                               self.bottom_right.y + value)
         )
 
 
@@ -24,13 +25,17 @@ class Line(typing.NamedTuple):
 
     # Kurbo Library Source: https://github.com/linebender/kurbo/blob/884483b3de412c7c10e2fff4f43dbe96304c0dbd/src/line.rs#L44
     def intersection(self, line: "Line", tolerance: float = 0.0):
-        lengthAB = sqrt(pow(self.p1.x - self.p0.x, 2) + pow(self.p1.y - self.p0.y, 2))
-        lengthCD = sqrt(pow(line.p1.x - line.p0.x, 2) + pow(line.p1.y - line.p0.y, 2))
+        lengthAB = sqrt(pow(self.p1.x - self.p0.x, 2) +
+                        pow(self.p1.y - self.p0.y, 2))
+        lengthCD = sqrt(pow(line.p1.x - line.p0.x, 2) +
+                        pow(line.p1.y - line.p0.y, 2))
         newLengthAB = lengthAB + tolerance
         newLengthCD = lengthCD + tolerance
 
-        offset_ab = Point((self.p1.x - self.p0.x) / lengthAB * newLengthAB, (self.p1.y - self.p0.y) / lengthAB * newLengthAB)
-        offset_cd = Point((line.p1.x - line.p0.x) / lengthCD * newLengthCD, (line.p1.y - line.p0.y) / lengthCD * newLengthCD)
+        offset_ab = Point((self.p1.x - self.p0.x) / lengthAB * newLengthAB,
+                          (self.p1.y - self.p0.y) / lengthAB * newLengthAB)
+        offset_cd = Point((line.p1.x - line.p0.x) / lengthCD * newLengthCD,
+                          (line.p1.y - line.p0.y) / lengthCD * newLengthCD)
 
         a = Point(self.p1.x - offset_ab.x, self.p1.y - offset_ab.y)
         b = Point(self.p0.x + offset_ab.x, self.p0.y + offset_ab.y)
@@ -66,8 +71,14 @@ class TextBlock:
     bounding_box: Rectangle
     content: str
 
+    def __hash__(self):
+        return hash((self.bounding_box, self.content))
+
 
 @dataclass
 class ContentNode:
     rect: Rectangle
     content: list[TextBlock]
+
+    def __hash__(self):
+        return hash((tuple(self.content)))
