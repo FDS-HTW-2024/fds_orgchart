@@ -34,9 +34,11 @@ for d in drawings_list:
     for item in d["items"]:
         match item[0]:
             case "re":
-                rects.append(Rectangle(top_left=item[1].top_left, bottom_right=item[1].bottom_right))
+                rects.append(
+                    Rectangle(top_left=item[1].top_left, bottom_right=item[1].bottom_right))
             case "l":
-                lines.append(Line(p0=Point._make(item[1]), p1=Point._make(item[2])))
+                lines.append(
+                    Line(p0=Point._make(item[1]), p1=Point._make(item[2])))
             case _:
                 pass
 
@@ -58,7 +60,7 @@ outpage = outpdf.new_page(width=page.rect.width, height=page.rect.height)
 shape = outpage.new_shape()
 
 
-def is_node_point(rect: Rectangle, point: Point, threshold = 1.0):
+def is_node_point(rect: Rectangle, point: Point, threshold=1.0):
     return fitz.Rect(rect.inflate(threshold)).contains(point)
 
 
