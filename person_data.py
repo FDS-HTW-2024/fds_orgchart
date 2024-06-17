@@ -34,13 +34,13 @@ def load_content_nodes(path: str):
         data = json.load(file)
         return [contentnode_from_dict(node) for node in data]
 
-def load_art_elements(path: str):
+def load_json(path: str):
     with open(path, 'r', encoding='utf-8') as file:
         data = json.load(file)
         return data
 
-art_elements = load_art_elements("./example_data/art_elements.json")
-person_prefix = load_art_elements("./example_data/person_prefixes.json")
+art_elements = load_json("./example_data/art_elements.json")
+person_prefix = load_json("./example_data/person_prefixes.json")
 # content_nodes = load_content_nodes('./example_data/content_nodes.json') 
 
 
