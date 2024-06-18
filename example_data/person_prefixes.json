@@ -1,1 +1,7 @@
-["MR", "MDg", "MDG'in", "N.N.", "MD'in", "OAR", "OAR'in", "RD", "RD'in", "LMR", "LMR'in", "RR'in", "Hr.", "Fr.", "RD", "TB"]
+[
+    "MR", "MDg", "MDG'in", "N.N.", "MD'in", "OAR", "OAR'in",
+    "RD", "RD'in", "LMR", "LMR'in", "RR'in", "Hr.", "Fr.",
+    "RD", "TB", "Herr", "Frau", "Fräulein", "Dr.", "Prof.", 
+    "Mag.", "Dipl.-Ing.", "Dr. Med.", "Dr. med. vet.", "Lt.",
+    "Hptm.", "Oberst"
+]
