@@ -1,13 +1,7 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "package"
+name = "organigram_extract"
 version = "0.0.1"
-description = "Library and CLI to extract structured data from german organigrams"
-readme = "README.md"
-authors = []
-
-[project.scripts]
-cli = "src.__main__:main"
