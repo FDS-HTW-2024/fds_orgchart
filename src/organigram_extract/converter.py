@@ -1,5 +1,5 @@
 import fitz
-from data import Point, Line, Rectangle, TextBlock, ContentNode
+from organigram_extract.data import Point, Line, Rectangle, TextBlock, ContentNode
 
 
 def make_text(words):
