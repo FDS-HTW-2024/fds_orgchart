@@ -1,0 +1,72 @@
+[
+    {
+        "rect": { "top_left": { "x" : 0, "y" : 0 }, "bottom_right": { "x" : 10, "y" : 10 }
+        },
+        "content": [
+            {
+                "content": "Abteilung I 1",
+                "bounding_box": {
+                    "top_left": { "x" : 0, "y" : 0 },
+                    "bottom_right": { "x" : 10, "y" : 10 }
+                }
+            },
+            {
+                "content": "MD'in Dr. Stahl-Hoepner",
+                "bounding_box": {
+                    "top_left": { "x" : 0, "y" : 0 },
+                    "bottom_right": { "x" : 10, "y" : 10 }
+                }
+            },
+            {
+                "content": "MD'in Dr. Jimmy-Tran",
+                "bounding_box": {
+                    "top_left": { "x" : 0, "y" : 0 },
+                    "bottom_right": { "x" : 10, "y" : 10 }
+                }
+            },
+            {
+                "content": "Zentralabteilung",
+                "bounding_box": {
+                    "top_left": { "x" : 0, "y" : 0 },
+                    "bottom_right": { "x" : 10, "y" : 10 }
+                }
+            }
+
+        ]
+    },
+    {
+        "rect": { "top_left": { "x": 60, "y": 60 }, "bottom_right": { "x": 70, "y": 70 }
+        },
+        "content": [
+            {
+                "content": "Referat I A 1",
+                "bounding_box": { "top_left": { "x": 60, "y": 60 }, "bottom_right": { "x": 70, "y": 70 } }
+            },
+            {
+                "content": "Generalreferat für Finanzpolitik",
+                "bounding_box": { "top_left": { "x": 60, "y": 60 }, "bottom_right": { "x": 70, "y": 70 } }
+            },
+            {
+                "content": "MDg Albig",
+                "bounding_box": { "top_left": { "x": 60, "y": 60 }, "bottom_right": { "x": 70, "y": 70 } }
+            }
+        ]
+    },
+    {
+        "rect": { "top_left": { "x": 50, "y": 50 }, "bottom_right": { "x": 60, "y": 60 } },
+        "content": [
+            {
+                "content": "Referat IV A 6",
+                "bounding_box": { "top_left": { "x": 50, "y": 50 }, "bottom_right": { "x": 60, "y": 60 } }
+            },
+            {
+                "content": "Parlament- und Kabinettangelegenheiten",
+                "bounding_box": { "top_left": { "x": 50, "y": 50 }, "bottom_right": { "x": 60, "y": 60 } }
+            },
+            {
+                "content": "MR’in Bohm",
+                "bounding_box": { "top_left": { "x": 50, "y": 50 }, "bottom_right": { "x": 60, "y": 60 } }
+            }
+        ]
+    }
+]

@@ -9,6 +9,11 @@ Install all dependencies in a virtual environment managed by Pipenv.
 pipenv install -e .
 ```
 
+Install the spacy German model.
+```
+pipenv run python -m spacy download de_core_news_lg
+```
+
 ## CLI
 
 This package contains a command line tool. It can be executed by running it as script.

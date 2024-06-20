@@ -24,7 +24,8 @@ class Rectangle(NamedTuple):
     def inflate(self, value: float) -> Self:
         return Rectangle(
             top_left=Point(self.top_left.x - value, self.top_left.y - value),
-            bottom_right=Point(self.bottom_right.x + value, self.bottom_right.y + value)
+            bottom_right=Point(self.bottom_right.x + value,
+                               self.bottom_right.y + value)
         )
 
 
@@ -78,8 +79,14 @@ class TextBlock:
     bounding_box: Rectangle
     content: str
 
+    def __hash__(self):
+        return hash((self.bounding_box, self.content))
+
 
 @dataclass
 class ContentNode:
     rect: Rectangle
     content: list[TextBlock]
+
+    def __hash__(self):
+        return hash((tuple(self.text_blocks)))
