@@ -6,6 +6,7 @@ from organigram_extract.data import Line, Point, Rectangle, TextBlock, ContentNo
 
 def extract(input: str, tolerance: float = 1.0):
     page = pymupdf.open(input)[0]
+    print(page.rect)
 
     rectangles: list[Rectangle] = list()
     lines: list[Line] = list()
@@ -81,8 +82,8 @@ def extract(input: str, tolerance: float = 1.0):
 
                 (width, height) = bottom_right - top_left
 
-                # FIXME: Floating number 0 check is done by doing less than EPSILON
-                if width == 0.0 or height == 0.0:
+                # TODO: Find better heuristic for zero sized rectangles
+                if width < 1.0 or height < 1.0:
                     continue
             
                 rectangles.append(Rectangle(

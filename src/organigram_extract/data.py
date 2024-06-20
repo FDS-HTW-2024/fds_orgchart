@@ -15,6 +15,9 @@ class Point(NamedTuple):
     
     def distance(self) -> float:
         return sqrt(self.x * self.x + self.y * self.y)
+    
+    def grid_distance(self) -> float:
+        return abs(self.x) + abs(self.y)
 
 class Rectangle(NamedTuple):
     """Represents a Rectangle in the orgchart"""
@@ -35,20 +38,10 @@ class Line(NamedTuple):
 
     # Kurbo Library Source: https://github.com/linebender/kurbo/blob/884483b3de412c7c10e2fff4f43dbe96304c0dbd/src/line.rs#L44
     def intersection(self, line: Self, tolerance: float = 0.0) -> Self:
-        ab = self.p1 - self.p0
-        cd = line.p1 - line.p0
-        lengthAB = ab.distance()
-        lengthCD = cd.distance()
-        newLengthAB = lengthAB + tolerance
-        newLengthCD = lengthCD + tolerance
-
-        offset_ab = Point(ab.x / lengthAB * newLengthAB, ab.y / lengthAB * newLengthAB)
-        offset_cd = Point(cd.x / lengthCD * newLengthCD, cd.y / lengthCD * newLengthCD)
-
-        a = self.p1 - offset_ab
-        b = self.p0 + offset_ab
-        c = line.p1 - offset_cd
-        d = line.p0 + offset_cd
+        a = self.p1
+        b = self.p0
+        c = line.p1
+        d = line.p0
 
         ab = b - a
         cd = d - c
@@ -64,12 +57,18 @@ class Line(NamedTuple):
         g = cd_cross_ca / ab_cross_cd
         h = ab_cross_ca / ab_cross_cd
 
-        # The values of g and h must be between 0 and 1, otherwise the point will
-        # be outside the lines.
-        if 0.0 <= g <= 1.0 and 0.0 <= h <= 1.0:
-            return Point(c.x + cd.x * h, c.y + cd.y * h)
+        ab_new = Point(ab.x * g, ab.y * g)
+        cd_new = Point(cd.x * h, cd.y * h)
 
-        return None
+        # The values of g and h must be between 0 and 1, otherwise 
+        # check wether the offset is within tolerance.
+        if ((g < 0.0 and tolerance < ab_new.grid_distance())
+                or (1.0 < g and tolerance < (ab_new - ab).grid_distance())
+                or (h < 0.0 and tolerance < cd_new.grid_distance())
+                or (1.0 < h and tolerance < (cd_new - cd).grid_distance())):
+            return None
+
+        return c + cd_new
 
 
 @dataclass
