@@ -1,4 +1,4 @@
-from data import ContentNode
+from organigram_extract.data import ContentNode
 
 
 class Node:

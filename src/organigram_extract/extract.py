@@ -2,7 +2,7 @@ from typing import Callable, Generator
 
 import pymupdf
     
-from data import Line, Point, Rectangle, TextBlock, ContentNode
+from organigram_extract.data import Line, Point, Rectangle, TextBlock, ContentNode
 
 def extract(input: str, tolerance: float = 1.0):
     page = pymupdf.open(input)[0]
