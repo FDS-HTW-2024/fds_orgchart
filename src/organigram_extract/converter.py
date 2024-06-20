@@ -1,5 +1,5 @@
 import fitz
-from data import Point, Line, Rectangle, TextBlock, ContentNode
+from organigram_extract.data import Point, Line, Rectangle, TextBlock, ContentNode
 
 page = fitz.open("example_orgcharts/bmf-orgplan_juli_2008.pdf")[0]
 

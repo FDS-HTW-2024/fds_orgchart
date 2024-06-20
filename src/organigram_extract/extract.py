@@ -2,50 +2,7 @@ from typing import Callable, Generator
 
 import pymupdf
     
-from data import Line, Point, Rectangle, TextBlock, ContentNode
-
-def sorted_array_group_by[T, K](
-    array: list[T],
-    extract_key: Callable[[T], K] = lambda element: element
-) -> Generator[tuple[K, list[T]], None, None]:
-    count = len(array)
-
-    if count == 0:
-        return
-
-    start = 0
-    end = 1
-    key_start = extract_key(array[0])
-
-    while end < count:
-        key_end = extract_key(array[end])
-
-        if key_start != key_end:
-            yield (key_start, array[start:end])
-            start = end
-            key_start = key_end
-
-        end += 1
-
-    if start < end:
-        yield (key_start, array[start:end])
-
-def sorted_array_find_range[T](
-    array: list[T],
-    predicate: Callable[[T], bool] = lambda _: False
-) -> list[T]:
-    start = 0
-    count = len(array)
-
-    while start < count and not predicate(array[start]):
-        start += 1
-    
-    end = start + 1
-
-    while end < count and predicate(array[end]):
-        end += 1
-
-    return array[start:end]
+from organigram_extract.data import Line, Point, Rectangle, TextBlock, ContentNode
 
 def extract(input: str, tolerance: float = 1.0):
     page = pymupdf.open(input)[0]
@@ -74,7 +31,7 @@ def extract(input: str, tolerance: float = 1.0):
                     pass
 
     # Line intersecting with line
-    junctions: list[tuple[int, int, Point]] = list()
+    junction_by_line: dict[int, list[tuple[int, Point]]] = dict()
 
     # Find line intersections
     lines.sort()
@@ -87,10 +44,10 @@ def extract(input: str, tolerance: float = 1.0):
             intersection = line_i.intersection(line_j, tolerance)
 
             if intersection != None:
-                junctions.append((l_i, l_j, intersection))
+                junction_by_line.setdefault(l_i, list()).append((l_j, intersection))
 
     # Search for rectangles made up of 4 lines
-    for (l_i, intersections) in sorted_array_group_by(junctions, lambda j: j[0]):
+    for (l_i, intersections) in junction_by_line.items():
         intersection_count = len(intersections)
 
         if intersection_count < 2:
@@ -102,12 +59,12 @@ def extract(input: str, tolerance: float = 1.0):
 
         # Look for common connected line of intersecting lines
         # TODO: Check that the it is not a triangle
-        for (_, l_j, intersection_j) in intersections:
+        for (l_j, intersection_j) in intersections:
             if (line_i.p0 - intersection_j).distance() <= tolerance:
-                for (_, l_k0, intersection_k0) in sorted_array_find_range(junctions, lambda j: j[0] == l_j):
+                for (l_k0, intersection_k0) in junction_by_line.get(l_j, list()):
                     line_k0_intersections.setdefault(l_k0, list()).append((intersection_j, intersection_k0))
             elif (line_i.p1 - intersection_j).distance() <= tolerance:
-                for (_, l_k1, intersection_k1) in sorted_array_find_range(junctions, lambda j: j[0] == l_j):
+                for (l_k1, intersection_k1) in junction_by_line.get(l_j, list()):
                     line_k1_intersections.setdefault(l_k1, list()).append((intersection_j, intersection_k1))
 
         for (line_index, values0) in line_k0_intersections.items():
@@ -150,4 +107,5 @@ def extract(input: str, tolerance: float = 1.0):
         content_node = ContentNode(rect=rect, content=text_blocks)
         content_nodes.append(content_node)
 
-    return (rectangles, lines, junctions, words, content_nodes)
+    return (rectangles, lines, junction_by_line, words, content_nodes)
+
