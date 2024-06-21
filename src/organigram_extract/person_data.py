@@ -2,9 +2,8 @@ import spacy
 import json
 import csv
 from spacy import displacy
-from data import Rectangle, TextBlock, ContentNode, Point
-
-nlp = spacy.load("de_core_news_lg")
+from organigram_extract.data import Rectangle, TextBlock, ContentNode, Point
+from organigram_extract.extract import extract
 
 def point_from_dict(data: dict) -> Point:
     return Point(x=data['x'], y=data['y'])
@@ -39,8 +38,6 @@ def load_json(path: str):
 
 art_elements = load_json("./example_data/art_elements.json")
 person_prefix = load_json("./example_data/person_prefixes.json")
-# content_nodes = load_content_nodes('./example_data/content_nodes.json') 
-
 
 def find_best_art(text):
     for element in art_elements:
@@ -60,14 +57,6 @@ def find_person(text):
 
 def find_bezeichnung(text):
     return text
-
-csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
-
-records = []
-
-(rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_kultur.pdf")
-# print(content_nodes)
-
 
 def parse_node(node):
     art = None
@@ -93,41 +82,33 @@ def parse_node(node):
         #     continue
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
+def parse():
+    nlp = spacy.load("de_core_news_lg")
+    csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
+    records = []
+    (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_kultur.pdf")
 
-def parse_node_with_llm(node):
-    content = "".join(text.content for text in node.content)
-    print(content)
-    return (art, bezeichnung, persons, titel, zusatzbezeichnung)
+    for node in content_nodes:
+        (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
+        records.append([art, bezeichnung, persons, titel, zusatzbezeichnung])
 
-for node in content_nodes:
-    (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
-    for text in node.content:
-        print(text.content)
-    print('---------')
-    records.append([art, bezeichnung, persons, titel, zusatzbezeichnung])
+    unique_records = []
+    seen = set()
 
+    for record in records:
+        record_tuple = (record[0], record[1], tuple(record[2]), record[3], record[4])  # Convert the list to a tuple so it can be added to a set
+        if record_tuple not in seen:
+            unique_records.append(record)
+            seen.add(record_tuple)
 
-unique_records = []
-seen = set()
+    for rec in unique_records:
+        print(rec)
+        print('=====')
 
-for record in records:
-    record_tuple = (record[0], record[1], tuple(record[2]), record[3], record[4])  # Convert the list to a tuple so it can be added to a set
-    if record_tuple not in seen:
-        unique_records.append(record)
-        seen.add(record_tuple)
+    print(len(unique_records))
 
-for rec in unique_records:
-    print(rec)
-    print('=====')
+    # combined_text= " ".join(block.content for node in content_nodes for block in node.content)
+    # doc = nlp(combined_text)
+    # html = displacy.render(doc, style="ent")
 
-print(len(unique_records))
-
-
-# combined_text= " ".join(block.content for node in content_nodes for block in node.content)
-# doc = nlp(combined_text)
-# html = displacy.render(doc, style="ent")
-
-# print(html)
-
-# docs = list(nlp.pipe())
-# displacy.serve(doc, style="ent")
+    # print(html)
