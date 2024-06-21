@@ -46,10 +46,6 @@ def find_best_art(text):
     return None 
 
 def find_person(text):
-    # doc = nlp(text)
-    # for ent in doc.ents:
-    #     if ent.label_ == "PERSON":
-    #         return text
     for prefix in person_prefix:
         if text.startswith(prefix):
             return text
@@ -61,9 +57,6 @@ def find_bezeichnung(text):
 def parse_node(node):
     art = None
     bezeichnung = None
-    # ggf. nach mehreren Personen suchen
-    # Personen: Aus mehreren Faktoren ableiten, ob es sich um eine Person handelt:
-    # Prefix: (MDG, etc.) und Spacy nutzen (fuer Namen ohne Prefix)
     persons = []
     titel = None
     zusatzbezeichnung = None
@@ -72,21 +65,17 @@ def parse_node(node):
         if not art:
             art = find_best_art(text)
             if art: 
-                bezeichnung = text     # If we already have art, we need to check the bezeichnung
+                bezeichnung = text
             continue
         person = find_person(text)
         if person:
             persons.append(person)
-        # if not zusatzbezeichnung:
-        #     zusatzbezeichnung = find_bezeichnung(text)
-        #     continue
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
 def parse():
-    nlp = spacy.load("de_core_news_lg")
-    csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
+    # csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
     records = []
-    (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_kultur.pdf")
+    (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_bmf_2018.pdf")
 
     for node in content_nodes:
         (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
@@ -106,9 +95,3 @@ def parse():
         print('=====')
 
     print(len(unique_records))
-
-    # combined_text= " ".join(block.content for node in content_nodes for block in node.content)
-    # doc = nlp(combined_text)
-    # html = displacy.render(doc, style="ent")
-
-    # print(html)
