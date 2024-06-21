@@ -1,10 +1,8 @@
 import spacy
 import json
 import csv
-import re
 from spacy import displacy
 from data import Rectangle, TextBlock, ContentNode, Point
-from extract import extract
 
 nlp = spacy.load("de_core_news_lg")
 
@@ -80,12 +78,12 @@ def parse_node(node):
     persons = []
     titel = None
     zusatzbezeichnung = None
-    for text_block in node.content:
+    for idx, text_block in enumerate(node.content):
         text = text_block.content
         if not art:
             art = find_best_art(text)
             if art: 
-                bezeichnung = text 
+                bezeichnung = text     # If we already have art, we need to check the bezeichnung
             continue
         person = find_person(text)
         if person:
@@ -96,8 +94,16 @@ def parse_node(node):
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
 
+def parse_node_with_llm(node):
+    content = "".join(text.content for text in node.content)
+    print(content)
+    return (art, bezeichnung, persons, titel, zusatzbezeichnung)
+
 for node in content_nodes:
     (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
+    for text in node.content:
+        print(text.content)
+    print('---------')
     records.append([art, bezeichnung, persons, titel, zusatzbezeichnung])
 
 
@@ -115,7 +121,6 @@ for rec in unique_records:
     print('=====')
 
 print(len(unique_records))
-
 
 
 # combined_text= " ".join(block.content for node in content_nodes for block in node.content)
