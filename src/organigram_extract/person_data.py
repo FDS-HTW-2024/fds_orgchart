@@ -1,7 +1,5 @@
-import spacy
 import json
 import csv
-from spacy import displacy
 from organigram_extract.data import Rectangle, TextBlock, ContentNode, Point
 from organigram_extract.extract import extract
 
@@ -46,10 +44,6 @@ def find_best_art(text):
     return None 
 
 def find_person(text):
-    # doc = nlp(text)
-    # for ent in doc.ents:
-    #     if ent.label_ == "PERSON":
-    #         return text
     for prefix in person_prefix:
         if text.startswith(prefix):
             return text
@@ -58,32 +52,47 @@ def find_person(text):
 def find_bezeichnung(text):
     return text
 
+connecting_words = ['für', 'und', '/', ',']
+
+def connect_text_blocks(list: list[TextBlock]):
+    idx = 1
+    while idx < len(list):
+        not_found = True 
+        for con in connecting_words:
+            text = list[idx - 1]
+            if text.content.endswith(con):
+                text.content += ' ' + list[idx].content
+                del list[idx]
+                not_found = False 
+        idx += int(not_found)
+
+
 def parse_node(node):
     art = None
     bezeichnung = None
-    # ggf. nach mehreren Personen suchen
-    # Personen: Aus mehreren Faktoren ableiten, ob es sich um eine Person handelt:
-    # Prefix: (MDG, etc.) und Spacy nutzen (fuer Namen ohne Prefix)
     persons = []
     titel = None
     zusatzbezeichnung = None
-    for idx, text_block in enumerate(node.content):
+
+    for text in node.content:
+        text.content = text.content.strip(' \n')
+        
+    print(node.content)
+    connect_text_blocks(node.content)
+    print(node.content)
+    for text_block in node.content:
         text = text_block.content
         if not art:
             art = find_best_art(text)
             if art: 
-                bezeichnung = text     # If we already have art, we need to check the bezeichnung
+                bezeichnung = text
             continue
         person = find_person(text)
         if person:
             persons.append(person)
-        # if not zusatzbezeichnung:
-        #     zusatzbezeichnung = find_bezeichnung(text)
-        #     continue
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
 def parse():
-    nlp = spacy.load("de_core_news_lg")
     csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
     records = []
     (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_kultur.pdf")
@@ -96,7 +105,7 @@ def parse():
     seen = set()
 
     for record in records:
-        record_tuple = (record[0], record[1], tuple(record[2]), record[3], record[4])  # Convert the list to a tuple so it can be added to a set
+        record_tuple = (record[0], record[1], tuple(record[2]), record[3], record[4])
         if record_tuple not in seen:
             unique_records.append(record)
             seen.add(record_tuple)
@@ -106,9 +115,3 @@ def parse():
         print('=====')
 
     print(len(unique_records))
-
-    # combined_text= " ".join(block.content for node in content_nodes for block in node.content)
-    # doc = nlp(combined_text)
-    # html = displacy.render(doc, style="ent")
-
-    # print(html)
