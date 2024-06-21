@@ -45,14 +45,14 @@ def find_best_art(text):
 
 def find_person(text):
     for prefix in person_prefix:
-        if text.startswith(prefix):
+        if prefix in text:
             return text
     return None 
 
 def find_bezeichnung(text):
     return text
 
-connecting_words = ['für', 'und', '/', ',']
+connecting_words = ['für', 'und', '/', ',', '-']
 
 def connect_text_blocks(list: list[TextBlock]):
     idx = 1
@@ -66,6 +66,10 @@ def connect_text_blocks(list: list[TextBlock]):
                 not_found = False 
         idx += int(not_found)
 
+def cleanup_node(node):
+    for text in node.content:
+        text.content = text.content.strip(' \n')
+        text.content = text.content.replace('\n', '')
 
 def parse_node(node):
     art = None
@@ -74,12 +78,8 @@ def parse_node(node):
     titel = None
     zusatzbezeichnung = None
 
-    for text in node.content:
-        text.content = text.content.strip(' \n')
-        
-    print(node.content)
+    cleanup_node(node) 
     connect_text_blocks(node.content)
-    print(node.content)
     for text_block in node.content:
         text = text_block.content
         if not art:
@@ -88,7 +88,7 @@ def parse_node(node):
                 bezeichnung = text
             continue
         person = find_person(text)
-        if person:
+        if person and len(persons) == 0:
             persons.append(person)
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
@@ -99,16 +99,15 @@ def parse():
 
     for node in content_nodes:
         (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
-        records.append([art, bezeichnung, persons, titel, zusatzbezeichnung])
+        records.append((art, bezeichnung, tuple(persons), titel, zusatzbezeichnung))
 
     unique_records = []
     seen = set()
 
     for record in records:
-        record_tuple = (record[0], record[1], tuple(record[2]), record[3], record[4])
-        if record_tuple not in seen:
+        if record not in seen:
             unique_records.append(record)
-            seen.add(record_tuple)
+            seen.add(record)
 
     for rec in unique_records:
         print(rec)
