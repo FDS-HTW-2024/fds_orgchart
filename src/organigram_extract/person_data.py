@@ -1,9 +1,11 @@
-import spacy
+from enum import unique
 import json
 import csv
-from spacy import displacy
+import re
+from typing import Text
 from organigram_extract.data import Rectangle, TextBlock, ContentNode, Point
 from organigram_extract.extract import extract
+from typing import List
 
 def point_from_dict(data: dict) -> Point:
     return Point(x=data['x'], y=data['y'])
@@ -45,14 +47,44 @@ def find_best_art(text):
             return element
     return None 
 
+chars_to_remove = '(){}[]'
+trailing_to_remove = '.-'
 def find_person(text):
     for prefix in person_prefix:
         if text.startswith(prefix):
+            text = ''.join([char for char in text if char not in chars_to_remove and not char.isdigit()])
+            text = text.rstrip(trailing_to_remove)
             return text
     return None 
 
 def find_bezeichnung(text):
     return text
+
+connecting_words = ['für', 'und', '/', ',', '-']
+
+def create_text_block(list: list[TextBlock]):
+    idx = 1
+    while idx < len(list):
+        not_found = True 
+        for con in connecting_words:
+            text = list[idx - 1]
+            if text.content.endswith(con):
+                text.content += ' ' + list[idx].content
+                del list[idx]
+                not_found = False 
+        idx += int(not_found)
+
+def cleanup_node(node):
+    unique_text_blocks: List[TextBlock] = list()
+    for text in node.content:
+        if text not in unique_text_blocks:
+            unique_text_blocks.append(text)
+
+    node.content = unique_text_blocks
+    for text in node.content:
+        text.content = text.content.strip(' \n')
+        text.content = text.content.replace('\n', '')
+        text.content = re.sub(' +', ' ', text.content)
 
 def parse_node(node):
     art = None
@@ -60,35 +92,39 @@ def parse_node(node):
     persons = []
     titel = None
     zusatzbezeichnung = None
-    for idx, text_block in enumerate(node.content):
+
+    cleanup_node(node) 
+    create_text_block(node.content)
+    print(node)
+    for text_block in node.content:
         text = text_block.content
         if not art:
             art = find_best_art(text)
             if art: 
                 bezeichnung = text
             continue
-        person = find_person(text)
-        if person:
-            persons.append(person)
+        if len(persons) == 0:
+            person = find_person(text)
+            if person:
+                persons.append(person)
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
 def parse():
-    # csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
+    csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
     records = []
-    (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_bmf_2018.pdf")
+    (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_finanz.pdf")
 
     for node in content_nodes:
         (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
-        records.append([art, bezeichnung, persons, titel, zusatzbezeichnung])
+        records.append((art, bezeichnung, tuple(persons), titel, zusatzbezeichnung))
 
     unique_records = []
     seen = set()
 
     for record in records:
-        record_tuple = (record[0], record[1], tuple(record[2]), record[3], record[4])  # Convert the list to a tuple so it can be added to a set
-        if record_tuple not in seen:
+        if record not in seen:
             unique_records.append(record)
-            seen.add(record_tuple)
+            seen.add(record)
 
     for rec in unique_records:
         print(rec)
