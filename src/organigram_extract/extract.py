@@ -1,3 +1,4 @@
+import bisect
 from typing import Callable, Generator
 
 import pymupdf
@@ -94,19 +95,23 @@ def extract(input: str, tolerance: float = 1.0):
             # TODO: Remove lines that make up a rectangle by setting line to None at index
 
 
-    words = page.get_text("blocks", sort=True)  # list of words on page
+    words = page.get_text("blocks")  # list of words on page
+    text_block_by_rectangle: dict[int, list[TextBlock]] = dict()
+
+    rectangles.sort()
+    for (x0, y0, x1, y1, word, _, _) in words:
+        bounding_box = Rectangle(Point(x0, y0), Point(x1, y1))
+        index = bisect.bisect_right(rectangles, bounding_box) - 1
+
+        if (0 <= index
+                and rectangles[index].contains(bounding_box.bottom_right)):
+            text_block = TextBlock(bounding_box=bounding_box, content=word)
+            text_block_by_rectangle.setdefault(index, list()).append(text_block)
+
     content_nodes = list()
-
-    for rect in rectangles:
-        rect_words = [w for w in words if pymupdf.Rect(
-            w[:4]).intersects(rect)]
-        text_blocks = list()
-        for (x0, y0, x1, y1, word, _, _) in rect_words:
-            text_block = TextBlock(bounding_box=Rectangle(
-                Point(x0, y0), Point(x1, y1)), content=word)
-            text_blocks.append(text_block)
-        content_node = ContentNode(rect=rect, content=text_blocks)
-        content_nodes.append(content_node)
-
+    for (r_index, text_block) in text_block_by_rectangle.items():
+        text_block.sort(key=lambda tb: (tb.bounding_box.top_left.y, tb.bounding_box.top_left.x))
+        content_nodes.append(ContentNode(rectangles[r_index], text_block))
+   
     return (rectangles, lines, junction_by_line, words, content_nodes)
 

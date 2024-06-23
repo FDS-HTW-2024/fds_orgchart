@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from collections import namedtuple
 from math import sqrt
-from typing import NamedTuple, Self
+from typing import NamedTuple, Optional, Self
 
 class Point(NamedTuple):
     x: float = 0.0
@@ -25,11 +25,15 @@ class Rectangle(NamedTuple):
     bottom_right: Point
 
     def inflate(self, value: float) -> Self:
+        offset = Point(value, value)
         return Rectangle(
-            top_left=Point(self.top_left.x - value, self.top_left.y - value),
-            bottom_right=Point(self.bottom_right.x + value,
-                               self.bottom_right.y + value)
+            top_left=self.top_left - offset,
+            bottom_right=self.bottom_right.x + offset
         )
+
+    def contains(self, point: Point) -> bool:
+        return (self.top_left.x <= point.x <= self.bottom_right.x
+                and self.top_left.y <= point.y <= self.bottom_right.y)
 
 
 class Line(NamedTuple):
@@ -37,7 +41,7 @@ class Line(NamedTuple):
     p1: Point
 
     # Kurbo Library Source: https://github.com/linebender/kurbo/blob/884483b3de412c7c10e2fff4f43dbe96304c0dbd/src/line.rs#L44
-    def intersection(self, line: Self, tolerance: float = 0.0) -> Self:
+    def intersection(self, line: Self, tolerance: float = 0.0) -> Optional[Self]:
         a = self.p1
         b = self.p0
         c = line.p1
