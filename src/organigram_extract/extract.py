@@ -101,12 +101,20 @@ def extract(input: str, tolerance: float = 1.0):
     rectangles.sort()
     for (x0, y0, x1, y1, word, _, _) in words:
         bounding_box = Rectangle(Point(x0, y0), Point(x1, y1))
-        index = bisect.bisect_right(rectangles, bounding_box) - 1
+        rect_index = None
+        top_left = None
 
-        if (0 <= index
-                and rectangles[index].contains(bounding_box.bottom_right)):
+        end = bisect.bisect_right(rectangles, bounding_box.top_left,
+                                    key=lambda r: r.top_left)
+        for (index, rectangle) in enumerate(rectangles[:end]):
+            if (rectangle.top_left != top_left
+                    and rectangle.contains(bounding_box.bottom_right)):
+                rect_index = index
+                top_left = rectangle.top_left
+
+        if rect_index != None:
             text_block = TextBlock(bounding_box=bounding_box, content=word)
-            text_block_by_rectangle.setdefault(index, list()).append(text_block)
+            text_block_by_rectangle.setdefault(rect_index, list()).append(text_block)
 
     content_nodes = list()
     for (r_index, text_block) in text_block_by_rectangle.items():
