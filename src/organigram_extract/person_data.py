@@ -1,7 +1,9 @@
 from enum import unique
 import json
-import csv
+import string
 import re
+import pprint
+from collections import defaultdict
 from typing import Text
 from organigram_extract.data import Rectangle, TextBlock, ContentNode, Point
 from organigram_extract.extract import extract
@@ -74,17 +76,25 @@ def create_text_block(list: list[TextBlock]):
                 not_found = False 
         idx += int(not_found)
 
+word_count = defaultdict(int)
 def cleanup_node(node):
     unique_text_blocks: List[TextBlock] = list()
     for text in node.content:
         if text not in unique_text_blocks:
             unique_text_blocks.append(text)
-
+    
     node.content = unique_text_blocks
     for text in node.content:
+        test = text.content.translate(str.maketrans('', '', string.punctuation)).lower()
+        words = test.split()
+        for word in words:
+            word_count[word] += 1
         text.content = text.content.strip(' \n')
         text.content = text.content.replace('\n', '')
         text.content = re.sub(' +', ' ', text.content)
+    
+
+    
 
 def parse_node(node):
     art = None
@@ -131,3 +141,4 @@ def parse():
         print('=====')
 
     print(len(unique_records))
+    pprint.pp(word_count)
