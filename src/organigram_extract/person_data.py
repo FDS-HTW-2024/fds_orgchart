@@ -1,4 +1,3 @@
-from enum import unique
 import json
 import string
 import re
@@ -85,16 +84,9 @@ def cleanup_node(node):
     
     node.content = unique_text_blocks
     for text in node.content:
-        test = text.content.translate(str.maketrans('', '', string.punctuation)).lower()
-        words = test.split()
-        for word in words:
-            word_count[word] += 1
         text.content = text.content.strip(' \n')
         text.content = text.content.replace('\n', '')
         text.content = re.sub(' +', ' ', text.content)
-    
-
-    
 
 def parse_node(node):
     art = None
@@ -105,7 +97,6 @@ def parse_node(node):
 
     cleanup_node(node) 
     create_text_block(node.content)
-    print(node)
     for text_block in node.content:
         text = text_block.content
         if not art:
@@ -119,10 +110,9 @@ def parse_node(node):
                 persons.append(person)
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
-def parse():
-    csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
+def parse(filename: str):
     records = []
-    (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_finanz.pdf")
+    (rectangles, lines, junctions, words, content_nodes) = extract(filename)
 
     for node in content_nodes:
         (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
@@ -141,4 +131,3 @@ def parse():
         print('=====')
 
     print(len(unique_records))
-    pprint.pp(word_count)
