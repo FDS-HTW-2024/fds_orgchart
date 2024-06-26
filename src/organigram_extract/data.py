@@ -83,13 +83,13 @@ class Line(NamedTuple):
         return c + cd_new
 
 
-class TextBlock(NamedTuple):
+class TextLine(NamedTuple):
     """Represents a textblock inside a rectangle.
     There can be multiple textblocks in a rectangle"""
     bbox: Rect
-    content: str
+    text: str
 
 @dataclass
 class ContentNode:
     bbox: Rect
-    content: list[TextBlock]
+    blocks: list[TextLine]

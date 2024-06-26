@@ -3,9 +3,9 @@ from typing import Any, Callable, Generator
 
 from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_PRESERVE_IMAGES
 
-from organigram_extract.data import Line, Point, Rect, TextBlock, ContentNode
+from organigram_extract.data import Line, Point, Rect, TextLine, ContentNode
 
-def extract_text(text_blocks: list[dict[str, Any]]) -> list[TextBlock]:
+def extract_text(text_blocks: list[dict[str, Any]]) -> list[TextLine]:
     lines = list()
 
     for block in text_blocks:
@@ -57,13 +57,13 @@ def extract_text(text_blocks: list[dict[str, Any]]) -> list[TextBlock]:
                                     max(bbox.y1, span_bbox.y1))
 
             if not bbox.is_empty():
-                lines.append(TextBlock(bbox, line_text.strip()))
+                lines.append(TextLine(bbox, line_text.strip()))
 
-    lines.sort(key=lambda tb: (tb.bbox.y0, tb.bbox.x0, tb.content))
+    lines.sort(key=lambda tb: (tb.bbox.y0, tb.bbox.x0, tb.text))
 
     for index in reversed(range(1, len(lines))):
         if (lines[index - 1].bbox.top_left == lines[index].bbox.top_left
-                and lines[index - 1].content == lines[index].content):
+                and lines[index - 1].text == lines[index].text):
             lines.pop(index)
 
     return lines
@@ -153,7 +153,7 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
 def extract(page: Page, tolerance: float = 1.0):
     (rects, lines, junction_by_line) = extract_shapes(page.get_cdrawings(), tolerance)
     text = extract_text(page.get_text("rawdict", flags=TEXTFLAGS_RAWDICT & ~TEXT_PRESERVE_IMAGES)["blocks"])
-    text_block_by_rectangle: dict[int, list[TextBlock]] = dict()
+    text_block_by_rectangle: dict[int, list[TextLine]] = dict()
 
     rects.sort()
     for line in text:

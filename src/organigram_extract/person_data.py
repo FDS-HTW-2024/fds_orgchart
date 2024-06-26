@@ -4,7 +4,7 @@ import csv
 import re
 from spacy import displacy
 import pymupdf
-from organigram_extract.data import Rect, TextBlock, ContentNode, Point
+from organigram_extract.data import Rect, TextLine, ContentNode, Point
 from organigram_extract.extract import extract
 
 def point_from_dict(data: dict) -> Point:
@@ -20,16 +20,16 @@ def rectangle_from_dict(data: dict) -> Rect:
         bottom_right["y"],
     )
 
-def textblock_from_dict(data: dict) -> TextBlock:
-    return TextBlock(
-        bounding_box=rectangle_from_dict(data['bounding_box']),
-        content=data['content']
+def textblock_from_dict(data: dict) -> TextLine:
+    return TextLine(
+        bbox=rectangle_from_dict(data['bounding_box']),
+        text=data['content']
     )
 
 def contentnode_from_dict(data: dict) -> ContentNode:
     return ContentNode(
-        rect=rectangle_from_dict(data['rect']),
-        content=[textblock_from_dict(tb) for tb in data['content']]
+        bbox=rectangle_from_dict(data['rect']),
+        blocks=[textblock_from_dict(tb) for tb in data['content']]
     )
 
 def load_content_nodes(path: str):
@@ -73,8 +73,8 @@ def parse_node(node):
     persons = []
     titel = None
     zusatzbezeichnung = None
-    for text_block in node.content:
-        text = text_block.content
+    for text_block in node.blocks:
+        text = text_block.text
         if not art:
             art = find_best_art(text)
             if art: 
