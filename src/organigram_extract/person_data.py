@@ -1,35 +1,10 @@
 import json
 import re
 from collections import defaultdict
-from organigram_extract.data import Rectangle, TextBlock, ContentNode, Point
+from organigram_extract.data import Rect, TextLine, ContentNode, Point
 from organigram_extract.extract import extract
+import pymupdf
 from typing import List
-
-def point_from_dict(data: dict) -> Point:
-    return Point(x=data['x'], y=data['y'])
-
-def rectangle_from_dict(data: dict) -> Rectangle:
-    return Rectangle(
-        top_left=point_from_dict(data['top_left']),
-        bottom_right=point_from_dict(data['bottom_right'])
-    )
-
-def textblock_from_dict(data: dict) -> TextBlock:
-    return TextBlock(
-        bounding_box=rectangle_from_dict(data['bounding_box']),
-        content=data['content']
-    )
-
-def contentnode_from_dict(data: dict) -> ContentNode:
-    return ContentNode(
-        rect=rectangle_from_dict(data['rect']),
-        content=[textblock_from_dict(tb) for tb in data['content']]
-    )
-
-def load_content_nodes(path: str):
-    with open(path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-        return [contentnode_from_dict(node) for node in data]
 
 def load_json(path: str):
     with open(path, 'r', encoding='utf-8') as file:
@@ -60,36 +35,36 @@ def find_bezeichnung(text):
 
 connecting_words = ['für', 'und', '/', ',', '-']
 
-def merge_textblocks(list: list[TextBlock]):
-    '''Merges TextBlocks that semantically
+def merge_textblocks(list: list[TextLine]):
+    '''Merges TextLines that semantically
     belong together based off of connection words'''
     idx = 1
     while idx < len(list):
         not_found = True 
         for con in connecting_words:
             text = list[idx - 1]
-            if text.content.endswith(con):
-                text.content += ' ' + list[idx].content
+            if text.text.endswith(con):
+                text.text += " " + list[idx].text
                 del list[idx]
                 not_found = False 
         idx += int(not_found)
 
 def cleanup_node(node):
-    '''Removes duplicate TextBlocks from ContentNode
+    '''Removes duplicate TextLines from ContentNode
     and trims whitespace caracters'''
-    unique_text_blocks: List[TextBlock] = list()
+    unique_text_blocks: List[TextLine] = list()
     seen = set()
 
-    for text_block in node.content:
-        if text_block.content not in seen:
+    for text_block in node.block:
+        if text_block.text not in seen:
             unique_text_blocks.append(text_block)
-            seen.add(text_block.content)
+            seen.add(text_block.text)
 
-    for text in node.content:
-        text.content = text.content.strip(' \n')
-        text.content = text.content.replace('\n', '')
-        text.content = re.sub(' +', ' ', text.content)
-        print(text.content)
+    for text in node.block:
+        text.text = text.text.strip(' \n')
+        text.text = text.text.replace('\n', '')
+        text.text = re.sub(' +', ' ', text.text)
+        print(text.text)
 
 def parse_node(node):
     art = None
@@ -99,9 +74,9 @@ def parse_node(node):
     zusatzbezeichnung = None
 
     cleanup_node(node) 
-    merge_textblocks(node.content)
-    for text_block in node.content:
-        text = text_block.content
+    merge_textblocks(node.block)
+    for text_block in node.block:
+        text = text_block.text
         if not art:
             art = find_best_art(text)
             if art: 
@@ -115,7 +90,8 @@ def parse_node(node):
 
 def parse(filename: str):
     records = []
-    (rectangles, lines, junctions, words, content_nodes) = extract(filename)
+    page = pymupdf.open(filename)[0]
+    (rectangles, lines, junctions, words, content_nodes) = extract(page)
 
     for node in content_nodes:
         (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
