@@ -3,28 +3,33 @@ import json
 import csv
 import re
 from spacy import displacy
-from organigram_extract.data import Rectangle, TextBlock, ContentNode, Point
+import pymupdf
+from organigram_extract.data import Rect, TextLine, ContentNode, Point
 from organigram_extract.extract import extract
 
 def point_from_dict(data: dict) -> Point:
     return Point(x=data['x'], y=data['y'])
 
-def rectangle_from_dict(data: dict) -> Rectangle:
-    return Rectangle(
-        top_left=point_from_dict(data['top_left']),
-        bottom_right=point_from_dict(data['bottom_right'])
+def rectangle_from_dict(data: dict) -> Rect:
+    top_left = data["top_left"]
+    bottom_right = data["bottom_right"]
+    return Rect(
+        top_left["x"],
+        top_left["y"],
+        bottom_right["x"],
+        bottom_right["y"],
     )
 
-def textblock_from_dict(data: dict) -> TextBlock:
-    return TextBlock(
-        bounding_box=rectangle_from_dict(data['bounding_box']),
-        content=data['content']
+def textblock_from_dict(data: dict) -> TextLine:
+    return TextLine(
+        bbox=rectangle_from_dict(data['bounding_box']),
+        text=data['content']
     )
 
 def contentnode_from_dict(data: dict) -> ContentNode:
     return ContentNode(
-        rect=rectangle_from_dict(data['rect']),
-        content=[textblock_from_dict(tb) for tb in data['content']]
+        bbox=rectangle_from_dict(data['rect']),
+        block=[textblock_from_dict(tb) for tb in data['content']]
     )
 
 def load_content_nodes(path: str):
@@ -68,8 +73,8 @@ def parse_node(node):
     persons = []
     titel = None
     zusatzbezeichnung = None
-    for text_block in node.content:
-        text = text_block.content
+    for text_block in node.block:
+        text = text_block.text
         if not art:
             art = find_best_art(text)
             if art: 
@@ -87,7 +92,8 @@ def parse():
     nlp = spacy.load("de_core_news_lg")
     csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
     records = []
-    (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_kultur.pdf")
+    page = pymupdf.open("./example_orgcharts/org_kultur.pdf")[0]
+    (rectangles, lines, junctions, words, content_nodes) = extract(page)
 
     for node in content_nodes:
         (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)

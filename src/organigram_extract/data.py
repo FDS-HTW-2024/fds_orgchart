@@ -19,22 +19,30 @@ class Point(NamedTuple):
     def grid_distance(self) -> float:
         return abs(self.x) + abs(self.y)
 
-class Rectangle(NamedTuple):
-    """Represents a Rectangle in the orgchart"""
-    top_left: Point
-    bottom_right: Point
+class Rect(NamedTuple):
+    """Represents a rectangle in the orgchart"""
+    x0: float = 0.0
+    y0: float = 0.0
+    x1: float = 0.0
+    y1: float = 0.0
+
+    @property
+    def top_left(self) -> Point:
+        return Point(self.x0, self.y0)
+
+    @property
+    def bottom_right(self) -> Point:
+        return Point(self.x1, self.y1)
 
     def inflate(self, value: float) -> Self:
-        offset = Point(value, value)
-        return Rectangle(
-            top_left=self.top_left - offset,
-            bottom_right=self.bottom_right.x + offset
-        )
+        return Rect(self.x0 - offset, self.y0 - offset,
+                    self.x1 + offset, self.y1 + offset)
 
     def contains(self, point: Point) -> bool:
-        return (self.top_left.x <= point.x <= self.bottom_right.x
-                and self.top_left.y <= point.y <= self.bottom_right.y)
+        return self.x0 <= point.x <= self.x1 and self.y0 <= point.y <= self.y1
 
+    def is_empty(self) -> bool:
+        return (self.x1 - self.x0) * (self.y1 - self.y0) == 0.0
 
 class Line(NamedTuple):
     p0: Point
@@ -75,21 +83,13 @@ class Line(NamedTuple):
         return c + cd_new
 
 
-@dataclass
-class TextBlock:
+class TextLine(NamedTuple):
     """Represents a textblock inside a rectangle.
     There can be multiple textblocks in a rectangle"""
-    bounding_box: Rectangle
-    content: str
-
-    def __hash__(self):
-        return hash((self.bounding_box, self.content))
-
+    bbox: Rect
+    text: str
 
 @dataclass
 class ContentNode:
-    rect: Rectangle
-    content: list[TextBlock]
-
-    def __hash__(self):
-        return hash((tuple(self.text_blocks)))
+    bbox: Rect
+    block: list[TextLine]
