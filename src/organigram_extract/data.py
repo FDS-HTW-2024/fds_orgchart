@@ -82,10 +82,8 @@ class Line(NamedTuple):
 
         return c + cd_new
 
-
-class TextLine(NamedTuple):
-    """Represents a textblock inside a rectangle.
-    There can be multiple textblocks in a rectangle"""
+@dataclass
+class TextLine:
     bbox: Rect
     text: str
 

@@ -1,41 +1,10 @@
-import spacy
 import json
-import csv
 import re
-from spacy import displacy
-import pymupdf
+from collections import defaultdict
 from organigram_extract.data import Rect, TextLine, ContentNode, Point
 from organigram_extract.extract import extract
-
-def point_from_dict(data: dict) -> Point:
-    return Point(x=data['x'], y=data['y'])
-
-def rectangle_from_dict(data: dict) -> Rect:
-    top_left = data["top_left"]
-    bottom_right = data["bottom_right"]
-    return Rect(
-        top_left["x"],
-        top_left["y"],
-        bottom_right["x"],
-        bottom_right["y"],
-    )
-
-def textblock_from_dict(data: dict) -> TextLine:
-    return TextLine(
-        bbox=rectangle_from_dict(data['bounding_box']),
-        text=data['content']
-    )
-
-def contentnode_from_dict(data: dict) -> ContentNode:
-    return ContentNode(
-        bbox=rectangle_from_dict(data['rect']),
-        block=[textblock_from_dict(tb) for tb in data['content']]
-    )
-
-def load_content_nodes(path: str):
-    with open(path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-        return [contentnode_from_dict(node) for node in data]
+import pymupdf
+from typing import List
 
 def load_json(path: str):
     with open(path, 'r', encoding='utf-8') as file:
@@ -51,74 +20,94 @@ def find_best_art(text):
             return element
     return None 
 
+chars_to_remove = '(){}[]'
+trailing_to_remove = '.-'
 def find_person(text):
-    # doc = nlp(text)
-    # for ent in doc.ents:
-    #     if ent.label_ == "PERSON":
-    #         return text
     for prefix in person_prefix:
         if text.startswith(prefix):
+            text = ''.join([char for char in text if char not in chars_to_remove and not char.isdigit()])
+            text = text.rstrip(trailing_to_remove)
             return text
     return None 
 
 def find_bezeichnung(text):
     return text
 
+connecting_words = ['für', 'und', '/', ',', '-']
+
+def merge_textblocks(list: list[TextLine]):
+    '''Merges TextLines that semantically
+    belong together based off of connection words'''
+    idx = 1
+    while idx < len(list):
+        not_found = True 
+        for con in connecting_words:
+            text = list[idx - 1]
+            if text.text.endswith(con):
+                text.text += " " + list[idx].text
+                del list[idx]
+                not_found = False 
+        idx += int(not_found)
+
+def cleanup_node(node):
+    '''Removes duplicate TextLines from ContentNode
+    and trims whitespace caracters'''
+    unique_text_blocks: List[TextLine] = list()
+    seen = set()
+
+    for text_block in node.block:
+        if text_block.text not in seen:
+            unique_text_blocks.append(text_block)
+            seen.add(text_block.text)
+
+    for text in node.block:
+        text.text = text.text.strip(' \n')
+        text.text = text.text.replace('\n', '')
+        text.text = re.sub(' +', ' ', text.text)
+        print(text.text)
+
 def parse_node(node):
     art = None
     bezeichnung = None
-    # ggf. nach mehreren Personen suchen
-    # Personen: Aus mehreren Faktoren ableiten, ob es sich um eine Person handelt:
-    # Prefix: (MDG, etc.) und Spacy nutzen (fuer Namen ohne Prefix)
     persons = []
     titel = None
     zusatzbezeichnung = None
+
+    cleanup_node(node) 
+    merge_textblocks(node.block)
     for text_block in node.block:
         text = text_block.text
         if not art:
             art = find_best_art(text)
             if art: 
-                bezeichnung = text 
+                bezeichnung = text
             continue
-        person = find_person(text)
-        if person:
-            persons.append(person)
-        # if not zusatzbezeichnung:
-        #     zusatzbezeichnung = find_bezeichnung(text)
-        #     continue
+        if len(persons) == 0:
+            person = find_person(text)
+            if person:
+                persons.append(person)
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
-def parse():
-    nlp = spacy.load("de_core_news_lg")
-    csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
+def parse(filename: str):
     records = []
-    page = pymupdf.open("./example_orgcharts/org_kultur.pdf")[0]
+    page = pymupdf.open(filename)[0]
     (rectangles, lines, junctions, words, content_nodes) = extract(page)
 
     for node in content_nodes:
         (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
-        records.append([art, bezeichnung, persons, titel, zusatzbezeichnung])
+        records.append((art, bezeichnung, tuple(persons), titel, zusatzbezeichnung))
 
     unique_records = []
     seen = set()
 
     for record in records:
-        record_tuple = (record[0], record[1], tuple(record[2]), record[3], record[4])  # Convert the list to a tuple so it can be added to a set
-        if record_tuple not in seen:
+        if record not in seen:
             unique_records.append(record)
-            seen.add(record_tuple)
+            seen.add(record)
 
     for rec in unique_records:
         print(rec)
-        print('=====')
+        print('---------------------------------------------')
 
-    print(len(unique_records))
-
-    # combined_text= " ".join(block.content for node in content_nodes for block in node.content)
-    # doc = nlp(combined_text)
-    # html = displacy.render(doc, style="ent")
-
-    # print(html)
-
-    # docs = list(nlp.pipe())
-    # displacy.serve(doc, style="ent")
+    print("Unfiltered: ", len(records))
+    print("Filtered: ", len(unique_records))
