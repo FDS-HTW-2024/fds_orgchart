@@ -60,7 +60,9 @@ def find_bezeichnung(text):
 
 connecting_words = ['für', 'und', '/', ',', '-']
 
-def create_text_block(list: list[TextBlock]):
+def merge_textblocks(list: list[TextBlock]):
+    '''Merges TextBlocks that semantically
+    belong together based off of connection words'''
     idx = 1
     while idx < len(list):
         not_found = True 
@@ -72,14 +74,17 @@ def create_text_block(list: list[TextBlock]):
                 not_found = False 
         idx += int(not_found)
 
-word_count = defaultdict(int)
 def cleanup_node(node):
+    '''Removes duplicate TextBlocks from ContentNode
+    and trims whitespace caracters'''
     unique_text_blocks: List[TextBlock] = list()
-    for text in node.content:
-        if text not in unique_text_blocks:
-            unique_text_blocks.append(text)
-    
-    node.content = unique_text_blocks
+    seen = set()
+
+    for text_block in node.content:
+        if text_block.content not in seen:
+            unique_text_blocks.append(text_block)
+            seen.add(text_block.content)
+
     for text in node.content:
         text.content = text.content.strip(' \n')
         text.content = text.content.replace('\n', '')
@@ -94,7 +99,7 @@ def parse_node(node):
     zusatzbezeichnung = None
 
     cleanup_node(node) 
-    create_text_block(node.content)
+    merge_textblocks(node.content)
     for text_block in node.content:
         text = text_block.content
         if not art:
@@ -126,6 +131,7 @@ def parse(filename: str):
 
     for rec in unique_records:
         print(rec)
-        print('=====')
+        print('---------------------------------------------')
 
-    print(len(unique_records))
+    print("Unfiltered: ", len(records))
+    print("Filtered: ", len(unique_records))
