@@ -3,16 +3,20 @@ import json
 import csv
 import re
 from spacy import displacy
-from organigram_extract.data import Rectangle, TextBlock, ContentNode, Point
+from organigram_extract.data import Rect, TextBlock, ContentNode, Point
 from organigram_extract.extract import extract
 
 def point_from_dict(data: dict) -> Point:
     return Point(x=data['x'], y=data['y'])
 
-def rectangle_from_dict(data: dict) -> Rectangle:
-    return Rectangle(
-        top_left=point_from_dict(data['top_left']),
-        bottom_right=point_from_dict(data['bottom_right'])
+def rectangle_from_dict(data: dict) -> Rect:
+    top_left = data["top_left"]
+    bottom_right = data["bottom_right"]
+    return Rect(
+        top_left["x"],
+        top_left["y"],
+        bottom_right["x"],
+        bottom_right["y"],
     )
 
 def textblock_from_dict(data: dict) -> TextBlock:
