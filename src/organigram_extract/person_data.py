@@ -29,7 +29,7 @@ def textblock_from_dict(data: dict) -> TextLine:
 def contentnode_from_dict(data: dict) -> ContentNode:
     return ContentNode(
         bbox=rectangle_from_dict(data['rect']),
-        blocks=[textblock_from_dict(tb) for tb in data['content']]
+        block=[textblock_from_dict(tb) for tb in data['content']]
     )
 
 def load_content_nodes(path: str):
@@ -73,7 +73,7 @@ def parse_node(node):
     persons = []
     titel = None
     zusatzbezeichnung = None
-    for text_block in node.blocks:
+    for text_block in node.block:
         text = text_block.text
         if not art:
             art = find_best_art(text)

@@ -92,4 +92,4 @@ class TextLine(NamedTuple):
 @dataclass
 class ContentNode:
     bbox: Rect
-    blocks: list[TextLine]
+    block: list[TextLine]
