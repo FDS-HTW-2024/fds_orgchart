@@ -1,4 +1,5 @@
 import bisect
+from collections import defaultdict
 from typing import Any, Callable, Generator
 
 from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_PRESERVE_IMAGES
@@ -90,7 +91,7 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
                     pass
 
     # Line intersecting with line
-    junction_by_line: dict[int, list[tuple[int, Point]]] = dict()
+    junction_by_line: defaultdict[int, list[tuple[int, Point]]] = defaultdict(list)
 
     # Find line intersections
     lines.sort()
@@ -103,7 +104,7 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
             intersection = line_i.intersection(line_j, tolerance)
 
             if intersection != None:
-                junction_by_line.setdefault(l_i, list()).append((l_j, intersection))
+                junction_by_line[l_i].append((l_j, intersection))
 
     # Search for rectangles made up of 4 lines
     for (l_i, intersections) in junction_by_line.items():
@@ -113,18 +114,18 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
             continue
 
         line_i = lines[l_i]
-        line_k0_intersections = dict()
-        line_k1_intersections = dict()
+        line_k0_intersections = defaultdict(list)
+        line_k1_intersections = defaultdict(list)
 
         # Look for common connected line of intersecting lines
         # TODO: Check that the it is not a triangle
         for (l_j, intersection_j) in intersections:
             if (line_i.p0 - intersection_j).distance() <= tolerance:
                 for (l_k0, intersection_k0) in junction_by_line.get(l_j, list()):
-                    line_k0_intersections.setdefault(l_k0, list()).append((intersection_j, intersection_k0))
+                    line_k0_intersections[l_k0].append((intersection_j, intersection_k0))
             elif (line_i.p1 - intersection_j).distance() <= tolerance:
                 for (l_k1, intersection_k1) in junction_by_line.get(l_j, list()):
-                    line_k1_intersections.setdefault(l_k1, list()).append((intersection_j, intersection_k1))
+                    line_k1_intersections[l_k1].append((intersection_j, intersection_k1))
 
         for (line_index, values0) in line_k0_intersections.items():
             values1 = line_k1_intersections.get(line_index, None)
@@ -153,7 +154,7 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
 def extract(page: Page, tolerance: float = 1.0):
     (rects, lines, junction_by_line) = extract_shapes(page.get_cdrawings(), tolerance)
     text = extract_text(page.get_text("rawdict", flags=TEXTFLAGS_RAWDICT & ~TEXT_PRESERVE_IMAGES)["blocks"])
-    text_block_by_rectangle: dict[int, list[TextLine]] = dict()
+    text_block_by_rectangle: defaultdict[int, list[TextLine]] = defaultdict(list)
 
     rects.sort()
     for line in text:
@@ -169,7 +170,7 @@ def extract(page: Page, tolerance: float = 1.0):
                 top_left = rectangle.top_left
 
         if rect_index != None:
-            text_block_by_rectangle.setdefault(rect_index, list()).append(line)
+            text_block_by_rectangle[rect_index].append(line)
         else:
             print(f"[WARN]: No rectangle found for {line=}")
 
