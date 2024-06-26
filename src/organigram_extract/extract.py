@@ -1,16 +1,14 @@
 import bisect
-from typing import Callable, Generator
+from typing import Any, Callable, Generator
 
-import pymupdf
-from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_INHIBIT_SPACES, TEXT_PRESERVE_IMAGES
+from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_PRESERVE_IMAGES
 
 from organigram_extract.data import Line, Point, Rect, TextBlock, ContentNode
 
-def extract_text(page: Page) -> list[TextBlock]:
-    text = page.get_text("rawdict", flags=TEXTFLAGS_RAWDICT & ~TEXT_PRESERVE_IMAGES | TEXT_INHIBIT_SPACES)
+def extract_text(text_blocks: list[dict[str, Any]]) -> list[TextBlock]:
     lines = list()
 
-    for block in text["blocks"]:
+    for block in text_blocks:
         for line in block["lines"]:
             line_text = ""
             bbox = Rect()
@@ -70,8 +68,7 @@ def extract_text(page: Page) -> list[TextBlock]:
 
     return lines
 
-def extract_shapes(page: Page, tolerance: float):
-    drawings = page.get_drawings()
+def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
     rects: list[Rect] = list()
     lines: list[Line] = list()
 
@@ -153,10 +150,9 @@ def extract_shapes(page: Page, tolerance: float):
 
     return (rects, lines, junction_by_line)
 
-def extract(input: str, tolerance: float = 1.0):
-    page = pymupdf.open(input)[0]
-    (rects, lines, junction_by_line) = extract_shapes(page, tolerance)
-    text = extract_text(page)
+def extract(page: Page, tolerance: float = 1.0):
+    (rects, lines, junction_by_line) = extract_shapes(page.get_cdrawings(), tolerance)
+    text = extract_text(page.get_text("rawdict", flags=TEXTFLAGS_RAWDICT & ~TEXT_PRESERVE_IMAGES)["blocks"])
     text_block_by_rectangle: dict[int, list[TextBlock]] = dict()
 
     rects.sort()
@@ -178,6 +174,6 @@ def extract(input: str, tolerance: float = 1.0):
             print(f"[WARN]: No rectangle found for {line=}")
 
     content_nodes = [ContentNode(rects[index], text_block) for (index, text_block) in text_block_by_rectangle.items()]
-   
+
     return (rects, lines, junction_by_line, text, content_nodes)
 

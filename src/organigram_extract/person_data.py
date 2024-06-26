@@ -3,6 +3,7 @@ import json
 import csv
 import re
 from spacy import displacy
+import pymupdf
 from organigram_extract.data import Rect, TextBlock, ContentNode, Point
 from organigram_extract.extract import extract
 
@@ -91,7 +92,8 @@ def parse():
     nlp = spacy.load("de_core_news_lg")
     csv_field = ["Art", "Bezeichnung", "Person", "Titel", "Zusatzbezeichnung", "Datum"]
     records = []
-    (rectangles, lines, junctions, words, content_nodes) = extract("./example_orgcharts/org_kultur.pdf")
+    page = pymupdf.open("./example_orgcharts/org_kultur.pdf")[0]
+    (rectangles, lines, junctions, words, content_nodes) = extract(page)
 
     for node in content_nodes:
         (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
