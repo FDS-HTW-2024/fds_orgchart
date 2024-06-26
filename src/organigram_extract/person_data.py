@@ -1,9 +1,6 @@
 import json
-import string
 import re
-import pprint
 from collections import defaultdict
-from typing import Text
 from organigram_extract.data import Rectangle, TextBlock, ContentNode, Point
 from organigram_extract.extract import extract
 from typing import List
@@ -87,6 +84,7 @@ def cleanup_node(node):
         text.content = text.content.strip(' \n')
         text.content = text.content.replace('\n', '')
         text.content = re.sub(' +', ' ', text.content)
+        print(text.content)
 
 def parse_node(node):
     art = None

@@ -1,7 +1,6 @@
 import argparse
 from .person_data import parse
 
-
 def run():
     parser = argparse.ArgumentParser(prog='Organigramm Extract')
 
@@ -10,4 +9,3 @@ def run():
     
     args = parser.parse_args()
     parse(args.filename)
-
