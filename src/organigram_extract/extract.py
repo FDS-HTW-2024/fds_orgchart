@@ -2,11 +2,11 @@ import bisect
 from typing import Callable, Generator
 
 import pymupdf
-from pymupdf import TEXTFLAGS_RAWDICT, TEXT_INHIBIT_SPACES, TEXT_PRESERVE_IMAGES
+from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_INHIBIT_SPACES, TEXT_PRESERVE_IMAGES
 
 from organigram_extract.data import Line, Point, Rect, TextBlock, ContentNode
 
-def extract_text(page) -> list[TextBlock]:
+def extract_text(page: Page) -> list[TextBlock]:
     text = page.get_text("rawdict", flags=TEXTFLAGS_RAWDICT & ~TEXT_PRESERVE_IMAGES | TEXT_INHIBIT_SPACES)
     lines = list()
 
@@ -70,15 +70,13 @@ def extract_text(page) -> list[TextBlock]:
 
     return lines
 
-def extract(input: str, tolerance: float = 1.0):
-    page = pymupdf.open(input)[0]
-    print(page.rect)
-
+def extract_shapes(page: Page, tolerance: float):
+    drawings = page.get_drawings()
     rects: list[Rect] = list()
     lines: list[Line] = list()
 
     # Extract rectangles and lines
-    for drawing in page.get_drawings():
+    for drawing in drawings:
         for item in drawing["items"]:
             match item[0]:
                 case "re":
@@ -153,7 +151,11 @@ def extract(input: str, tolerance: float = 1.0):
 
             # TODO: Remove lines that make up a rectangle by setting line to None at index
 
+    return (rects, lines, junction_by_line)
 
+def extract(input: str, tolerance: float = 1.0):
+    page = pymupdf.open(input)[0]
+    (rects, lines, junction_by_line) = extract_shapes(page, tolerance)
     text = extract_text(page)
     text_block_by_rectangle: dict[int, list[TextBlock]] = dict()
 
