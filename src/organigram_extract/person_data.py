@@ -1,5 +1,7 @@
 import json
+import os
 import re
+import llm
 from collections import defaultdict
 from organigram_extract.data import Rect, TextLine, ContentNode, Point
 from organigram_extract.extract import extract
@@ -81,26 +83,59 @@ def parse_node(node):
                 persons.append(person)
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
-def parse(filename: str):
+def parse_node_llm(node: ContentNode, model, schema):
+    cleanup_node(node)
+    merge_textblocks(node.block)
+
+    text_content = ';'.join(line.text for line in node.block)
+    print(text_content)
+    response = model.prompt('''You are a model that parses unstructured content from
+                            Organizational charts into a provided json schema. Only
+                            provide the resulting json without any other text or comments. 
+                            You should not add any additional data under any circumstance. If you can't find some
+                            information, leave it out. The "name" field after type usually
+                            consits of the previously found "type" and an additional
+                            identifier like numbers or letters. The contact field only consists of numbers.
+                            The json schema looks like this:''' + str(schema) + '. And this is the provided content: ' + str(text_content))
+    return response
+
+def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
     records = []
-    page = pymupdf.open(filename)[0]
+    page = pymupdf.open(input_file)[0]
     (rectangles, lines, junctions, words, content_nodes) = extract(page)
 
-    for node in content_nodes:
-        (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
-        records.append((art, bezeichnung, tuple(persons), titel, zusatzbezeichnung))
+    model = llm.get_model(model_name)
+    model.key = os.environ['API_KEY']
+    schema = load_json(schema_path)
 
-    unique_records = []
-    seen = set()
+    with open(output_file, 'w+', encoding='utf-8') as out:
+        out.write('{\n\t"content": [\n')
+        counter = 0
+        for node in content_nodes[15:]:
+            if counter < 30:
+                llm_parsed = parse_node_llm(node, model, schema)
+                print(llm_parsed.text())
+                out.write(llm_parsed.text() + ',')
+                out.write(']\n}')
+                counter += 1
+            else:
+                break
 
-    for record in records:
-        if record not in seen:
-            unique_records.append(record)
-            seen.add(record)
-
-    for rec in unique_records:
-        print(rec)
-        print('---------------------------------------------')
-
-    print("Unfiltered: ", len(records))
-    print("Filtered: ", len(unique_records))
+    # for node in content_nodes:
+    #     (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
+    #     records.append((art, bezeichnung, tuple(persons), titel, zusatzbezeichnung))
+    #
+    # unique_records = []
+    # seen = set()
+    #
+    # for record in records:
+    #     if record not in seen:
+    #         unique_records.append(record)
+    #         seen.add(record)
+    #
+    # for rec in unique_records:
+    #     print(rec)
+    #     print('---------------------------------------------')
+    #
+    # print("Unfiltered: ", len(records))
+    # print("Filtered: ", len(unique_records))
