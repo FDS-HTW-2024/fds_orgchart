@@ -1,0 +1,16 @@
+{
+    "content" : [
+        {
+            "persons": [
+                {
+                    "name": "string",
+                    "title": "string",
+                    "contact": "string"
+                }
+            ],
+            "responsibilities": [
+                
+            ]
+        }
+    ]
+}

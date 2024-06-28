@@ -34,7 +34,6 @@ def find_bezeichnung(text):
     return text
 
 connecting_words = ['für', 'und', '/', ',', '-']
-
 def merge_textblocks(list: list[TextLine]):
     '''Merges TextLines that semantically
     belong together based off of connection words'''
@@ -59,12 +58,6 @@ def cleanup_node(node):
         if text_block.text not in seen:
             unique_text_blocks.append(text_block)
             seen.add(text_block.text)
-
-    for text in node.block:
-        text.text = text.text.strip(' \n')
-        text.text = text.text.replace('\n', '')
-        text.text = re.sub(' +', ' ', text.text)
-        print(text.text)
 
 def parse_node(node):
     art = None

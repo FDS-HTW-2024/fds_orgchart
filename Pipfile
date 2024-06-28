@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 organigram-extract = {file = ".", editable = true}
+llm = "*"
 
 [dev-packages]
 
