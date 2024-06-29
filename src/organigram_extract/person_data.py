@@ -89,7 +89,7 @@ def parse_node_llm(node: ContentNode, model, schema):
     merge_textblocks(node.block)
 
     text_content = '\n'.join(line.text for line in node.block)
-    print(text_content)
+    # print(text_content)
     response = model.prompt('''You are a model that parses unstructured content from
                             Organizational charts into a provided json schema. Only
                             provide the resulting json without any other text or comments. 
@@ -118,6 +118,14 @@ def parse_node_llm(node: ContentNode, model, schema):
                             '. And this is the provided content: ' + str(text_content))
     return response
 
+def print_progress_bar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
+    if iteration == total: 
+        print()
+
 def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
     records = []
     page = pymupdf.open(input_file)[0]
@@ -127,15 +135,19 @@ def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
     model.key = os.environ['API_KEY']
     schema = load_json(schema_path)
 
+    #replace with len(content_nodes) later
+    max_content_nodes = 50
+
     with open(output_file, 'w+', encoding='utf-8') as out:
         json_nodes = []
-        for node in itertools.islice(content_nodes, 0, 25):
+        for i, node in itertools.islice(enumerate(content_nodes), 0, max_content_nodes):
             llm_parsed = parse_node_llm(node, model, schema)
-            print(llm_parsed.text())
+            # print(llm_parsed.text())
             try:
                 json_nodes.append(json.loads(llm_parsed.text())) 
             except Exception as e:
                 print(e)
+            print_progress_bar(i, max_content_nodes, 'Progress', 'Complete', length=100)
 
         json.dump({"content" : json_nodes}, out, ensure_ascii=False)
 
@@ -156,4 +168,5 @@ def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
     #     print('---------------------------------------------')
     #
     # print("Unfiltered: ", len(records))
-    # print("Filtered: ", len(unique_records))
+    # print("Filtered: # Print iterations progress
+
