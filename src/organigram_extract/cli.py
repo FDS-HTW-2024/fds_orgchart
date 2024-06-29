@@ -19,6 +19,7 @@ def run():
         os.environ['API_KEY'] = args.key 
 
     if not os.environ['API_KEY']:
+        
         key = input('Enter API Key (will be stored as env variable): ')
         os.environ['API_KEY'] = key
 
