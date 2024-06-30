@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 organigram-extract = {file = ".", editable = true}
 llm = "*"
+fix-busted-json = "*"
 
 [dev-packages]
 

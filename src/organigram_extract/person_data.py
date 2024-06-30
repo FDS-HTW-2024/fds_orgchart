@@ -1,12 +1,12 @@
 import json
 import os
 import string
-import re
 import itertools
 import llm
-from collections import defaultdict
-from organigram_extract.data import Rect, TextLine, ContentNode, Point
+from organigram_extract.data import TextLine, ContentNode
 from organigram_extract.extract import extract
+from fix_busted_json import repair_json
+from fix_busted_json import first_json 
 import pymupdf
 from typing import List
 
@@ -116,9 +116,13 @@ def parse_node_llm(node: ContentNode, model, schema):
 
     response_json = {"name": response.text()}
     try:
-        response_json = json.loads(response.text())
+        response_json = json.loads(response.text(), strict = False)
     except Exception as e:
-            print('ERROR: Invalid json', e)
+        print('ERROR: Invalid json', e)
+        print('Trying to fix json...')
+        print('Response', response.text())
+        response_json = json.loads(repair_json(response.text()), strict = False)
+
     response_values = collect_values(response_json)
 
     original_content = text_content.lower().translate(str.maketrans('', '', string.punctuation)).split()
