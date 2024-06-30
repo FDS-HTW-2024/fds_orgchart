@@ -18,6 +18,7 @@ def load_json(path: str):
 org_types = load_json("./example_data/org_types.json")
 person_prefix = load_json("./example_data/person_prefixes.json")
 
+#git test
 def find_org_type(text):
     for element in org_types:
         if text.startswith(element):
