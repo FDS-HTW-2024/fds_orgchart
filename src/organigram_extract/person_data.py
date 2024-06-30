@@ -1,5 +1,6 @@
 import json
 import os
+import string
 import re
 import itertools
 import llm
@@ -14,11 +15,11 @@ def load_json(path: str):
         data = json.load(file)
         return data
 
-art_elements = load_json("./example_data/art_elements.json")
+org_types = load_json("./example_data/org_types.json")
 person_prefix = load_json("./example_data/person_prefixes.json")
 
-def find_best_art(text):
-    for element in art_elements:
+def find_org_type(text):
+    for element in org_types:
         if text.startswith(element):
             return element
     return None 
@@ -74,7 +75,7 @@ def parse_node(node):
     for text_block in node.block:
         text = text_block.text
         if not art:
-            art = find_best_art(text)
+            art = find_org_type(text)
             if art: 
                 bezeichnung = text
             continue
@@ -84,39 +85,63 @@ def parse_node(node):
                 persons.append(person)
     return (art, bezeichnung, persons, titel, zusatzbezeichnung)
 
+def collect_values(json, collected=None):
+    if collected is None:
+        collected = []
+
+    if isinstance(json, dict):
+        for _, value in json.items():
+            if isinstance(value, (dict, list)):
+                collect_values(value, collected)
+            else:
+                collected.append(value)
+    elif isinstance(json, list):
+        for item in json:
+            if isinstance(item, (dict, list)):
+                collect_values(item, collected)
+            else:
+                collected.append(item)
+    else:
+        collected.append(json)
+
+    return collected
+
 def parse_node_llm(node: ContentNode, model, schema):
     cleanup_node(node)
     merge_textblocks(node.block)
 
     text_content = '\n'.join(line.text for line in node.block)
     # print(text_content)
-    response = model.prompt('''You are a model that parses unstructured content from
-                            Organizational charts into a provided json schema. Only
-                            provide the resulting json without any other text or comments. 
-                            You should not add any additional data under any circumstance. If you can't find some
-                            information, leave it set the field to null. The "name" field after type usually
-                            No fields are required.
-                            consits of the previously found "type" and an additional
-                            identifier like numbers or letters. The contact field only consists of numbers.
-                            Here is an example of a parsed entity: {
-                            "type": "Abteilung",
-                            "name": "Abteilung V",     
-                            "persons": [
-                                {
-                                    "name": "MD Schröder",
-                                    "positionType": "MD"
-                                }
-                             ]
-                             "responsibilities": [
-                                "Föderale Finanzbeziehungen",
-                                "Staats- und Verfassungsrecht", 
-                                "Rechtsangelegenheiten"
-                                "Historiker-Kommission"
-                             ]
-                            }
-                            The json schema looks like this:''' + str(schema) +
-                            '. And this is the provided content: ' + str(text_content))
-    return response
+    response = model.prompt('''You are a model that parses unstructured content from Organizational charts into a provided json schema. Only provide the resulting json without any other text or comments. You should not add any additional data under any circumstance. If you can't find some information, leave the field to null. The "name" field after type usually consists of the previously found "type" and an additional identifier like numbers or letters. The contact field only consists of numbers. Here is an example of a parsed entity: { "type": "Abteilung", "name": "Abteilung V",     "persons": [ { "name": "MD Schröder", "positionType": "MD" } ] "responsibilities": [ "Föderale Finanzbeziehungen", "Staats- und Verfassungsrecht", "Rechtsangelegenheiten" "Historiker-Kommission" ] } The json schema looks like this:''' + str(schema) + '. And this is the provided content: ' + str(text_content))
+
+    response_json = {"name": response.text()}
+    try:
+        response_json = json.loads(response.text())
+    except Exception as e:
+            print('ERROR: Invalid json', e)
+    response_values = collect_values(response_json)
+
+    original_content = text_content.lower().translate(str.maketrans('', '', string.punctuation)).split()
+    collected_cleared = str(response_values).lower().translate(str.maketrans('', '', string.punctuation)).split()
+
+    not_sorted = []
+    hallucinated = []
+    for word in original_content:
+        if word not in collected_cleared:
+            not_sorted.append(word)
+
+    for word in collected_cleared:
+        if word not in original_content:
+            hallucinated.append(word)
+
+    if 'unsorted' not in response_json or not isinstance(response_json['unsorted'], list):
+        response_json['unsorted'] = []
+
+    response_json['unsorted'].extend(not_sorted)
+    print('Not sorted', not_sorted)
+    print(response_json)
+
+    return response_json 
 
 def print_progress_bar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
@@ -127,8 +152,7 @@ def print_progress_bar (iteration, total, prefix = '', suffix = '', decimals = 1
         print()
 
 def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
-    records = []
-    page = pymupdf.open(input_file)[0]
+    page = pymupdf.open(input_file)[3]
     (rectangles, lines, junctions, words, content_nodes) = extract(page)
 
     model = llm.get_model(model_name)
@@ -136,37 +160,19 @@ def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
     schema = load_json(schema_path)
 
     #replace with len(content_nodes) later
-    max_content_nodes = 50
+    max_content_nodes = min(len(content_nodes), 30)
 
-    with open(output_file, 'w+', encoding='utf-8') as out:
-        json_nodes = []
-        for i, node in itertools.islice(enumerate(content_nodes), 0, max_content_nodes):
-            llm_parsed = parse_node_llm(node, model, schema)
-            # print(llm_parsed.text())
-            try:
-                json_nodes.append(json.loads(llm_parsed.text())) 
-            except Exception as e:
-                print(e)
-            print_progress_bar(i, max_content_nodes, 'Progress', 'Complete', length=100)
+    json_nodes = []
+    for i, node in itertools.islice(enumerate(content_nodes), 0, max_content_nodes):
+        llm_parsed = parse_node_llm(node, model, schema)
+        json_nodes.append(llm_parsed)
 
-        json.dump({"content" : json_nodes}, out, ensure_ascii=False)
-
-    # for node in content_nodes:
-    #     (art, bezeichnung, persons, titel, zusatzbezeichnung) = parse_node(node)
-    #     records.append((art, bezeichnung, tuple(persons), titel, zusatzbezeichnung))
-    #
-    # unique_records = []
-    # seen = set()
-    #
-    # for record in records:
-    #     if record not in seen:
-    #         unique_records.append(record)
-    #         seen.add(record)
-    #
-    # for rec in unique_records:
-    #     print(rec)
-    #     print('---------------------------------------------')
-    #
-    # print("Unfiltered: ", len(records))
-    # print("Filtered: # Print iterations progress
-
+        if not output_file:
+            print(llm_parsed)
+        print_progress_bar(i + 1, max_content_nodes, 'Progress', 'Complete')
+    
+    if output_file:
+        with open(output_file, 'w+', encoding='utf-8') as out:
+            json.dump({"content" : json_nodes}, out, ensure_ascii=False)
+    else:
+        print(json.dumps({"content": json_nodes}, ensure_ascii=False, indent=2))

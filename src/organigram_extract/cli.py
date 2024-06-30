@@ -6,8 +6,7 @@ def run():
     parser = argparse.ArgumentParser(prog='Organigramm Extract')
 
     parser.add_argument('input_path', help='source file for extraction')
-    parser.add_argument('-o', '--output_file', help='output file to write the extracted content',
-                        default='out.json')
+    parser.add_argument('-o', '--output_file', help='output file to write the extracted content')
     parser.add_argument('-m', '--model', help='llm to use for content extraction', default= "gpt-3.5-turbo")
     parser.add_argument('-k', '--key', help='specify API Key (overwrites previously specified key)')
     parser.add_argument('-s', '--schema_file', help='path to json schema to use for parsing. Overrides default json schema',

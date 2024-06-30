@@ -3,13 +3,15 @@
   "type": "object",
   "properties": {
     "type": {
-      "enum": [
-        "Abteilung", "Amt", "Bezirksamt", "Büro", "Fachbereich", "Fachdienst", 
-        "Justitiariat", "Landesamt", "Landesstelle", "Leitstelle", "Leitungsstab", 
-        "Ministerium", "Nachgeordnete Einrichtung", "Organisationseinheit", "Referat", 
-        "Ressort", "Senatskanzlei", "Senatsverwaltung", "Serviceeinheit", 
-        "Stabsstelle", "Unterabteilung", "Öffentliches Unternehmen" ]
-    },
+      "enum": 
+      [
+          "Abteilung", "Amt", "Bezirksamt", "Büro", "Fachbereich", "Fachdienst", 
+          "Justitiariat", "Landesamt", "Landesstelle", "Leitstelle", "Leitungsstab", 
+          "Museum", "Nachgeordnete Einrichtung", "Organisationseinheit", "Referat", 
+          "Ressort", "Senatskanzlei", "Senatsverwaltung", "Serviceeinheit", 
+          "Stabsstelle", "Staatssekretär", "Unterabteilung", "Öffentliches Unternehmen"
+      ]
+  },
     "name": {
       "type": "string"
     },
@@ -47,14 +49,9 @@
           "type": "string"
         }
       ]
-    },
-    "additionalInformation": {
-      "type": "string"
     }
   },
   "required": [
-    "type",
-    "name",
     "persons"
   ]
 }
