@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header h2 {
+    margin: 5px 0 20px;
+    font-size: 1.2em;
+    color: #666;
+}
+
+.org-chart {
+    margin-bottom: 30px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background: #ddd;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    margin-right: -1px;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s;
+}
+
+.tab.active {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    z-index: 2;
+}
+
+.tab:hover {
+    background: #bbb;
+}
+
+.chart-content {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 10px 10px 10px;
+    padding: 20px;
+    background: #fff;
+    position: relative;
+    top: -1px;
+    z-index: 1;
+    min-height: 400px; /* Adjust based on your needs */
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.timeline-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.timeline-item span {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.event {
+    position: absolute;
+    bottom: 0;
+    background: #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
