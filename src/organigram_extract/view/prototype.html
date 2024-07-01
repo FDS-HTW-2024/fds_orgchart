@@ -18,12 +18,7 @@
                 <button class="tab" data-date="1.12.1999">bmf-orgchart2<br><span>1.12.1999</span></button>
                 <button class="tab" data-date="17.03.2014">bmf-orgchart3<br><span>17.03.2014</span></button>
             </div>
-            <div class="chart-content">
-                <!-- SVG container for orgjson content nodes -->
-                <svg id="org-svg" width="100%" height="400">
-                    <!-- SVG content will be dynamically inserted here -->
-                </svg>
-            </div>
+            <div id="svgContainer"></div>
         </div>
         <div class="timeline">
             <div class="timeline-item"><span>Regierung A</span></div>
@@ -32,9 +27,9 @@
                 <div class="event" style="left: 30%;">Referat XY</div>
                 <div class="event" style="left: 50%;">Abteilung 2</div>
             </div>
-        </div>
-        
+        </div>  
     </div>
+    <script src="script.js"></script>
 </body>
 
 <script>
