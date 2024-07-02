@@ -3,10 +3,16 @@ import os
 import string
 import itertools
 import llm
+import asyncio
+import pprint
+from concurrent.futures import ThreadPoolExecutor
+import timeit
+from llm import Model
+from typing import List, Optional, Sequence
+from pydantic import BaseModel
 from organigram_extract.data import TextLine, ContentNode
 from organigram_extract.extract import extract
 from fix_busted_json import repair_json
-from fix_busted_json import first_json 
 import pymupdf
 from typing import List
 
@@ -18,7 +24,6 @@ def load_json(path: str):
 org_types = load_json("./example_data/org_types.json")
 person_prefix = load_json("./example_data/person_prefixes.json")
 
-#git test
 def find_org_type(text):
     for element in org_types:
         if text.startswith(element):
@@ -34,9 +39,6 @@ def find_person(text):
             text = text.rstrip(trailing_to_remove)
             return text
     return None 
-
-def find_bezeichnung(text):
-    return text
 
 connecting_words = ['für', 'und', '/', ',', '-']
 def merge_textblocks(list: list[TextLine]):
@@ -107,17 +109,29 @@ def collect_values(json, collected=None):
 
     return collected
 
-def parse_node_llm(node: ContentNode, model, schema):
-    cleanup_node(node)
-    merge_textblocks(node.block)
+async def extract_from_content(llm: Model, content: Sequence[ContentNode], schema, max_concurrency=5):
+    loop = asyncio.get_running_loop()
+    executor = ThreadPoolExecutor(max_workers=max_concurrency)
 
+    tasks = []
+    for _, node in enumerate(content):
+        cleanup_node(node)
+        merge_textblocks(node.block)
+        tasks.append(loop.run_in_executor(executor, parse_node_llm, llm, node, schema))
+
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return results
+
+
+def parse_node_llm(llm: Model, node: ContentNode, schema):
+    print("task running")
     text_content = '\n'.join(line.text for line in node.block)
-    # print(text_content)
-    response = model.prompt('''You are a model that parses unstructured content from Organizational charts into a provided json schema. Only provide the resulting json without any other text or comments. You should not add any additional data under any circumstance. If you can't find some information, leave the field to null. The "name" field after type usually consists of the previously found "type" and an additional identifier like numbers or letters. The contact field only consists of numbers. Here is an example of a parsed entity: { "type": "Abteilung", "name": "Abteilung V",     "persons": [ { "name": "MD Schröder", "positionType": "MD" } ] "responsibilities": [ "Föderale Finanzbeziehungen", "Staats- und Verfassungsrecht", "Rechtsangelegenheiten" "Historiker-Kommission" ] } The json schema looks like this:''' + str(schema) + '. And this is the provided content: ' + str(text_content))
+    response = llm.prompt('''You are a model that parses unstructured content from Organizational charts into a provided json schema. Only provide the resulting json without any other text or comments. You should not add any additional data under any circumstance. If you can't find some information, leave the field to null. The "name" field after type usually consists of the previously found "type" and an additional identifier like numbers or letters. The contact field only consists of numbers. Here is an example of a parsed entity: { "type": "Abteilung", "name": "Abteilung V",     "persons": [ { "name": "MD Schröder", "positionType": "MD" } ] "responsibilities": [ "Föderale Finanzbeziehungen", "Staats- und Verfassungsrecht", "Rechtsangelegenheiten" "Historiker-Kommission" ] } The json schema looks like this:''' + str(schema) + '. And this is the provided content: ' + str(text_content), temperature=0)
 
-    response_json = {"name": response.text()}
+    response_json = {}
     try:
         response_json = json.loads(response.text(), strict = False)
+        pprint.pp(response_json)
     except Exception as e:
         print('ERROR: Invalid json', e)
         print('Trying to fix json...')
@@ -143,10 +157,8 @@ def parse_node_llm(node: ContentNode, model, schema):
         response_json['unsorted'] = []
 
     response_json['unsorted'].extend(not_sorted)
-    print('Not sorted', not_sorted)
-    print(response_json)
-
-    return response_json 
+    return response_json
+        
 
 def print_progress_bar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
@@ -156,28 +168,24 @@ def print_progress_bar (iteration, total, prefix = '', suffix = '', decimals = 1
     if iteration == total: 
         print()
 
-def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
-    page = pymupdf.open(input_file)[3]
-    (rectangles, lines, junctions, words, content_nodes) = extract(page)
+async def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
+    page = pymupdf.open(input_file)[0]
+    (_, _, _, _, content_nodes) = extract(page)
 
-    model = llm.get_model(model_name)
+    model: Model = llm.get_model(model_name)
     model.key = os.environ['API_KEY']
     schema = load_json(schema_path)
 
     #replace with len(content_nodes) later
     max_content_nodes = min(len(content_nodes), 30)
 
-    json_nodes = []
-    for i, node in itertools.islice(enumerate(content_nodes), 0, max_content_nodes):
-        llm_parsed = parse_node_llm(node, model, schema)
-        json_nodes.append(llm_parsed)
-
-        if not output_file:
-            print(llm_parsed)
-        print_progress_bar(i + 1, max_content_nodes, 'Progress', 'Complete')
-    
+    start = timeit.default_timer()
+    extract_results = await extract_from_content(model, content_nodes, schema, max_concurrency=5)
+    print(extract_results)
+    end = timeit.default_timer()
+    print("took", end - start)
     if output_file:
         with open(output_file, 'w+', encoding='utf-8') as out:
-            json.dump({"content" : json_nodes}, out, ensure_ascii=False)
+            json.dump({"content" : extract_results}, out, ensure_ascii=False)
     else:
-        print(json.dumps({"content": json_nodes}, ensure_ascii=False, indent=2))
+        print(json.dumps({"content": extract_from_content}, ensure_ascii=False, indent=2))

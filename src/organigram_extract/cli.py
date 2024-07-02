@@ -2,7 +2,7 @@ import argparse
 import os
 from .person_data import parse
 
-def run():
+async def run():
     parser = argparse.ArgumentParser(prog='Organigramm Extract')
 
     parser.add_argument('input_path', help='source file for extraction')
@@ -23,4 +23,4 @@ def run():
         os.environ['API_KEY'] = key
 
     #input_path can point to single pdf or folder with pdfs inside
-    parse(args.input_path, args.output_file, args.model, args.schema_file)
+    await parse(args.input_path, args.output_file, args.model, args.schema_file)
