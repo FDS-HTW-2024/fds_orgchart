@@ -18,8 +18,14 @@
     ], 
 
     "rectangles1":[
-        { "x": 0, "y": 0, "x2": 400, "y2": 400, "text": "Bitsh better have my money", "fill": "blue"},
-        { "x": 210, "y": 170, "x2": 320, "y2": 190, "text": "Thank you next", "fill": "red"},
-        { "x": 20, "y": 70, "x2": 160, "y2": 160, "text": "Hello World!", "fill": "yellow"}
+        { "x": 200, "y": 200, "x2": 350, "y2": 350, "text": "Bitsh better have my money", "fill": "white"},
+        { "x": 210, "y": 170, "x2": 320, "y2": 190, "text": "Thank you next", "fill": "white"},
+        { "x": 20, "y": 70, "x2": 160, "y2": 160, "text": "Hello World!", "fill": "white"}
+    ], 
+
+    "lines1":[
+        {"x": 0, "y": 0, "x2": 350, "y2": 350},
+        {"x": 10, "y": 100, "x2": 350, "y2": 350},
+        {"x": 220, "y": 320, "x2": 350, "y2": 350}
     ]
 }
