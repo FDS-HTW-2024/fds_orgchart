@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('data.json')
         .then(response => response.json())
         .then(data => {
-            createSVG(data, 3);
+            createSVG(data, 4);
         })
         .catch(error => console.error('Error fetching JSON:', error));
     });
@@ -109,6 +109,26 @@ function createSVG(data, identifier) {
             circleElement.setAttribute('fill', circle.fill);
             svg.appendChild(circleElement);
         });
+    } else if(identifier == 4){
+        data.rectangles1.forEach(rect => {
+            const rectElement = document.createElementNS(svgNamespace, 'rect');
+            const text = document.createElementNS(svgNamespace, 'text')
+            const textX = Math.abs(rect.x - rect.x2)/2;
+            const textY = Math.abs(rect.y - rect.y2)/2;
+            rectElement.setAttribute('x', rect.x);
+            rectElement.setAttribute('y', rect.y);
+            rectElement.setAttribute('width', Math.abs(rect.x - rect.x2));
+            rectElement.setAttribute('height', Math.abs(rect.y - rect.y2));
+            rectElement.setAttribute('fill', rect.fill);
+            text.setAttribute('x', textX)
+            text.setAttribute('y', textY)
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('dominant-baseline', 'middle');
+            text.textContent = rect.text;
+            svg.appendChild(rectElement)
+            svg.appendChild(text)
+        })
+
     }
 
     // Append the SVG to the container
