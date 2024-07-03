@@ -113,8 +113,8 @@ function createSVG(data, identifier) {
         data.rectangles1.forEach(rect => {
             const rectElement = document.createElementNS(svgNamespace, 'rect');
             const text = document.createElementNS(svgNamespace, 'text')
-            const textX = Math.abs(rect.x - rect.x2)/2;
-            const textY = Math.abs(rect.y - rect.y2)/2;
+            const textX = rect.x + Math.abs(rect.x - rect.x2)/2;
+            const textY = rect.y + Math.abs(rect.y - rect.y2)/2;
             rectElement.setAttribute('x', rect.x);
             rectElement.setAttribute('y', rect.y);
             rectElement.setAttribute('width', Math.abs(rect.x - rect.x2));
