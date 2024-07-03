@@ -11,8 +11,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const thirdBtn = document.getElementById('third');
 
     firstBtn.addEventListener('click', function() {
-        firstBtn.classList.remove("tab_active")
-        firstBtn.classList.add("tab")
+
+        firstBtn.classList.add("tab_active")
+        firstBtn.classList.remove("tab")
+
+        secondBtn.classList.remove("tab_active")
+        secondBtn.classList.add("tab")
+
+        thirdBtn.classList.remove("tab_active")
+        thirdBtn.classList.add("tab")
+
         document.getElementById('svgContainer').innerHTML = '';
         fetch('data.json')
         .then(response => response.json())
@@ -27,10 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
         firstBtn.classList.remove("tab_active")
         firstBtn.classList.add("tab")
 
+        thirdBtn.classList.remove("tab_active")
+        thirdBtn.classList.add("tab")
+
         secondBtn.classList.remove("tab")
         secondBtn.classList.add("tab_active")
 
-        console.log(secondBtn.classList)
         document.getElementById('svgContainer').innerHTML = '';
         fetch('data.json')
         .then(response => response.json())
@@ -41,14 +51,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     thirdBtn.addEventListener('click', function() {
 
+        firstBtn.classList.remove("tab_active")
+        firstBtn.classList.add("tab")
+
         secondBtn.classList.remove("tab_active")
         secondBtn.classList.add("tab")
 
         thirdBtn.classList.remove("tab")
         thirdBtn.classList.add("tab_active")
-
-        console.log(secondBtn.classList)
-        console.log(thirdBtn.classList)
 
         document.getElementById('svgContainer').innerHTML = '';
         fetch('data.json')
