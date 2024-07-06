@@ -88,7 +88,7 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
                     else:
                         lines.append(Line(p1, p0))
                 case _:
-                    pass
+                    break
 
     # Line intersecting with line
     junction_by_line: defaultdict[int, list[tuple[int, Point]]] = defaultdict(list)
@@ -98,7 +98,10 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
     for l_i in range(0, len(lines)):
         line_i = lines[l_i]
 
-        for l_j in range(0, len(lines)):
+        # When two lines intersect, the maximum coordinates cannot be smaller
+        # than the other line's minimum coordinate.
+        j_max = bisect.bisect_right(lines, line_i.p1, l_i + 1, key=lambda l: l.p0)
+        for l_j in range(l_i + 1, j_max):
             line_j = lines[l_j]
 
             intersection = line_i.intersection(line_j, tolerance)
