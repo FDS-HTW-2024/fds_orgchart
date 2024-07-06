@@ -91,6 +91,7 @@ def parse_node(node):
 def parse(filename: str):
     records = []
     page = pymupdf.open(filename)[0]
+    page.remove_rotation()
     (rectangles, lines, junctions, words, content_nodes) = extract(page)
 
     for node in content_nodes:
