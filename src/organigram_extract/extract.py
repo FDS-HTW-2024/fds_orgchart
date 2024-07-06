@@ -95,40 +95,41 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
 
     # Find line intersections
     lines.sort()
-    for l_i in range(0, len(lines)):
-        line_i = lines[l_i]
+    for i in range(0, len(lines) - 1):
+        line_i = lines[i]
 
+        j_min = i + 1
         # When two lines intersect, the maximum coordinates cannot be smaller
         # than the other line's minimum coordinate.
-        j_max = bisect.bisect_right(lines, line_i.p1, l_i + 1, key=lambda l: l.p0)
-        for l_j in range(l_i + 1, j_max):
-            line_j = lines[l_j]
+        j_max = bisect.bisect_right(lines, line_i.p1, j_min + 1, key=lambda l: l.p0)
+        for j in range(j_min, j_max):
+            line_j = lines[j]
 
             intersection = line_i.intersection(line_j, tolerance)
 
             if intersection != None:
-                junction_by_line[l_i].append((l_j, intersection))
+                junction_by_line[i].append((j, intersection))
 
     # Search for rectangles made up of 4 lines
-    for (l_i, intersections) in junction_by_line.items():
+    for (i, intersections) in junction_by_line.items():
         intersection_count = len(intersections)
 
         if intersection_count < 2:
             continue
 
-        line_i = lines[l_i]
+        line_i = lines[i]
         line_k0_intersections = defaultdict(list)
         line_k1_intersections = defaultdict(list)
 
         # Look for common connected line of intersecting lines
         # TODO: Check that the it is not a triangle
-        for (l_j, intersection_j) in intersections:
+        for (j, intersection_j) in intersections:
             if (line_i.p0 - intersection_j).distance() <= tolerance:
-                for (l_k0, intersection_k0) in junction_by_line.get(l_j, list()):
-                    line_k0_intersections[l_k0].append((intersection_j, intersection_k0))
+                for (k0, intersection_k0) in junction_by_line.get(j, list()):
+                    line_k0_intersections[k0].append((intersection_j, intersection_k0))
             elif (line_i.p1 - intersection_j).distance() <= tolerance:
-                for (l_k1, intersection_k1) in junction_by_line.get(l_j, list()):
-                    line_k1_intersections[l_k1].append((intersection_j, intersection_k1))
+                for (k1, intersection_k1) in junction_by_line.get(j, list()):
+                    line_k1_intersections[k1].append((intersection_j, intersection_k1))
 
         for (line_index, values0) in line_k0_intersections.items():
             values1 = line_k1_intersections.get(line_index, None)
