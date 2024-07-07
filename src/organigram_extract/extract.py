@@ -98,10 +98,17 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
     for i in range(0, len(lines) - 1):
         line_i = lines[i]
 
-        j_min = i + 1
-        # When two lines intersect, the maximum coordinates cannot be smaller
-        # than the other line's minimum coordinate.
-        j_max = bisect.bisect_right(lines, line_i.p1, j_min + 1, key=lambda l: l.p0)
+        offset = Point(tolerance, tolerance)
+        # We search for the interval after line_j.p1 < line_i.p0 and
+        # before line_i.p1 < line_j.p0.
+        j_min = bisect.bisect_left(lines,
+                                   line_i.p0 - offset,
+                                   hi=i + 1,
+                                   key=lambda l: l.p1)
+        j_max = bisect.bisect_right(lines,
+                                    line_i.p1 + offset,
+                                    lo=j_min + 1,
+                                    key=lambda l: l.p0)
         for j in range(j_min, j_max):
             line_j = lines[j]
 
