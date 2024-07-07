@@ -8,3 +8,5 @@
 /src/*.egg-info
 
 /debug/
+
+.DS_Store
