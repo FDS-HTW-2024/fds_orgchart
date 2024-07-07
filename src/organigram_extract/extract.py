@@ -60,7 +60,7 @@ def extract_text(text_blocks: list[dict[str, Any]]) -> list[TextLine]:
             if not bbox.is_empty():
                 lines.append(TextLine(bbox, line_text.strip()))
 
-    lines.sort(key=lambda tb: (tb.bbox.y0, tb.bbox.x0, tb.text))
+    lines.sort(key=lambda tb: (tb.bbox.y1, tb.bbox.x0, tb.text))
 
     for index in reversed(range(1, len(lines))):
         if (lines[index - 1].bbox.top_left == lines[index].bbox.top_left
