@@ -114,29 +114,30 @@ async def extract_from_content(llm: Model, content: Sequence[ContentNode], schem
     executor = ThreadPoolExecutor(max_workers=max_concurrency)
 
     tasks = []
-    for _, node in enumerate(content):
+    for idx, node in enumerate(content):
         cleanup_node(node)
         merge_textblocks(node.block)
         tasks.append(loop.run_in_executor(executor, parse_node_llm, llm, node, schema))
+        print_progress_bar(idx, len(content))
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
     return results
 
 
 def parse_node_llm(llm: Model, node: ContentNode, schema):
-    print("task running")
     text_content = '\n'.join(line.text for line in node.block)
-    response = llm.prompt('''You are a model that parses unstructured content from Organizational charts into a provided json schema. Only provide the resulting json without any other text or comments. You should not add any additional data under any circumstance. If you can't find some information, leave the field to null. The "name" field after type usually consists of the previously found "type" and an additional identifier like numbers or letters. The contact field only consists of numbers. Here is an example of a parsed entity: { "type": "Abteilung", "name": "Abteilung V",     "persons": [ { "name": "MD Schröder", "positionType": "MD" } ] "responsibilities": [ "Föderale Finanzbeziehungen", "Staats- und Verfassungsrecht", "Rechtsangelegenheiten" "Historiker-Kommission" ] } The json schema looks like this:''' + str(schema) + '. And this is the provided content: ' + str(text_content), temperature=0)
+    response = llm.prompt('''You are a model that parses unstructured content from Organizational charts into a provided json schema. Only provide the resulting json without any other text or comments. You should not add any additional data under any circumstance. If you can't find some information, leave the field to null. The "name" field after type usually consists of the previously found "type" and an additional identifier like numbers or letters. The contact field only consists of numbers. Here is an example of a parsed entity: { "type": "Abteilung", "name": "Abteilung V", "persons": [{ "name": "MD Schröder", "positionType": "MD" }] "responsibilities": [ "Föderale Finanzbeziehungen", "Staats- und Verfassungsrecht", "Rechtsangelegenheiten" "Historiker-Kommission" ] } The json schema looks like this:''' + str(schema) + '. And this is the provided content: ' + str(text_content), temperature=0)
 
     response_json = {}
     try:
         response_json = json.loads(response.text(), strict = False)
-        pprint.pp(response_json)
     except Exception as e:
         print('ERROR: Invalid json', e)
-        print('Trying to fix json...')
-        print('Response', response.text())
-        response_json = json.loads(repair_json(response.text()), strict = False)
+        try:
+            response_json = json.loads(repair_json(response.text()), strict = False)
+        except Exception as e:
+            print('Error: Could not fix json. Writing raw content...')
+            response_json['raw'] = text_content
 
     response_values = collect_values(response_json)
 
@@ -153,14 +154,17 @@ def parse_node_llm(llm: Model, node: ContentNode, schema):
         if word not in original_content:
             hallucinated.append(word)
 
-    if 'unsorted' not in response_json or not isinstance(response_json['unsorted'], list):
+    if 'unsorted' not in response_json:
         response_json['unsorted'] = []
-
     response_json['unsorted'].extend(not_sorted)
-    return response_json
-        
+    
+    if 'hallucinated' not in response_json:
+        response_json['hallucinated'] = []
+    response_json['hallucinated'].extend(hallucinated)
 
-def print_progress_bar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+    return response_json
+
+def print_progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
@@ -175,9 +179,6 @@ async def parse(input_file: str, output_file: str, model_name: str, schema_path:
     model: Model = llm.get_model(model_name)
     model.key = os.environ['API_KEY']
     schema = load_json(schema_path)
-
-    #replace with len(content_nodes) later
-    max_content_nodes = min(len(content_nodes), 30)
 
     start = timeit.default_timer()
     extract_results = await extract_from_content(model, content_nodes, schema, max_concurrency=5)
