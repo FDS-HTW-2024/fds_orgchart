@@ -7,6 +7,7 @@ def json_parser(filename: str, tolerance: float = 1.0):
     output_path = "../../json_holder"
 
     page = pymupdf.open(filename)[0]
+    page.remove_rotation()
 
      # Extract data from the PDF using the extract function
     rects, lines, junction_by_line, text, content_nodes = extract(page, tolerance)

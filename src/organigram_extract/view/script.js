@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('data.json')
+    fetch('../../../json_holder/rects.json')
         .then(response => response.json())
         .then(data => {
             createSVG(data);
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         thirdBtn.classList.add("tab")
 
         document.getElementById('svgContainer').innerHTML = '';
-        fetch('data.json')
+        fetch('../../../json_holder/rects.json')
         .then(response => response.json())
         .then(data => {
             createSVG(data, 1);
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         secondBtn.classList.add("tab_active")
 
         document.getElementById('svgContainer').innerHTML = '';
-        fetch('data.json')
+        fetch('../../../json_holder/rects.json')
         .then(response => response.json())
         .then(data => {
             createSVG(data, 2);
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         thirdBtn.classList.add("tab_active")
 
         document.getElementById('svgContainer').innerHTML = '';
-        fetch('data.json')
+        fetch('../../../json_holder/rects.json')
         .then(response => response.json())
         .then(data => {
             createSVG(data, 4);
@@ -83,13 +83,21 @@ function createSVG(data, identifier) {
 
     // Example: Create circles from JSON data
     if(identifier == 1){
-        data.circles1.forEach(circle => {
-            const circleElement = document.createElementNS(svgNamespace, 'circle');
-            circleElement.setAttribute('cx', circle.cx);
-            circleElement.setAttribute('cy', circle.cy);
-            circleElement.setAttribute('r', circle.r);
-            circleElement.setAttribute('fill', circle.fill);
-            svg.appendChild(circleElement);
+        data.rectangles.forEach(rect => {
+            const rectElement = document.createElementNS(svgNamespace, 'rect');
+            const [x, y, x2, y2] = rect;
+            console.log("X2: " + x2 + ", Y2: " + y2)
+            const width = Math.round(Math.abs(x - x2), 2)
+            const height = Math.round(Math.abs(y - y2), 2)
+            console.log("width: " + width + ", heigth: " + height)
+            rectElement.setAttribute('x', x);
+            rectElement.setAttribute('y', y);
+            rectElement.setAttribute('width', width);
+            rectElement.setAttribute('height', height);
+            rectElement.setAttribute('fill', "white")
+            rectElement.setAttribute('stroke', "black")
+            rectElement.setAttribute('stroke-width', 3)
+            svg.appendChild(rectElement);
         });
     } else if(identifier == 2){
         data.circles2.forEach(circle => {
@@ -112,9 +120,7 @@ function createSVG(data, identifier) {
     } else if(identifier == 4){
         data.rectangles1.forEach(rect => {
             const rectElement = document.createElementNS(svgNamespace, 'rect');
-            const text = document.createElementNS(svgNamespace, 'text') 
-            const textX = rect.x + Math.abs(rect.x - rect.x2)/2;
-            const textY = rect.y + Math.abs(rect.y - rect.y2)/2;
+            
             rectElement.setAttribute('x', rect.x);
             rectElement.setAttribute('y', rect.y);
             rectElement.setAttribute('width', Math.abs(rect.x - rect.x2));
@@ -122,16 +128,20 @@ function createSVG(data, identifier) {
             rectElement.setAttribute('fill', rect.fill)
             rectElement.setAttribute('stroke', "black")
             rectElement.setAttribute('stroke-width', 3)
+            svg.appendChild(rectElement)
+
+            /*const text = document.createElementNS(svgNamespace, 'text') 
+            const textX = rect.x + Math.abs(rect.x - rect.x2)/2;
+            const textY = rect.y + Math.abs(rect.y - rect.y2)/2;
             text.setAttribute('x', textX)
             text.setAttribute('y', textY)
             text.setAttribute('text-anchor', 'middle');
             text.setAttribute('dominant-baseline', 'middle');
-            text.textContent = rect.text; 
-            svg.appendChild(rectElement)
-            svg.appendChild(text) 
+            text.textContent = rect.text;
+            svg.appendChild(text)*/
         })
 
-        data.lines1.forEach(line => {
+        /*data.lines1.forEach(line => {
             const lineElement = document.createElementNS(svgNamespace, 'line')
             lineElement.setAttribute('x1', line.x)
             lineElement.setAttribute('y1', line.y)
@@ -140,7 +150,7 @@ function createSVG(data, identifier) {
             lineElement.setAttribute('stroke', 'black')
             lineElement.setAttribute('stroke-width', 2)
             svg.appendChild(lineElement)
-        })
+        })*/
 
     }
 
