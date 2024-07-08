@@ -4,7 +4,7 @@ import pymupdf
 
 def json_parser(filename: str, tolerance: float = 1.0):
 
-    page = pymupdf.open("example_orgcharts/org_inneres.pdf")
+    page = pymupdf.open("./example_orgcharts/org_inneres.pdf")
     rects, lines, junction_by_line, text, content_nodes = extract(page, tolerance)
     content_nodes = {"contentNodes": content_nodes}
     rects_data = {"rectangles": rects}
