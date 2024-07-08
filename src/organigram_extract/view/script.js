@@ -69,7 +69,18 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error fetching JSON:', error));
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tab');
+    const root = document.documentElement;
 
+    tabs.forEach((tab, index) => {
+        const dateStr = tab.getAttribute('data-date');
+        if (dateStr) {
+            const [day, month, year] = dateStr.split('.');
+            root.style.setProperty(`--year-${index}`, `'${year}'`);
+        }
+    });
+});
 function createSVG(data, identifier) {
     const svgNamespace = "http://www.w3.org/2000/svg";
     const svgContainer = document.getElementById('svgContainer');

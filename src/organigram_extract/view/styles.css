@@ -1,3 +1,9 @@
+:root {
+  --year:
+}
+
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -107,3 +113,86 @@ header h2 {
     border-radius: 5px;
 }
 
+
+.container-timeline{
+    width: 1200px;
+    margin: auto;
+  }
+  
+  .timeline-ul{
+    position: relative;
+    list-style: none;
+    padding: 0;
+  
+   
+  }
+  
+  .timeline-ul li{
+    list-style: none;
+    float: left;
+    width: 33.3333%;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Dosis', sans-serif;
+  }
+
+  ul:nth-child(1){
+    color: black;
+  }
+  
+  .timeline-ul li:before{
+    content: var(--year-0);
+    width: 50px;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    margin: 0 auto 10px auto;
+    background: #F1F1F1;
+    color: #000;
+    transition: all ease-in-out .3s;
+    cursor: pointer;
+    z-index: 3;
+    position: relative;
+  }
+  .timeline-ul li:nth-child(1):before {
+    content: var(--year-0);
+}
+
+.timeline-ul li:nth-child(2):before {
+    content: var(--year-1);
+}
+
+.timeline-ul li:nth-child(3):before {
+    content: var(--year-2);
+}
+  
+  .timeline-ul li:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color:black;
+    top: 25px;
+    left: -50%;
+    z-index: 1;
+    transition: all ease-in-out .3s;
+  }
+  
+  .timeline-ul li:first-child:after{
+    content: none;
+  }
+  .timeline-ul li.active-timeline{
+    color: #555555;
+  }
+  .timeline-ul li.active-timeline:before{
+    background:white;
+    color: black;
+  }
+  
+  .timeline-ul li.active-timeline + li:after{
+    background: black;
+  }
