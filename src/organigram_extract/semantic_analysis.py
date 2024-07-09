@@ -93,13 +93,13 @@ def collect_values(json, collected=None):
         for _, value in json.items():
             if isinstance(value, (dict, list)):
                 collect_values(value, collected)
-            else:
+            elif value is not None:
                 collected.append(value)
     elif isinstance(json, list):
         for item in json:
             if isinstance(item, (dict, list)):
                 collect_values(item, collected)
-            else:
+            elif item is not None:
                 collected.append(item)
     else:
         collected.append(json)
@@ -136,23 +136,23 @@ def parse_node_llm(llm: Model, node: ContentNode, schema: str):
             print('ERROR: Could not fix json. Writing raw content')
             response_json['raw'] = text_content
 
-    print(response.text())
     response_values = collect_values(response_json)
+
     #TODO check if keys is in the provided schema (generate key path)
     # maybe mit json schema validator
-
-    original_content = text_content.lower().translate(str.maketrans('', '', string.punctuation)).split()
-    collected_cleared = str(response_values).lower().translate(str.maketrans('', '', string.punctuation)).split()
+    provided_content = text_content.lower().translate(str.maketrans('', '', string.punctuation))
+    response_content = str(response_values).lower().translate(str.maketrans('', '', string.punctuation))
 
     not_sorted = []
     hallucinated = []
-    #TODO texte besser vergleichen 
-    for word in original_content:
-        if word not in collected_cleared:
+
+    # check if word is a substring in the provided content
+    for word in provided_content.split():
+        if word not in response_content:
             not_sorted.append(word)
 
-    for word in collected_cleared:
-        if word not in original_content:
+    for word in response_content.split():
+        if word not in provided_content:
             hallucinated.append(word)
 
     if 'unsorted' not in response_json:
@@ -183,6 +183,7 @@ async def parse(input_file: str, output_file: str, model_name: str, schema_path:
 
     start = timeit.default_timer()
     extract_results = await extract_from_content(model, content_nodes, str(schema), max_concurrency=5)
+
     #TODO Orgchart metadata extracten
     end = timeit.default_timer()
     print("took", end - start)
