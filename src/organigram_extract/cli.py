@@ -1,6 +1,6 @@
 import argparse
 import os
-from .person_data import parse
+from .semantic_analysis import parse
 
 async def run():
     parser = argparse.ArgumentParser(prog='Organigramm Extract')
