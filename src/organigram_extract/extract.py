@@ -1,5 +1,6 @@
 import bisect
 from collections import defaultdict
+from sys import float_info
 from typing import Any, Callable, Generator
 
 from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_PRESERVE_IMAGES
@@ -94,21 +95,17 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
     junction_by_line: defaultdict[int, list[tuple[int, Point]]] = defaultdict(list)
 
     # Find line intersections
-    lines.sort()
+    lines.sort(key=lambda l: (l.p0.x, l.p1.x, l.p0.y, l.p1.y))
+    j_min = 0
     for i in range(0, len(lines) - 1):
         line_i = lines[i]
 
-        offset = Point(tolerance, tolerance)
-        # We search for the interval after line_j.p1 < line_i.p0 and
-        # before line_i.p1 < line_j.p0.
-        j_min = bisect.bisect_left(lines,
-                                   line_i.p0 - offset,
-                                   hi=i + 1,
-                                   key=lambda l: l.p1)
+        x0 = line_i.p0.x - tolerance
+        x1 = line_i.p1.x + tolerance
         j_max = bisect.bisect_right(lines,
-                                    line_i.p1 + offset,
-                                    lo=j_min + 1,
-                                    key=lambda l: l.p0)
+                                    x1,
+                                    lo=i + 1,
+                                    key=lambda l: l.p0.x)
         for j in range(j_min, j_max):
             line_j = lines[j]
 
@@ -117,46 +114,45 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
             if intersection != None:
                 junction_by_line[i].append((j, intersection))
 
+        for line_p in lines[j_min:]:
+            if line_p.p1.x < x0:
+                j_min += 1
+            else:
+                break
+
     # Search for rectangles made up of 4 lines
     for (i, intersections) in junction_by_line.items():
-        intersection_count = len(intersections)
-
-        if intersection_count < 2:
+        if len(intersections) < 2:
             continue
 
-        line_i = lines[i]
-        line_k0_intersections = defaultdict(list)
-        line_k1_intersections = defaultdict(list)
+        line_k_intersections = defaultdict(list)
 
         # Look for common connected line of intersecting lines
-        # TODO: Check that the it is not a triangle
         for (j, intersection_j) in intersections:
-            if (line_i.p0 - intersection_j).distance() <= tolerance:
-                for (k0, intersection_k0) in junction_by_line.get(j, list()):
-                    line_k0_intersections[k0].append((intersection_j, intersection_k0))
-            elif (line_i.p1 - intersection_j).distance() <= tolerance:
-                for (k1, intersection_k1) in junction_by_line.get(j, list()):
-                    line_k1_intersections[k1].append((intersection_j, intersection_k1))
+            for (k, intersection_k) in junction_by_line.get(j, []):
+                line_k_intersections[k].append(intersection_j)
+                line_k_intersections[k].append(intersection_k)
 
-        for (line_index, values0) in line_k0_intersections.items():
-            values1 = line_k1_intersections.get(line_index, None)
-
-            if values1 == None:
+        for values in line_k_intersections.values():
+            if len(values) < 4:
                 continue
 
-            for ((p0, p1), (p2, p3)) in zip(values0, values1):
-                points = [p0, p1, p2, p3]
-                points.sort()
-                (x0, y0) = points[0]
-                (x1, y1) = points[3]
+            x0 = float_info.max
+            y0 = float_info.max
+            x1 = float_info.min
+            y1 = float_info.min
 
-                (width, height) = (x1 - x0, y1 - y0)
+            for p in values:
+                x0 = min(x0, p.x)
+                y0 = min(y0, p.y)
+                x1 = max(x1, p.x)
+                y1 = max(y1, p.y)
 
-                # TODO: Find better heuristic for zero sized rectangles
-                if width < 1.0 or height < 1.0:
-                    continue
-            
-                rects.append(Rect(x0, y0, x1, y1))
+            # TODO: Find better heuristic for tiny rectangles
+            if x1 - x0 < tolerance or y1 - y0 < tolerance:
+                continue
+
+            rects.append(Rect(x0, y0, x1, y1))
 
             # TODO: Remove lines that make up a rectangle by setting line to None at index
 
