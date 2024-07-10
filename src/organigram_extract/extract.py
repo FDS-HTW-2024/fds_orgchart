@@ -1,15 +1,13 @@
 import bisect
 from collections import defaultdict
 from sys import float_info
-from typing import Any, Callable, Generator
+from typing import Any
 
 from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_PRESERVE_IMAGES
 
 from organigram_extract.data import Line, Point, Rect, TextLine, ContentNode
 
-def extract_text(text_blocks: list[dict[str, Any]]) -> list[TextLine]:
-    lines = list()
-
+def extract_text(text_blocks: list[dict[str, Any]]):
     for block in text_blocks:
         for line in block["lines"]:
             line_text = ""
@@ -59,16 +57,7 @@ def extract_text(text_blocks: list[dict[str, Any]]) -> list[TextLine]:
                                     max(bbox.y1, span_bbox.y1))
 
             if not bbox.is_empty():
-                lines.append(TextLine(bbox, line_text.strip()))
-
-    lines.sort(key=lambda tb: (tb.bbox.y1, tb.bbox.x0, tb.text))
-
-    for index in reversed(range(1, len(lines))):
-        if (lines[index - 1].bbox.top_left == lines[index].bbox.top_left
-                and lines[index - 1].text == lines[index].text):
-            lines.pop(index)
-
-    return lines
+                yield TextLine(bbox, line_text.strip())
 
 def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
     rects: list[Rect] = list()
@@ -158,12 +147,23 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
 
     return (rects, lines, junction_by_line)
 
+def dedup[T](items: list[T]):
+    for i in reversed(range(1, len(items))):
+        item_j = items[i]
+        item_i = items[i - 1]
+
+        if item_i == item_j:
+            items.pop(i)
+
 def extract(page: Page, tolerance: float = 1.0):
     (rects, lines, junction_by_line) = extract_shapes(page.get_cdrawings(), tolerance)
     text = extract_text(page.get_text("rawdict", flags=TEXTFLAGS_RAWDICT & ~TEXT_PRESERVE_IMAGES)["blocks"])
-    text_block_by_rectangle: defaultdict[int, list[TextLine]] = defaultdict(list)
+    text_block_by_rect: defaultdict[int, list[TextLine]] = defaultdict(list)
+    text_block_meta = list()
 
+    # Sort text spans into detected rectangles.
     rects.sort()
+    dedup(rects)
     for line in text:
         bbox = line.bbox
         rect_index = None
@@ -177,11 +177,48 @@ def extract(page: Page, tolerance: float = 1.0):
                 top_left = rectangle.top_left
 
         if rect_index != None:
-            text_block_by_rectangle[rect_index].append(line)
+            text_block_by_rect[rect_index].append(line)
         else:
-            print(f"[WARN]: No rectangle found for {line=}")
+            text_block_meta.append(line)
 
-    content_nodes = [ContentNode(rects[index], text_block) for (index, text_block) in text_block_by_rectangle.items()]
+    content_nodes = list()
 
-    return (rects, lines, junction_by_line, text, content_nodes)
+    # Sort text spans in reading order and merge consecutive spans.
+    for (rect_index, text_block) in text_block_by_rect.items():
+        text_block.sort(key=lambda tb: (tb.bbox.y0, tb.bbox.x0, tb.bbox.y1, tb.bbox.x1))
+        dedup(text_block)
+
+        j = len(text_block) - 1
+        while 0 < j:
+            i = j - 1
+            line_i = text_block[i]
+            line_j = text_block[j]
+
+            y0_max = max(line_i.bbox.y0, line_j.bbox.y0)
+            y1_min = min(line_i.bbox.y1, line_j.bbox.y1)
+
+            # Spans are within the same visual line.
+            if y0_max < y1_min:
+                # A merge is necessary because some spans must be encoded in a
+                # a fallback font (e.g. italic '-').
+                if (abs(line_i.bbox.x1 - line_j.bbox.x0) < 0.5
+                        and abs(line_i.bbox.y1 - line_j.bbox.y1) < 0.5):
+                    text_block[i] = TextLine(Rect(line_i.bbox.x0,
+                                                  min(line_i.bbox.y0, line_j.bbox.y0),
+                                                  line_j.bbox.x1,
+                                                  max(line_i.bbox.y1, line_j.bbox.y1)),
+                                             line_i.text + line_j.text)
+                    text_block.pop(j)
+                    j += 1
+                else:
+                    # A swap is necessary because sometimes spans are higher
+                    # than their siblings.
+                    if line_j.bbox.x0 < line_i.bbox.x0:
+                        text_block[i], text_block[j] = text_block[j], text_block[i]
+
+            j -= 1
+
+        content_nodes.append(ContentNode(rects[rect_index], text_block))
+
+    return (rects, lines, junction_by_line, text_block_meta, content_nodes)
 
