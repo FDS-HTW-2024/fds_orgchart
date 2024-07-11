@@ -1,4 +1,49 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function(){
+    const tabsContainer = document.getElementById("tabsContainer");
+
+    let count = 10
+
+
+    for(let i = 0; i <= count; i++){
+        const newTab = document.createElement("button");
+        newTab.classList.add("tab");
+        newTab.setAttribute('id',i);
+        newTab.innerHTML = "test";
+        newTab.id
+        if(Number(newTab.id)=== 0){
+            newTab.classList.add("tab_active");
+        }
+
+        newTab.addEventListener("click", function(){
+            handleTab(i)
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove("tab_active"));
+            newTab.classList.add("tab_active");
+        });
+
+        tabsContainer.appendChild(newTab);
+    }
+
+    handleTab(0);
+
+})
+function handleTab(tabIndex){
+    document.getElementById('svgContainer').innerHTML = '';
+
+    fetch('../../../json_holder/rects.json')
+        .then(response => response.json())
+        .then(data => {
+            createSVG(data, tabIndex);
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
+
+        fetch('../../../json_holder/data.json')
+        .then(response => response.json())
+        .then(data2 => {
+            createSVG(data2, tabIndex);
+        })
+        .catch(error => console.error('Error fetching data.json:', error));
+
+/*document.addEventListener('DOMContentLoaded', function () {
     fetch('../../../json_holder/rects.json')
         .then(response => response.json())
         .then(data => {
@@ -68,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching JSON:', error));
     });
-});
+});*/
+};
 document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.tab');
     const root = document.documentElement;
@@ -111,7 +157,7 @@ function createSVG(data, identifier) {
             svg.appendChild(rectElement);
         });
     } else if(identifier == 2){
-        data.circles2.forEach(circle => {
+        data.circles1.forEach(circle => {
             const circleElement = document.createElementNS(svgNamespace, 'circle');
             circleElement.setAttribute('cx', circle.cx);
             circleElement.setAttribute('cy', circle.cy);
@@ -120,7 +166,7 @@ function createSVG(data, identifier) {
             svg.appendChild(circleElement);
         });
     } else if(identifier == 3){
-        data.circles3.forEach(circle => {
+        data.circles2.forEach(circle => {
             const circleElement = document.createElementNS(svgNamespace, 'circle');
             circleElement.setAttribute('cx', circle.cx);
             circleElement.setAttribute('cy', circle.cy);
@@ -129,7 +175,7 @@ function createSVG(data, identifier) {
             svg.appendChild(circleElement);
         });
     } else if(identifier == 4){
-        data.rectangles1.forEach(rect => {
+        data.circles3.forEach(rect => {
             const rectElement = document.createElementNS(svgNamespace, 'rect');
             
             rectElement.setAttribute('x', rect.x);
