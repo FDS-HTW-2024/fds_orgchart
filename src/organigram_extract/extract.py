@@ -66,6 +66,8 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
 
     # Extract rectangles and lines
     for drawing in drawings:
+        line_count = 0
+
         for item in drawing["items"]:
             match item[0]:
                 case "re":
@@ -78,7 +80,9 @@ def extract_shapes(drawings: list[dict[str, Any]], tolerance: float):
                         lines.append(Line(p0, p1))
                     else:
                         lines.append(Line(p1, p0))
+                    line_count += 1
                 case _:
+                    del lines[len(lines) - line_count:]
                     break
 
     # Line intersecting with line
