@@ -19,7 +19,8 @@ def extract_text(text_blocks: list[dict[str, Any]]):
                 span_origin = None
     
                 for char in span["chars"]:
-                    if not char["c"].isspace():
+                    c = char["c"]
+                    if c.isprintable() and not c.isspace():
                         char_bbox = char["bbox"]
                         char_origin = char["origin"]
 
@@ -32,7 +33,7 @@ def extract_text(text_blocks: list[dict[str, Any]]):
                                              char_bbox[2],
                                              span_bbox.y1)
 
-                        line_text += char["c"]
+                        line_text += c
                         endswith_whitespace = False
                     elif not endswith_whitespace:
                         line_text += " "
