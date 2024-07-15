@@ -27,7 +27,7 @@ def find_org_type(text):
     for element in org_types:
         if text.startswith(element):
             return element
-    return None 
+    return None
 
 chars_to_remove = '(){}[]'
 trailing_to_remove = '.-'
@@ -96,7 +96,8 @@ async def extract_from_content(llm: Model, content: Sequence[ContentNode], schem
 
     async def run_task(node):
         nonlocal completed_tasks
-        result = await loop.run_in_executor(executor, parse_node_llm, llm, node, schema)
+        text_content = '\n'.join(line.text for line in node.block)
+        result = await loop.run_in_executor(executor, parse_node_llm, llm, text_content, schema)
         completed_tasks += 1
         print_progress_bar(completed_tasks, total_tasks)
         return result
@@ -110,19 +111,21 @@ async def extract_from_content(llm: Model, content: Sequence[ContentNode], schem
     return results
 
 
-def parse_node_llm(llm: Model, node: ContentNode, schema: str):
-    text_content = '\n'.join(line.text for line in node.block)
+def parse_node_llm(llm: Model, text_content: str, schema: str):
     response = llm.prompt('''You are a model that parses unstructured content from organizational charts into a provided json schema. Only provide the resulting json without any other text or comments. You should not add any additional data under any circumstance. If you can't find some information, leave the field to null. The "name" field after type usually consists of the previously found "type" and an additional identifier like numbers or letters. The contact field only consists of numbers. Here is an example of a parsed entity: { "type": "Abteilung", "name": "Abteilung V", "persons": [{ "name": "MD Schröder", "positionType": "MD" }] "responsibilities": [ "Föderale Finanzbeziehungen", "Staats- und Verfassungsrecht", "Rechtsangelegenheiten" "Historiker-Kommission" ] } The json schema looks like this:''' + schema + '. And this is the provided content: ' + text_content, temperature=0)
 
     response_json = {}
+    org_type = find_org_type(text_content)
     try:
         response_json = json.loads(response.text(), strict = False)
+        if org_type is not None:
+            response_json['type'] = org_type
     except Exception as e:
-        print('ERROR: Invalid json', e)
+        print('ERROR: Invalid json', e, file=sys.stderr)
         try:
             response_json = json.loads(repair_json(response.text()), strict = False)
         except Exception as e:
-            print('ERROR: Could not fix json. Writing raw content')
+            print('ERROR: Could not fix json. Writing raw content', file=sys.stderr)
             response_json['raw'] = text_content
 
     response_values = collect_values(response_json)

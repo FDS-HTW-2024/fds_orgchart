@@ -1,0 +1,4349 @@
+{
+  "fileName": "org_bmf_2018.pdf",
+  "content": [
+    {
+      "type": "Staatssekretär",
+      "name": "Staatssekretärin Hagedorn",
+      "persons": [
+        {
+          "name": "Bettina Hagedorn",
+          "positionType": "Staatssekretärin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Unterstützung des Ministers bei der Erfüllung seiner Regierungsaufgaben",
+        "Angelegenheiten des Bundeshaushaltes"
+      ],
+      "unsorted": [
+        "parlamentarische",
+        "insbesondere"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Staatssekretär",
+      "name": "Staatssekretärin Lambrecht",
+      "persons": [
+        {
+          "name": "Christine Lambrecht",
+          "positionType": "Staatssekretärin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Unterstützung des Ministers bei der Erfüllung seiner Regierungsaufgaben",
+        "Steuerpolitik"
+      ],
+      "unsorted": [
+        "parlamentarische",
+        "insbesondere",
+        "dem",
+        "gebiet"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Minister",
+      "name": "Senatsverwaltung Finanzen",
+      "persons": [
+        {
+          "name": "MD Schröder",
+          "positionType": "MD",
+          "contact": "123456789"
+        }
+      ],
+      "responsibilities": [
+        "Haushalt",
+        "Steuern",
+        "Finanzpolitik"
+      ],
+      "unsorted": [
+        "olaf",
+        "scholz"
+      ],
+      "hallucinated": [
+        "senatsverwaltung",
+        "finanzen",
+        "md",
+        "schröder",
+        "md",
+        "123456789",
+        "haushalt",
+        "steuern",
+        "finanzpolitik"
+      ]
+    },
+    {
+      "type": "Bundesministerium",
+      "name": "Bundesministerium der Finanzen",
+      "persons": [],
+      "responsibilities": [],
+      "unsorted": [
+        "organisationsplan",
+        "bundesministeriums",
+        "stand",
+        "20",
+        "april",
+        "2018"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Persönliche",
+      "persons": [
+        {
+          "name": "Frau Wehmeyer",
+          "positionType": "Fr.",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "referentin"
+      ],
+      "hallucinated": [
+        "referat",
+        "referat"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Mau-Linnekugel",
+      "persons": [
+        {
+          "name": "Herr Mau-Linnekugel",
+          "positionType": "Herr",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "persönlicher",
+        "referent"
+      ],
+      "hallucinated": [
+        "referat",
+        "referat"
+      ]
+    },
+    {
+      "type": "Staatssekretär",
+      "name": "Staatssekretär A",
+      "persons": [
+        {
+          "name": "Werner Gatzer",
+          "positionType": "Staatssekretär",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Geschäftsbereich: Abteilungen Z, II und VIII, Referate I B 3 und I B 4"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Staatssekretär",
+      "name": "Staatssekretär Schmidt",
+      "persons": [
+        {
+          "name": "Wolfgang Schmidt",
+          "positionType": "Staatssekretär",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "geschäftsbereich",
+        "abteilungen",
+        "und",
+        "ohne",
+        "referate",
+        "2",
+        "b",
+        "3",
+        "und",
+        "b",
+        "4"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Staatssekretär",
+      "name": "Staatssekretär A",
+      "persons": [
+        {
+          "name": "Dr. Rolf Bösinger",
+          "positionType": "Dr.",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "geschäftsbereich",
+        "abteilungen",
+        "iii",
+        "iv",
+        "und",
+        "v",
+        "referat",
+        "2"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Staatssekretär",
+      "name": "Staatssekretär A",
+      "persons": [
+        {
+          "name": "Dr. Jörg Kukies",
+          "positionType": "Dr.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Geschäftsbereich: Abteilungen VII und E"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Persönliche Referentin ORRin Nübling",
+      "persons": [
+        {
+          "name": "ORRin Nübling",
+          "positionType": "ORR",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [],
+      "hallucinated": [
+        "referat",
+        "referat"
+      ]
+    },
+    {
+      "type": "Stabsstelle",
+      "name": "Stabsstelle Innenrevision",
+      "persons": [
+        {
+          "name": "MR Dr. Weiland",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Persönliche",
+      "persons": [
+        {
+          "name": "RRin Dr. Klabunde",
+          "positionType": "RR'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "referentin"
+      ],
+      "hallucinated": [
+        "referat",
+        "referat"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat RR Wißborn",
+      "persons": [
+        {
+          "name": "RR Wißborn",
+          "positionType": "RR'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "persönlicher",
+        "referent"
+      ],
+      "hallucinated": [
+        "referat",
+        "referat",
+        "rrin"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Persönliche",
+      "persons": [
+        {
+          "name": "RDin Dr. Kuhn",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "referentin"
+      ],
+      "hallucinated": [
+        "referat",
+        "referat"
+      ]
+    },
+    {
+      "type": "Datenschutzbeauftragter",
+      "name": "Datenschutzbeauftragter A",
+      "persons": [
+        {
+          "name": "MR Dr. Karstendiek",
+          "positionType": "MR",
+          "contact": "3208"
+        }
+      ],
+      "responsibilities": [
+        "Datenschutz"
+      ],
+      "unsorted": [
+        "datenschutzbmfbundde",
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung Z",
+      "persons": [
+        {
+          "name": "MDin Dr. Stahl-Hoepner",
+          "positionType": "MD'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Zentralabteilung",
+        "IT-Beauftragte für die Bundesfinanzverwaltung (BFV)"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung L",
+      "persons": [
+        {
+          "name": "Herr Mikfeld",
+          "positionType": "Herr",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "leitung",
+        "planung",
+        "und",
+        "strategie"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung I",
+      "persons": [
+        {
+          "name": "Dr. Schuknecht",
+          "positionType": "Dr.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzpolitische und volkswirtschaftliche Grundsatzfragen",
+        "Internationale Finanz- und Währungspolitik"
+      ],
+      "unsorted": [
+        "herr"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung II",
+      "persons": [
+        {
+          "name": "MD Mießen",
+          "positionType": "MD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bundeshaushalt"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung III",
+      "persons": [
+        {
+          "name": "MDin Hercher",
+          "positionType": "MD'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Zoll",
+        "Umsatzsteuer",
+        "Verbrauchsteuern"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung IV",
+      "persons": [
+        {
+          "name": "MD Sell",
+          "positionType": "MD",
+          "contact": null
+        },
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Steuerabteilung - direkte Steuern",
+        "Finanztransaktionsteuer (FTT)"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung V",
+      "persons": [
+        {
+          "name": "MD Schröder",
+          "positionType": "MD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Föderale Finanzbeziehungen",
+        "Staats- und Verfassungsrecht",
+        "Rechtsangelegenheiten",
+        "Historiker-Kommission"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung VII",
+      "persons": [
+        {
+          "name": "Herr Dr. Holle",
+          "positionType": "Dr.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzmarktpolitik"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung VIII",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Privatisierungen",
+        "Beteiligungen und Bundesimmobilien"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Abteilung",
+      "name": "Abteilung E",
+      "persons": [
+        {
+          "name": "MD Westphal",
+          "positionType": "MD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Europapolitik"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Korruptionsprävention",
+      "persons": [
+        {
+          "name": "RDin Bernhard",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Korruptionsprävention",
+        "Sponsoring"
+      ],
+      "unsorted": [
+        "ansprechperson",
+        "des",
+        "bmf",
+        "für",
+        "sponsoringbeauftragte"
+      ],
+      "hallucinated": [
+        "referat",
+        "referat"
+      ]
+    },
+    {
+      "type": "Organisationseinheit",
+      "name": "Gleichstellungsbeauftragte",
+      "persons": [
+        {
+          "name": "RDin Grunwald",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [],
+      "hallucinated": [
+        "organisationseinheit",
+        "gleichstellungsbeauftragte"
+      ]
+    },
+    {
+      "type": "Organisationseinheit",
+      "name": "Bundesfinanz-akademie (in Brühl und Berlin)",
+      "persons": [
+        {
+          "name": "Dr. Heller",
+          "positionType": "Präsident",
+          "contact": null
+        },
+        {
+          "name": "RDin Schramm",
+          "positionType": "RD",
+          "contact": null
+        },
+        {
+          "name": "MRin Becker",
+          "positionType": "MR",
+          "contact": null
+        },
+        {
+          "name": "MR Blesinger",
+          "positionType": "MR",
+          "contact": null
+        },
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        },
+        {
+          "name": "RDin Schramm",
+          "positionType": "RD",
+          "contact": null
+        },
+        {
+          "name": "OAR Drechsel",
+          "positionType": "OAR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Führungskräfte-fortbildung",
+        "Verfahrensrecht",
+        "Verkehrsteuerrecht",
+        "Internationales Steuerrecht",
+        "Außensteuerrecht",
+        "Ertragsteuerrecht",
+        "Steuerstrafrecht",
+        "Fortbildungs-veranstaltungen für die Justizverwaltung",
+        "Betriebliches Rechnungswesen",
+        "Bilanzsteuerrecht",
+        "Informationstechnik",
+        "Koordination Lehre",
+        "Haushalt",
+        "Liegenschaft",
+        "Bürodienste",
+        "Rezeption",
+        "IT"
+      ],
+      "unsorted": [
+        "lehrbereich",
+        "lehrbereich",
+        "ii",
+        "lehrbereich",
+        "iii",
+        "lehrbereich",
+        "iv",
+        "lehrbereich"
+      ],
+      "hallucinated": [
+        "organisationseinheit",
+        "bundesfinanzakademie",
+        "führungskräftefortbildung",
+        "fortbildungsveranstaltungen"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung Z A",
+      "persons": [
+        {
+          "name": "MDg Schäper",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Organisation und Personalien des Ministeriums",
+        "Haushalt der BFV",
+        "Disziplinarangelegenheiten",
+        "Berufliches Bildungswesen im BMF",
+        "Umzugsbeauftragter des BMF",
+        "Neue Steuerungsinstrumente",
+        "Strukturentwicklung und Organisation der BFV (außer Zoll)"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "personalien",
+        "disziplinarangelegenheiten",
+        "steuerungsinstrumente",
+        "strukturentwicklung"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung Z B",
+      "persons": [
+        {
+          "name": "MDgin Dr. Möller",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Angelegenheiten des öffentlichen Dienstes und der Arbeitnehmer bei den ausländischen Streitkräften",
+        "Fürsorgeleistungen",
+        "Geheimschutz",
+        "Krisenmanagement",
+        "Korruptionsprävention",
+        "Berufliches Bildungswesen in der BFV"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "bildungswesen"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung Z C",
+      "persons": [
+        {
+          "name": "MDg Flätgen",
+          "positionType": "MDg",
+          "contact": null
+        },
+        {
+          "name": "ORR Süptitz",
+          "positionType": "ORR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "IT",
+        "Dienstleistungen",
+        "Notfallbeauftragter",
+        "IT-Sicherheit"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung L A",
+      "persons": [
+        {
+          "name": "MRin Dr. Hermes",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Planung und Steuerung",
+        "Ministerbüro"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung L B",
+      "persons": [
+        {
+          "name": "MR Scholz",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Politische Koordinierung"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung L C",
+      "persons": [
+        {
+          "name": "Herr Hebestreit",
+          "positionType": "Herr",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Kommunikation",
+        "Presse",
+        "Öffentlichkeit"
+      ],
+      "unsorted": [
+        "sprecher",
+        "des",
+        "ministers",
+        "und"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung I A",
+      "persons": [
+        {
+          "name": "MDg Herres",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der Finanz- und Wirtschaftspolitik"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung I B",
+      "persons": [
+        {
+          "name": "MDgin Schutt",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen",
+        "einzelner",
+        "Wirtschaftsbereiche/ Tragfähigkeit"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung I C",
+      "persons": [
+        {
+          "name": "MDgin Kothé",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Internationale Finanz- und Währungspolitik"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung II A",
+      "persons": [
+        {
+          "name": "MDgin Westermann",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Allgemeines Haushaltswesen",
+        "Teile des Bundeshaushalts, insbesondere Epl. 32 und 60",
+        "Finanzplanung des Bundes"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "haushaltswesen",
+        "bundeshaushalts"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung II B",
+      "persons": [
+        {
+          "name": "MDg Kelleners",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Teile des Bundeshaushalts, insbesondere Epl. 04, 07, 08, 12 und 16"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "bundeshaushalts"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung II C",
+      "persons": [
+        {
+          "name": "MDg Dr. Gerhardt",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Teile des Bundeshaushalts, insbesondere Epl. 01, 02, 03, 06, 09, 11, 15, 17, 19, 20 und 21",
+        "Beauftragter zur Bewältigung der Flüchtlingslage"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "bundeshaushalts"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung II D",
+      "persons": [
+        {
+          "name": "MDg Dr. Kühne",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Teile des Bundeshaushalts, insbesondere Epl. 05, 10, 14, 23 und 30"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "bundeshaushalts"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung III A",
+      "persons": [
+        {
+          "name": "MDgin Dr. Hülsebusch",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Strategische Steuerung der operativen Aufgaben der Zollverwaltung",
+        "FKS"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung III B",
+      "persons": [
+        {
+          "name": "MDgin Mildenberger",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Zoll",
+        "Verbrauchsteuern",
+        "Kraftfahrzeugsteuer",
+        "Luftverkehrsteuer",
+        "Internationale Zusammenarbeit"
+      ],
+      "unsorted": [
+        "und",
+        "sowie"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung III C",
+      "persons": [
+        {
+          "name": "MDg Dr. Hofmann",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Umsatzsteuer und Verkehrsteuern - national und international - einschl. EU-Harmonisierung",
+        "Versicherungsteuer"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung IV A",
+      "persons": [
+        {
+          "name": "MDg Dr. Misera",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Steuerpolitik",
+        "Steuerreform",
+        "Grundsatzfragen des Steuerrechts",
+        "Koordinierung Steuergesetzgebungsvorhaben",
+        "Umweltbezogene Steuer- und Abgabenpolitik",
+        "Steuerverfahrensrecht",
+        "Steuerberatung",
+        "Steuervereinfachung",
+        "Steuer- vollzug",
+        "Organisation und Automation",
+        "Vorhaben KONSENS (ohne FTT)"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "steuerreform",
+        "steuergesetzgebungsvorhaben",
+        "steuervereinfachung"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung IV B",
+      "persons": [
+        {
+          "name": "MDg Kreienbaum",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Internationales Steuerrecht",
+        "EU-Steuerharmonisierung",
+        "EU-Primärrecht (direkte Steuern ohne Beihilferecht)"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "steuerrecht",
+        "eusteuerharmonisierung"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung IV C",
+      "persons": [
+        {
+          "name": "MDg Dr. Möhlenbrock",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Einzelne Steuern",
+        "vom Einkommen und Ertrag",
+        "Unternehmensbesteuerung",
+        "Unternehmensteuerpolitik",
+        "Verkehrsteuern",
+        "Erbschaftsteuer",
+        "Grundsteuer",
+        "Bewertung"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "unternehmensbesteuerung",
+        "unternehmensteuerpolitik"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung V A",
+      "persons": [
+        {
+          "name": "MDg Suhr",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzbeziehungen zu den Ländern und Gemeinden",
+        "Staats- und Verfassungsrecht"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung V B",
+      "persons": [
+        {
+          "name": "MDg Dr. Langner",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Abwicklung der finanziellen Auswirkungen des Krieges (einschl. Wiedergutmachung) und der vermögensrechtlichen Folgen der Vereinigung Deutschla
+nds",
+        "Verwaltung von Kulturgut",
+        "Rechtsangelegenheiten",
+        "Informationsfreiheitsgesetz",
+        "Vergaberecht und Vergabeverfahren"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "finanziellen",
+        "vermögensrechtlichen",
+        "vereinigung",
+        "informationsfreiheitsgesetz"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung VII A",
+      "persons": [
+        {
+          "name": "MDg Dr. Pleyer",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Kreditinstitute des Bundes",
+        "Internationale Finanzmärkte",
+        "Verbraucherschutzfragen",
+        "Institutionelle Aufsichtsfragen"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "verbraucherschutzfragen"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung VII B",
+      "persons": [
+        {
+          "name": "MDgin Dr. Wimmer",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzmarktregulierung"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "finanzmarktregulierung"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung VII C",
+      "persons": [
+        {
+          "name": "MDg Wolpers",
+          "positionType": "MDg",
+          "contact": "32"
+        }
+      ],
+      "responsibilities": [
+        "Finanzmarktstabilität",
+        "Gewährleistungen",
+        "Beauftragter für den Haushalt"
+      ],
+      "unsorted": [
+        "epl"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung VIII A",
+      "persons": [
+        {
+          "name": "MDgin von Wick",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bundesanstalt für Immobilienaufgaben",
+        "Deutsche Post AG",
+        "baufachliche Angelegen- heiten",
+        "Grundsatzfragen der Privatisierungs- politik",
+        "Koordinierung internationale Tätigkeit",
+        "Bundesdruckerei GmbH"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung VIII B",
+      "persons": [
+        {
+          "name": "MDg Dr. Offer",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Privatisierungsaufgaben und Beteiligungen (u.a. Telekommunikation, Verkehrsbeteiligungen Deutsche Bahn AG, Infrastruktur)",
+        "Public Corporate Governance"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung VIII C",
+      "persons": [
+        {
+          "name": "MDg Dr. Schuy",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Personelle Aufgaben infolge Postreform",
+        "Eurobargeld Münzen",
+        "EWN-Konzern",
+        "Altlasten-management des Bundes",
+        "Braunkohlesanierung Treuhandnachfolgebereich"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "altlastenmanagement",
+        "braunkohlesanierung",
+        "treuhandnachfolgebereich"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung E A",
+      "persons": [
+        {
+          "name": "MDgin Meyer",
+          "positionType": "MDG'in",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzbeziehungen zur Europäischen Union",
+        "Finanzielle Grundsatzfragen der europäischen Politiken",
+        "Europarecht"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "grundsatzfragen"
+      ]
+    },
+    {
+      "type": "Unterabteilung",
+      "name": "Unterabteilung E B",
+      "persons": [
+        {
+          "name": "MDg Steinheuer",
+          "positionType": "MDg",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Europäische Wirtschafts- und Währungsunion",
+        "Bilaterale Beziehungen",
+        "Erweiterung der EU"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L A 1",
+      "persons": [
+        {
+          "name": "RDin Schwenk",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "ministerbüro",
+        "protokoll"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I A 1",
+      "persons": [
+        {
+          "name": "MR Arnswald",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzpolitik"
+      ],
+      "unsorted": [
+        "generalreferat",
+        "für"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I C 1",
+      "persons": [
+        {
+          "name": "MR Dr. Fabig",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "G7/G8",
+        "G20",
+        "Weltwirtschaft",
+        "Geld- und Währungsfragen"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII B 1",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen des Finanzstandortes Deutschland und der Europäischen Finanzmarktintegration",
+        "Rechnungslegung",
+        "Einlagensicherung",
+        "Koordinierung der Gesetzgebungsvorhaben der Abt. VII"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "finanzmarktintegration",
+        "gesetzgebungsvorhaben"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L B 1",
+      "persons": [
+        {
+          "name": "MR Dr. Dietrich",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Ressortkoordinierung"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L C 1",
+      "persons": [
+        {
+          "name": "MRin Schwamberger",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Presse"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II B 1",
+      "persons": [
+        {
+          "name": "MR Dr. Hagedorn",
+          "positionType": "MR",
+          "contact": "12"
+        }
+      ],
+      "responsibilities": [
+        "Verkehr",
+        "Digitale Infrastruktur"
+      ],
+      "unsorted": [
+        "epl"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I B 1",
+      "persons": [
+        {
+          "name": "MR Dr. R. Köhler",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der gewerblichen Wirtschaft einschl. Mittelstand",
+        "Arbeitsmarktes",
+        "Bau- und Wohnungswirtschaft",
+        "Technologiepolitik",
+        "Regionalpolitik",
+        "Raumordnung"
+      ],
+      "unsorted": [
+        "des"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II D 1",
+      "persons": [
+        {
+          "name": "MR Kleene-Debring",
+          "positionType": "MR",
+          "contact": "14"
+        }
+      ],
+      "responsibilities": [
+        "Gesamthaushalt",
+        "Grundsatzfragen",
+        "militärische Beschaffungen",
+        "NATO",
+        "ESVP",
+        "Internationale Bundeswehreinsätze",
+        "Kap. 01",
+        "Kap. 04",
+        "Kap. 05",
+        "Kap. 06",
+        "Kap. 07",
+        "Kap. 10"
+      ],
+      "unsorted": [
+        "epl",
+        "verteidigung",
+        "ohne",
+        "personal"
+      ],
+      "hallucinated": [
+        "beschaffungen",
+        "bundeswehreinsätze"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII C 1",
+      "persons": [
+        {
+          "name": "MR Frank",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzmarktstabilität"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III A 1",
+      "persons": [
+        {
+          "name": "MR Dr. Liermann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Abgabenordnung (Zoll)",
+        "Kontrollen",
+        "Prüfungen",
+        "Vollstreckung"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III B 1",
+      "persons": [
+        {
+          "name": "MR Szepan",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Zollrecht und Zollverfahren",
+        "Einfuhrumsatzsteuer",
+        "Marktordnungsrecht"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V A 1",
+      "persons": [
+        {
+          "name": "MR Reimeier",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzverfassung"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E A 1",
+      "persons": [
+        {
+          "name": "MR Dr. Heipertz",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der europäischen Politik",
+        "EU-Koordinierung",
+        "Europäische Investitionsbank",
+        "Geschäftsstelle für die Zusammenarbeit mit Bundestag und Bundesrat in EU-Angelegenheiten"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E B 1",
+      "persons": [
+        {
+          "name": "MR Dr. Röhreke",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "ECOFIN",
+        "Eurogruppe",
+        "Wirtschafts- und Finanz- ausschuss der EU",
+        "Eurogruppen-AG",
+        "Europäische Wirtschafts- und Währungsunion",
+        "Europäische Zentralbank"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III C 1",
+      "persons": [
+        {
+          "name": "RD Narzynski",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Umsatzsteuer interna- tional",
+        "Grundsatzfragen der Umsatzsteuer",
+        "EuGH-Verfahren zur Umsatzsteuer",
+        "Fiscalisprogramm"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II A 1",
+      "persons": [
+        {
+          "name": "MR Dr. Goworek",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Generalreferat für Aufstellung des Haushalts und des Finanzplans"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "aufstellung"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV B 1",
+      "persons": [
+        {
+          "name": "MR Dr. Schleithoff",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Internationale Steuerpolitik",
+        "Grundsatzfragen und Koordinierung"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II C 1",
+      "persons": [
+        {
+          "name": "MR Hoepner",
+          "positionType": "MR",
+          "contact": "09"
+        }
+      ],
+      "responsibilities": [
+        "Wirtschaft und Energie"
+      ],
+      "unsorted": [
+        "epl",
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII A 1",
+      "persons": [
+        {
+          "name": "MRin Dr. Bosch",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der Finanzmarktpolitik",
+        "Internationale Finanzmärkte",
+        "Financial Stability Board",
+        "Europäischer Ausschuss für Finanzdienstleistungen",
+        "Koordinierungsaufgaben in Abt. VII"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "finanzmärkte",
+        "finanzdienstleistungen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII B 1",
+      "persons": [
+        {
+          "name": "MR Schmid",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Public Corporate Governance",
+        "Grundsatzfragen und internationale Aspekte der Beteiligungsführung",
+        "§§ 65, 68 BHO",
+        "Koordinierungsstelle"
+      ],
+      "unsorted": [
+        "abt",
+        "\b"
+      ],
+      "hallucinated": [
+        "grundsatzfragen",
+        "beteiligungsführung"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z C 1",
+      "persons": [
+        {
+          "name": "MR Kirmße",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "IT-Steuerung Bund",
+        "Stabsstelle der IT-Beauftragten der BFV",
+        "IT-Strategiemanagement"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "itstrategiemanagement"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII C 1",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Braunkohlesanierung",
+        "Rückbau/ Entsorgung von Nuklear- anlagen",
+        "Beteiligungs- verwaltung LMBV und EWN-Konzern (KTE, JEN)",
+        "BVVG",
+        "Institutionelle Aufsicht über die BImA",
+        "Treuhand- nachfolgebereich (BvS)",
+        "Forschungsprojekt Treuhandanstalt"
+      ],
+      "unsorted": [
+        "treuhandnachfolge",
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV C 1",
+      "persons": [
+        {
+          "name": "MR Hensel",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Einkommensteuer",
+        "Einkünfte aus Kapitalvermögen",
+        "Vermietung und Verpachtung",
+        "Kapitalertragsteuer",
+        "Investmentsteuergesetz",
+        "REIT-Gesetz"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "kapitalvermögen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII A 1",
+      "persons": [
+        {
+          "name": "MR Löbach",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "bundesanstalt",
+        "für",
+        "immobilienaufgaben",
+        "grundsatzfragen",
+        "wirtschaftsführung",
+        "organisation"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z B 1",
+      "persons": [
+        {
+          "name": "MR Dr. M. Köhler",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Dienstrecht (Grundsatzfragen und Einzelfälle der BFV außer Ministerium)",
+        "Personalvertretungsrecht",
+        "Grundsatzfragen des Bundesgleichstellungsgesetzes",
+        "Angelegenheiten der schwerbehinderten Beschäftigten"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "bundesgleichstellungsgesetzes",
+        "angelegenheiten",
+        "schwerbehinderten"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z A 1",
+      "persons": [
+        {
+          "name": "MRin Heger",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Organisation",
+        "Führung und Steuerung"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L A 2",
+      "persons": [
+        {
+          "name": "RD Schiemann",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Politische Planung"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L B 2",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bund-Länder-Verhältnis",
+        "Bundesrat"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L C 2",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Internationale Presse"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V B 1",
+      "persons": [
+        {
+          "name": "MRin Stemmer",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Offene Vermögensfragen",
+        "Kriegsfolgenregelungen",
+        "Stiftung „Erinnerung, Verantwortung und Zukunft“"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I A 2",
+      "persons": [
+        {
+          "name": "MR Dr. Diekmann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatz- und Strukturfragen der Steuerpolitik"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII C 2",
+      "persons": [
+        {
+          "name": "MR Dr. Höppner",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Schuldenwesen des Bundes",
+        "Staatsanleihemärkte"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV A 1",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Steuerpolitik",
+        "Grundsatzfragen des Steuersystems",
+        "Steuer- vereinfachung und Bürokratieabbau",
+        "Finanztransaktion- steuer (FTT)"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I C 2",
+      "persons": [
+        {
+          "name": "MR Dr. Olbermann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Volkswirtschaftliche Länderanalysen",
+        "Bilaterale Beziehungen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II B 2",
+      "persons": [
+        {
+          "name": "MR Heuchert",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "epl",
+        "04",
+        "bundeskanzler",
+        "ohne",
+        "kap",
+        "0414"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III A 2",
+      "persons": [
+        {
+          "name": "RDin Dr. Lang",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Zollfahndungsdienst",
+        "Risikoanalyse",
+        "Sicherheitsanalyse",
+        "Straf- und Ordnungswidrigkeitenrecht",
+        "Verbote und Beschränkungen"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "ordnungswidrigkeitenrecht"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V A 2",
+      "persons": [
+        {
+          "name": "MR Dr. Hanke",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bund-Länder-Finanzbeziehungen"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "bundländerfinanzbeziehungen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II A 2",
+      "persons": [
+        {
+          "name": "MR Klein",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzreferat für Haushaltsführung",
+        "Haushalte",
+        "Nachrichtendienste",
+        "Kassenwesen des Bundes",
+        "Fachaufsicht über das Kompetenzzentrum für das Kassen- und Rechnungswesen des Bundes und die Bundeskassen",
+        "Liquiditätsplanung",
+        "HKR-Verfahren"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "kompetenzzentrum"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III B 2",
+      "persons": [
+        {
+          "name": "MR Mazet",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "EU- und Internationale Zusammenarbeit",
+        "Amts- und Rechtshilfe",
+        "Außenwirtschaftsrecht"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II C 2",
+      "persons": [
+        {
+          "name": "MR Piro",
+          "positionType": "MR",
+          "contact": "Epl. 11"
+        }
+      ],
+      "responsibilities": [
+        "Arbeit und Soziales",
+        "Bereich Arbeitsmarkt"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV B 2",
+      "persons": [
+        {
+          "name": "MR Wichmann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der Doppelbesteuerungsabkommen",
+        "Doppelbesteuerungsabkommen (Österreich, Schweiz, Liechtenstein, Japan)"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "doppelbesteuerungsabkommen",
+        "doppelbesteuerungsabkommen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I B 2",
+      "persons": [
+        {
+          "name": "MR Dr. Dönnebrink",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Tragfähigkeit und Qualität der öffentlichen Finanzen",
+        "Subventionspolitik"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III C 2",
+      "persons": [
+        {
+          "name": "MR Keisinger",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Umsatzsteuer (Steuer- barkeit; Unternehmer; Ort der Lieferung; Bemessungsgrundlage; Steuersätze; Rechnung; Vorsteuerabzug; Aufzeichnungspflich
+ten; Land- und Forstwirt- schaft; Reiseleistungen; Differenzbesteuerung)"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E B 2",
+      "persons": [
+        {
+          "name": "RDin Schlotter",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzpolitische Koordinierung Eurozone und EU",
+        "Defizitverfahren",
+        "Länderanalysen Eurozone"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z C 2",
+      "persons": [
+        {
+          "name": "RD Dr. Asmussen",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "IT-Portfoliomanagement",
+        "IT-Haushalt BFV",
+        "Auftraggeberschnittstelle BMF und BFV"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII B 2",
+      "persons": [
+        {
+          "name": "RDin Dr. Wandel",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Investmentfonds"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z A 2",
+      "persons": [
+        {
+          "name": "MR Schmidt",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Personalien des Ministeriums"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L A 3",
+      "persons": [
+        {
+          "name": "MR Dr. Luchtmeier",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Kabinett- und Parlamentsangelegenheiten"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "parlamentsangelegenheiten"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L C 3",
+      "persons": [
+        {
+          "name": "RD Fenchel",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Öffentlichkeitsarbeit"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII A 2",
+      "persons": [
+        {
+          "name": "MR Dr. Teichmann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bundesanstalt für Immobilienaufgaben",
+        "Verwaltungsaufgaben und Vertragsmanagement",
+        "Baumanagement des Bundes",
+        "Parlamentarische Genehmigungsverfahren für Verkaufsfälle",
+        "Ausländische Streitkräfte"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": [
+        "vertragsmanagement",
+        "parlamentarische",
+        "genehmigungsverfahren",
+        "verkaufsfälle"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII B 2",
+      "persons": [
+        {
+          "name": "MRin Brüker-Gaspers",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Beteiligungen (Flughäfen, DFS) und Privatisierungen (Flughäfen, DFS, DB AG) im Verkehrsinfrastrukturbereich"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "privatisierungen",
+        "verkehrsinfrastrukturbereich"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L B 3",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Moderner Staat"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II D 2",
+      "persons": [
+        {
+          "name": "MR Dr. Knörzer",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Epl. 14 (Verteidigung)",
+        "insbesondere Personal - Unterbringung",
+        "Beteiligungsgesellschaften",
+        "Kap. 03",
+        "Kap. 08",
+        "Kap. 11",
+        "Kap. 12",
+        "Kap. 13"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "beteiligungsgesellschaften"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV C 2",
+      "persons": [
+        {
+          "name": "MR Rennings",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der Unternehmensbesteuerung",
+        "Unternehmensteuerpolitik",
+        "Körperschaftsteuer",
+        "Gewerbesteuer",
+        "Umwandlungssteuergesetz"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "unternehmensbesteuerung",
+        "unternehmensteuerpolitik",
+        "umwandlungssteuergesetz"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E A 2",
+      "persons": [
+        {
+          "name": "MR Kranen",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Haushalt der EU",
+        "EU-Eigenmittel",
+        "Regulierungs- und Exekutivagenturen der EU"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I A 3",
+      "persons": [
+        {
+          "name": "MR Dr. Debelius",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Forschung und Politikberatung"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II B 4",
+      "persons": [
+        {
+          "name": "MRin Fuchs",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Umwelt",
+        "Naturschutz",
+        "Bau und Reaktorsicherheit"
+      ],
+      "unsorted": [
+        "epl",
+        "16"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII C 3",
+      "persons": [
+        {
+          "name": "MR Conert",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Aufsichtsfragen des Bankenwesens"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I C 3",
+      "persons": [
+        {
+          "name": "MR Dr. von Kleist",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "IWF",
+        "Internationale Finanzarchitektur"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII A 2",
+      "persons": [
+        {
+          "name": "MR Harzer",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Kreditanstalt für Wiederaufbau",
+        "Europäische Bank für Wiederaufbau und Entwicklung"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V A 3",
+      "persons": [
+        {
+          "name": "RD Dr. Schneider",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzielle Angelegenheiten der Kommunen"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "angelegenheiten"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V B 2",
+      "persons": [
+        {
+          "name": "MR Ermer",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Justiziariat"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II C 3",
+      "persons": [
+        {
+          "name": "MR Nöhrbaß",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Arbeit und Soziales",
+        "Sozialversicherung",
+        "Gesundheit"
+      ],
+      "unsorted": [
+        "epl",
+        "11",
+        "bereich",
+        "epl",
+        "15"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII C 2",
+      "persons": [
+        {
+          "name": "MR Dr. Hillebrecht",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Beamte bei Post-nachfolgeunternehmen",
+        "Personal der Bundesanstalt für Immobilienaufgaben",
+        "Postnachfolge-einrichtungen"
+      ],
+      "unsorted": [
+        "von",
+        "liebenstein"
+      ],
+      "hallucinated": [
+        "postnachfolgeunternehmen",
+        "postnachfolgeeinrichtungen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III B 3",
+      "persons": [
+        {
+          "name": "MR Rißmann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Energiesteuer",
+        "Stromsteuer",
+        "Kernbrennstoffsteuer",
+        "Biokraftstoffquote"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV A 2",
+      "persons": [
+        {
+          "name": "MR Hörster",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Federführende Koordinierung von Steuergesetzgebungs- vorhaben der Abt. IV",
+        "Allgemeine Koordinationaufgaben der Abt. IV"
+      ],
+      "unsorted": [
+        "nierungsaufgaben"
+      ],
+      "hallucinated": [
+        "koordinationaufgaben"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z B 2",
+      "persons": [
+        {
+          "name": "RDin Dr. Löhr",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Besoldungs- und Versorgungsrecht einschl. G 131 und Dienstunfall (Grundsatzfragen und Einzelfälle der BFV außer Ministerium)",
+        "Internationales Dienstrecht",
+        "Haushalt",
+        "Versorgung"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "versorgungsrecht"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III A 3",
+      "persons": [
+        {
+          "name": "MR Dr. Müller",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzkontrolle",
+        "Schwarzarbeit"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII B 3",
+      "persons": [
+        {
+          "name": "MR Becker",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Regulierungsfragen",
+        "des Bankenwesens"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L C 4",
+      "persons": [
+        {
+          "name": "RDin Hofmann",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bürgerangelegenheiten"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L B 4",
+      "persons": [
+        {
+          "name": "MR Dr. Meißner",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Reden und Texte"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z A 3",
+      "persons": [
+        {
+          "name": "MR Bartz",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Haushalt der BFV",
+        "Beauftragter f. d. HH Epl. 08 und Kap. 6004",
+        "Unterbringung der Dienststellen (außer Zoll)",
+        "Prüfungsmitteilungen/ -bemerkungen des BRH"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I B 3",
+      "persons": [
+        {
+          "name": "MR Kahmann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Energie-, Umwelt- und Rohstoffpolitik",
+        "Verbraucherschutz",
+        "Telekommunikation",
+        "Post und IT"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV B 3",
+      "persons": [
+        {
+          "name": "MRin Bruns",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Doppelbesteuerungs-abkommen mit EU-/EWR-Staaten",
+        "EU-Primärrecht (direkte Steuern; ohne Beihilferecht)",
+        "Nationale Vorschriften des internationalen Steuerrechts"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "doppelbesteuerungsabkommen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L A 4",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Strategie",
+        "digitaler Wandel",
+        "gesellschaftlicher Dialog"
+      ],
+      "unsorted": [
+        "und"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z C 3",
+      "persons": [
+        {
+          "name": "MR Kunzer",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": null,
+      "unsorted": [
+        "itfachaufsicht",
+        "itzbund",
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I A 4",
+      "persons": [
+        {
+          "name": "MR Dr. Snelting",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Staatsfinanzen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E B 3",
+      "persons": [
+        {
+          "name": "MR Dr. Merz",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Wirtschaftspolitische Koordinierung",
+        "Eurozone und EU",
+        "Wirtschaftspolitischer Ausschuss",
+        "Nicht-Eurozonenländer",
+        "Euro-Einführung",
+        "Makrofinanzhilfen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII C 4",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bankenrestrukturierung"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II B 5",
+      "persons": [
+        {
+          "name": "RD Dr. Nieder-Eichholz",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Epl. 07 (Justiz und Verbraucherschutz)",
+        "Epl. 08 (Finanzen)",
+        "Kap. 6004"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I C 4",
+      "persons": [
+        {
+          "name": "MR Dippl",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzfragen internationaler Organisationen",
+        "Entwicklungsfinanzierung",
+        "Internationaler Klima- und Umweltschutz"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "entwicklungsfinanzierung"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V A 4",
+      "persons": [
+        {
+          "name": "MR Holters",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bundesstaatlicher Finanzausgleich"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V B 3",
+      "persons": [
+        {
+          "name": "MR Nigbur",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Lastenausgleich",
+        "Verwaltung von Kulturgut",
+        "Rückerstattungsrecht",
+        "außergesetzliche Ent- schädigungsregelungen für NS-Verfolgte soweit nicht V B 4",
+        "Bereinigung SED-Unrecht"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII B 3",
+      "persons": [
+        {
+          "name": "MR Ramge",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Beteiligung an den Unternehmen Deutsche Telekom AG und PD - Berater der öffentlichen Hand GmbH"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E A 3",
+      "persons": [
+        {
+          "name": "RD Schoenmakers",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Mehrjähriger Finanz- rahmen der EU",
+        "EU-Kohäsions- und Strukturpolitik"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII A 3a",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Prävention von Terrorismusfinanzierung",
+        "Geldwäsche"
+      ],
+      "unsorted": [
+        "und",
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III C 3",
+      "persons": [
+        {
+          "name": "MR van Nahmen",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Umsatzsteuer (Ort der sonstigen Leistung, Besteuerungsverfahren, Leistungsempfänger als Steuerschuldner, Kleinunternehmer, Steuerbefreiungen, 
+Offshore, NATO, diplomatische Missionen)"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "besteuerungsverfahren"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV C 3",
+      "persons": [
+        {
+          "name": "MR Unger",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Allgemeine Fragen der Einkommensteuer",
+        "Steuerbefreiungen",
+        "Abschreibungen/AfA",
+        "sonstige Einkünfte",
+        "Vorsorgeaufwendungen",
+        "Alterseinkünfte",
+        "Riester-Förderung",
+        "Investitionszulage"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II A 3",
+      "persons": [
+        {
+          "name": "MR Siebels",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzreferat für Haushaltsrecht und Haushaltssystematik",
+        "Haushaltsfragen der Bundesbeteiligungen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II D 3",
+      "persons": [
+        {
+          "name": "MR Rath",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bildung",
+        "Forschung"
+      ],
+      "unsorted": [
+        "epl",
+        "30",
+        "und"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III A 4",
+      "persons": [
+        {
+          "name": "MR Schmitt",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Organisations-, Personal- und Haushaltsangelegenheiten der Zollverwaltung und der Bundesmonopolverwaltung für Branntwein",
+        "Ressourcensteuerung und Zielvereinbarung"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "haushaltsangelegenheiten",
+        "bundesmonopolverwaltung"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII A 3",
+      "persons": [
+        {
+          "name": "RD Pairan",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Baufachliche Angelegenheiten",
+        "Große Baumaßnahmen",
+        "Grundsatzthemen im Bundes- und Zuwendungsbau"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "grundsatzthemen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III B 4",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der Verbrauchsteuern",
+        "Tabak-, Kaffee-, Bier- und Schaumweinsteuer",
+        "Branntweinsteuer und Branntweinmonopol"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII B 4",
+      "persons": [
+        {
+          "name": "RDin Dr. Ahrens",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Versicherungswesen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat L C 5",
+      "persons": [
+        {
+          "name": "MR Schelenz",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Postwertzeichen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II C 4",
+      "persons": [
+        {
+          "name": "MR Homann",
+          "positionType": "MR",
+          "contact": "17"
+        }
+      ],
+      "responsibilities": [
+        "Familie",
+        "Senioren",
+        "Frauen und Jugend"
+      ],
+      "unsorted": [
+        "epl"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z C 4",
+      "persons": [
+        {
+          "name": "MRin Dr. Messtorff",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Sprachendienst",
+        "Bibliothek"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I A 5",
+      "persons": [
+        {
+          "name": "MR Dr. Hoekstra",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der Wirtschaftspolitik"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV A 3",
+      "persons": [
+        {
+          "name": "MR Dr. Myßen",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Steuerliches Verfahrens- recht und Abgaben- ordnung",
+        "Finanzgerichts- ordnung",
+        "Billigkeits- regelungen",
+        "Mitteilungs- pflichten der Behörden"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII C 5",
+      "persons": [
+        {
+          "name": "MR Dr. Laux-Meiselbach",
+          "positionType": "MR",
+          "contact": null
+        },
+        {
+          "name": "MR Daske",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Auslandsbezogene Gewährleistungen des Bundes"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V A 5",
+      "persons": [
+        {
+          "name": "MR Serwe",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Staats- und Verfassungsrecht",
+        "Verfahren vor dem Bundesverfassungsgericht und EGMR",
+        "Völkerrecht"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "bundesverfassungsgericht"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I B 4",
+      "persons": [
+        {
+          "name": "MR Dr. Homann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzpolitik in den Bereichen Verkehr und Maritime Wirtschaft"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII C 3",
+      "persons": [
+        {
+          "name": "MRin Bohm",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Eurobargeld",
+        "Münzen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II B 6",
+      "persons": [
+        {
+          "name": "MR Lingenthal",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen zu Öffentlich Privaten Partnerschaften (ÖPP)"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z B 3",
+      "persons": [
+        {
+          "name": "MR Dr. Oswald",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Fürsorge und soziale Betreuung",
+        "Geheimschutz",
+        "Krisenmanagement",
+        "Gleitzeitstelle",
+        "Urlaubs- und Krankendatei",
+        "Reisestelle",
+        "Arbeits- und Gesundheitsschutz BFV (Rechts- und Fachaufsicht)"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "geheimschutz",
+        "krisenmanagement",
+        "krankendatei",
+        "gesundheitsschutz"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII A 3b",
+      "persons": [
+        {
+          "name": "RDin Dietze",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Digitale Finanztechnologien",
+        "Zahlungsverkehr",
+        "Finanzsanktionen"
+      ],
+      "unsorted": [
+        "und"
+      ],
+      "hallucinated": [
+        "finanztechnologien"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z A 4",
+      "persons": [
+        {
+          "name": "RD Claudi",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Aus- und Fortbildung im BMF",
+        "Auswahlverfahren höherer Dienst",
+        "Aufstieg im BMF",
+        "AG audit Beruf und Familie",
+        "Disziplinarangelegenheiten",
+        "Konfliktmanagement"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "fortbildung",
+        "auswahlverfahren",
+        "disziplinarangelegenheiten"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II D 4",
+      "persons": [
+        {
+          "name": "Herr John",
+          "positionType": "Herr",
+          "contact": null
+        }
+      ],
+      "responsibilities": [],
+      "unsorted": [
+        "epl",
+        "05",
+        "auswärtiges",
+        "amt",
+        "epl",
+        "23",
+        "wirtschaft",
+        "liche",
+        "zusammenarbeit",
+        "und",
+        "entwicklung"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E A 4",
+      "persons": [
+        {
+          "name": "RDin Denecke",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzen der europäischen Außen-, Verteidigungs- und Entwicklungspolitik",
+        "Finanzen der Unions- politik im Bereich Justiz/Inneres"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I C 5",
+      "persons": [
+        {
+          "name": "MRin Dr. Baumann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Multilaterale Entwicklungsbanken/AIIB/GIZ",
+        "Umschuldungen/Pariser Club",
+        "Finanzdienstleistungen in Entwicklungsländern",
+        "Gläubiger-Positionen"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "entwicklungsbankenaiibgiz",
+        "umschuldungenpariser",
+        "finanzdienstleistungen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII B 4",
+      "persons": [
+        {
+          "name": "MR Dreier",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Verkehrsbeteiligungen",
+        "Deutsche Bahn AG",
+        "DB Netz AG"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV B 4",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Doppelbesteuerungs-abkommen mit Staaten außerhalb der EU/EWR",
+        "Internationale Organisationen",
+        "Diplomatische und konsularische Vertretungen"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "doppelbesteuerungsabkommen",
+        "organisationen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E B 4",
+      "persons": [
+        {
+          "name": "MR Dinter",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Krisenmanagement",
+        "Eurozone",
+        "Krisenbewältigungsmechanismen (EFSF, ESM)",
+        "Analysen für den Bundestag"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "krisenbewältigungsmechanismen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII B 5",
+      "persons": [
+        {
+          "name": "MR Franke",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Börsen- und Wertpapierwesen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II A 4",
+      "persons": [
+        {
+          "name": "MR Schiffl",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen des Personalhaushalts des Bundes",
+        "Grundsatz- und Einzelfallentscheidungen nach § 65 BHO",
+        "Haushaltsfragen beim Auf- und Ausbau von Kompetenz- und Dienstleistungszentren"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "einzelfallentscheidungen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V B 4",
+      "persons": [
+        {
+          "name": "RDin Gerits",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Wiedergutmachung",
+        "für Opfer nationalsozialistischer Verfolgungsmaßnahmen",
+        "Bundesentschädigungsgesetz",
+        "außergesetzliche Entschädigungsregelungen für jüdische NS-Verfolgte",
+        "Anerkennungsleistung für Ghetto-Arbeit"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "nationalsozialistischer",
+        "verfolgungsmaßnahmen",
+        "bundesentschädigungsgesetz",
+        "entschädigungsregelungen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II C 5",
+      "persons": [
+        {
+          "name": "MRin Hartkorn",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bundespräsident",
+        "Bundestag",
+        "Bundesrat",
+        "Bundesverfassungsgericht",
+        "Bundesrechnungshof",
+        "Bundesbeauftragte für den Datenschutz und Informationsfreiheit"
+      ],
+      "unsorted": [
+        "epl",
+        "01",
+        "epl",
+        "02",
+        "epl",
+        "03",
+        "epl",
+        "19",
+        "epl",
+        "20",
+        "epl",
+        "21"
+      ],
+      "hallucinated": [
+        "bundesverfassungsgericht",
+        "bundesrechnungshof",
+        "bundesbeauftragte",
+        "datenschutz",
+        "informationsfreiheit"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I A 6",
+      "persons": [
+        {
+          "name": "MR Dr. Hüsges",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Steuerschätzung",
+        "Analysen zur Konjunktur, Wachstum und Steuereinnahmen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z C 5",
+      "persons": [
+        {
+          "name": "MRin Stähler",
+          "positionType": "MR",
+          "contact": null
+        },
+        {
+          "name": "ORR Bohnert",
+          "positionType": "ORR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Innerer Dienst",
+        "Zentrale Auskunft",
+        "Bürofachdienste",
+        "IT-Betreuung BMF",
+        "Sicherheitsbeauftragter"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII A 4",
+      "persons": [
+        {
+          "name": "RDin Dr. Jakob",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Grundsatzfragen der Privatisierungspolitik",
+        "Deutsche Post AG",
+        "Bundesdruckerei GmbH",
+        "juris GmbH",
+        "RAG-Stiftung",
+        "Koordinierung internationale Tätigkeit"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III C 4",
+      "persons": [
+        {
+          "name": "MR Dr. Schmidt",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Versicherung- und Feuerschutzsteuer beim Bund",
+        "Rennwett- und Lotteriesteuer",
+        "Spielbankabgabe"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV C 4",
+      "persons": [
+        {
+          "name": "MR Reusch",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Einkommensteuer",
+        "Gemeinnützigkeitsrecht",
+        "Vordrucke",
+        "Prüfgruppe ESt"
+      ],
+      "unsorted": [
+        "unbeschränkte",
+        "pflicht",
+        "veranlagung",
+        "sonstige",
+        "einkünfte",
+        "steuerbegünstigte",
+        "zwecke",
+        "ehrenamt"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III B 5",
+      "persons": [
+        {
+          "name": "MRin Koszinowski",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Kraftfahrzeug- und Luftverkehrsteuer"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VIII C 4",
+      "persons": [
+        {
+          "name": "MR Dr. Pietras",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Altlastenmanagement",
+        "VEBEG",
+        "Deutsche Bundesstiftung Umwelt"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I B 5",
+      "persons": [
+        {
+          "name": "MR Wellmann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzpolitische Fragen der Wirtschaftsförderung",
+        "Inlandsgewährleistungen",
+        "zivilen Luft- und Raumfahrtindustrie"
+      ],
+      "unsorted": [
+        "sowie"
+      ],
+      "hallucinated": [
+        "wirtschaftsförderung",
+        "inlandsgewährleistungen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II B 7",
+      "persons": [
+        {
+          "name": "MRin Neubauer",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Themenbezogene Haushaltsanalysen"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII A 4",
+      "persons": [
+        {
+          "name": "MRin Thöne",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Verbraucherschutz in Finanzmarktfragen",
+        "Verbraucherbeschwerden"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III A 5",
+      "persons": [
+        {
+          "name": "MR Tönshoff",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Informationstechnik",
+        "in der Zollverwaltung"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV A 4",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Abgabenordnung",
+        "Buchführungsvorschriften",
+        "Außenprüfung",
+        "Steuerstrafrecht",
+        "Rechnungsprüfungsausschuss",
+        "Bundes- und Landesrechnungshof",
+        "Steuerberatungsrecht"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "buchführungsvorschriften",
+        "außenprüfung",
+        "steuerstrafrecht",
+        "rechnungsprüfungsausschuss",
+        "landesrechnungshof",
+        "steuerberatungsrecht"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II D 5",
+      "persons": [
+        {
+          "name": "MR Kobsch",
+          "positionType": "MR",
+          "contact": "10"
+        }
+      ],
+      "responsibilities": [
+        "Ernährung und Landwirtschaft"
+      ],
+      "unsorted": [
+        "epl"
+      ],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z A 5",
+      "persons": [
+        {
+          "name": "MR Henter",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Organisation, Personal, Personalhaushalt und Strukturentwicklung der Bundesoberbehörden der BFV (außer GZD und BfB) und des ITZBund einschl. d
+er Fachaufsicht"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E A 5",
+      "persons": [
+        {
+          "name": "MR Wetz",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzen der EU-Agrar- und Fischereipolitik",
+        "Finanzfragen der Fach- politiken zur Förderung der Wettbewerbsfähigkeit für Wachstum und Beschäftigung",
+        "Internationale Maßnahmen im Agrarbereich"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "internationale"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z B 4a",
+      "persons": [
+        {
+          "name": "MR Riethues",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Arbeits- und Tarifrecht der Arbeitnehmer des öffentlichen Dienstes (Grundsatzfragen und Einzelfälle der BFV außer Ministerium)"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E B 5",
+      "persons": [
+        {
+          "name": "MRin Nortmann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Finanzaspekte des Binnenmarktes",
+        "WTO",
+        "EU-Außenwirtschafts-politik"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "euaußenwirtschaftspolitik"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV B 5",
+      "persons": [
+        {
+          "name": "RD Dr. Staats",
+          "positionType": "RD",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Doppelbesteuerungs- abkommen (USA, Kanada, Australien, Neuseeland)",
+        "Außensteuergesetz",
+        "Verrechnungspreise"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat VII A 5",
+      "persons": [
+        {
+          "name": "MR Dr. Böllhoff",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Rechts- und Fachaufsicht über die BaFin",
+        "Europäische Finanzmarktaufsicht",
+        "Grundsatzfragen der Finanzdienstleistungsaufsicht"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "finanzdienstleistungsaufsicht"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat III C 5",
+      "persons": [
+        {
+          "name": "MR Bremer",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Umsatzsteuer-Kontrolle und -Betrugsbekämpfung - national und international"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "umsatzsteuerkontrolle",
+        "betrugsbekämpfung"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II A 5",
+      "persons": [
+        {
+          "name": "MRin Dr. Burckardt",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Epl. 32 (Bundesschuld)",
+        "Epl. 60 (Allgemeine Finanzverwaltung) ohne Kap. 6004; BfdH",
+        "Epl. 60 ohne Kap. 6004; Energie- und Klimafonds"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat V B 5",
+      "persons": [
+        {
+          "name": "MR Dr. Kemper",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Vergaberecht",
+        "Vergabeverfahren",
+        "Informationsfreiheitsgesetz"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "informationsfreiheitsgesetz"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV C 5",
+      "persons": [
+        {
+          "name": "MR Poppenberg",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Lohnsteuer",
+        "Arbeitnehmer-Sparzulage",
+        "Wohnungsbauprämie",
+        "Beschränkte Steuerpflicht"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "arbeitnehmersparzulage"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat I B 6",
+      "persons": [
+        {
+          "name": "MR Dr. Eckhardt",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Demographische Entwicklung",
+        "Sozialstaat"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II C 6",
+      "persons": [
+        {
+          "name": "MRin Zuleger",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Epl. 06 (Inneres)",
+        "ohne Kap. 0626",
+        "Geschäftsstelle",
+        "Flüchtlingsfragen"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV A 5",
+      "persons": [
+        {
+          "name": "MR Hoffmann",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Organisationsfragen der Steuerverwaltung der Länder einschl. eGovernment",
+        "Risikomanagement",
+        "Controlling und Abschätzung von Gesetzesfolgen für den Steuervollzug"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "risikomanagement"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E B 6",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Bilaterale Beziehungen zu EU-Staaten und EFTA/EWR-Staaten",
+        "Deutsch-Französische Zusammenarbeit",
+        "EU-Erweiterung",
+        "Geschäftsstelle Deutsch-Französische Arbeitseinheit (DFA)"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z B 4b",
+      "persons": [
+        {
+          "name": "MRin C. Köhler",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Arbeitnehmer bei den ausländischen Streitkräften",
+        "Zusatzversorgung des öffentlichen Dienstes"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV B 6",
+      "persons": [
+        {
+          "name": "MR Czakert",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Informationsaustausch",
+        "und internationale",
+        "Zusammenarbeit im",
+        "Steuerbereich"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z A 6",
+      "persons": [
+        {
+          "name": "MR Kuhlmey",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Personalverwaltungssystem (Weiterentwicklung und Fachaufsicht)",
+        "Fachaufsicht über das K-PVS",
+        "Informations- und Wissensmanagement (IWM)"
+      ],
+      "unsorted": [
+        "\b"
+      ],
+      "hallucinated": [
+        "personalverwaltungssystem",
+        "weiterentwicklung"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E A 6",
+      "persons": [
+        {
+          "name": "MR Leuvering",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Schutz der finanziellen Interessen der EU",
+        "EU-Finanzkontrolle und Betrugsbekämpfung"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "eufinanzkontrolle"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II A 6",
+      "persons": [
+        {
+          "name": "MR Schneider",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Zentrales Informationsmanagement",
+        "Haushaltsverfahren"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV C 6",
+      "persons": [
+        {
+          "name": "MRin Meurer",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Einkommensteuer",
+        "Gewinnermittlung",
+        "Einkünfte aus Gewerbe- betrieb und selbständiger Arbeit",
+        "Bilanzsteuerrecht",
+        "Umwandlungssteuer- gesetz"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV A 6",
+      "persons": [
+        {
+          "name": "MR Dr. van Essen",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Auswirkungen der Steuerpolitik auf die öffentlichen Haushalte und die Steuerlast- verteilung",
+        "Gestaltung des ESt-Tarifs"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat Z B 5",
+      "persons": [
+        {
+          "name": "MRin Pedack",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Aus- und Fortbildung in der BFV einschl. internationaler Zusammenarbeit und Koordination Twinning",
+        "Steuerbeamten-ausbildung"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "steuerbeamtenausbildung"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II A 7",
+      "persons": [
+        {
+          "name": "N.N.",
+          "positionType": "N.N.",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Informationstechnik in der Haushaltsabteilung"
+      ],
+      "unsorted": [],
+      "hallucinated": []
+    },
+    {
+      "type": "Referat",
+      "name": "Referat E A 7",
+      "persons": [
+        {
+          "name": "MRin Dr. Korthals",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Europarecht",
+        "Koordination der Verfahren vor den europäischen Gerichten mit BMF-Bezug",
+        "Umsetzungsgesetzgebung Krisenbewältigungsmechanismen Eurozone"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "umsetzungsgesetzgebung",
+        "krisenbewältigungsmechanismen"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV C 7",
+      "persons": [
+        {
+          "name": "MRin Hofmann",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Besteuerung der Land- und Forstwirtschaft",
+        "Bodenschätzung",
+        "Bewertung",
+        "Erbschaftsteuer",
+        "Grundsteuer",
+        "Vermögensteuer",
+        "Verkehrsteuern und verwandte Abgaben",
+        "grundsätzliche und allgemeine Fragen der Länder- und Gemeindesteuern"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "bewertung",
+        "vermögensteuer"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat II A 8",
+      "persons": [
+        {
+          "name": "MRin Dr. Kalabuch",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Modernisierungsvorhaben Rechnungswesen (Standards staatlicher Doppik, Verwaltungskontenrahmen, KLR, IPSAS/EPSAS)",
+        "Haushaltsrechnung und Vermögensrechnung des Bundes"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "modernisierungsvorhaben",
+        "rechnungswesen",
+        "verwaltungskontenrahmen",
+        "vermögensrechnung"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV A 7",
+      "persons": [
+        {
+          "name": "MR Raven",
+          "positionType": "MR",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Automation in der Steuerverwaltung der Länder",
+        "Vorhaben KONSENS",
+        "Koordinierung der Anforderungen an die Automatisierungsverfahren des Bundes"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "automatisierungsverfahren"
+      ]
+    },
+    {
+      "type": "Referat",
+      "name": "Referat IV C 8",
+      "persons": [
+        {
+          "name": "MRin Buchwald",
+          "positionType": "MRin",
+          "contact": null
+        }
+      ],
+      "responsibilities": [
+        "Einkommensteuer",
+        "Sonderausgaben",
+        "Familienleistungsausgleich einschl. Kindergeld",
+        "Tarif",
+        "außergewöhnliche Belastungen",
+        "haushaltsnahe Dienstleistungen",
+        "Familienkassenreform",
+        "Zuschlagsteuern",
+        "Geschäftsstelle BFH-Verfahren"
+      ],
+      "unsorted": [],
+      "hallucinated": [
+        "familienleistungsausgleich",
+        "haushaltsnahe"
+      ]
+    }
+  ]
+}
