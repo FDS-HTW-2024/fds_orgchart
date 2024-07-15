@@ -82,3 +82,23 @@ class TextLine:
 class ContentNode:
     bbox: Rect
     block: list[TextLine]
+
+class TextSpan(NamedTuple):
+    bbox: Rect
+    text: str
+
+class Document(NamedTuple):
+    """The raw representation of an organization chart
+
+    The purpose of this data type is to abstract over PDF and make it possible
+    to ease testing and integrating with other data sources.
+    """
+    width: float
+    height: float
+    rects: list[Rect]
+    lines: list[Line]
+    text_spans: list[TextSpan]
+
+class OrgChart(NamedTuple):
+    rects: list[Rect]
+    texts: list[str]
