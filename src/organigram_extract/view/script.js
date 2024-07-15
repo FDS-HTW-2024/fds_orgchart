@@ -29,14 +29,14 @@ document.addEventListener("DOMContentLoaded", function(){
 function handleTab(tabIndex){
     document.getElementById('svgContainer').innerHTML = '';
 
-    fetch('../../../json_holder/rects.json')
+    fetch('data.json')
         .then(response => response.json())
         .then(data => {
             createSVG(data, tabIndex);
         })
         .catch(error => console.error('Error fetching JSON:', error));
 
-        fetch('../../../json_holder/data.json')
+        fetch('data.json')
         .then(response => response.json())
         .then(data2 => {
             createSVG(data2, tabIndex);
@@ -155,49 +155,7 @@ function createSVG(data, identifier) {
             rectElement.setAttribute('stroke', "black")
             rectElement.setAttribute('stroke-width', 3)
             svg.appendChild(rectElement);
-        });
-    } else if(identifier == 2){
-        data.circles1.forEach(circle => {
-            const circleElement = document.createElementNS(svgNamespace, 'circle');
-            circleElement.setAttribute('cx', circle.cx);
-            circleElement.setAttribute('cy', circle.cy);
-            circleElement.setAttribute('r', circle.r);
-            circleElement.setAttribute('fill', circle.fill);
-            svg.appendChild(circleElement);
-        });
-    } else if(identifier == 3){
-        data.circles2.forEach(circle => {
-            const circleElement = document.createElementNS(svgNamespace, 'circle');
-            circleElement.setAttribute('cx', circle.cx);
-            circleElement.setAttribute('cy', circle.cy);
-            circleElement.setAttribute('r', circle.r);
-            circleElement.setAttribute('fill', circle.fill);
-            svg.appendChild(circleElement);
-        });
-    } else if(identifier == 4){
-        data.circles3.forEach(rect => {
-            const rectElement = document.createElementNS(svgNamespace, 'rect');
-            
-            rectElement.setAttribute('x', rect.x);
-            rectElement.setAttribute('y', rect.y);
-            rectElement.setAttribute('width', Math.abs(rect.x - rect.x2));
-            rectElement.setAttribute('height', Math.abs(rect.y - rect.y2));
-            rectElement.setAttribute('fill', rect.fill)
-            rectElement.setAttribute('stroke', "black")
-            rectElement.setAttribute('stroke-width', 3)
-            svg.appendChild(rectElement)
-
-            /*const text = document.createElementNS(svgNamespace, 'text') 
-            const textX = rect.x + Math.abs(rect.x - rect.x2)/2;
-            const textY = rect.y + Math.abs(rect.y - rect.y2)/2;
-            text.setAttribute('x', textX)
-            text.setAttribute('y', textY)
-            text.setAttribute('text-anchor', 'middle');
-            text.setAttribute('dominant-baseline', 'middle');
-            text.textContent = rect.text;
-            svg.appendChild(text)*/
         })
-
         /*data.lines1.forEach(line => {
             const lineElement = document.createElementNS(svgNamespace, 'line')
             lineElement.setAttribute('x1', line.x)
