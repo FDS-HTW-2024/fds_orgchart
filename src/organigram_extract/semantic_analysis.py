@@ -2,9 +2,10 @@ import json
 import os
 import string
 import llm
+import ntpath
+import sys
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
-import textdistance as td
 import timeit
 from llm import Model
 from typing import List, Sequence
@@ -89,12 +90,21 @@ async def extract_from_content(llm: Model, content: Sequence[ContentNode], schem
     loop = asyncio.get_running_loop()
     executor = ThreadPoolExecutor(max_workers=max_concurrency)
 
+    total_tasks = len(content)
+    completed_tasks = 0
     tasks = []
-    for idx, node in enumerate(content):
+
+    async def run_task(node):
+        nonlocal completed_tasks
+        result = await loop.run_in_executor(executor, parse_node_llm, llm, node, schema)
+        completed_tasks += 1
+        print_progress_bar(completed_tasks, total_tasks)
+        return result
+
+    for node in content:
         cleanup_node(node)
         merge_textblocks(node.block)
-        tasks.append(loop.run_in_executor(executor, parse_node_llm, llm, node, schema))
-        print_progress_bar(idx, len(content))
+        tasks.append(run_task(node))
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
     return results
@@ -148,22 +158,43 @@ def print_progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1,
     if iteration == total: 
         print()
 
-async def parse(input_file: str, output_file: str, model_name: str, schema_path: str):
-    page = pymupdf.open(input_file)[0]
-    (_, _, _, _, content_nodes) = extract(page)
+async def extract_from_file(file_path: str, output_path: str, model, schema):
+        page = pymupdf.open(file_path)[0]
+        (_, _, _, _, content_nodes) = extract(page)
 
+
+        start = timeit.default_timer()
+        extract_results = await extract_from_content(model, content_nodes, str(schema), max_concurrency=5)
+
+        head, tail = ntpath.split(file_path)
+        file_name = tail or ntpath.basename(head)
+        output_json = {
+            "fileName": file_name,
+            "content" : extract_results
+        }
+        
+        end = timeit.default_timer()
+        print("took", end - start)
+
+        if output_path:
+            with open(output_path, 'w+', encoding='utf-8') as out:
+                json.dump(output_json, out, ensure_ascii=False)
+        else:
+            print(json.dumps(output_json, ensure_ascii=False, indent=2))
+
+async def parse(input_path: str, output_file: str, model_name: str, schema_path: str):
     model: Model = llm.get_model(model_name)
     model.key = os.environ['API_KEY']
     schema = load_json(schema_path)
 
-    start = timeit.default_timer()
-    extract_results = await extract_from_content(model, content_nodes, str(schema), max_concurrency=5)
-
-    #TODO Orgchart metadata extracten
-    end = timeit.default_timer()
-    print("took", end - start)
-    if output_file:
-        with open(output_file, 'w+', encoding='utf-8') as out:
-            json.dump({"content" : extract_results}, out, ensure_ascii=False)
+    if ntpath.isfile(input_path):
+        await extract_from_file(input_path, output_file, model, schema)
+    elif ntpath.isdir(input_path):
+        print("parse orgcharts from directory")
+        for file in os.listdir(input_path):
+            head, _ = file.split(".")
+            out_name, ending = output_file.split(".")
+            out_file = f"{out_name}_{head}.{ending}"
+            await extract_from_file(file, out_file, model, schema)
     else:
-        print(json.dumps({"content": extract_from_content}, ensure_ascii=False, indent=2))
+        print("file path does not exists", file=sys.stderr)
