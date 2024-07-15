@@ -1,41 +1,40 @@
 function createTabs(){
     document.addEventListener("DOMContentLoaded", function(){
+
+        let result;
         fetch('data.json')
         .then(response => response.json())
         .then(data => {
-            createSVG(data, tabIndex);
+            result = countFileNameOccurrences(data);
+            console.log(result.values[0])
+            const tabsContainer = document.getElementById("tabsContainer");
+        
+            for(let i = 0; i < result.count; i++){
+                let newTab = document.createElement("button");
+                newTab.classList.add("tab");
+                newTab.setAttribute('id',i);
+                getTabName(newTab, result.values[i])
+                newTab.id
+                if(Number(newTab.id)=== 0){
+                    newTab.classList.add("tab_active");
+                }
+                console.log(result.values[0])
+                newTab.addEventListener("click", function(){
+                    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove("tab_active"));
+                    newTab.classList.add("tab_active");
+                });
+
+                tabsContainer.appendChild(newTab);
+                createSVG(data, i);
+            }
         })
         .catch(error => console.error('Error fetching JSON:', error));
-        const tabsContainer = document.getElementById("tabsContainer");
-        const result = countFileNameOccurrences(data);
-
-        for(let i = 0; i <= result.count; i++){
-            const newTab = document.createElement("button");
-            newTab.classList.add("tab");
-            newTab.setAttribute('id',i);
-            setTabName(i, result.values[i])
-            newTab.id
-            if(Number(newTab.id)=== 0){
-                newTab.classList.add("tab_active");
-            }
-
-            newTab.addEventListener("click", function(){
-                handleTab(i)
-                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove("tab_active"));
-                newTab.classList.add("tab_active");
-            });
-
-            tabsContainer.appendChild(newTab);
-        }
-
-        handleTab(0);
-
     })
 }
 
-function setTabName(tabIndex, nameParameter){
+function getTabName(newTab, nameParameter){
     document.getElementById('svgContainer').innerHTML = '';
-    tabName = nameParameter.values[tabIndex];
+    tabName = nameParameter;
     newTab.innerHTML = tabName;
 };
 
@@ -63,7 +62,7 @@ function countFileNameOccurrences(obj) {
     return { count, values };
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.tab');
     const root = document.documentElement;
 
@@ -74,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             root.style.setProperty(`--year-${index}`, `'${year}'`);
         }
     });
-});
+});*/
 
 function createSVG(data, identifier) {
     const svgNamespace = "http://www.w3.org/2000/svg";
