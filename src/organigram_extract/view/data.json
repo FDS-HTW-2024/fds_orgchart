@@ -18,7 +18,43 @@
                     "respons02": "task2"
                 }
             ],
-            "bbox": [100, 100, 200, 200]
+            "bbox": [0, 0, 200, 200]
+        }, 
+        {
+            "type": "Fachbereich",
+            "name": "Fachbereich 2",
+            "persons": [
+                {
+                    "name": "Fr. Jimbo",
+                    "positionType": "Fr.",
+                    "contact": "-4502"
+                }
+            ],
+            "responsibilities": [
+                {
+                    "respons01": "task3",
+                    "respons02": "task4"
+                }
+            ],
+            "bbox": [300, 300, 500, 500]
+        },
+        {
+            "type": "Fachbereich",
+            "name": "Fachbereich 2",
+            "persons": [
+                {
+                    "name": "Fr. Jimbo",
+                    "positionType": "Fr.",
+                    "contact": "-4502"
+                }
+            ],
+            "responsibilities": [
+                {
+                    "respons01": "task3",
+                    "respons02": "task4"
+                }
+            ],
+            "bbox": [400, 500, 700, 800]
         }
     ]
 }
