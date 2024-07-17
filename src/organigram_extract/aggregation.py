@@ -7,8 +7,6 @@ from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
 from spacy.tokens import Doc, Token
 
-from organigram_extract.data import TextLine
-
 @Language.factory("text_line_merger")
 def text_line_merger(nlp, name):
     # https://www.ims.uni-stuttgart.de/documents/ressourcen/korpora/tiger-corpus/annotation/tiger_scheme-syntax.pdf
@@ -130,9 +128,7 @@ def text_line_merger(nlp, name):
 
     return merge
 
-def generate_text(pages: Iterator[Iterator[list[TextLine]]],
-                    batch_size: Optional[int] = None,
-                    n_process: int = 1):
+def init_nlp():
     nlp = spacy.load("de_core_news_lg",
                      disable=["morphologizer", "parser", "lemmatizer", "ner"])
     # There are many abbreviations for common words.
@@ -144,23 +140,4 @@ def generate_text(pages: Iterator[Iterator[list[TextLine]]],
     nlp.add_pipe("text_line_merger")
     print(nlp.pipe_names)
 
-    def paragraph_iter(text_block: list[TextLine]):
-        yield text_block[0].text
-        for ((bbox_i, _), (bbox_j, text)) in itertools.pairwise(text_block):
-            space = bbox_j.y0 - bbox_i.y1
-            height = min(bbox_i.y1 - bbox_i.y0, bbox_j.y1 - bbox_j.y0) * 0.9
-
-            if height <= space:
-                yield "\n"
-
-            yield "\n"
-            yield text
-
-    def text_iter(pages: Iterator[Iterator[list[TextLine]]]):
-        for (index, text_blocks) in enumerate(pages):
-            for block in text_blocks:
-                yield ("".join(paragraph_iter(block)), index)
-
-    texts = text_iter(pages)
-    for (doc, page) in nlp.pipe(texts, as_tuples=True, batch_size=batch_size, n_process=n_process):
-        yield (page, doc.text, None)
+    return nlp

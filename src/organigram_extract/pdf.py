@@ -3,15 +3,15 @@ from typing import Iterator
 import pymupdf
 from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_PRESERVE_IMAGES
 
-from organigram_extract.data import Document, Line, Point, Rect, TextSpan
+from organigram_extract.data import Drawing, Line, Point, Rect, TextSpan
 
-def open(path: str) -> Iterator[Document]:
+def open(path: str) -> Iterator[Drawing]:
     pdf = pymupdf.open(path)
 
     for page in pdf:
-        yield get_document(page)
+        yield extract_drawing(page)
 
-def get_document(page: Page) -> Document:
+def extract_drawing(page: Page) -> Drawing:
     def generate_text_spans(blocks):
         for block in blocks:
             for line in block["lines"]:
@@ -83,5 +83,34 @@ def get_document(page: Page) -> Document:
     raw_text = page.get_text("rawdict", flags=TEXTFLAGS_RAWDICT & ~TEXT_PRESERVE_IMAGES)
     text_spans = list(generate_text_spans(raw_text["blocks"]))
 
-    return Document(page.rect.width, page.rect.height,
-                    rects, lines, text_spans)
+    return Drawing(page.rect.width, page.rect.height,
+                   rects, lines, text_spans)
+
+def display(drawing: Drawing):
+    outpdf = pymupdf.open()
+    outpage = outpdf.new_page(width=page.rect.width, height=page.rect.height)
+    shape = outpage.new_shape()
+
+    for span in drawing.text_spans:
+        shape.draw_rect(span.bbox)
+    shape.finish(width=0.15, color=(0.0, 1.0, 0.0))
+    shape.commit()
+
+    for line in drawing.lines:
+        shape.draw_line(line.p0, line.p1)
+    shape.finish(width=0.15, color=(0.0, 0.0, 1.0))
+    shape.commit()
+
+    for rect in drawing.rects:
+        shape.draw_rect(rect)
+    shape.finish(width=0.15, color=(1.0, 0.0, 0.0))
+    shape.commit()
+
+    # for node in content_nodes:
+    #     for line in node.block:
+    #         shape.draw_rect(line.bbox)
+    #     # shape.draw_rect(node.bbox)
+    # shape.finish(width=0.15)
+    # shape.commit()
+
+    outpdf.save("debug/output.pdf")

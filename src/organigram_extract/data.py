@@ -73,21 +73,11 @@ class Line(NamedTuple):
 
         return Point(c.x + cd_new_x, c.y + cd_new_y)
 
-@dataclass
-class TextLine:
-    bbox: Rect
-    text: str
-
-@dataclass
-class ContentNode:
-    bbox: Rect
-    block: list[TextLine]
-
 class TextSpan(NamedTuple):
     bbox: Rect
     text: str
 
-class Document(NamedTuple):
+class Drawing(NamedTuple):
     """The raw representation of an organization chart
 
     The purpose of this data type is to abstract over PDF and make it possible
@@ -99,6 +89,18 @@ class Document(NamedTuple):
     lines: list[Line]
     text_spans: list[TextSpan]
 
-class OrgChart(NamedTuple):
+class Document(NamedTuple):
+    # The cleaned and de-duplicated data from Drawing.
+    width: float
+    height: float
     rects: list[Rect]
-    texts: list[str]
+    lines: list[Line]
+    text_spans: list[TextSpan]
+
+    # The decision to store indices instead of references is more of a
+    # personal preference for simple object graphs/lifetimes.
+
+    # Rect -> list[TextSpan]
+    text_blocks: dict[int, list[int]]
+    # Rect -> str
+    text_contents: dict[int, str]
