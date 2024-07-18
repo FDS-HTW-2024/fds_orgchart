@@ -8,6 +8,7 @@ function createTabs(){
             result = countFileNameOccurrences(data);
             console.log(result.values[0])
             const tabsContainer = document.getElementById("tabsContainer");
+            const timelineUl = document.querySelector(".timeline-ul");
         
             for(let i = 0; i < result.count; i++){
                 let newTab = document.createElement("button");
@@ -27,6 +28,15 @@ function createTabs(){
                 tabsContainer.appendChild(newTab);
                 createSVG(data, i);
             }
+            
+            const timelineItem = document.createElement("li");
+            timelineItem.classList.add("active-timeline");
+            const dateSpan = document.createElement("span");
+            const dateDiv = document.createElement("div");
+            dateDiv.textContent = data.date;
+            timelineItem.appendChild(dateSpan);
+            timelineItem.appendChild(dateDiv);
+            timelineUl.appendChild(timelineItem);
         })
         .catch(error => console.error('Error fetching JSON:', error));
     })
@@ -104,6 +114,16 @@ function createSVG(data, identifier) {
     // Append the SVG to the container
     svgContainer.appendChild(svg);
 }
+
+/*
+
+Could be useful later?
+
+function formatDate(dateString) {
+    const [day, month, year] = dateString.split('.');
+    return '${day}.${month}.${year}';    
+}
+*/
 
 createTabs();
 

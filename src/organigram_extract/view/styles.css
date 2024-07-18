@@ -1,8 +1,8 @@
 :root {
-  --year:
+  --year-0: '';
+  --year-1: '';
+  --year-2: '';
 }
-
-
 
 body {
     font-family: Arial, sans-serif;
@@ -91,6 +91,7 @@ header h2 {
     display: flex;
     justify-content: space-around;
     position: relative;
+    margin-top: 50px;
 }
 
 .timeline-item {
@@ -113,36 +114,32 @@ header h2 {
     border-radius: 5px;
 }
 
-
-.container-timeline{
+.container-timeline {
     width: 1200px;
     margin: auto;
-  }
-  
-  .timeline-ul{
+}
+
+.timeline-ul {
     position: relative;
     list-style: none;
     padding: 0;
-  
-   
-  }
-  
-  .timeline-ul li{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeline-ul li {
     list-style: none;
-    float: left;
-    width: 33.3333%;
-    position: relative;
     text-align: center;
     text-transform: uppercase;
     font-family: 'Dosis', sans-serif;
-  }
+    position: relative;
+    flex: 1;
+}
 
-  ul:nth-child(1){
-    color: black;
-  }
-  
-  .timeline-ul li:before{
-    content: var(--year-0);
+.timeline-ul li:before {
+    content: '';
     width: 50px;
     height: 50px;
     border: 3px solid black;
@@ -157,8 +154,9 @@ header h2 {
     cursor: pointer;
     z-index: 3;
     position: relative;
-  }
-  .timeline-ul li:nth-child(1):before {
+}
+
+.timeline-ul li:nth-child(1):before {
     content: var(--year-0);
 }
 
@@ -169,30 +167,32 @@ header h2 {
 .timeline-ul li:nth-child(3):before {
     content: var(--year-2);
 }
-  
-  .timeline-ul li:after{
+
+.timeline-ul li:after {
     content: "";
     position: absolute;
-    width: 100%;
+    width: calc(100% + 100px); /* Adjust to ensure lines are fully connected */
     height: 1px;
-    background-color:black;
+    background-color: black;
     top: 25px;
     left: -50%;
     z-index: 1;
     transition: all ease-in-out .3s;
-  }
-  
-  .timeline-ul li:first-child:after{
+}
+
+.timeline-ul li:first-child:after {
     content: none;
-  }
-  .timeline-ul li.active-timeline{
+}
+
+.timeline-ul li.active-timeline {
     color: #555555;
-  }
-  .timeline-ul li.active-timeline:before{
-    background:white;
+}
+
+.timeline-ul li.active-timeline:before {
+    background: white;
     color: black;
-  }
-  
-  .timeline-ul li.active-timeline + li:after{
+}
+
+.timeline-ul li.active-timeline + li:after {
     background: black;
-  }
+}
