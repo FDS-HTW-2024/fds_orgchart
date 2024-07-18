@@ -30,13 +30,10 @@ class TextPipeline:
         # TODO: Add llm component from semantic analysis
         pass
 
-    def process(self, text: str):
-        # Language.pipe does not deal well with sporadic infinite generators.
-        # So, we use the Language object directly.
-        doc = self.nlp(text)
-        result = doc.text
-
-        return result
+    def process(self, texts: Iterator[str]):
+        for doc in self.nlp.pipe(texts):
+            result = doc.text
+            yield result
 
 @Language.factory("line_break_resolver")
 def line_break_resolver(nlp, name):

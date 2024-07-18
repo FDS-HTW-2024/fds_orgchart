@@ -1,5 +1,4 @@
 import argparse
-from collections import defaultdict
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from queue import Queue
 
@@ -30,11 +29,10 @@ def run():
                  for (id, drawing) in enumerate(pdf.open(args.filename))]
 
         for future in as_completed(tasks):
-            (document, result) = future.result()
-            for (_, text) in result:
+            (document, results) = future.result()
+            for text in results:
                 print("============")
                 print(text)
-            
 
         # Shutdown text processing thread
         text_tasks.put(None)
@@ -47,30 +45,22 @@ def process_drawing(
         text_results: Queue):
     print("PROCESS DRAWING...")
     document = Document.extract(drawing)
-    count = 0
-    task_count = len(document.text_contents)
+    inputs = tuple(document.text_contents.values())
 
-    for (rect, text) in document.text_contents.items():
-        count += 1
-        is_finished = count == task_count
-        text_tasks.put((text, (id, rect, is_finished)))
+    text_tasks.put((id, inputs))
 
     while True:
-        (result_id, results) = text_results.get()
+        (result_id, outputs) = text_results.get()
 
         if result_id == id:
             text_results.task_done()
-            return (document, results)
+            return (document, outputs)
 
 def process_text(text_tasks: Queue, text_results: Queue):
     print("PROCESS TEXT...")
     pipeline = TextPipeline()
-    results = defaultdict(list)
 
-    for (text, (id, rect, is_finished)) in iter(text_tasks.get, None):
-        result = pipeline.process(text)
-        results[id].append((rect, result))
+    for (id, inputs) in iter(text_tasks.get, None):
+        outputs = tuple(pipeline.process(inputs))
 
-        if is_finished:
-            text_results.put((id, results[id]))
-            del results[id]
+        text_results.put((id, outputs))
