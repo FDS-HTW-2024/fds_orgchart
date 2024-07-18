@@ -148,8 +148,6 @@ def extract_text_blocks(
     return text_block_by_rect
 
 def generate_text(text_spans: list[TextSpan], text_block: list[int]):
-    error = 0.9
-
     yield text_spans[text_block[0]].text
 
     for j in range(1, len(text_block)):
@@ -166,6 +164,7 @@ def generate_text(text_spans: list[TextSpan], text_block: list[int]):
             if 0.5 <= distance:
                 yield " "
         else:
+            error = 0.9
             space = bbox_j.y0 - bbox_i.y1
             height = min(bbox_i.y1 - bbox_i.y0, bbox_j.y1 - bbox_j.y0) * error
 

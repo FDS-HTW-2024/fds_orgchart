@@ -1,5 +1,6 @@
+from dataclasses import dataclass
 import itertools
-from typing import Iterator, Optional
+from typing import Any, Iterator, Optional
 
 import spacy
 from spacy.language import Language
@@ -7,8 +8,38 @@ from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
 from spacy.tokens import Doc, Token
 
-@Language.factory("text_line_merger")
-def text_line_merger(nlp, name):
+@dataclass(slots=True)
+class TextPipeline:
+    nlp: Language
+
+    def __init__(self, config: dict[str, Any] = {}):
+        nlp = spacy.load("de_core_news_lg",
+                         exclude=["morphologizer", "parser", "lemmatizer", "ner"])
+        # There are many abbreviations for common words.
+        nlp.tokenizer.add_special_case("einschl.", [{"ORTH": "einschl.", "NORM": "einschließlich"}])
+        nlp.tokenizer.add_special_case("insbes.", [{"ORTH": "insbes.", "NORM": "insbesondere"}])
+        nlp.tokenizer.add_special_case("m.d.W.d.G.b.", [{"ORTH": "m.d.W.d.G.b.", "NORM": "mit der Wahrnehmung der Geschäfte betraut"}])
+        nlp.tokenizer.add_special_case("m. d. W. d. G. b.", [{"ORTH": "m. d. W. d. G. b.", "NORM": "mit der Wahrnehmung der Geschäfte betraut"}])
+
+        nlp.add_pipe("line_break_resolver")
+        print(nlp.pipe_names)
+
+        self.nlp = nlp
+
+    def add_llm_ner(config: dict[str, Any]):
+        # TODO: Add llm component from semantic analysis
+        pass
+
+    def process(self, text: str):
+        # Language.pipe does not deal well with sporadic infinite generators.
+        # So, we use the Language object directly.
+        doc = self.nlp(text)
+        result = doc.text
+
+        return result
+
+@Language.factory("line_break_resolver")
+def line_break_resolver(nlp, name):
     # https://www.ims.uni-stuttgart.de/documents/ressourcen/korpora/tiger-corpus/annotation/tiger_scheme-syntax.pdf
     MODIFIER = ["ADJA", "ADJD", "ADV"]
     JUNCTIONS = ["KOKOM", "KON", "KOUI", "KOUS"]
@@ -61,7 +92,7 @@ def text_line_merger(nlp, name):
     COMBO = nlp.vocab["COMBO"]
     SLASH = nlp.vocab["SLASH"]
 
-    def merge(doc):
+    def resolve(doc):
         matches = matcher(doc)
 
         if len(matches) == 0:
@@ -126,18 +157,4 @@ def text_line_merger(nlp, name):
 
         return nlp(Doc(nlp.vocab, words, spaces))
 
-    return merge
-
-def init_nlp():
-    nlp = spacy.load("de_core_news_lg",
-                     disable=["morphologizer", "parser", "lemmatizer", "ner"])
-    # There are many abbreviations for common words.
-    nlp.tokenizer.add_special_case("einschl.", [{"ORTH": "einschl.", "NORM": "einschließlich"}])
-    nlp.tokenizer.add_special_case("insbes.", [{"ORTH": "insbes.", "NORM": "insbesondere"}])
-    nlp.tokenizer.add_special_case("m.d.W.d.G.b.", [{"ORTH": "m.d.W.d.G.b.", "NORM": "mit der Wahrnehmung der Geschäfte betraut"}])
-    nlp.tokenizer.add_special_case("m. d. W. d. G. b.", [{"ORTH": "m. d. W. d. G. b.", "NORM": "mit der Wahrnehmung der Geschäfte betraut"}])
-
-    nlp.add_pipe("text_line_merger")
-    print(nlp.pipe_names)
-
-    return nlp
+    return resolve
