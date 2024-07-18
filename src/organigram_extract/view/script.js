@@ -1,44 +1,38 @@
 function createTabs(){
     document.addEventListener("DOMContentLoaded", function(){
-
-        let result;
-        fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            result = countFileNameOccurrences(data);
-            console.log(result.values[0])
-            const tabsContainer = document.getElementById("tabsContainer");
-            const timelineUl = document.querySelector(".timeline-ul");
-        
-            for(let i = 0; i < result.count; i++){
-                let newTab = document.createElement("button");
-                newTab.classList.add("tab");
-                newTab.setAttribute('id',i);
-                getTabName(newTab, result.values[i])
-                newTab.id
-                if(Number(newTab.id)=== 0){
-                    newTab.classList.add("tab_active");
-                }
-                console.log(result.values[0])
-                newTab.addEventListener("click", function(){
-                    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove("tab_active"));
-                    newTab.classList.add("tab_active");
-                });
-
-                tabsContainer.appendChild(newTab);
-                createSVG(data, i);
-            }
+        try{
+            let result;
+            fetch('./JSON/data.json')
+            .then(response => response.json())
+            .then(data => {
+                result = countFileNameOccurrences(data);
+                const tabsContainer = document.getElementById("tabsContainer");
+                const timelineElement = document.querySelector(".timeline-ul");
             
-            const timelineItem = document.createElement("li");
-            timelineItem.classList.add("active-timeline");
-            const dateSpan = document.createElement("span");
-            const dateDiv = document.createElement("div");
-            dateDiv.textContent = data.date;
-            timelineItem.appendChild(dateSpan);
-            timelineItem.appendChild(dateDiv);
-            timelineUl.appendChild(timelineItem);
-        })
-        .catch(error => console.error('Error fetching JSON:', error));
+                for(let i = 0; i < result.count; i++){
+                    let newTab = document.createElement("button");
+                    newTab.classList.add("tab");
+                    newTab.setAttribute('id',i);
+                    getTabName(newTab, result.values[i])
+                    newTab.id
+
+                    if(Number(newTab.id)=== 0){
+                        newTab.classList.add("tab_active");
+                    }
+
+                    newTab.addEventListener("click", function(){
+                        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove("tab_active"));
+                        newTab.classList.add("tab_active");
+                    });
+
+                    tabsContainer.appendChild(newTab);
+                    createSVG(data, i);
+                }
+                drawTimeLineNode(data, timelineElement);
+            })
+        } catch (error){
+            (console.error('Error fetching JSON:', error));
+        }
     })
 }
 
@@ -47,6 +41,17 @@ function getTabName(newTab, nameParameter){
     tabName = nameParameter;
     newTab.innerHTML = tabName;
 };
+
+function drawTimeLineNode(data, timelineElement){
+    const timelineItem = document.createElement("li");
+    timelineItem.classList.add("active-timeline");
+    const dateSpan = document.createElement("span");
+    const dateDiv = document.createElement("div");
+    dateDiv.textContent = data.date;
+    timelineItem.appendChild(dateSpan);
+    timelineItem.appendChild(dateDiv);
+    timelineElement.appendChild(timelineItem);
+}
 
 function countFileNameOccurrences(obj) {
     let count = 0;
@@ -71,19 +76,6 @@ function countFileNameOccurrences(obj) {
 
     return { count, values };
 }
-
-/*document.addEventListener('DOMContentLoaded', function() {
-    const tabs = document.querySelectorAll('.tab');
-    const root = document.documentElement;
-
-    tabs.forEach((tab, index) => {
-        const dateStr = tab.getAttribute('data-date');
-        if (dateStr) {
-            const [day, month, year] = dateStr.split('.');
-            root.style.setProperty(`--year-${index}`, `'${year}'`);
-        }
-    });
-});*/
 
 function createSVG(data, identifier) {
     const svgNamespace = "http://www.w3.org/2000/svg";
