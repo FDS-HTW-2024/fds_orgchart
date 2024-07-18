@@ -1,35 +1,52 @@
 import bisect
 from collections import defaultdict
 from sys import float_info
-from typing import Any
+from typing import Self, NamedTuple
 
-from organigram_extract.data import Document, Drawing, Line, Point, Rect, TextSpan
+from organigram_extract.data import Drawing, Line, Point, Rect, TextSpan
 
-def extract_document(drawing: Drawing) -> Document:
-    drawing.lines.sort(key=lambda l: (l.p0.x, l.p1.x, l.p0.y, l.p1.y))
-    dedup(drawing.lines)
+class Document(NamedTuple):
+    # The cleaned and de-duplicated data from Drawing.
+    width: float
+    height: float
+    rects: list[Rect]
+    lines: list[Line]
+    text_spans: list[TextSpan]
 
-    # TODO: Calculate graph edges for edges
-    _junctions = extract_nodes(drawing.rects, drawing.lines)
+    # The decision to store indices instead of references is more of a
+    # personal preference for simple object graphs/lifetimes.
 
-    drawing.rects.append(Rect(0.0, 0.0, drawing.width, drawing.height))
-    drawing.rects.sort()
-    dedup(drawing.rects)
+    # Rect -> list[TextSpan]
+    text_blocks: dict[int, list[int]]
+    # Rect -> str
+    text_contents: dict[int, str]
 
-    drawing.text_spans.sort(key=lambda ts: (ts.bbox.y0, ts.bbox.x0, ts.bbox.y1, ts.bbox.x1))
-    dedup(drawing.text_spans)
+    @staticmethod
+    def extract(drawing: Drawing) -> Self:
+        drawing.lines.sort(key=lambda l: (l.p0.x, l.p1.x, l.p0.y, l.p1.y))
+        dedup(drawing.lines)
 
-    text_blocks = extract_text_blocks(drawing.rects, drawing.text_spans)
+        # TODO: Calculate graph edges for edges
+        _junctions = extract_nodes(drawing.rects, drawing.lines)
 
-    # TODO: The page rect has to be clustered in coarse regions, otherwise
-    # text lines are made up of words that are far away from each other.
+        drawing.rects.append(Rect(0.0, 0.0, drawing.width, drawing.height))
+        drawing.rects.sort()
+        dedup(drawing.rects)
 
-    text_contents = {k:"".join(generate_text(drawing.text_spans, v))
-                    for (k, v) in text_blocks.items()}
+        drawing.text_spans.sort(key=lambda ts: (ts.bbox.y0, ts.bbox.x0, ts.bbox.y1, ts.bbox.x1))
+        dedup(drawing.text_spans)
 
-    return Document(drawing.width, drawing.height,
-                    drawing.rects, drawing.lines, drawing.text_spans,
-                    text_blocks, text_contents)
+        text_blocks = extract_text_blocks(drawing.rects, drawing.text_spans)
+
+        # TODO: The page rect has to be clustered in coarse regions, otherwise
+        # text lines are made up of words that are far away from each other.
+
+        text_contents = {k:"".join(generate_text(drawing.text_spans, v))
+                        for (k, v) in text_blocks.items()}
+
+        return Document(drawing.width, drawing.height,
+                        drawing.rects, drawing.lines, drawing.text_spans,
+                        text_blocks, text_contents)
 
 def extract_nodes(
         rects: list[Rect],

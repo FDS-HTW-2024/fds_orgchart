@@ -3,10 +3,8 @@ from collections import defaultdict
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from queue import Queue
 
-from organigram_extract.data import Drawing
-from organigram_extract.extract import extract_document
+from organigram_extract import Document, Drawing, TextPipeline
 import organigram_extract.pdf as pdf
-from organigram_extract.text_pipeline import TextPipeline
 
 def run():
     parser = argparse.ArgumentParser(prog='Organigramm Extract')
@@ -48,7 +46,7 @@ def process_drawing(
         text_tasks: Queue,
         text_results: Queue):
     print("PROCESS DRAWING...")
-    document = extract_document(drawing)
+    document = Document.extract(drawing)
     count = 0
     task_count = len(document.text_contents)
 

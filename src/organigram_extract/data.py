@@ -88,19 +88,3 @@ class Drawing(NamedTuple):
     rects: list[Rect]
     lines: list[Line]
     text_spans: list[TextSpan]
-
-class Document(NamedTuple):
-    # The cleaned and de-duplicated data from Drawing.
-    width: float
-    height: float
-    rects: list[Rect]
-    lines: list[Line]
-    text_spans: list[TextSpan]
-
-    # The decision to store indices instead of references is more of a
-    # personal preference for simple object graphs/lifetimes.
-
-    # Rect -> list[TextSpan]
-    text_blocks: dict[int, list[int]]
-    # Rect -> str
-    text_contents: dict[int, str]

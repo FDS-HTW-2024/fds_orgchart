@@ -85,32 +85,3 @@ def extract_drawing(page: Page) -> Drawing:
 
     return Drawing(page.rect.width, page.rect.height,
                    rects, lines, text_spans)
-
-def display(drawing: Drawing):
-    outpdf = pymupdf.open()
-    outpage = outpdf.new_page(width=page.rect.width, height=page.rect.height)
-    shape = outpage.new_shape()
-
-    for span in drawing.text_spans:
-        shape.draw_rect(span.bbox)
-    shape.finish(width=0.15, color=(0.0, 1.0, 0.0))
-    shape.commit()
-
-    for line in drawing.lines:
-        shape.draw_line(line.p0, line.p1)
-    shape.finish(width=0.15, color=(0.0, 0.0, 1.0))
-    shape.commit()
-
-    for rect in drawing.rects:
-        shape.draw_rect(rect)
-    shape.finish(width=0.15, color=(1.0, 0.0, 0.0))
-    shape.commit()
-
-    # for node in content_nodes:
-    #     for line in node.block:
-    #         shape.draw_rect(line.bbox)
-    #     # shape.draw_rect(node.bbox)
-    # shape.finish(width=0.15)
-    # shape.commit()
-
-    outpdf.save("debug/output.pdf")
