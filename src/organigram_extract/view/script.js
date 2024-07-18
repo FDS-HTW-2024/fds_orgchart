@@ -19,11 +19,13 @@ function createTabs(){
 
                     if(Number(newTab.id)=== 0){
                         newTab.classList.add("tab_active");
+                        createSVG(data, j);
                     }
 
                     newTab.addEventListener("click", function(){
                         document.querySelectorAll('.tab').forEach(tab => tab.classList.remove("tab_active"));
                         newTab.classList.add("tab_active");
+                        createSVG(data, j);
                     });
 
                     tabsContainer.appendChild(newTab);
@@ -84,16 +86,22 @@ function createSVG(data, identifier) {
     const svgNamespace = "http://www.w3.org/2000/svg";
     const svgContainer = document.getElementById('svgContainer');
 
+    // Remove existing children from the SVG container before creating new ones to avoid redrawing all rectangles at once
+    while (svgContainer.firstChild) {
+        svgContainer.removeChild(svgContainer.firstChild);
+    }
+
     // Create an SVG element
     const svg = document.createElementNS(svgNamespace, 'svg');
-    svg.setAttribute('width', '1200');
-    svg.setAttribute('height', '600');
-    svg.setAttribute('viewBox', '0 0 1200 600');
+    svg.setAttribute('width', '600');
+    svg.setAttribute('height', '500');
+    svg.setAttribute('viewBox', '0 0 2383.93994140625 1683.780029296875');
 
     // Example: Create rects from JSON data
     data[identifier].content.forEach(item => {
         const bbox = item.bbox;
         const rect = document.createElementNS(svgNamespace, 'rect');
+        console.log(item);
         rect.setAttribute('x', bbox[0]);
         rect.setAttribute('y', bbox[1]);
         rect.setAttribute('width', bbox[2] - bbox[0]);
@@ -107,14 +115,6 @@ function createSVG(data, identifier) {
     // Append the SVG to the container
     svgContainer.appendChild(svg);
 }
-
-/*Could be useful later?
-
-function formatDate(dateString) {
-    const [day, month, year] = dateString.split('.');
-    return '${day}.${month}.${year}';    
-}
-*/
 
 createTabs();
 

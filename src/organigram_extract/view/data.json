@@ -1,9 +1,2402 @@
 {
-    "0":
-        {
-            "fileName": "bmf01.pdf",
-            "date": "22.08.2014",
-            "content": [
+    "0": {
+        "fileName": "bmf01.pdf",
+        "date": "22.08.2014",
+        "content": [
+            {
+                "type": "Referat",
+                "name": "Referat I A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1211.14404296875,
+                    318.22998046875,
+                    1368.384033203125,
+                    393.2659912109375
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung Z",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    230.3560028076172,
+                    530.830078125,
+                    305.3909912109375,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung L",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    501.06500244140625,
+                    530.830078125,
+                    576.0999755859375,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung I",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    706.5770263671875,
+                    530.830078125,
+                    781.612060546875,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung II",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    944.68701171875,
+                    530.830078125,
+                    1019.7220458984375,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung III",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1182.7969970703125,
+                    530.830078125,
+                    1257.83203125,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung IV",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1388.3089599609375,
+                    530.830078125,
+                    1463.343994140625,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung V",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1561.2230224609375,
+                    530.830078125,
+                    1636.258056640625,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung VII",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1734.135986328125,
+                    530.830078125,
+                    1809.1710205078125,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung VIII",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1939.64794921875,
+                    530.830078125,
+                    2014.6829833984375,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung E",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2116.81298828125,
+                    530.830078125,
+                    2191.847900390625,
+                    614.3690185546875
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung Z A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    173.41299438476562,
+                    632.626953125,
+                    231.9409942626953,
+                    750.6820068359375
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung Z B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    238.61000061035156,
+                    632.626953125,
+                    297.13800048828125,
+                    750.6820068359375
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung Z C",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    303.8070068359375,
+                    632.6270751953125,
+                    362.33502197265625,
+                    725.1700439453125
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung L A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    444.12200927734375,
+                    632.6260986328125,
+                    502.6500244140625,
+                    696.8230590820312
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung L B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    509.3190002441406,
+                    632.6260986328125,
+                    567.8469848632812,
+                    696.8230590820312
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung L C",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    574.5159912109375,
+                    632.6260986328125,
+                    633.0440063476562,
+                    696.8230590820312
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung I A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    649.6339721679688,
+                    632.6260986328125,
+                    708.1619873046875,
+                    696.8230590820312
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung I B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    714.8309936523438,
+                    632.6270751953125,
+                    773.3590087890625,
+                    702.4930419921875
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung I C",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    780.0280151367188,
+                    632.6260986328125,
+                    838.5560302734375,
+                    696.8230590820312
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung II A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    855.14599609375,
+                    632.626953125,
+                    913.6740112304688,
+                    716.666015625
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung II B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    920.343017578125,
+                    632.6270751953125,
+                    978.8710327148438,
+                    702.4930419921875
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung II C",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    985.5390014648438,
+                    632.6259765625,
+                    1044.0670166015625,
+                    722.3350219726562
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung II D",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1050.7359619140625,
+                    632.6270751953125,
+                    1109.263916015625,
+                    702.4930419921875
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung III A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1125.85400390625,
+                    632.6259765625,
+                    1184.3819580078125,
+                    705.3270263671875
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung III B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1191.051025390625,
+                    632.6270751953125,
+                    1249.5789794921875,
+                    708.1620483398438
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung III C",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1256.248046875,
+                    632.626953125,
+                    1314.7760009765625,
+                    716.666015625
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung IV A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1331.365966796875,
+                    632.6270751953125,
+                    1389.8939208984375,
+                    759.18603515625
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung IV B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1396.56298828125,
+                    632.626953125,
+                    1455.0909423828125,
+                    716.666015625
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung IV C",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.760009765625,
+                    632.6259765625,
+                    1520.2879638671875,
+                    728.0040283203125
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung V A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1536.8780517578125,
+                    632.626953125,
+                    1595.406005859375,
+                    710.9970092773438
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung V B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1602.074951171875,
+                    632.6260986328125,
+                    1660.6029052734375,
+                    753.5160522460938
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung VII A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1677.1929931640625,
+                    632.6259765625,
+                    1735.720947265625,
+                    722.3350219726562
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung VII B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1742.3900146484375,
+                    632.6260986328125,
+                    1800.91796875,
+                    696.8230590820312
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung VII C",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1807.5870361328125,
+                    632.6270751953125,
+                    1866.114990234375,
+                    702.4930419921875
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung VIII A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1882.7049560546875,
+                    632.626953125,
+                    1941.23291015625,
+                    733.6740112304688
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung VIII B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1947.9019775390625,
+                    632.6259765625,
+                    2006.429931640625,
+                    722.3350219726562
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung VIII C",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2013.0989990234375,
+                    632.6270751953125,
+                    2071.6259765625,
+                    725.1700439453125
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung E A",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2092.468994140625,
+                    632.626953125,
+                    2150.99609375,
+                    710.9970092773438
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung E B",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2157.666015625,
+                    632.626953125,
+                    2216.193115234375,
+                    710.9970092773438
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    443.87200927734375,
+                    706.0770263671875,
+                    502.9000244140625,
+                    753.7660522460938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    649.3839721679688,
+                    706.0770263671875,
+                    708.4119873046875,
+                    756.6010131835938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I C 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    779.7780151367188,
+                    706.0780029296875,
+                    838.8060302734375,
+                    759.43603515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1742.1400146484375,
+                    706.0770263671875,
+                    1801.16796875,
+                    804.7900390625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    509.0690002441406,
+                    706.0770263671875,
+                    568.0969848632812,
+                    753.7660522460938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L C 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    574.2659912109375,
+                    706.0770263671875,
+                    633.2940063476562,
+                    753.7660522460938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    920.093017578125,
+                    711.7460327148438,
+                    979.1210327148438,
+                    762.27001953125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    714.5809936523438,
+                    711.7470092773438,
+                    773.6090087890625,
+                    799.1210327148438
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II D 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1050.4859619140625,
+                    711.7460327148438,
+                    1109.513916015625,
+                    816.1280517578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII C 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1807.3370361328125,
+                    711.7470092773438,
+                    1866.364990234375,
+                    759.43603515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1125.60400390625,
+                    714.5810546875,
+                    1184.6319580078125,
+                    767.9390258789062
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1190.801025390625,
+                    717.416015625,
+                    1249.8289794921875,
+                    779.2780151367188
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1536.6280517578125,
+                    720.25,
+                    1595.656005859375,
+                    767.9390258789062
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2092.218994140625,
+                    720.2500610351562,
+                    2151.24609375,
+                    816.1280517578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2157.416015625,
+                    720.25,
+                    2216.443115234375,
+                    801.9550170898438
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III C 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1255.998046875,
+                    725.9200439453125,
+                    1315.0260009765625,
+                    801.9550170898438
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    854.89599609375,
+                    725.9200439453125,
+                    913.9240112304688,
+                    779.2780151367188
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1396.31298828125,
+                    725.9200439453125,
+                    1455.3409423828125,
+                    787.7820434570312
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II C 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    985.2890014648438,
+                    731.5890502929688,
+                    1044.3170166015625,
+                    782.113037109375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1676.9429931640625,
+                    731.5889892578125,
+                    1735.970947265625,
+                    824.6320190429688
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1947.6519775390625,
+                    731.5889892578125,
+                    2006.679931640625,
+                    813.2940063476562
+                ]
+            },
+            {
+                "type": "Stabsstelle",
+                "name": "Stabsstelle der IT-Beauftragten der BFV; IT-Strategiemanagement",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    303.5570068359375,
+                    734.424072265625,
+                    362.58502197265625,
+                    804.7900390625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII C 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2012.8489990234375,
+                    734.424072265625,
+                    2071.8759765625,
+                    847.31005859375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV C 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.510009765625,
+                    737.258056640625,
+                    1520.5379638671875,
+                    816.1280517578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1882.4549560546875,
+                    742.927978515625,
+                    1941.48291015625,
+                    813.2940063476562
+                ]
+            },
+            {
+                "type": "Ministerium",
+                "name": "Ministerium); Personalvertretungsrecht; Grundsatzfragen des Bundesgleichstellungsgesetzes; Angelegenheiten der schwerbehinderten Besch\u00e4ftigten",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    238.36000061035156,
+                    759.93603515625,
+                    297.38800048828125,
+                    852.97900390625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    173.16299438476562,
+                    759.93505859375,
+                    232.1909942626953,
+                    810.4590454101562
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    443.87200927734375,
+                    762.77001953125,
+                    502.9000244140625,
+                    810.4590454101562
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    509.0690002441406,
+                    762.77001953125,
+                    568.0969848632812,
+                    813.2940063476562
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L C 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    574.2659912109375,
+                    762.77001953125,
+                    633.2940063476562,
+                    810.4590454101562
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V B 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1601.824951171875,
+                    762.77001953125,
+                    1660.8529052734375,
+                    833.1360473632812
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    649.3839721679688,
+                    765.60498046875,
+                    708.4119873046875,
+                    818.9630126953125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII C 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1807.3370361328125,
+                    768.4400634765625,
+                    1866.364990234375,
+                    821.7980346679688
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV A 1",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1331.115966796875,
+                    768.4390258789062,
+                    1390.1439208984375,
+                    850.14404296875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I C 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    779.7780151367188,
+                    768.4390258789062,
+                    838.8060302734375,
+                    824.6320190429688
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    920.093017578125,
+                    771.2740478515625,
+                    979.1210327148438,
+                    821.7980346679688
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1125.60400390625,
+                    776.9429931640625,
+                    1184.6319580078125,
+                    858.6480102539062
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1536.6280517578125,
+                    776.9430541992188,
+                    1595.656005859375,
+                    827.467041015625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    854.89599609375,
+                    788.281982421875,
+                    913.9240112304688,
+                    904.0020141601562
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1190.801025390625,
+                    788.2820434570312,
+                    1249.8289794921875,
+                    850.14404296875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II C 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    985.2890014648438,
+                    791.1160278320312,
+                    1044.3170166015625,
+                    847.3090209960938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1396.31298828125,
+                    796.7860107421875,
+                    1455.3409423828125,
+                    872.821044921875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    714.5809936523438,
+                    808.125,
+                    773.6090087890625,
+                    869.9869995117188
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III C 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1255.998046875,
+                    810.958984375,
+                    1315.0260009765625,
+                    904.0020141601562
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2157.416015625,
+                    810.958984375,
+                    2216.443115234375,
+                    881.3250122070312
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z C 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    303.5570068359375,
+                    813.7940063476562,
+                    362.58502197265625,
+                    875.656005859375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1742.1400146484375,
+                    813.7940063476562,
+                    1801.16796875,
+                    861.4830322265625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    173.16299438476562,
+                    819.4630126953125,
+                    232.1909942626953,
+                    869.9869995117188
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    443.87200927734375,
+                    819.4630126953125,
+                    502.9000244140625,
+                    872.821044921875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L C 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    574.2659912109375,
+                    819.4630126953125,
+                    633.2940063476562,
+                    867.1520385742188
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1882.4549560546875,
+                    822.2969970703125,
+                    1941.48291015625,
+                    921.010009765625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1947.6519775390625,
+                    822.2979736328125,
+                    2006.679931640625,
+                    892.6640014648438
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    509.0690002441406,
+                    822.2979736328125,
+                    568.0969848632812,
+                    869.9869995117188
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II D 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1050.4859619140625,
+                    825.1320190429688,
+                    1109.513916015625,
+                    906.8370361328125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV C 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.510009765625,
+                    825.1320190429688,
+                    1520.5379638671875,
+                    904.0020141601562
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2092.218994140625,
+                    825.133056640625,
+                    2151.24609375,
+                    895.4990234375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    649.3839721679688,
+                    827.967041015625,
+                    708.4119873046875,
+                    878.4910278320312
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    920.093017578125,
+                    830.802001953125,
+                    979.1210327148438,
+                    884.1600341796875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII C 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1807.3370361328125,
+                    830.801025390625,
+                    1866.364990234375,
+                    881.3250122070312
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I C 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    779.7780151367188,
+                    833.6360473632812,
+                    838.8060302734375,
+                    884.1600341796875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1676.9429931640625,
+                    833.6370239257812,
+                    1735.970947265625,
+                    895.4990234375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1536.6280517578125,
+                    836.4710693359375,
+                    1595.656005859375,
+                    886.9950561523438
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V B 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1601.824951171875,
+                    842.1400146484375,
+                    1660.8529052734375,
+                    889.8290405273438
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II C 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    985.2890014648438,
+                    856.3140869140625,
+                    1044.3170166015625,
+                    926.6800537109375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII C 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2012.8489990234375,
+                    856.3140869140625,
+                    2071.8759765625,
+                    949.3570556640625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1190.801025390625,
+                    859.1480102539062,
+                    1249.8289794921875,
+                    921.010009765625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV A 2",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1331.115966796875,
+                    859.1480102539062,
+                    1390.1439208984375,
+                    938.0180053710938
+                ]
+            },
+            {
+                "type": "Ministerium",
+                "name": "Ministerium); Internationales Dienstrecht; Haushalt Versorgung",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    238.36000061035156,
+                    861.9830322265625,
+                    297.38800048828125,
+                    955.0260009765625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1125.60400390625,
+                    867.6520385742188,
+                    1184.6319580078125,
+                    918.176025390625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1742.1400146484375,
+                    870.4860229492188,
+                    1801.16796875,
+                    921.010009765625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L C 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    574.2659912109375,
+                    876.156005859375,
+                    633.2940063476562,
+                    923.8450317382812
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    509.0690002441406,
+                    878.70703125,
+                    568.0969848632812,
+                    926.3960571289062
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    173.16299438476562,
+                    878.989990234375,
+                    232.1909942626953,
+                    960.6950073242188
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    714.5809936523438,
+                    878.9910888671875,
+                    773.6090087890625,
+                    949.3570556640625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1396.31298828125,
+                    881.8260498046875,
+                    1455.3409423828125,
+                    974.8690185546875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    443.87200927734375,
+                    881.8260498046875,
+                    502.9000244140625,
+                    935.1840209960938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z C 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    303.5570068359375,
+                    884.6599731445312,
+                    362.58502197265625,
+                    932.3489990234375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    649.3839721679688,
+                    887.4949951171875,
+                    708.4119873046875,
+                    935.1840209960938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2157.416015625,
+                    890.3289794921875,
+                    2216.443115234375,
+                    977.7030029296875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII C 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1807.3370361328125,
+                    890.3289794921875,
+                    1866.364990234375,
+                    938.0180053710938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II B 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    920.093017578125,
+                    893.1640014648438,
+                    979.1210327148438,
+                    955.0260009765625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I C 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    779.7780151367188,
+                    893.1640625,
+                    838.8060302734375,
+                    969.1990356445312
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1536.6280517578125,
+                    895.998046875,
+                    1595.656005859375,
+                    946.5220336914062
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1601.824951171875,
+                    899.1170043945312,
+                    1660.8529052734375,
+                    986.4910278320312
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1947.6519775390625,
+                    901.6680908203125,
+                    2006.679931640625,
+                    972.0340576171875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2092.218994140625,
+                    904.5030517578125,
+                    2151.24609375,
+                    966.3650512695312
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII A 3a",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1676.9429931640625,
+                    904.5030517578125,
+                    1735.970947265625,
+                    957.8610229492188
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III C 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1255.998046875,
+                    913.007080078125,
+                    1315.0260009765625,
+                    1006.050048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV C 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.510009765625,
+                    913.007080078125,
+                    1520.5379638671875,
+                    1006.050048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    854.89599609375,
+                    913.007080078125,
+                    913.9240112304688,
+                    983.373046875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II D 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1050.4859619140625,
+                    915.841064453125,
+                    1109.513916015625,
+                    966.3650512695312
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1125.60400390625,
+                    927.1800537109375,
+                    1184.6319580078125,
+                    1020.2230224609375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1882.4549560546875,
+                    930.0140380859375,
+                    1941.48291015625,
+                    1000.3800048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1190.801025390625,
+                    930.0150146484375,
+                    1249.8289794921875,
+                    1006.050048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1742.1400146484375,
+                    930.0139770507812,
+                    1801.16796875,
+                    977.7030029296875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat L C 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    574.2659912109375,
+                    932.8489990234375,
+                    633.2940063476562,
+                    980.5380249023438
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II C 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    985.2890014648438,
+                    935.68408203125,
+                    1044.3170166015625,
+                    989.0420532226562
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z C 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    303.5570068359375,
+                    941.35302734375,
+                    362.58502197265625,
+                    997.5460205078125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I A 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    649.3839721679688,
+                    944.1870727539062,
+                    708.4119873046875,
+                    994.7110595703125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV A 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1331.115966796875,
+                    947.0230712890625,
+                    1390.1439208984375,
+                    1023.0580444335938
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII C 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1807.3370361328125,
+                    947.0220336914062,
+                    1866.364990234375,
+                    1028.72705078125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V A 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1536.6280517578125,
+                    955.5260620117188,
+                    1595.656005859375,
+                    1028.72705078125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    714.5809936523438,
+                    958.361083984375,
+                    773.6090087890625,
+                    1011.7190551757812
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII C 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2012.8489990234375,
+                    958.3600463867188,
+                    2071.8759765625,
+                    1008.884033203125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II B 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    920.093017578125,
+                    964.030029296875,
+                    979.1210327148438,
+                    1017.3880004882812
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z B 3",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    238.36000061035156,
+                    964.030029296875,
+                    297.38800048828125,
+                    1062.7430419921875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII A 3b",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1676.9429931640625,
+                    966.864990234375,
+                    1735.970947265625,
+                    1020.2230224609375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    173.16299438476562,
+                    969.6990356445312,
+                    232.1909942626953,
+                    1057.072998046875
+                ]
+            },
+            {
+                "type": "Amt",
+                "name": "Amt); Epl. 23 (Wirtschaftliche Zusammenarbeit und Entwicklung)",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1050.4859619140625,
+                    975.3690185546875,
+                    1109.513916015625,
+                    1037.23095703125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2092.218994140625,
+                    975.3680419921875,
+                    2151.24609375,
+                    1057.072998046875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I C 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    779.7780151367188,
+                    978.2030029296875,
+                    838.8060302734375,
+                    1059.907958984375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1947.6519775390625,
+                    981.0380859375,
+                    2006.679931640625,
+                    1034.39599609375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1396.31298828125,
+                    983.8720092773438,
+                    1455.3409423828125,
+                    1065.5770263671875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2157.416015625,
+                    986.7080078125,
+                    2216.443115234375,
+                    1062.7430419921875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII B 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1742.1400146484375,
+                    986.70703125,
+                    1801.16796875,
+                    1037.23095703125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    854.89599609375,
+                    992.3770751953125,
+                    913.9240112304688,
+                    1085.4200439453125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V B 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1601.824951171875,
+                    995.2109985351562,
+                    1660.8529052734375,
+                    1093.924072265625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II C 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    985.2890014648438,
+                    998.0460205078125,
+                    1044.3170166015625,
+                    1105.261962890625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I A 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    649.3839721679688,
+                    1003.7150268554688,
+                    708.4119873046875,
+                    1065.5770263671875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z C 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    303.5570068359375,
+                    1006.550048828125,
+                    362.58502197265625,
+                    1091.089111328125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1882.4549560546875,
+                    1009.384033203125,
+                    1941.48291015625,
+                    1096.758056640625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III C 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1255.998046875,
+                    1015.0540771484375,
+                    1315.0260009765625,
+                    1085.4200439453125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV C 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.510009765625,
+                    1015.0540161132812,
+                    1520.5379638671875,
+                    1102.427978515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III B 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1190.801025390625,
+                    1015.0530395507812,
+                    1249.8289794921875,
+                    1065.5770263671875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII C 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2012.8489990234375,
+                    1017.8880004882812,
+                    2071.8759765625,
+                    1079.75
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I B 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    714.5809936523438,
+                    1020.7230224609375,
+                    773.6090087890625,
+                    1102.427978515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II B 7",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    920.093017578125,
+                    1026.39208984375,
+                    979.1210327148438,
+                    1076.916015625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1676.9429931640625,
+                    1029.22705078125,
+                    1735.970947265625,
+                    1082.5849609375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III A 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1125.60400390625,
+                    1029.22607421875,
+                    1184.6319580078125,
+                    1079.75
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV A 4",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1331.115966796875,
+                    1032.06103515625,
+                    1390.1439208984375,
+                    1122.27001953125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II D 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1050.4859619140625,
+                    1046.2349853515625,
+                    1109.513916015625,
+                    1099.593017578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z A 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    173.16299438476562,
+                    1066.0770263671875,
+                    232.1909942626953,
+                    1153.4510498046875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E A 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2092.218994140625,
+                    1066.0770263671875,
+                    2151.24609375,
+                    1164.7900390625
+                ]
+            },
+            {
+                "type": "Ministerium",
+                "name": "Ministerium)",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    238.36000061035156,
+                    1071.7470703125,
+                    297.38800048828125,
+                    1147.781982421875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E B 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2157.416015625,
+                    1071.7470703125,
+                    2216.443115234375,
+                    1133.6090087890625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV B 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1396.31298828125,
+                    1074.58203125,
+                    1455.3409423828125,
+                    1150.616943359375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII A 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1676.9429931640625,
+                    1091.589111328125,
+                    1735.970947265625,
+                    1173.2940673828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III C 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1255.998046875,
+                    1094.424072265625,
+                    1315.0260009765625,
+                    1156.2860107421875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II A 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    854.89599609375,
+                    1094.424072265625,
+                    913.9240112304688,
+                    1170.458984375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V B 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1601.824951171875,
+                    1102.927978515625,
+                    1660.8529052734375,
+                    1164.7900390625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV C 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.510009765625,
+                    1111.4320068359375,
+                    1520.5379638671875,
+                    1173.2940673828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I B 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    714.5809936523438,
+                    1111.4320068359375,
+                    773.6090087890625,
+                    1164.7900390625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II C 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    985.2890014648438,
+                    1114.2659912109375,
+                    1044.3170166015625,
+                    1176.1280517578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV A 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1331.115966796875,
+                    1131.2740478515625,
+                    1390.1439208984375,
+                    1218.6480712890625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E B 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2157.416015625,
+                    1142.612060546875,
+                    2216.443115234375,
+                    1249.8291015625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z B 4b",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    238.36000061035156,
+                    1156.7860107421875,
+                    297.38800048828125,
+                    1227.152099609375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV B 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1396.31298828125,
+                    1159.62109375,
+                    1455.3409423828125,
+                    1221.4830322265625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z A 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    173.16299438476562,
+                    1162.455078125,
+                    232.1909942626953,
+                    1244.1600341796875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E A 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2092.218994140625,
+                    1173.7940673828125,
+                    2151.24609375,
+                    1244.1600341796875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II A 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    854.89599609375,
+                    1179.4630126953125,
+                    913.9240112304688,
+                    1232.821044921875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV C 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.510009765625,
+                    1182.298095703125,
+                    1520.5379638671875,
+                    1258.3330078125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV A 6",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1331.115966796875,
+                    1227.652099609375,
+                    1390.1439208984375,
+                    1303.68701171875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z B 5",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    238.36000061035156,
+                    1236.156005859375,
+                    297.38800048828125,
+                    1317.861083984375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II A 7",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    854.89599609375,
+                    1241.8250732421875,
+                    913.9240112304688,
+                    1298.01806640625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E A 7",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    2092.218994140625,
+                    1253.1640625,
+                    2151.24609375,
+                    1346.20703125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV C 7",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.510009765625,
+                    1267.3370361328125,
+                    1520.5379638671875,
+                    1366.050048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat II A 8",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    854.89599609375,
+                    1307.02197265625,
+                    913.9240112304688,
+                    1405.7349853515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV A 7",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1331.115966796875,
+                    1312.6910400390625,
+                    1390.1439208984375,
+                    1400.0650634765625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV C 8",
+                "persons": [],
+                "responsibilites": [],
+                "bbox": [
+                    1461.510009765625,
+                    1375.052978515625,
+                    1520.5379638671875,
+                    1479.43505859375
+                ]
+            }
+        ]
+    },
+    "1": {
+        "fileName": "bmf02.pdf",
+        "date": "22.08.2016",
+        "content": [
             {
                 "type": "Fachbereich",
                 "name": "Fachbereich 1",
@@ -20,15 +2413,19 @@
                         "respons02": "task2"
                     }
                 ],
-                "bbox": [0, 0, 200, 200]
-            }]
-        },
-
-    "1":
-        {
-            "fileName": "bmf02.pdf",
-            "date": "22.08.2016",
-            "content": [
+                "bbox": [
+                    300,
+                    0,
+                    500,
+                    200
+                ]
+            }
+        ]
+    },
+    "2": {
+        "fileName": "bmf03.pdf",
+        "date": "22.08.2018",
+        "content": [
             {
                 "type": "Fachbereich",
                 "name": "Fachbereich 1",
@@ -45,31 +2442,13 @@
                         "respons02": "task2"
                     }
                 ],
-                "bbox": [300, 0, 500, 200]
-            }]
-        },
-    "2":
-        {
-            "fileName": "bmf03.pdf",
-            "date": "22.08.2018",
-            "content": [
-            {
-                "type": "Fachbereich",
-                "name": "Fachbereich 1",
-                "persons": [
-                    {
-                        "name": "Hr. Noack",
-                        "positionType": "Hr.",
-                        "contact": "-1702"
-                    }
-                ],
-                "responsibilities": [
-                    {
-                        "respons01": "task1",
-                        "respons02": "task2"
-                    }
-                ],
-                "bbox": [600, 0, 800, 200]
-            }]
-        }
+                "bbox": [
+                    600,
+                    0,
+                    800,
+                    200
+                ]
+            }
+        ]
+    }
 }
