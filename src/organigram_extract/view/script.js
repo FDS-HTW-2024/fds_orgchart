@@ -2,18 +2,19 @@ function createTabs(){
     document.addEventListener("DOMContentLoaded", function(){
         try{
             let result;
-            fetch('./JSON/data.json')
+            fetch('data.json')
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 result = countFileNameOccurrences(data);
                 const tabsContainer = document.getElementById("tabsContainer");
                 const timelineElement = document.querySelector(".timeline-ul");
             
-                for(let i = 0; i < result.count; i++){
+                for(let j = 0; j < result.count; j++){
                     let newTab = document.createElement("button");
                     newTab.classList.add("tab");
-                    newTab.setAttribute('id',i);
-                    getTabName(newTab, result.values[i])
+                    newTab.setAttribute('id',j);
+                    getTabName(newTab, result.values[j])
                     newTab.id
 
                     if(Number(newTab.id)=== 0){
@@ -26,9 +27,11 @@ function createTabs(){
                     });
 
                     tabsContainer.appendChild(newTab);
-                    createSVG(data, i);
+                    createSVG(data, j);
+                    drawTimeLineNode(data, timelineElement, j);
                 }
-                drawTimeLineNode(data, timelineElement);
+
+                
             })
         } catch (error){
             (console.error('Error fetching JSON:', error));
@@ -42,12 +45,12 @@ function getTabName(newTab, nameParameter){
     newTab.innerHTML = tabName;
 };
 
-function drawTimeLineNode(data, timelineElement){
+function drawTimeLineNode(data, timelineElement, numberOfElements){
     const timelineItem = document.createElement("li");
     timelineItem.classList.add("active-timeline");
     const dateSpan = document.createElement("span");
     const dateDiv = document.createElement("div");
-    dateDiv.textContent = data.date;
+    dateDiv.textContent = data[numberOfElements].date;
     timelineItem.appendChild(dateSpan);
     timelineItem.appendChild(dateDiv);
     timelineElement.appendChild(timelineItem);
@@ -87,29 +90,25 @@ function createSVG(data, identifier) {
     svg.setAttribute('height', '600');
     svg.setAttribute('viewBox', '0 0 1200 600');
 
-    // Example: Create circles from JSON data
-    if(identifier == 0){
-        data.content.forEach(item => {
-            const bbox = item.bbox;
-            const rect = document.createElementNS(svgNamespace, 'rect');
-            rect.setAttribute('x', bbox[0]);
-            rect.setAttribute('y', bbox[1]);
-            rect.setAttribute('width', bbox[2] - bbox[0]);
-            rect.setAttribute('height', bbox[3] - bbox[1]);
-            rect.setAttribute('stroke', "black")
-            rect.setAttribute('fill', "white")
-            rect.setAttribute('stroke-width', 1)
-            svg.appendChild(rect);
-        })
-    }
+    // Example: Create rects from JSON data
+    data[identifier].content.forEach(item => {
+        const bbox = item.bbox;
+        const rect = document.createElementNS(svgNamespace, 'rect');
+        rect.setAttribute('x', bbox[0]);
+        rect.setAttribute('y', bbox[1]);
+        rect.setAttribute('width', bbox[2] - bbox[0]);
+        rect.setAttribute('height', bbox[3] - bbox[1]);
+        rect.setAttribute('stroke', "black")
+        rect.setAttribute('fill', "white")
+        rect.setAttribute('stroke-width', 1)
+        svg.appendChild(rect);
+    })
 
     // Append the SVG to the container
     svgContainer.appendChild(svg);
 }
 
-/*
-
-Could be useful later?
+/*Could be useful later?
 
 function formatDate(dateString) {
     const [day, month, year] = dateString.split('.');
