@@ -35,7 +35,7 @@ def process(executor: Executor, drawings: Iterator[Drawing]):
     for future in as_completed(tasks):
         results = future.result()
         print("=========")
-        print(json.dumps(results))
+        print(json.dumps(results, ensure_ascii=False))
 
     # Shutdown text processing thread
     task_queue.put(None)
