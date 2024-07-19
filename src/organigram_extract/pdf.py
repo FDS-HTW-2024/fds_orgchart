@@ -3,7 +3,7 @@ from typing import Iterator
 import pymupdf
 from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_PRESERVE_IMAGES
 
-from organigram_extract.data import Drawing, Line, Point, Rect, TextSpan
+from organigram_extract.drawing import Drawing, Line, Point, Rect, TextSpan
 
 def open(path: str) -> Iterator[Drawing]:
     pdf = pymupdf.open(path)

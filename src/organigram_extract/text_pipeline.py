@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 import itertools
+import json
+from importlib import resources
 from typing import Any, Iterator, Optional
 
 import spacy
@@ -8,35 +10,56 @@ from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
 from spacy.tokens import Doc, Token
 
+from . import data
+
+DATA_PATH = resources.files(data)
+
 @dataclass(slots=True)
 class TextPipeline:
     nlp: Language
 
     def __init__(self, config: dict[str, Any] = {}):
         nlp = spacy.load("de_core_news_lg",
-                         exclude=["morphologizer", "parser", "lemmatizer", "ner"])
+                         exclude=["morphologizer", "parser", "ner"])
+
         # There are many abbreviations for common words.
-        nlp.tokenizer.add_special_case("einschl.", [{"ORTH": "einschl.", "NORM": "einschließlich"}])
-        nlp.tokenizer.add_special_case("insbes.", [{"ORTH": "insbes.", "NORM": "insbesondere"}])
-        nlp.tokenizer.add_special_case("m.d.W.d.G.b.", [{"ORTH": "m.d.W.d.G.b.", "NORM": "mit der Wahrnehmung der Geschäfte betraut"}])
-        nlp.tokenizer.add_special_case("m. d. W. d. G. b.", [{"ORTH": "m. d. W. d. G. b.", "NORM": "mit der Wahrnehmung der Geschäfte betraut"}])
+        with open(DATA_PATH / "special_cases.jsonl") as file:
+            for line in file:
+                special_case = json.loads(line)
+                nlp.tokenizer.add_special_case(special_case["ORTH"], [special_case])
 
         nlp.add_pipe("line_break_resolver")
+        nlp.add_pipe("mark_org_entities")
+
+        ruler = nlp.add_pipe("entity_ruler", validate=True)
+        ruler.add_patterns([
+            {"label": "ORG", "pattern": [
+                {"_": {"is_org_unit": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
+            ]},
+        ])
+
         print(nlp.pipe_names)
 
+        # TODO: Read config to create llm ner if available.
         self.nlp = nlp
-
-    def add_llm_ner(config: dict[str, Any]):
-        # TODO: Add llm component from semantic analysis
-        pass
 
     def process(self, texts: Iterator[str]):
         for doc in self.nlp.pipe(texts):
-            result = doc.text
+            result = {}
+
+            for ent in doc.ents:
+                for token in ent:
+                    if token._.is_org_unit:
+                        result["type"] = token.text
+                        result["name"] = ent.text
+                        result["persons"] = []
+                        result["responsibilites"] = []
+                        break
+
             yield result
 
 @Language.factory("line_break_resolver")
-def line_break_resolver(nlp, name):
+def line_break_resolver(nlp: Language, name: str):
     # https://www.ims.uni-stuttgart.de/documents/ressourcen/korpora/tiger-corpus/annotation/tiger_scheme-syntax.pdf
     MODIFIER = ["ADJA", "ADJD", "ADV"]
     JUNCTIONS = ["KOKOM", "KON", "KOUI", "KOUS"]
@@ -112,7 +135,6 @@ def line_break_resolver(nlp, name):
                 add_token(token.text, 0 < len(token.whitespace_))
 
             if match_id == SPACE:
-                # print("SPACE")
                 for token in span1:
                     if token.text == "\n":
                         spaces[-1] = True
@@ -155,3 +177,23 @@ def line_break_resolver(nlp, name):
         return nlp(Doc(nlp.vocab, words, spaces))
 
     return resolve
+
+@Language.factory("mark_org_entities")
+def mark_org_entities(nlp: Language, name: str):
+    Token.set_extension("is_org_unit", default=False)
+
+    term_matcher = PhraseMatcher(nlp.vocab, attr="NORM", validate=True)
+
+    with open(DATA_PATH / "org_units") as file:
+        term_matcher.add("ORG_UNITS", [nlp.make_doc(line.rstrip()) for line in file])
+
+    def mark(doc):
+        matches = term_matcher(doc)
+
+        for (match_id, start, end) in matches:
+            for token in doc[start:end]:
+                token._.is_org_unit = True
+
+        return doc
+
+    return mark
