@@ -29,7 +29,7 @@ class TextPipeline:
                 nlp.tokenizer.add_special_case(special_case["ORTH"], [special_case])
 
         nlp.add_pipe("line_break_resolver")
-        nlp.add_pipe("mark_org_entities")
+        nlp.add_pipe("org_entity_marker")
 
         ruler = nlp.add_pipe("entity_ruler", validate=True)
         ruler.add_patterns([
@@ -178,8 +178,8 @@ def line_break_resolver(nlp: Language, name: str):
 
     return resolve
 
-@Language.factory("mark_org_entities")
-def mark_org_entities(nlp: Language, name: str):
+@Language.factory("org_entity_marker")
+def org_entity_marker(nlp: Language, name: str):
     Token.set_extension("is_org_unit", default=False)
 
     term_matcher = PhraseMatcher(nlp.vocab, attr="NORM", validate=True)
