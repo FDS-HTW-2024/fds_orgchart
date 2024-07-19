@@ -36,6 +36,9 @@ class TextPipeline:
             {"label": "ORG", "pattern": [
                 {"_": {"is_org_unit": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
             ]},
+            {"label": "ORG", "pattern": [
+                {"_": {"is_per_prefix": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
+            ]},
         ])
 
         print(nlp.pipe_names)
@@ -45,16 +48,24 @@ class TextPipeline:
 
     def process(self, texts: Iterator[str]):
         for doc in self.nlp.pipe(texts):
-            result = {}
+            result = {
+                "type": None,
+                "name": None,
+                "persons": [],
+                "responsibilities": []
+            }
 
             for ent in doc.ents:
                 for token in ent:
                     if token._.is_org_unit:
                         result["type"] = token.text
                         result["name"] = ent.text
-                        result["persons"] = []
-                        result["responsibilites"] = []
-                        break
+
+                    if token._.is_per_prefix:
+                        result["persons"].append({
+                            "name": ent.text,
+                            "positionType": token.text,
+                        })
 
             yield result
 
@@ -181,18 +192,26 @@ def line_break_resolver(nlp: Language, name: str):
 @Language.factory("org_entity_marker")
 def org_entity_marker(nlp: Language, name: str):
     Token.set_extension("is_org_unit", default=False)
+    Token.set_extension("is_per_prefix", default=False)
 
     term_matcher = PhraseMatcher(nlp.vocab, attr="NORM", validate=True)
 
     with open(DATA_PATH / "org_units") as file:
-        term_matcher.add("ORG_UNITS", [nlp.make_doc(line.rstrip()) for line in file])
+        term_matcher.add("ORG_UNIT", [nlp.make_doc(line.rstrip()) for line in file])
+
+    with open(DATA_PATH / "per_prefixes") as file:
+        term_matcher.add("PER_PREFIX", [nlp.make_doc(line.rstrip()) for line in file])
+
+    ORG_UNIT = nlp.vocab["ORG_UNIT"]
+    PER_PREFIX = nlp.vocab["PER_PREFIX"]
 
     def mark(doc):
         matches = term_matcher(doc)
 
         for (match_id, start, end) in matches:
             for token in doc[start:end]:
-                token._.is_org_unit = True
+                token._.is_org_unit = match_id == ORG_UNIT
+                token._.is_per_prefix = match_id == PER_PREFIX
 
         return doc
 
