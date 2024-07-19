@@ -110,6 +110,15 @@ function createSVG(data, identifier) {
         rect.setAttribute('fill', "white")
         rect.setAttribute('stroke-width', 1)
         svg.appendChild(rect);
+
+        const text = document.createElementNS(svgNamespace, 'text');
+        text.setAttribute('x', bbox[0] + 5);
+        text.setAttribute('y', bbox[1] + 20);
+        text.setAttribute('font-family', 'Arial');
+        text.setAttribute('font-size', '6');
+        text.setAttribute('fill', 'black');
+        text.textContent = item.name;
+        svg.appendChild(text);
     })
 
     // Append the SVG to the container
