@@ -1,7 +1,8 @@
 import argparse
-from concurrent.futures import as_completed, ThreadPoolExecutor
+from concurrent.futures import as_completed, Executor, ThreadPoolExecutor
 import json
 from queue import Queue
+from typing import Iterator
 
 from organigram_extract import Document, Drawing, TextPipeline
 import organigram_extract.pdf as pdf
@@ -17,40 +18,41 @@ def run():
     worker_threads = 8
 
     with ThreadPoolExecutor(max_workers=worker_threads) as executor:
-        task_queue = Queue(1)
+        process(executor, pdf.open(args.filename))
 
-        # Process all text in a separate thread
-        #
-        # The text pipeline components are created once to avoid using too
-        # much memory accidentally.
-        text_processing = executor.submit(process_text, task_queue)
+def process(executor: Executor, drawings: Iterator[Drawing]):
+    task_queue = Queue(1)
 
-        tasks = [executor.submit(process_drawing, id, drawing, task_queue)
-                 for (id, drawing) in enumerate(pdf.open(args.filename))]
+    # Process all text in a separate thread
+    #
+    # The text pipeline components are created once to avoid using too
+    # much memory accidentally.
+    text_processing = executor.submit(process_text, task_queue)
 
-        for future in as_completed(tasks):
-            results = future.result()
-            print("=========")
-            print(json.dumps(results))
+    tasks = [executor.submit(process_drawing, id, drawing, task_queue)
+             for (id, drawing) in enumerate(drawings)]
 
-        # Shutdown text processing thread
-        task_queue.put(None)
-        text_processing.result()
+    for future in as_completed(tasks):
+        results = future.result()
+        print("=========")
+        print(json.dumps(results))
+
+    # Shutdown text processing thread
+    task_queue.put(None)
+    text_processing.result()
 
 def process_drawing(id: int, drawing: Drawing, task_queue: Queue):
     document = Document.extract(drawing)
-    inputs = tuple(document.text_contents.values())
 
-    if len(inputs) == 0:
+    if len(document.text_blocks) == 0:
         return []
 
+    inputs = tuple(document.text_contents.values())
     oneshot = Queue(1)
 
     task_queue.put((oneshot, inputs))
 
     outputs = oneshot.get()
-    oneshot.task_done()
-
     results = list()
 
     for (rect, output) in zip(document.text_blocks.keys(), outputs):
