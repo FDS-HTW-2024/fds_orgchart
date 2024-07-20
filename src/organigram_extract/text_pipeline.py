@@ -34,7 +34,7 @@ class TextPipeline:
         ruler = nlp.add_pipe("span_ruler", config=config)
         ruler.add_patterns([
             {"label": "ORG", "pattern": [
-                {"_": {"is_org_unit": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
+                {"_": {"is_org_type": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
             ]},
             {"label": "PER", "pattern": [
                 {"_": {"is_per_prefix": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
@@ -63,7 +63,7 @@ class TextPipeline:
             # TODO: Find more elegant solution to collapse spans
             for ent in doc.spans["ruler"]:
                 for token in ent:
-                    if ent.label == ORG and token._.is_org_unit and result["type"] == None:
+                    if ent.label == ORG and token._.is_org_type and result["type"] == None:
                         result["type"] = token.lemma_
                         result["name"] = ent.text
                         break
@@ -204,21 +204,21 @@ def line_break_resolver(nlp: Language, name: str, validate: bool):
 
 @Language.factory("org_entity_marker")
 def org_entity_marker(nlp: Language, name: str, validate: bool):
-    Token.set_extension("is_org_unit", default=False)
+    Token.set_extension("is_org_type", default=False)
     Token.set_extension("is_per_prefix", default=False)
 
     term_matcher = PhraseMatcher(nlp.vocab, attr="LEMMA", validate=validate)
 
     with nlp.select_pipes(enable=["lemmatizer"]):
-        with open(DATA_PATH / "org_units") as file:
+        with open(DATA_PATH / "org_types") as file:
             patterns = [nlp(line.rstrip()) for line in file]
-            term_matcher.add("ORG_UNIT", patterns)
+            term_matcher.add("ORG_TYPE", patterns)
 
         with open(DATA_PATH / "per_prefixes") as file:
             patterns = [nlp(line.rstrip()) for line in file]
             term_matcher.add("PER_PREFIX", patterns)
 
-    ORG_UNIT = nlp.vocab["ORG_UNIT"]
+    ORG_TYPE = nlp.vocab["ORG_TYPE"]
     PER_PREFIX = nlp.vocab["PER_PREFIX"]
 
     def mark(doc):
@@ -226,7 +226,7 @@ def org_entity_marker(nlp: Language, name: str, validate: bool):
 
         for (match_id, start, end) in matches:
             for token in doc[start:end]:
-                token._.is_org_unit = match_id == ORG_UNIT
+                token._.is_org_type = match_id == ORG_TYPE
                 token._.is_per_prefix = match_id == PER_PREFIX
 
         return doc
