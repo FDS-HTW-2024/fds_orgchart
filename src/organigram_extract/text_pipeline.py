@@ -1,15 +1,19 @@
 from dataclasses import dataclass
 import itertools
 import json
+import os
 from importlib import resources
 from typing import Any, Iterator, Optional
 
+import llm
+from llm import Model
 import spacy
 from spacy.language import Language
 from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
 from spacy.tokens import Doc, Token
 
+from organigram_extract.semantic_analysis import extract_from_content
 from . import data
 
 DATA_PATH = resources.files(data)
@@ -17,8 +21,23 @@ DATA_PATH = resources.files(data)
 @dataclass(slots=True)
 class TextPipeline:
     nlp: Language
+    model: Model
+    schema: dict[Any, Any]
 
     def __init__(self, config: dict[str, Any] = {"validate": True}):
+        print("Init text pipeline...")
+        validate = config.get("validate", False)
+        model_name = config.get("model")
+        schema_path = config.get("schema_file")
+
+        model = llm.get_model(model_name)
+        model.key = os.environ['API_KEY']
+
+        with open(schema_path, 'r', encoding='utf-8') as file:
+            self.schema = str(json.load(file))
+
+        self.model = model
+
         nlp = spacy.load("de_core_news_lg",
                          exclude=["morphologizer", "parser", "ner"])
 
@@ -28,10 +47,10 @@ class TextPipeline:
                 special_case = json.loads(line)
                 nlp.tokenizer.add_special_case(special_case["ORTH"], [special_case])
 
-        nlp.add_pipe("line_break_resolver", after="tagger", config=config)
-        nlp.add_pipe("org_entity_marker", config=config)
+        nlp.add_pipe("line_break_resolver", after="tagger", config={"validate": validate})
+        nlp.add_pipe("org_entity_marker", config={"validate": validate})
 
-        ruler = nlp.add_pipe("span_ruler", config=config)
+        ruler = nlp.add_pipe("span_ruler", config={"validate": validate})
         ruler.add_patterns([
             {"label": "ORG", "pattern": [
                 {"_": {"is_org_type": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
@@ -47,39 +66,45 @@ class TextPipeline:
         self.nlp = nlp
 
     def process(self, texts: Iterator[str]):
-        ORG = self.nlp.vocab["ORG"]
-        PER = self.nlp.vocab["PER"]
+        # ORG = self.nlp.vocab["ORG"]
+        # PER = self.nlp.vocab["PER"]
 
-        for doc in self.nlp.pipe(texts):
-            result = {
-                "type": None,
-                "name": None,
-                "persons": [],
-                "responsibilities": []
-            }
+        # for doc in self.nlp.pipe(texts):
+        #     result = {
+        #         "type": None,
+        #         "name": None,
+        #         "persons": [],
+        #         "responsibilities": []
+        #     }
 
-            start = 0
-            end = 0
-            # TODO: Find more elegant solution to collapse spans
-            for ent in doc.spans["ruler"]:
-                for token in ent:
-                    if ent.label == ORG and token._.is_org_type and result["type"] == None:
-                        result["type"] = token.lemma_
-                        result["name"] = ent.text
-                        break
+        #     start = 0
+        #     end = 0
+        #     # TODO: Find more elegant solution to collapse spans
+        #     for ent in doc.spans["ruler"]:
+        #         for token in ent:
+        #             if ent.label == ORG and token._.is_org_type and result["type"] == None:
+        #                 result["type"] = token.lemma_
+        #                 result["name"] = ent.text
+        #                 break
 
-                    if ent.label == PER and token._.is_per_prefix:
-                        if start == ent.start and end < ent.end:
-                            result["persons"][-1]["name"] = ent.text
-                        elif end <= ent.start:
-                            result["persons"].append({
-                                "name": ent.text,
-                                "positionType": token.text,
-                            })
-                        start = ent.start
-                        end = ent.end
-                        break
+        #             if ent.label == PER and token._.is_per_prefix:
+        #                 if start == ent.start and end < ent.end:
+        #                     result["persons"][-1]["name"] = ent.text
+        #                 elif end <= ent.start:
+        #                     result["persons"].append({
+        #                         "name": ent.text,
+        #                         "positionType": token.text,
+        #                     })
+        #                 start = ent.start
+        #                 end = ent.end
+        #                 break
 
+        #     yield result
+
+        content = [doc.text for doc in self.nlp.pipe(texts)]
+
+        # TODO: Use parse node
+        for result in extract_from_content(self.model, content, self.schema):
             yield result
 
 @Language.factory("line_break_resolver")
