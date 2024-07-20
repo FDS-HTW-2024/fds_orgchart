@@ -2,6 +2,7 @@ import argparse
 from concurrent.futures import as_completed, Executor, ThreadPoolExecutor
 import json
 from queue import Queue
+import sys
 from typing import Iterator
 
 from organigram_extract import Document, Drawing, TextPipeline
@@ -18,7 +19,9 @@ def run():
     worker_threads = 8
 
     with ThreadPoolExecutor(max_workers=worker_threads) as executor:
-        process(executor, pdf.open(args.filename))
+        results = process(executor, pdf.open(args.filename))
+        content = {index:result for (index, result) in enumerate(results)}
+        json.dump(content, sys.stdout, ensure_ascii=False)
 
 def process(executor: Executor, drawings: Iterator[Drawing]):
     task_queue = Queue(1)
@@ -29,19 +32,16 @@ def process(executor: Executor, drawings: Iterator[Drawing]):
     # much memory accidentally.
     text_processing = executor.submit(process_text, task_queue)
 
-    tasks = [executor.submit(process_drawing, id, drawing, task_queue)
-             for (id, drawing) in enumerate(drawings)]
+    tasks = executor.map(lambda d: process_drawing(d, task_queue), drawings)
 
-    for future in as_completed(tasks):
-        results = future.result()
-        print("=========")
-        print(json.dumps(results, ensure_ascii=False))
+    for result in tasks:
+        yield result
 
     # Shutdown text processing thread
     task_queue.put(None)
     text_processing.result()
 
-def process_drawing(id: int, drawing: Drawing, task_queue: Queue):
+def process_drawing(drawing: Drawing, task_queue: Queue):
     document = Document.extract(drawing)
 
     if len(document.text_blocks) == 0:
@@ -53,14 +53,9 @@ def process_drawing(id: int, drawing: Drawing, task_queue: Queue):
     task_queue.put((oneshot, inputs))
 
     outputs = oneshot.get()
-    results = list()
+    content = [output for output in outputs if output["type"] != None or 0 < len(output["persons"])]
 
-    for (rect, output) in zip(document.text_blocks.keys(), outputs):
-        if  0 < len(output):
-            output["bbox"] = document.rects[rect]
-            results.append(output)
-
-    return results
+    return {"content": content}
 
 def process_text(task_queue: Queue):
     pipeline = TextPipeline()

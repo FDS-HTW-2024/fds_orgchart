@@ -18,7 +18,7 @@ DATA_PATH = resources.files(data)
 class TextPipeline:
     nlp: Language
 
-    def __init__(self, config: dict[str, Any] = {}):
+    def __init__(self, config: dict[str, Any] = {"validate": True}):
         nlp = spacy.load("de_core_news_lg",
                          exclude=["morphologizer", "parser", "ner"])
 
@@ -28,15 +28,15 @@ class TextPipeline:
                 special_case = json.loads(line)
                 nlp.tokenizer.add_special_case(special_case["ORTH"], [special_case])
 
-        nlp.add_pipe("line_break_resolver")
-        nlp.add_pipe("org_entity_marker")
+        nlp.add_pipe("line_break_resolver", after="tagger", config=config)
+        nlp.add_pipe("org_entity_marker", config=config)
 
-        ruler = nlp.add_pipe("entity_ruler", validate=True)
+        ruler = nlp.add_pipe("span_ruler", config=config)
         ruler.add_patterns([
             {"label": "ORG", "pattern": [
                 {"_": {"is_org_unit": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
             ]},
-            {"label": "ORG", "pattern": [
+            {"label": "PER", "pattern": [
                 {"_": {"is_per_prefix": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
             ]},
         ])
@@ -47,6 +47,9 @@ class TextPipeline:
         self.nlp = nlp
 
     def process(self, texts: Iterator[str]):
+        ORG = self.nlp.vocab["ORG"]
+        PER = self.nlp.vocab["PER"]
+
         for doc in self.nlp.pipe(texts):
             result = {
                 "type": None,
@@ -55,22 +58,32 @@ class TextPipeline:
                 "responsibilities": []
             }
 
-            for ent in doc.ents:
+            start = 0
+            end = 0
+            # TODO: Find more elegant solution to collapse spans
+            for ent in doc.spans["ruler"]:
                 for token in ent:
-                    if token._.is_org_unit:
-                        result["type"] = token.text
+                    if ent.label == ORG and token._.is_org_unit and result["type"] == None:
+                        result["type"] = token.lemma_
                         result["name"] = ent.text
+                        break
 
-                    if token._.is_per_prefix:
-                        result["persons"].append({
-                            "name": ent.text,
-                            "positionType": token.text,
-                        })
+                    if ent.label == PER and token._.is_per_prefix:
+                        if start == ent.start and end < ent.end:
+                            result["persons"][-1]["name"] = ent.text
+                        elif end <= ent.start:
+                            result["persons"].append({
+                                "name": ent.text,
+                                "positionType": token.text,
+                            })
+                        start = ent.start
+                        end = ent.end
+                        break
 
             yield result
 
 @Language.factory("line_break_resolver")
-def line_break_resolver(nlp: Language, name: str):
+def line_break_resolver(nlp: Language, name: str, validate: bool):
     # https://www.ims.uni-stuttgart.de/documents/ressourcen/korpora/tiger-corpus/annotation/tiger_scheme-syntax.pdf
     MODIFIER = ["ADJA", "ADJD", "ADV"]
     JUNCTIONS = ["KOKOM", "KON", "KOUI", "KOUS"]
@@ -81,7 +94,7 @@ def line_break_resolver(nlp: Language, name: str):
     STARTS_WITH_LOWER = f"^[{LATIN_LOWER_BASIC}].*"
     STARTS_WITH_UPPER = f"^[{LATIN_UPPER_BASIC}].*"
 
-    matcher = Matcher(nlp.vocab, validate=True)
+    matcher = Matcher(nlp.vocab, validate=validate)
     matcher.add("SLASH", [
         [{}, {"TEXT": "/"}, {"TEXT": "\n"}, {}],
         [{}, {"TEXT": "\n"}, {"TEXT": "/"}, {}],
@@ -190,17 +203,20 @@ def line_break_resolver(nlp: Language, name: str):
     return resolve
 
 @Language.factory("org_entity_marker")
-def org_entity_marker(nlp: Language, name: str):
+def org_entity_marker(nlp: Language, name: str, validate: bool):
     Token.set_extension("is_org_unit", default=False)
     Token.set_extension("is_per_prefix", default=False)
 
-    term_matcher = PhraseMatcher(nlp.vocab, attr="NORM", validate=True)
+    term_matcher = PhraseMatcher(nlp.vocab, attr="LEMMA", validate=validate)
 
-    with open(DATA_PATH / "org_units") as file:
-        term_matcher.add("ORG_UNIT", [nlp.make_doc(line.rstrip()) for line in file])
+    with nlp.select_pipes(enable=["lemmatizer"]):
+        with open(DATA_PATH / "org_units") as file:
+            patterns = [nlp(line.rstrip()) for line in file]
+            term_matcher.add("ORG_UNIT", patterns)
 
-    with open(DATA_PATH / "per_prefixes") as file:
-        term_matcher.add("PER_PREFIX", [nlp.make_doc(line.rstrip()) for line in file])
+        with open(DATA_PATH / "per_prefixes") as file:
+            patterns = [nlp(line.rstrip()) for line in file]
+            term_matcher.add("PER_PREFIX", patterns)
 
     ORG_UNIT = nlp.vocab["ORG_UNIT"]
     PER_PREFIX = nlp.vocab["PER_PREFIX"]
