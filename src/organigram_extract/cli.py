@@ -2,9 +2,9 @@ import argparse
 from concurrent.futures import Executor, ThreadPoolExecutor
 import json
 import os
-from queue import Queue
+from queue import SimpleQueue, Queue
 import sys
-from typing import Iterator
+from typing import Iterator, Optional
 
 from organigram_extract import Document, Drawing, TextPipeline
 import organigram_extract.pdf as pdf
@@ -13,7 +13,7 @@ def run():
     parser = argparse.ArgumentParser(prog='Organigramm Extract')
 
     parser.add_argument('input_path', help='source file for extraction')
-    parser.add_argument('-o', '--output_file', help='output file to write the extracted content')
+    parser.add_argument('-o', '--output_path', help='output file to write the extracted content')
     parser.add_argument('-m', '--model', help='llm to use for content extraction')
     parser.add_argument('-k', '--key', help='specify API Key (overwrites previously specified key)')
     parser.add_argument('-s', '--schema_file', help='path to json schema to use for parsing. Overrides default json schema',
@@ -28,27 +28,30 @@ def run():
     worker_threads = 4
 
     with ThreadPoolExecutor(max_workers=worker_threads) as executor:
-        results = process(executor, pdf.open(args.input_path), config)
-        content = {index:result for (index, result) in enumerate(results)}
-        json.dump(content, sys.stdout, ensure_ascii=False)
+        task_queue = Queue(1)
 
-def process(executor: Executor, drawings: Iterator[Drawing], config):
-    task_queue = Queue(1)
+        # Process all text in a separate thread
+        #
+        # The text pipeline components are created once to avoid using too
+        # much memory accidentally.
+        text_processing = executor.submit(process_text, task_queue, config)
 
-    # Process all text in a separate thread
-    #
-    # The text pipeline components are created once to avoid using too
-    # much memory accidentally.
-    text_processing = executor.submit(process_text, task_queue, config)
+        process_file(executor, task_queue, args.input_path, args.output_path)
 
-    tasks = executor.map(lambda d: process_drawing(d, task_queue), drawings)
+        # Shutdown text processing thread
+        task_queue.put(None)
+        text_processing.result()
 
-    for result in tasks:
-        yield result
+def process_file(executor: Executor, task_queue: Queue, input: str, output: Optional[str]):
+    drawings = pdf.open(input)
+    results = executor.map(lambda d: process_drawing(d, task_queue), drawings)
+    content = {index:result for (index, result) in enumerate(results)}
 
-    # Shutdown text processing thread
-    task_queue.put(None)
-    print(text_processing.result())
+    if output != None:
+        with open(output, "w", encoding="utf-8") as file:
+            json.dump(content, file, ensure_ascii=False)
+    else:
+        json.dump(content, sys.stdout, ensure_ascii=False, indent=4)
 
 def process_drawing(drawing: Drawing, task_queue: Queue):
     document = Document.extract(drawing)
@@ -57,7 +60,7 @@ def process_drawing(drawing: Drawing, task_queue: Queue):
         return []
 
     inputs = tuple(document.text_contents.values())
-    oneshot = Queue(1)
+    oneshot = SimpleQueue()
 
     task_queue.put((oneshot, inputs))
 
