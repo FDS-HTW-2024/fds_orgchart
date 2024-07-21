@@ -1,5 +1,5 @@
 import argparse
-from concurrent.futures import as_completed, Executor, ThreadPoolExecutor
+from concurrent.futures import Executor, ThreadPoolExecutor
 import json
 import os
 from queue import Queue
@@ -14,24 +14,21 @@ def run():
 
     parser.add_argument('input_path', help='source file for extraction')
     parser.add_argument('-o', '--output_file', help='output file to write the extracted content')
-    parser.add_argument('-m', '--model', help='llm to use for content extraction', default= "gpt-3.5-turbo")
+    parser.add_argument('-m', '--model', help='llm to use for content extraction')
     parser.add_argument('-k', '--key', help='specify API Key (overwrites previously specified key)')
     parser.add_argument('-s', '--schema_file', help='path to json schema to use for parsing. Overrides default json schema',
                        default='src/organigram_extract/default_schema.json')
 
     args = parser.parse_args()
+    config = {key:value for (key, value) in vars(args).items() if value != None}
 
-    if args.key:
-        os.environ['API_KEY'] = args.key 
+    if args.key == None and "API_KEY" in os.environ:
+        config["key"] = os.environ["API_KEY"]
 
-    if not os.environ['API_KEY']:
-        key = input('Enter API Key (will be stored as env variable): ')
-        os.environ['API_KEY'] = key
-
-    worker_threads = 8
+    worker_threads = 4
 
     with ThreadPoolExecutor(max_workers=worker_threads) as executor:
-        results = process(executor, pdf.open(args.input_path), {"model": args.model, "schema_file": args.schema_file})
+        results = process(executor, pdf.open(args.input_path), config)
         content = {index:result for (index, result) in enumerate(results)}
         json.dump(content, sys.stdout, ensure_ascii=False)
 
@@ -70,13 +67,11 @@ def process_drawing(drawing: Drawing, task_queue: Queue):
     return {"content": content}
 
 def process_text(task_queue: Queue, config):
-    pipeline = TextPipeline(config)
+    with TextPipeline(config) as pipeline:
+        for (oneshot, inputs) in iter(task_queue.get, None):
+            outputs = tuple(pipeline.process(inputs))
 
-    for (oneshot, inputs) in iter(task_queue.get, None):
-        outputs = tuple(pipeline.process(inputs))
-        print(outputs)
-
-        oneshot.put(outputs)
+            oneshot.put(outputs)
 
 # TODO: Deal with directories
 # async def parse(input_path: str, output_file: str, model_name: str, schema_path: str):

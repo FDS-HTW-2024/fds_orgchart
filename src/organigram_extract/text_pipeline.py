@@ -1,43 +1,31 @@
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 import itertools
 import json
-import os
 from importlib import resources
 from typing import Any, Iterator, Optional
 
-import llm
-from llm import Model
 import spacy
 from spacy.language import Language
 from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
 from spacy.tokens import Doc, Token
 
-from organigram_extract.semantic_analysis import extract_from_content
+from organigram_extract.semantic_analysis import SemanticAnalysis
 from . import data
 
+DEBUG = True
 DATA_PATH = resources.files(data)
+
+Token.set_extension("is_org_type", default=False)
+Token.set_extension("is_per_prefix", default=False)
 
 @dataclass(slots=True)
 class TextPipeline:
     nlp: Language
-    model: Model
-    schema: dict[Any, Any]
+    analyser: Optional[SemanticAnalysis]
 
-    def __init__(self, config: dict[str, Any] = {"validate": True}):
-        print("Init text pipeline...")
-        validate = config.get("validate", False)
-        model_name = config.get("model")
-        schema_path = config.get("schema_file")
-
-        model = llm.get_model(model_name)
-        model.key = os.environ['API_KEY']
-
-        with open(schema_path, 'r', encoding='utf-8') as file:
-            self.schema = str(json.load(file))
-
-        self.model = model
-
+    def __init__(self, config: dict[str, Any] = {}):
         nlp = spacy.load("de_core_news_lg",
                          exclude=["morphologizer", "parser", "ner"])
 
@@ -47,10 +35,10 @@ class TextPipeline:
                 special_case = json.loads(line)
                 nlp.tokenizer.add_special_case(special_case["ORTH"], [special_case])
 
-        nlp.add_pipe("line_break_resolver", after="tagger", config={"validate": validate})
-        nlp.add_pipe("org_entity_marker", config={"validate": validate})
+        nlp.add_pipe("line_break_resolver", after="tagger")
+        nlp.add_pipe("org_entity_marker")
 
-        ruler = nlp.add_pipe("span_ruler", config={"validate": validate})
+        ruler = nlp.add_pipe("span_ruler", config={"validate": DEBUG})
         ruler.add_patterns([
             {"label": "ORG", "pattern": [
                 {"_": {"is_org_type": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
@@ -60,11 +48,26 @@ class TextPipeline:
             ]},
         ])
 
+        self.nlp = nlp
+        self.analyser = None
+
+        if "model" in config:
+            with open(config["schema_file"], 'r', encoding='utf-8') as file:
+                schema = str(json.load(file))
+                model_name = config["model"]
+                api_key = config.get("key")
+                executor = ThreadPoolExecutor(max_workers=4)
+
+                self.analyser = SemanticAnalysis(model_name, api_key, schema, executor)
+
         print(nlp.pipe_names)
 
-        # TODO: Read config to create llm ner if available.
-        self.nlp = nlp
+    def __enter__(self):
+        return self
 
+    def __exit__(self, exception_type, exception_value, exception_traceback):
+        self.close()
+        
     def process(self, texts: Iterator[str]):
         # ORG = self.nlp.vocab["ORG"]
         # PER = self.nlp.vocab["PER"]
@@ -101,14 +104,18 @@ class TextPipeline:
 
         #     yield result
 
-        content = [doc.text for doc in self.nlp.pipe(texts)]
+        if self.analyser != None:
+            content = (doc.text for doc in self.nlp.pipe(texts))
 
-        # TODO: Use parse node
-        for result in extract_from_content(self.model, content, self.schema):
-            yield result
+            for result in self.analyser.analyse(content):
+                yield result
+
+    def close(self):
+        if self.analyser != None:
+            self.analyser.executor.shutdown()
 
 @Language.factory("line_break_resolver")
-def line_break_resolver(nlp: Language, name: str, validate: bool):
+def line_break_resolver(nlp: Language, name: str):
     # https://www.ims.uni-stuttgart.de/documents/ressourcen/korpora/tiger-corpus/annotation/tiger_scheme-syntax.pdf
     MODIFIER = ["ADJA", "ADJD", "ADV"]
     JUNCTIONS = ["KOKOM", "KON", "KOUI", "KOUS"]
@@ -119,7 +126,7 @@ def line_break_resolver(nlp: Language, name: str, validate: bool):
     STARTS_WITH_LOWER = f"^[{LATIN_LOWER_BASIC}].*"
     STARTS_WITH_UPPER = f"^[{LATIN_UPPER_BASIC}].*"
 
-    matcher = Matcher(nlp.vocab, validate=validate)
+    matcher = Matcher(nlp.vocab, validate=DEBUG)
     matcher.add("SLASH", [
         [{}, {"TEXT": "/"}, {"TEXT": "\n"}, {}],
         [{}, {"TEXT": "\n"}, {"TEXT": "/"}, {}],
@@ -228,11 +235,8 @@ def line_break_resolver(nlp: Language, name: str, validate: bool):
     return resolve
 
 @Language.factory("org_entity_marker")
-def org_entity_marker(nlp: Language, name: str, validate: bool):
-    Token.set_extension("is_org_type", default=False)
-    Token.set_extension("is_per_prefix", default=False)
-
-    term_matcher = PhraseMatcher(nlp.vocab, attr="LEMMA", validate=validate)
+def org_entity_marker(nlp: Language, name: str):
+    term_matcher = PhraseMatcher(nlp.vocab, attr="LEMMA", validate=DEBUG)
 
     with nlp.select_pipes(enable=["lemmatizer"]):
         with open(DATA_PATH / "org_types") as file:
