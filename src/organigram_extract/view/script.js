@@ -91,8 +91,8 @@ function createSVG(data, identifier) {
 
     // Create an SVG element
     const svg = document.createElementNS(svgNamespace, 'svg');
-    svg.setAttribute('width', '100%');
-    svg.setAttribute('height', '100%');
+    svg.setAttribute('width', '90%');
+    svg.setAttribute('height', '90%');
     svg.setAttribute('viewBox', '0 0 2384 1684'); //Original '0 0 2384 1684'
 
     // Example: Create rects from JSON data

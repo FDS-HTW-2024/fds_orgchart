@@ -31,6 +31,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 2em;
+    padding-top: 100px;
 }
 
 header h2 {
