@@ -17,7 +17,7 @@ function createTabs(){
                     getTabName(newTab, result.values[j])
                     newTab.id
 
-                    if(Number(newTab.id)=== 0){
+                    if(Number(newTab.id) === 0){
                         newTab.classList.add("tab_active");
                         createSVG(data, j);
                     }
@@ -29,7 +29,6 @@ function createTabs(){
                     });
 
                     tabsContainer.appendChild(newTab);
-                    createSVG(data, j);
                     drawTimeLineNode(data, timelineElement, j);
                 }
 
@@ -42,7 +41,6 @@ function createTabs(){
 }
 
 function getTabName(newTab, nameParameter){
-    document.getElementById('svgContainer').innerHTML = '';
     tabName = nameParameter;
     newTab.innerHTML = tabName;
 };
@@ -93,9 +91,9 @@ function createSVG(data, identifier) {
 
     // Create an SVG element
     const svg = document.createElementNS(svgNamespace, 'svg');
-    svg.setAttribute('width', '600');
-    svg.setAttribute('height', '500');
-    svg.setAttribute('viewBox', '0 0 2383.93994140625 1683.780029296875');
+    svg.setAttribute('width', '100%');
+    svg.setAttribute('height', '100%');
+    svg.setAttribute('viewBox', '0 0 2384 1684'); //Original '0 0 2384 1684'
 
     // Example: Create rects from JSON data
     data[identifier].content.forEach(item => {

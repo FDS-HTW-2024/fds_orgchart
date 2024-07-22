@@ -171,7 +171,7 @@ header h2 {
 .timeline-ul li:after {
     content: "";
     position: absolute;
-    width: calc(100% + 100px); /* Adjust to ensure lines are fully connected */
+    width: 100%; /* Adjust to ensure lines are fully connected */
     height: 1px;
     background-color: black;
     top: 25px;
