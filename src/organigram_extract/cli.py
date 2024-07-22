@@ -49,7 +49,7 @@ def process_file(executor: Executor, task_queue: Queue, input: str, output: Opti
 
     if output != None:
         with open(output, "w", encoding="utf-8") as file:
-            json.dump(content, file, ensure_ascii=False)
+            json.dump(content, file, ensure_ascii=False, separators=(",", ":"))
     else:
         json.dump(content, sys.stdout, ensure_ascii=False, indent=4)
 
