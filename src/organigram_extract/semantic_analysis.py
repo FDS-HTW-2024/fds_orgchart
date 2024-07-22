@@ -22,8 +22,8 @@ class SemanticAnalysis:
         self.executor = executor
 
     def analyse(self, texts: Iterator[str]):
-        return executor.map(lambda text: parse_node_llm(self.model, text, self.schema),
-                            texts)
+        return self.executor.map(lambda text: parse_node_llm(self.model, text, self.schema),
+                                 texts)
 
 def collect_values(json, collected=None):
     if collected is None:
