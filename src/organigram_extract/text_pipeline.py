@@ -1,8 +1,8 @@
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
+from importlib import resources
 import itertools
 import json
-from importlib import resources
 from typing import Any, Iterator, Optional
 
 import spacy
@@ -52,7 +52,7 @@ class TextPipeline:
         self.analyser = None
 
         if "model" in config:
-            with open(config["schema_file"], 'r', encoding='utf-8') as file:
+            with open(DATA_PATH / "schema.json", 'r', encoding='utf-8') as file:
                 schema = str(json.load(file))
                 model_name = config["model"]
                 api_key = config.get("key")

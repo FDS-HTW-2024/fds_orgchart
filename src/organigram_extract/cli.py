@@ -10,14 +10,23 @@ from organigram_extract import Document, Drawing, TextPipeline
 import organigram_extract.pdf as pdf
 
 def run():
-    parser = argparse.ArgumentParser(prog='Organigramm Extract')
+    parser = argparse.ArgumentParser(prog="Organigramm Extract")
 
-    parser.add_argument('input_path', help='source file for extraction')
-    parser.add_argument('-o', '--output_path', help='output file to write the extracted content')
-    parser.add_argument('-m', '--model', help='llm to use for content extraction')
-    parser.add_argument('-k', '--key', help='specify API Key (overwrites previously specified key)')
-    parser.add_argument('-s', '--schema_file', help='path to json schema to use for parsing. Overrides default json schema',
-                       default='src/organigram_extract/default_schema.json')
+    parser.add_argument("input_path",
+                        help="source file or directory containing source files for extraction")
+    parser.add_argument("-o", "--output_path",
+                        help="output file or directory to write the extracted content to")
+    parser.add_argument("-m", "--model",
+                        help="LLM to use for content extraction")
+    parser.add_argument("-k", "--key",
+                        help="specify API key for LLM")
+    # TODO: Implement overriding functionality
+    parser.add_argument("-d", "--data_path",
+                        help="path containing files to override data files (e.g. schema.json)")
+    parser.add_argument("-w", "--worker_threads",
+                        help="max amount of spawned threads for page extraction and LLM tasks",
+                        type=int,
+                        default=4)
 
     args = parser.parse_args()
     config = {key:value for (key, value) in vars(args).items() if value != None}
@@ -25,9 +34,7 @@ def run():
     if args.key == None and "API_KEY" in os.environ:
         config["key"] = os.environ["API_KEY"]
 
-    worker_threads = 4
-
-    with ThreadPoolExecutor(max_workers=worker_threads) as executor:
+    with ThreadPoolExecutor(max_workers=args.worker_threads) as executor:
         task_queue = Queue(1)
 
         # Process all text in a separate thread
