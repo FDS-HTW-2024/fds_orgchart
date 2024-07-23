@@ -36,7 +36,23 @@ def run():
         # much memory accidentally.
         text_processing = executor.submit(process_text, task_queue, config)
 
-        process_file(executor, task_queue, args.input_path, args.output_path)
+        input_path = args.input_path
+        output_path = args.output_path
+
+        if os.path.isfile(input_path):
+            process_file(executor, task_queue, input_path, output_path)
+        elif os.path.isdir(args.input_path):
+            for filename in os.listdir(args.input_path):
+                input_file = os.path.join(input_path, filename)
+                output_file = output_path
+
+                if output_path != None:
+                    (name, _) = os.path.splitext(filename)
+                    output_file = os.path.join(output_path, name + ".json")
+                   
+                process_file(executor, task_queue, input_file, output_file)
+        else:
+            raise FileNotFoundError()
 
         # Shutdown text processing thread
         task_queue.put(None)
@@ -75,46 +91,3 @@ def process_text(task_queue: Queue, config):
             outputs = tuple(pipeline.process(inputs))
 
             oneshot.put(outputs)
-
-# TODO: Deal with directories
-# async def parse(input_path: str, output_file: str, model_name: str, schema_path: str):
-#     model: Model = llm.get_model(model_name)
-#     model.key = os.environ['API_KEY']
-#     schema = load_json(schema_path)
-
-#     if ntpath.isfile(input_path):
-#         await extract_from_file(input_path, output_file, model, schema)
-#     elif ntpath.isdir(input_path):
-#         print("parse orgcharts from directory")
-#         for file in os.listdir(input_path):
-#             head, _ = file.split(".")
-#             out_name, ending = output_file.split(".")
-#             out_file = f"{out_name}_{head}.{ending}"
-#             await extract_from_file(file, out_file, model, schema)
-#     else:
-#         print("file path does not exists", file=sys.stderr)
-
-# async def extract_from_file(file_path: str, output_path: str, model, schema):
-#     import ntpath
-#     page = pymupdf.open(file_path)[0]
-#     (_, _, _, _, content_nodes) = extract(page)
-
-
-#     start = timeit.default_timer()
-#     extract_results = await extract_from_content(model, content_nodes, str(schema), max_concurrency=5)
-
-#     head, tail = ntpath.split(file_path)
-#     file_name = tail or ntpath.basename(head)
-#     output_json = {
-#         "fileName": file_name,
-#         "content" : extract_results
-#     }
-
-#     end = timeit.default_timer()
-#     print("took", end - start)
-
-#     if output_path:
-#         with open(output_path, 'w+', encoding='utf-8') as out:
-#             json.dump(output_json, out, ensure_ascii=False)
-#     else:
-#         print(json.dumps(output_json, ensure_ascii=False, indent=2))
