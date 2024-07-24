@@ -73,12 +73,18 @@ class Line(NamedTuple):
 
         return Point(c.x + cd_new_x, c.y + cd_new_y)
 
-@dataclass
-class TextLine:
+class TextSpan(NamedTuple):
     bbox: Rect
     text: str
 
-@dataclass
-class ContentNode:
-    bbox: Rect
-    block: list[TextLine]
+class Drawing(NamedTuple):
+    """The raw representation of an organization chart
+
+    The purpose of this data type is to abstract over PDF and make it possible
+    to ease testing and integrating with other data sources.
+    """
+    width: float
+    height: float
+    rects: list[Rect]
+    lines: list[Line]
+    text_spans: list[TextSpan]

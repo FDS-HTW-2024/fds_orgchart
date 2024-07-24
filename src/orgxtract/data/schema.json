@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": 
+      [
+          "Abteilung", "Amt", "Bezirksamt", "Büro", "Fachbereich", "Fachdienst", 
+          "Justitiariat", "Landesamt", "Landesstelle", "Leitstelle", "Leitungsstab", 
+          "Museum", "Nachgeordnete Einrichtung", "Organisationseinheit", "Referat", 
+          "Ressort", "Senatskanzlei", "Senatsverwaltung", "Serviceeinheit", 
+          "Stabsstelle", "Staatssekretär", "Unterabteilung", "Öffentliches Unternehmen"
+      ]
+  },
+    "name": {
+      "type": "string"
+    },
+    "persons": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "positionType": {
+              "enum": [
+                "MR", "MDg", "MDG'in", "N.N.", "MD'in", "OAR", "OAR'in",
+                "RD", "RD'in", "LMR", "LMR'in", "RR'in", "Hr.", "Fr.",
+                "RD", "TB", "Herr", "Frau", "Fräulein", "Dr.", "Prof.", 
+                "Mag.", "Dipl.-Ing.", "Dr. Med.", "Dr. med. vet.", "Lt.",
+                "Hptm.", "Oberst" ]
+            },
+            "contact": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name"
+          ]
+        }
+      ]
+    },
+    "responsibilities": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "required": [
+    "persons"
+  ]
+}
