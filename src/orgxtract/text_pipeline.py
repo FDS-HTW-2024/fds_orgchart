@@ -10,6 +10,7 @@ import spacy
 from spacy.language import Language
 from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
+from spacy.pipeline import SpanRuler
 from spacy.tokens import Doc, Token
 
 from orgxtract.semantic_analysis import SemanticAnalysis
@@ -43,16 +44,6 @@ class TextPipeline:
 
         nlp.add_pipe("line_break_resolver", after="tagger")
         nlp.add_pipe("org_entity_marker", config={"data_path": data_path})
-
-        ruler = nlp.add_pipe("span_ruler", config={"validate": DEBUG})
-        ruler.add_patterns([
-            {"label": "ORG", "pattern": [
-                {"_": {"is_org_type": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
-            ]},
-            {"label": "PER", "pattern": [
-                {"_": {"is_per_prefix": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
-            ]},
-        ])
 
         self.nlp = nlp
         self.analyser = None
@@ -230,13 +221,25 @@ def org_entity_marker(nlp: Language, name: str, data_path: Optional[str]):
     ORG_TYPE = nlp.vocab["ORG_TYPE"]
     PER_PREFIX = nlp.vocab["PER_PREFIX"]
 
-    def mark(doc):
-        matches = term_matcher(doc)
+    entity_matcher = SpanRuler(nlp, name, annotate_ents=True, validate=DEBUG)
+    entity_matcher.add_patterns([
+        {"label": "ORG", "pattern": [
+            {"_": {"is_org_type": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
+        ]},
+        {"label": "PER", "pattern": [
+            {"_": {"is_per_prefix": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
+        ]},
+    ])
 
-        for (match_id, start, end) in matches:
+    def mark(doc):
+        term_matches = term_matcher(doc)
+
+        for (match_id, start, end) in term_matches:
             for token in doc[start:end]:
                 token._.is_org_type = match_id == ORG_TYPE
                 token._.is_per_prefix = match_id == PER_PREFIX
+
+        doc = entity_matcher(doc)
 
         return doc
 
