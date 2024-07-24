@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from importlib import resources
 import itertools
 import json
+import os
 from typing import Any, Iterator, Optional
 
 import spacy
@@ -15,7 +16,6 @@ from organigram_extract.semantic_analysis import SemanticAnalysis
 from . import data
 
 DEBUG = True
-DATA_PATH = resources.files(data)
 
 Token.set_extension("is_org_type", default=False)
 Token.set_extension("is_per_prefix", default=False)
@@ -25,18 +25,22 @@ class TextPipeline:
     nlp: Language
     analyser: Optional[SemanticAnalysis]
 
-    def __init__(self, config: dict[str, Any] = {}):
+    def __init__(
+            self,
+            data_path: Optional[str] = None,
+            llm_model: Optional[str] = None,
+            llm_key: Optional[str] = None):
         nlp = spacy.load("de_core_news_lg",
                          exclude=["morphologizer", "parser", "ner"])
 
         # There are many abbreviations for common words.
-        with open(DATA_PATH / "special_cases.jsonl") as file:
+        with open_resource(data_path, "special_cases.jsonl") as file:
             for line in file:
                 special_case = json.loads(line)
                 nlp.tokenizer.add_special_case(special_case["ORTH"], [special_case])
 
         nlp.add_pipe("line_break_resolver", after="tagger")
-        nlp.add_pipe("org_entity_marker")
+        nlp.add_pipe("org_entity_marker", config={"data_path": data_path})
 
         ruler = nlp.add_pipe("span_ruler", config={"validate": DEBUG})
         ruler.add_patterns([
@@ -51,14 +55,12 @@ class TextPipeline:
         self.nlp = nlp
         self.analyser = None
 
-        if "model" in config:
-            with open(DATA_PATH / "schema.json", 'r', encoding='utf-8') as file:
+        if llm_model != None:
+            with open_resource(data_path, "schema.json") as file:
                 schema = str(json.load(file))
-                model_name = config["model"]
-                api_key = config.get("key")
                 executor = ThreadPoolExecutor(max_workers=4)
 
-                self.analyser = SemanticAnalysis(model_name, api_key, schema, executor)
+                self.analyser = SemanticAnalysis(llm_model, llm_key, schema, executor)
 
         print(nlp.pipe_names)
 
@@ -235,15 +237,15 @@ def line_break_resolver(nlp: Language, name: str):
     return resolve
 
 @Language.factory("org_entity_marker")
-def org_entity_marker(nlp: Language, name: str):
+def org_entity_marker(nlp: Language, name: str, data_path: Optional[str]):
     term_matcher = PhraseMatcher(nlp.vocab, attr="LEMMA", validate=DEBUG)
 
     with nlp.select_pipes(enable=["lemmatizer"]):
-        with open(DATA_PATH / "org_types") as file:
+        with open_resource(data_path, "org_types") as file:
             patterns = [nlp(line.rstrip()) for line in file]
             term_matcher.add("ORG_TYPE", patterns)
 
-        with open(DATA_PATH / "per_prefixes") as file:
+        with open_resource(data_path, "per_prefixes") as file:
             patterns = [nlp(line.rstrip()) for line in file]
             term_matcher.add("PER_PREFIX", patterns)
 
@@ -261,3 +263,20 @@ def org_entity_marker(nlp: Language, name: str):
         return doc
 
     return mark
+
+def open_resource(data_path: Optional[str], resource: str):
+    if data_path != None:
+        try:
+            return open_resource_from_path(data_path, resource)
+        except:
+            return open_resource_from_package(resource)
+
+    return open_resource_from_package(resource)
+            
+def open_resource_from_package(resource: str):
+    data_resource = resources.files(data) / resource
+    return data_resource.open(mode="r", encoding="utf-8")
+
+def open_resource_from_path(data_path: str, resource: str):
+    path = os.path.join(data_path, resource)
+    return open(path, mode="r", encoding="utf-8")

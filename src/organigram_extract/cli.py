@@ -20,7 +20,6 @@ def run():
                         help="LLM to use for content extraction")
     parser.add_argument("-k", "--key",
                         help="specify API key for LLM")
-    # TODO: Implement overriding functionality
     parser.add_argument("-d", "--data_path",
                         help="path containing files to override data files (e.g. schema.json)")
     parser.add_argument("-w", "--worker_threads",
@@ -93,7 +92,9 @@ def process_drawing(drawing: Drawing, task_queue: Queue):
     return {"content": content}
 
 def process_text(task_queue: Queue, config):
-    with TextPipeline(config) as pipeline:
+    with TextPipeline(data_path=config.get("data_path"),
+                      llm_model=config.get("model"),
+                      llm_key=config.get("key")) as pipeline:
         for (oneshot, inputs) in iter(task_queue.get, None):
             outputs = tuple(pipeline.process(inputs))
 
