@@ -18,7 +18,7 @@ pipenv run python -m spacy download de_core_news_lg
 
 This package contains a command line tool. It can be executed by running it as script.
 ```
-pipenv run python -m organigram_extract path/to/intput -o out.json
+pipenv run python -m orgxtract path/to/input -o path/to/output.json
 ```
 Use `--help` to see all parameters
 

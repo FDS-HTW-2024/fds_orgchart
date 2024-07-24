@@ -6,8 +6,8 @@ from queue import SimpleQueue, Queue
 import sys
 from typing import Iterator, Optional
 
-from organigram_extract import Document, Drawing, TextPipeline
-import organigram_extract.pdf as pdf
+from orgxtract import Document, Drawing, TextPipeline
+import orgxtract.pdf as pdf
 
 def run():
     parser = argparse.ArgumentParser(prog="Organigramm Extract")

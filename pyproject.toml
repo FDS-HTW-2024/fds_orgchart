@@ -1,14 +1,14 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "organigram_extract"
+name = "orgxtract"
 version = "0.0.1"
 requires-python = ">= 3.12"
 dependencies = [
-    "pymupdf>=1",
-    "spacy",
-    "llm",
-    "fix-busted-json",
+    "pymupdf>=1.24.8",
+    "spacy>=3.7.5",
+    "llm>=0.15.0",
+    "fix-busted-json>=0.0.18",
 ]

@@ -3,7 +3,7 @@ from collections import defaultdict
 from sys import float_info
 from typing import Self, NamedTuple
 
-from organigram_extract.drawing import Drawing, Line, Point, Rect, TextSpan
+from orgxtract.drawing import Drawing, Line, Point, Rect, TextSpan
 
 class Document(NamedTuple):
     # The cleaned and de-duplicated data from Drawing.

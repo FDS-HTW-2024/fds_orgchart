@@ -12,7 +12,7 @@ from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
 from spacy.tokens import Doc, Token
 
-from organigram_extract.semantic_analysis import SemanticAnalysis
+from orgxtract.semantic_analysis import SemanticAnalysis
 from . import data
 
 DEBUG = True

@@ -1,3 +1,0 @@
-from organigram_extract.drawing import Drawing
-from organigram_extract.document import Document
-from organigram_extract.text_pipeline import TextPipeline

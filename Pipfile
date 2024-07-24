@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-organigram-extract = {file = ".", editable = true}
+orgxtract = {file = ".", editable = true}
 
 [dev-packages]
 
