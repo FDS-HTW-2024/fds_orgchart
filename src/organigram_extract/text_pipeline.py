@@ -1,4 +1,4 @@
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import Executor, ThreadPoolExecutor
 from dataclasses import dataclass
 from importlib import resources
 import itertools
@@ -24,12 +24,14 @@ Token.set_extension("is_per_prefix", default=False)
 class TextPipeline:
     nlp: Language
     analyser: Optional[SemanticAnalysis]
+    executor: Optional[Executor]
 
     def __init__(
             self,
             data_path: Optional[str] = None,
             llm_model: Optional[str] = None,
-            llm_key: Optional[str] = None):
+            llm_key: Optional[str] = None,
+            n_threads: Optional[int] = None):
         nlp = spacy.load("de_core_news_lg",
                          exclude=["morphologizer", "parser", "ner"])
 
@@ -54,13 +56,16 @@ class TextPipeline:
 
         self.nlp = nlp
         self.analyser = None
+        self.executor = None
 
         if llm_model != None:
             with open_resource(data_path, "schema.json") as file:
                 schema = str(json.load(file))
-                executor = ThreadPoolExecutor(max_workers=4)
 
-                self.analyser = SemanticAnalysis(llm_model, llm_key, schema, executor)
+                if n_threads != None and 0 < n_threads:
+                    self.executor = ThreadPoolExecutor(max_workers=n_threads)
+
+                self.analyser = SemanticAnalysis(llm_model, llm_key, schema)
 
         print(nlp.pipe_names)
 
@@ -71,50 +76,23 @@ class TextPipeline:
         self.close()
         
     def process(self, texts: Iterator[str]):
-        # ORG = self.nlp.vocab["ORG"]
-        # PER = self.nlp.vocab["PER"]
+        def run_analyser(content):
+            (text, ents) = content
+            return self.analyser.analyse(text, ents)
 
-        # for doc in self.nlp.pipe(texts):
-        #     result = {
-        #         "type": None,
-        #         "name": None,
-        #         "persons": [],
-        #         "responsibilities": []
-        #     }
+        contents = (sort_ents(doc) for doc in self.nlp.pipe(texts, n_process=1))
 
-        #     start = 0
-        #     end = 0
-        #     # TODO: Find more elegant solution to collapse spans
-        #     for ent in doc.spans["ruler"]:
-        #         for token in ent:
-        #             if ent.label == ORG and token._.is_org_type and result["type"] == None:
-        #                 result["type"] = token.lemma_
-        #                 result["name"] = ent.text
-        #                 break
-
-        #             if ent.label == PER and token._.is_per_prefix:
-        #                 if start == ent.start and end < ent.end:
-        #                     result["persons"][-1]["name"] = ent.text
-        #                 elif end <= ent.start:
-        #                     result["persons"].append({
-        #                         "name": ent.text,
-        #                         "positionType": token.text,
-        #                     })
-        #                 start = ent.start
-        #                 end = ent.end
-        #                 break
-
-        #     yield result
-
-        if self.analyser != None:
-            content = (doc.text for doc in self.nlp.pipe(texts))
-
-            for result in self.analyser.analyse(content):
-                yield result
+        if self.analyser != None:    
+            if self.executor != None:
+                return self.executor.map(run_analyser, contents)
+            else:
+                return map(run_analyser, contents)
+        else:
+            return ((None, ents) for (_, ents) in contents)
 
     def close(self):
-        if self.analyser != None:
-            self.analyser.executor.shutdown()
+        if self.executor != None:
+            self.executor.shutdown(cancel_futures=True)
 
 @Language.factory("line_break_resolver")
 def line_break_resolver(nlp: Language, name: str):
@@ -263,6 +241,10 @@ def org_entity_marker(nlp: Language, name: str, data_path: Optional[str]):
         return doc
 
     return mark
+
+# TODO: Convert doc.ents to a record
+def sort_ents(doc):
+    return (doc.text, {})
 
 def open_resource(data_path: Optional[str], resource: str):
     if data_path != None:

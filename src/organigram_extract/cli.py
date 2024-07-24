@@ -87,14 +87,16 @@ def process_drawing(drawing: Drawing, task_queue: Queue):
     task_queue.put((oneshot, inputs))
 
     outputs = oneshot.get()
-    content = [output for output in outputs if output["type"] != None or 0 < len(output["persons"])]
+    # TODO: Log exceptions
+    content = [output for (_, output) in outputs if 0 < len(output)]
 
     return {"content": content}
 
 def process_text(task_queue: Queue, config):
     with TextPipeline(data_path=config.get("data_path"),
                       llm_model=config.get("model"),
-                      llm_key=config.get("key")) as pipeline:
+                      llm_key=config.get("key"),
+                      n_threads=config.get("worker_threads")) as pipeline:
         for (oneshot, inputs) in iter(task_queue.get, None):
             outputs = tuple(pipeline.process(inputs))
 
