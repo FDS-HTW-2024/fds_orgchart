@@ -5,14 +5,13 @@ import itertools
 import json
 import os
 from typing import Any, Iterator, Optional
-import warnings
 
 import spacy
 from spacy.language import Language
 from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
-from spacy.pipeline import SpanRuler
-from spacy.tokens import Doc, Token
+from spacy.pipeline import EntityRuler
+from spacy.tokens import Doc, Span, Token
 
 from orgxtract.semantic_analysis import SemanticAnalysis
 from . import data
@@ -284,20 +283,18 @@ def org_entity_marker(nlp: Language, name: str, data_path: Optional[str]):
         patterns += [nlp.make_doc(line.rstrip()) for line in abbr]
         term_matcher.add("PER_POST", patterns)
 
+    term_matcher.add("PER", [nlp.make_doc("N.N."), nlp.make_doc("N. N.")])
+
     ORG_TYPE = nlp.vocab["ORG_TYPE"]
     PER_PREFIX = nlp.vocab["PER_PREFIX"]
     PER_POST = nlp.vocab["PER_POST"]
+    PER = nlp.vocab["PER"]
 
-    entity_matcher = SpanRuler(nlp, name, annotate_ents=True, validate=DEBUG)
-    # N.N. is such a tiny special case where we match text directly, we can
-    # just ignore the warning.
-    warnings.filterwarnings("ignore", message=r"\[W012\]", category=UserWarning)
+    entity_matcher = EntityRuler(nlp, name, overwrite_ents=False, validate=DEBUG)
     entity_matcher.add_patterns([
         {"label": "ORG", "pattern": [
             {"_": {"is_org_type": True}}, {"TAG": "_SP", "OP": "?"}, {"POS": {"IN": ["NOUN", "PROPN", "NUM", "X"]}, "OP": "+"}
         ]},
-        {"label": "PER", "pattern": "N.N."},
-        {"label": "PER", "pattern": "N. N."},
         {"label": "PER", "pattern": [
             {"_": {"is_per": True}, "OP": "+"}, {"POS": {"IN": ["NOUN", "PROPN"]}, "OP": "+"}
         ]},
@@ -308,8 +305,13 @@ def org_entity_marker(nlp: Language, name: str, data_path: Optional[str]):
 
     def mark(doc):
         term_matches = term_matcher(doc)
+        unnamed_persons = []
 
         for (match_id, start, end) in term_matches:
+            if match_id == PER:
+                unnamed_persons.append(Span(doc, start, end, "PER"))
+                continue
+
             is_org_type = match_id == ORG_TYPE
             is_per_prefix = match_id == PER_PREFIX
             is_per_post = match_id == PER_POST
@@ -318,6 +320,8 @@ def org_entity_marker(nlp: Language, name: str, data_path: Optional[str]):
                 token._.is_org_type = is_org_type
                 token._.is_per_prefix = is_per_prefix
                 token._.is_per_post = is_per_post
+
+        doc.set_ents(unnamed_persons)
 
         doc = entity_matcher(doc)
 
@@ -367,6 +371,17 @@ def sort_ents(doc):
 
             content["persons"].append(person)
 
+    if content["type"] == None:
+        i = 0
+        for token in doc:
+            if token._.is_org_type:
+                i += 1
+            else:
+                break
+
+        if 0 < i:
+            content["type"] = doc[:i].text
+            
     return (doc.text, content)
 
 def open_resource(data_path: Optional[str], resource: str):
