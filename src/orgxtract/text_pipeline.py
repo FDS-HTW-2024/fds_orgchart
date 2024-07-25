@@ -31,7 +31,7 @@ class TextPipeline:
             llm_model: Optional[str] = None,
             llm_key: Optional[str] = None,
             n_threads: Optional[int] = None):
-        nlp = spacy.load("de_core_news_lg",
+        nlp = spacy.load("de_core_news_md",
                          exclude=["lemmatizer", "parser", "ner"])
 
         # There are many abbreviations for common words.

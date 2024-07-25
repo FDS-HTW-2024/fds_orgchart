@@ -11,14 +11,16 @@ pipenv install -e .
 
 Install the spacy German model.
 ```
-pipenv run python -m spacy download de_core_news_lg
+pipenv run python -m spacy download de_core_news_md
 ```
 
 ## CLI
 
 This package contains a command line tool. It can be executed by running it as script.
+
+The input can be either a PDF or a directory containing multiple PDFs.
 ```
-pipenv run python -m orgxtract path/to/input -o path/to/output.json
+pipenv run python -m orgxtract path/to/input -o path/to/output
 ```
 Use `--help` to see all parameters
 
