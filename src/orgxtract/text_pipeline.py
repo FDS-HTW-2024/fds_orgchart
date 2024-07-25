@@ -5,20 +5,19 @@ import itertools
 import json
 import os
 from typing import Any, Iterator, Optional
+import warnings
 
 import spacy
 from spacy.language import Language
 from spacy.lang.char_classes import LATIN_LOWER_BASIC, LATIN_UPPER_BASIC
 from spacy.matcher import Matcher, PhraseMatcher
+from spacy.pipeline import SpanRuler
 from spacy.tokens import Doc, Token
 
 from orgxtract.semantic_analysis import SemanticAnalysis
 from . import data
 
 DEBUG = True
-
-Token.set_extension("is_org_type", default=False)
-Token.set_extension("is_per_prefix", default=False)
 
 @dataclass(slots=True)
 class TextPipeline:
@@ -32,8 +31,8 @@ class TextPipeline:
             llm_model: Optional[str] = None,
             llm_key: Optional[str] = None,
             n_threads: Optional[int] = None):
-        nlp = spacy.load("de_core_news_lg",
-                         exclude=["morphologizer", "parser", "ner"])
+        nlp = spacy.load("de_core_news_md",
+                         exclude=["lemmatizer", "parser", "ner"])
 
         # There are many abbreviations for common words.
         with open_resource(data_path, "special_cases.jsonl") as file:
@@ -41,18 +40,9 @@ class TextPipeline:
                 special_case = json.loads(line)
                 nlp.tokenizer.add_special_case(special_case["ORTH"], [special_case])
 
+        nlp.add_pipe("token_normalizer", after="tok2vec")
         nlp.add_pipe("line_break_resolver", after="tagger")
         nlp.add_pipe("org_entity_marker", config={"data_path": data_path})
-
-        ruler = nlp.add_pipe("span_ruler", config={"validate": DEBUG})
-        ruler.add_patterns([
-            {"label": "ORG", "pattern": [
-                {"_": {"is_org_type": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
-            ]},
-            {"label": "PER", "pattern": [
-                {"_": {"is_per_prefix": True}}, {"TAG": {"NOT_IN": ["_SP"]}, "OP": "+"}
-            ]},
-        ])
 
         self.nlp = nlp
         self.analyser = None
@@ -93,6 +83,62 @@ class TextPipeline:
     def close(self):
         if self.executor != None:
             self.executor.shutdown(cancel_futures=True)
+
+@Language.factory("token_normalizer")
+def token_normalizer(nlp: Language, name: str):
+    matcher = Matcher(nlp.vocab, validate=DEBUG)
+    # Female posts do have the suffix 'in but like many things it was never
+    # standardized and we got organigrams with 'n.
+    matcher.add("APOSTROPHE", [
+        [{}, {"NORM": "'"}, {}],
+        [{}, {"TEXT": "’n"}]
+    ])
+
+    def normalize(doc):
+        matches = matcher(doc)
+
+        if len(matches) == 0:
+            return doc
+
+        words = list()
+        spaces = list()
+        last_end = 0
+
+        def add_token(text: str, space: bool):
+            words.append(text)
+            spaces.append(space)
+
+        for (_, start, end) in matches:
+            start = max(start, last_end)
+            span0 = doc[last_end:start]
+            span1 = doc[start:end]
+
+            for token in span0:
+                add_token(token.text, 0 < len(token.whitespace_))
+            
+            needs_merge = False
+            for token in span1:
+                if token.text == "’n":
+                    words[-1] += "'n"
+                    spaces[-1] = 0 < len(token.whitespace_)
+                elif token.norm_ == "'":
+                    words[-1] += "'"
+                    needs_merge = True
+                elif needs_merge:
+                    words[-1] += token.text
+                    spaces[-1] = 0 < len(token.whitespace_)
+                    needs_merge = False
+                else:
+                    add_token(token.text, 0 < len(token.whitespace_))
+
+            last_end = end
+
+        for token in doc[last_end:]:
+            add_token(token.text, 0 < len(token.whitespace_))
+
+        return nlp(Doc(nlp.vocab, words, spaces))
+
+    return normalize
 
 @Language.factory("line_break_resolver")
 def line_break_resolver(nlp: Language, name: str):
@@ -156,12 +202,12 @@ def line_break_resolver(nlp: Language, name: str):
 
         words = list()
         spaces = list()
+        last_end = 0
 
         def add_token(text: str, space: bool):
             words.append(text)
             spaces.append(space)
 
-        last_end = 0
         for (match_id, start, end) in matches:
             start = max(start, last_end)
             span0 = doc[last_end:start]
@@ -214,37 +260,114 @@ def line_break_resolver(nlp: Language, name: str):
 
     return resolve
 
+Token.set_extension("is_org_type", default=False)
+Token.set_extension("is_per_prefix", default=False)
+Token.set_extension("is_per_post", default=False)
+
+Token.set_extension("is_per", getter=lambda token: (token._.is_per_prefix
+                                                    or token._.is_per_post))
+
 @Language.factory("org_entity_marker")
 def org_entity_marker(nlp: Language, name: str, data_path: Optional[str]):
-    term_matcher = PhraseMatcher(nlp.vocab, attr="LEMMA", validate=DEBUG)
+    term_matcher = PhraseMatcher(nlp.vocab, validate=DEBUG)
 
-    with nlp.select_pipes(enable=["lemmatizer"]):
-        with open_resource(data_path, "org_types") as file:
-            patterns = [nlp(line.rstrip()) for line in file]
-            term_matcher.add("ORG_TYPE", patterns)
+    with open_resource(data_path, "org_types") as file:
+        patterns = [nlp.make_doc(line.rstrip()) for line in file]
+        term_matcher.add("ORG_TYPE", patterns)
 
-        with open_resource(data_path, "per_prefixes") as file:
-            patterns = [nlp(line.rstrip()) for line in file]
-            term_matcher.add("PER_PREFIX", patterns)
+    with open_resource(data_path, "per_prefixes") as file:
+        patterns = [nlp.make_doc(line.rstrip()) for line in file]
+        term_matcher.add("PER_PREFIX", patterns)
+
+    with open_resource(data_path, "per_posts") as file, open_resource(data_path, "per_posts_abbr") as abbr:
+        patterns = [nlp.make_doc(line.rstrip()) for line in file]
+        patterns += [nlp.make_doc(line.rstrip()) for line in abbr]
+        term_matcher.add("PER_POST", patterns)
 
     ORG_TYPE = nlp.vocab["ORG_TYPE"]
     PER_PREFIX = nlp.vocab["PER_PREFIX"]
+    PER_POST = nlp.vocab["PER_POST"]
+
+    entity_matcher = SpanRuler(nlp, name, annotate_ents=True, validate=DEBUG)
+    # N.N. is such a tiny special case where we match text directly, we can
+    # just ignore the warning.
+    warnings.filterwarnings("ignore", message=r"\[W012\]", category=UserWarning)
+    entity_matcher.add_patterns([
+        {"label": "ORG", "pattern": [
+            {"_": {"is_org_type": True}}, {"TAG": "_SP", "OP": "?"}, {"POS": {"IN": ["NOUN", "PROPN", "NUM", "X"]}, "OP": "+"}
+        ]},
+        {"label": "PER", "pattern": "N.N."},
+        {"label": "PER", "pattern": "N. N."},
+        {"label": "PER", "pattern": [
+            {"_": {"is_per": True}, "OP": "+"}, {"POS": {"IN": ["NOUN", "PROPN"]}, "OP": "+"}
+        ]},
+        {"label": "PER", "pattern": [
+            {"_": {"is_per_post": True}, "OP": "+"}, {"TAG": "_SP", "OP": "?"}, {"_": {"is_per": True}, "OP": "*"}, {"TAG": "_SP", "OP": "*"}, {"POS": {"IN": ["NOUN", "PROPN"]}, "OP": "+"}
+        ]},
+    ])
 
     def mark(doc):
-        matches = term_matcher(doc)
+        term_matches = term_matcher(doc)
 
-        for (match_id, start, end) in matches:
+        for (match_id, start, end) in term_matches:
+            is_org_type = match_id == ORG_TYPE
+            is_per_prefix = match_id == PER_PREFIX
+            is_per_post = match_id == PER_POST
+
             for token in doc[start:end]:
-                token._.is_org_type = match_id == ORG_TYPE
-                token._.is_per_prefix = match_id == PER_PREFIX
+                token._.is_org_type = is_org_type
+                token._.is_per_prefix = is_per_prefix
+                token._.is_per_post = is_per_post
+
+        doc = entity_matcher(doc)
 
         return doc
 
     return mark
 
-# TODO: Convert doc.ents to a record
 def sort_ents(doc):
-    return (doc.text, {})
+    content = {"type": None, "name": None, "persons": []}
+
+    for ent in doc.ents:
+        if ent.start == 0:
+            if ent.label_ == "ORG":
+                content["name"] = ent.text.replace("\n\n", " ").replace("\n", " ")
+
+                for token in ent:
+                    if token._.is_org_type:
+                        if content["type"] == None:
+                            content["type"] = token.text
+                        else:
+                            content["type"] += " " + token.text
+            elif ent.label_ == "PER":
+                content["name"] = ent.text.replace("\n\n", " ").replace("\n", " ")
+
+                for token in ent:
+                    if token._.is_per_post:
+                        if content["type"] == None:
+                            content["type"] = token.text
+                        else:
+                            content["type"] += " " + token.text
+
+        if ent.label_ == "PER":
+            person = {
+                "name": ent.text.replace("\n\n", " ").replace("\n", " "),
+                "positionType": None
+            }
+
+            for token in ent:
+                if token._.is_per_post:
+                    if person["positionType"] == None:
+                        person["positionType"] = token.text
+                    else:
+                        person["positionType"] += " " + token.text
+
+            if person["positionType"] != None:
+                person["name"] = person["name"].lstrip(person["positionType"]).lstrip()
+
+            content["persons"].append(person)
+
+    return (doc.text, content)
 
 def open_resource(data_path: Optional[str], resource: str):
     if data_path != None:
