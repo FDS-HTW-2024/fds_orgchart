@@ -97,9 +97,9 @@ function createSVG(data, identifier) {
 
     // Example: Create rects from JSON data
     data[identifier].content.forEach(item => {
+        let counter = 5;
         const bbox = item.bbox;
         const rect = document.createElementNS(svgNamespace, 'rect');
-        console.log(item);
         rect.setAttribute('x', bbox[0]);
         rect.setAttribute('y', bbox[1]);
         rect.setAttribute('width', bbox[2] - bbox[0]);
@@ -109,17 +109,31 @@ function createSVG(data, identifier) {
         rect.setAttribute('stroke-width', 1)
         svg.appendChild(rect);
 
-        const text = document.createElementNS(svgNamespace, 'text');
-        text.setAttribute('x', bbox[0] + 5);
-        text.setAttribute('y', bbox[1] + 20);
-        text.setAttribute('font-family', 'Arial');
-        text.setAttribute('font-size', '6');
-        text.setAttribute('fill', 'black');
-        text.textContent = item.name;
-        svg.appendChild(text);
+        const typeName = document.createElementNS(svgNamespace, 'text');
+        typeName.setAttribute('x', bbox[0] + 5);
+        typeName.setAttribute('y', bbox[1] + 20);
+        typeName.setAttribute('font-family', 'Arial');
+        typeName.setAttribute('font-size', '6');
+        typeName.setAttribute('fill', 'black');
+        typeName.textContent = item.name;
+        svg.appendChild(typeName);
+
+        item.persons.forEach(person => {
+            counter += 5
+            const personName = person.name;
+            const personText = document.createElementNS(svgNamespace, 'text');
+            personText.setAttribute('x', bbox[0] + 5);
+            personText.setAttribute('y', bbox[1] + 25 + counter);
+            personText.setAttribute('font-family', 'Arial');
+            personText.setAttribute('font-size', '6');
+            personText.setAttribute('fill', 'black');
+            personText.textContent = personName;
+            svg.appendChild(personText);
+        })
     })
 
     // Append the SVG to the container
+    svg.setAttribute("class", "zoom");
     svgContainer.appendChild(svg);
 }
 

@@ -1,13 +1,2456 @@
 {
     "0": {
-        "fileName": "bmf01.pdf",
-        "date": "22.08.2014",
+        "fileName": "org_bmf_2018.pdf",
+        "date": "20.04.2018",
         "content": [
             {
                 "type": "Referat",
-                "name": "Referat I A 2",
+                "name": "Referat II",
+                "persons": [
+                    {
+                        "name": "Beckmann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    660.1099853515625,
+                    38.15999984741211,
+                    698.75,
+                    59.52000045776367
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IV",
+                "persons": [
+                    {
+                        "name": "Gronenberg",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    749.6057345952942,
+                    36.959999084472656,
+                    794.031005859375,
+                    59.040000915527344
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat I",
+                "persons": [
+                    {
+                        "name": "Gerhold",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    615.9509887695312,
+                    38.06537676704423,
+                    656.031005859375,
+                    63.36000061035156
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat III",
+                "persons": [
+                    {
+                        "name": "Raum",
+                        "positionType": "RD"
+                    }
+                ],
+                "bbox": [
+                    703.0700073242188,
+                    38.15999984741211,
+                    737.6300048828125,
+                    53.52000045776367
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Dr. Schäuble",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    352.4309997558594,
+                    47.52000427246094,
+                    470.510986328125,
+                    100.80000305175781
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VIII",
+                "persons": [
+                    {
+                        "name": "Müller",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    749.6300048828125,
+                    65.43296753537531,
+                    788.510986328125,
+                    90.95999908447266
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VII",
                 "persons": [],
-                "responsibilites": [],
+                "bbox": [
+                    700.4310302734375,
+                    64.80000305175781,
+                    744.5910034179688,
+                    91.20000457763672
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat VI",
+                "persons": [
+                    {
+                        "name": "Landvogt",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    661.9080958732277,
+                    65.76000213623047,
+                    695.8710327148438,
+                    87.12000274658203
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Polizei",
+                "persons": [
+                    {
+                        "name": "Heyn",
+                        "positionType": "RD"
+                    }
+                ],
+                "bbox": [
+                    617.284112012907,
+                    66.11649996419868,
+                    655.0700073242188,
+                    84.95999908447266
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Dr. Kahl",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    121.5510025024414,
+                    75.12000274658203,
+                    348.1109924316406,
+                    85.68000030517578
+                ]
+            },
+            {
+                "type": "Ministerbüro",
+                "name": "Ministerbüro MinR Dr. Klos",
+                "persons": [],
+                "bbox": [
+                    121.31099700927734,
+                    85.68000793457031,
+                    165.71099853515625,
+                    108.4800033569336
+                ]
+            },
+            {
+                "type": "Pressesprecher MinR",
+                "name": "Pressesprecher MinR Paris",
+                "persons": [
+                    {
+                        "name": "aris",
+                        "positionType": "Pressesprecher MinR"
+                    }
+                ],
+                "bbox": [
+                    165.71099853515625,
+                    85.68000030517578,
+                    210.3509979248047,
+                    108.72000122070312
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Schlatmann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    210.3509979248047,
+                    85.91999816894531,
+                    256.1910095214844,
+                    108.72000122070312
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Paris",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    302.7510070800781,
+                    85.91999816894531,
+                    348.11102294921875,
+                    108.72000122070312
+                ]
+            },
+            {
+                "type": "Parlamentarischer Staatssekretär",
+                "name": "Parlamentarischer Staatssekretär Dr. Bergner",
+                "persons": [
+                    {
+                        "name": "Dr. Bergner",
+                        "positionType": "Parlamentarischer Staatssekretär"
+                    }
+                ],
+                "bbox": [
+                    326.9909973144531,
+                    119.52000427246094,
+                    406.19097900390625,
+                    160.32000732421875
+                ]
+            },
+            {
+                "type": "Parlamentarischer Staatssekretär",
+                "name": "Parlamentarischer Staatssekretär Altmaier",
+                "persons": [
+                    {
+                        "name": "Altmaier",
+                        "positionType": "Parlamentarischer Staatssekretär"
+                    }
+                ],
+                "bbox": [
+                    416.7510070800781,
+                    119.760009765625,
+                    493.791015625,
+                    160.32000732421875
+                ]
+            },
+            {
+                "type": "Staatssekretär",
+                "name": "Staatssekretär Dr. Beus",
+                "persons": [
+                    {
+                        "name": "Dr. Beus",
+                        "positionType": "Staatssekretär"
+                    }
+                ],
+                "bbox": [
+                    190.91099548339844,
+                    118.80000305175781,
+                    247.55099487304688,
+                    156.0
+                ]
+            },
+            {
+                "type": "Staatssekretär",
+                "name": "Staatssekretär Dr. Hanning",
+                "persons": [
+                    {
+                        "name": "Dr. Hanning",
+                        "positionType": "Staatssekretär"
+                    }
+                ],
+                "bbox": [
+                    620.989990234375,
+                    118.80000305175781,
+                    676.9099731445312,
+                    156.0
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": ". Mosbacher",
+                        "positionType": "Referent RD"
+                    }
+                ],
+                "bbox": [
+                    252.11099243164062,
+                    130.0800018310547,
+                    282.59100341796875,
+                    145.9199981689453
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Werner",
+                        "positionType": "Referent RD"
+                    }
+                ],
+                "bbox": [
+                    292.1910095214844,
+                    130.55999755859375,
+                    321.9510192871094,
+                    146.39999389648438
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Sperl",
+                        "positionType": "Referent ORR"
+                    }
+                ],
+                "bbox": [
+                    584.989990234375,
+                    130.8000030517578,
+                    615.9500122070312,
+                    146.40000915527344
+                ]
+            },
+            {
+                "type": "Persönliche Referentin",
+                "name": "Persönliche Referentin",
+                "persons": [
+                    {
+                        "name": "",
+                        "positionType": "Persönliche Referentin"
+                    }
+                ],
+                "bbox": [
+                    498.83099365234375,
+                    131.04000854492188,
+                    530.27099609375,
+                    146.8800048828125
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung SP",
+                "persons": [
+                    {
+                        "name": "Dr. Kass",
+                        "positionType": "MinDir"
+                    },
+                    {
+                        "name": "Burmester",
+                        "positionType": "TB"
+                    }
+                ],
+                "bbox": [
+                    352.6709899902344,
+                    181.44000244140625,
+                    392.510986328125,
+                    221.760009765625
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung V",
+                "persons": [],
+                "bbox": [
+                    413.1510009765625,
+                    181.6800079345703,
+                    453.71099853515625,
+                    221.52000427246094
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung Z",
+                "persons": [
+                    {
+                        "name": "Fietz",
+                        "positionType": "MinDir"
+                    }
+                ],
+                "bbox": [
+                    49.31100082397461,
+                    181.67999267578125,
+                    89.1510009765625,
+                    221.0399932861328
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung G",
+                "persons": [
+                    {
+                        "name": "Dr. Kerber",
+                        "positionType": "TB"
+                    }
+                ],
+                "bbox": [
+                    112.6709976196289,
+                    181.67999267578125,
+                    152.75100708007812,
+                    221.0399932861328
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung O",
+                "persons": [
+                    {
+                        "name": "Dr. Timmer Fax",
+                        "positionType": "MinDir"
+                    },
+                    {
+                        "name": "Dr. Thiel",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    307.5509948730469,
+                    181.2299826622073,
+                    347.8710021972656,
+                    221.27999877929688
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung ÖS",
+                "persons": [
+                    {
+                        "name": "Schindler",
+                        "positionType": "MinDir"
+                    }
+                ],
+                "bbox": [
+                    506.27099609375,
+                    181.92001342773438,
+                    546.8309936523438,
+                    221.52000427246094
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung M",
+                "persons": [
+                    {
+                        "name": "Hammerl",
+                        "positionType": "MinDir"
+                    }
+                ],
+                "bbox": [
+                    706.1909790039062,
+                    181.67999267578125,
+                    746.510986328125,
+                    221.75999450683594
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Schallbruch",
+                        "positionType": "MinDir"
+                    },
+                    {
+                        "name": "Hange",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    222.3509979248047,
+                    181.92001342773438,
+                    260.510986328125,
+                    220.32000732421875
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung D",
+                "persons": [
+                    {
+                        "name": "Lieven",
+                        "positionType": "MinDir"
+                    }
+                ],
+                "bbox": [
+                    176.75100708007812,
+                    181.9199981689453,
+                    217.07101440429688,
+                    220.8000030517578
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung B",
+                "persons": [
+                    {
+                        "name": "Verenkotte",
+                        "positionType": "MinDir"
+                    },
+                    {
+                        "name": "Christensen",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    583.551025390625,
+                    182.16000366210938,
+                    624.1110229492188,
+                    221.52000427246094
+                ]
+            },
+            {
+                "type": "Abteilung",
+                "name": "Abteilung KM",
+                "persons": [
+                    {
+                        "name": "Dr. Schmidt",
+                        "positionType": "MinDir"
+                    },
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    629.1510009765625,
+                    182.16000366210938,
+                    666.5910034179688,
+                    221.760009765625
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung V I",
+                "persons": [],
+                "bbox": [
+                    396.1109924316406,
+                    227.0399932861328,
+                    432.3509826660156,
+                    263.2799987792969
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung V II",
+                "persons": [
+                    {
+                        "name": "Scheuring",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    434.031005859375,
+                    227.0399932861328,
+                    469.0710144042969,
+                    263.2799987792969
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Dr. Maaßen",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    509.6300048828125,
+                    227.27999877929688,
+                    543.4700317382812,
+                    262.79998779296875
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung ÖS III",
+                "persons": [
+                    {
+                        "name": "Kaller",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    544.9110107421875,
+                    227.0399932861328,
+                    578.7510375976562,
+                    262.79998779296875
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung ÖS I",
+                "persons": [
+                    {
+                        "name": "Peters",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    474.35101318359375,
+                    227.27999877929688,
+                    508.4310302734375,
+                    262.79998779296875
+                ]
+            },
+            {
+                "type": "Bundesakademie für öffentliche Verwaltung",
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Dr. Wegener -5200 Mitglied",
+                        "positionType": null
+                    },
+                    {
+                        "name": "Dr. Kunsmann -5301",
+                        "positionType": null
+                    },
+                    {
+                        "name": "Dr. Ladwig -5400",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    265.3110046386719,
+                    227.27999877929688,
+                    305.8710021972656,
+                    455.2799987792969
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung G I",
+                "persons": [
+                    {
+                        "name": "Seitz",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    94.6709976196289,
+                    227.52000427246094,
+                    132.59100341796875,
+                    263.2799987792969
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung G II",
+                "persons": [
+                    {
+                        "name": "Dr. Frehse",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    132.59100341796875,
+                    227.52000427246094,
+                    170.75100708007812,
+                    263.0400085449219
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung M I",
+                "persons": [
+                    {
+                        "name": "Tetzlaff",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    688.9110107421875,
+                    227.52000427246094,
+                    724.9110107421875,
+                    263.760009765625
+                ]
+            },
+            {
+                "type": "Unterabteilung",
+                "name": "Unterabteilung M II",
+                "persons": [
+                    {
+                        "name": "Willenberg",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    727.0700073242188,
+                    227.52000427246094,
+                    762.3499755859375,
+                    263.760009765625
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Oel",
+                        "positionType": "MinDirig"
+                    }
+                ],
+                "bbox": [
+                    767.6300048828125,
+                    227.75999450683594,
+                    802.1900024414062,
+                    263.2799987792969
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V I 1",
+                "persons": [
+                    {
+                        "name": "Dr. Küster",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    395.8710021972656,
+                    268.0799865722656,
+                    432.35101318359375,
+                    300.9599914550781
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS I 1",
+                "persons": [
+                    {
+                        "name": "Dr. Rettler",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    474.59100341796875,
+                    268.0799865722656,
+                    508.4309997558594,
+                    304.0799865722656
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS II 1",
+                "persons": [
+                    {
+                        "name": "Marscholleck",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    509.8699951171875,
+                    268.0799865722656,
+                    543.7100219726562,
+                    304.0799865722656
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS III 1",
+                "persons": [
+                    {
+                        "name": "Weinbrenner",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    545.1510009765625,
+                    268.0799865722656,
+                    578.510986328125,
+                    304.0799865722656
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M II 1",
+                "persons": [
+                    {
+                        "name": "Dr. Herzog",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    727.0700073242188,
+                    268.32000732421875,
+                    762.3499755859375,
+                    300.0
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E 1",
+                "persons": [
+                    {
+                        "name": "Hildebrandt",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    767.6300048828125,
+                    268.32000732421875,
+                    802.1900024414062,
+                    317.2799987792969
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Beiderwieden",
+                        "positionType": "MinR"
+                    },
+                    {
+                        "name": "Menzel",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    49.31100082397461,
+                    268.32000732421875,
+                    89.63099670410156,
+                    317.0400085449219
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G I 1",
+                "persons": [
+                    {
+                        "name": "Dr. Gnatzy",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    94.6709976196289,
+                    268.5600280761719,
+                    131.63099670410156,
+                    290.6400146484375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IT 1",
+                "persons": [
+                    {
+                        "name": "Schwärzer",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    222.3509979248047,
+                    268.32000732421875,
+                    260.27099609375,
+                    297.3600158691406
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat O 1",
+                "persons": [],
+                "bbox": [
+                    307.5509948730469,
+                    268.32000732421875,
+                    348.1109924316406,
+                    289.9200134277344
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat SP 1",
+                "persons": [
+                    {
+                        "name": "van Bebber",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    352.9110107421875,
+                    268.32000732421875,
+                    392.27099609375,
+                    297.1199951171875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V II 1",
+                "persons": [
+                    {
+                        "name": "Dr. Schmitz",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    434.031005859375,
+                    268.32000732421875,
+                    469.3110046386719,
+                    294.7200012207031
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat B 1",
+                "persons": [
+                    {
+                        "name": "Dr. Schmitt-Vockenhausen",
+                        "positionType": null
+                    },
+                    {
+                        "name": "Dr.med",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    583.3099975585938,
+                    268.32000732421875,
+                    624.3499755859375,
+                    311.0400085449219
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M I 1",
+                "persons": [
+                    {
+                        "name": "Stange",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    688.9110107421875,
+                    268.32000732421875,
+                    724.9110107421875,
+                    294.0
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G II 1",
+                "persons": [
+                    {
+                        "name": "Binder",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    133.31100463867188,
+                    268.55999755859375,
+                    170.75100708007812,
+                    290.3999938964844
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat D 1",
+                "persons": [],
+                "bbox": [
+                    176.51100158691406,
+                    268.8000183105469,
+                    217.0709991455078,
+                    303.6000061035156
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat KM 1",
+                "persons": [
+                    {
+                        "name": "DuBois",
+                        "positionType": "TB"
+                    }
+                ],
+                "bbox": [
+                    628.6710205078125,
+                    268.55999755859375,
+                    666.3510131835938,
+                    287.5199890136719
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat KM 2",
+                "persons": [
+                    {
+                        "name": "Dr. Meyer-Teschendorf",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    628.6710205078125,
+                    290.3999938964844,
+                    666.1110229492188,
+                    318.9599914550781
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat O 2",
+                "persons": [
+                    {
+                        "name": "Dr. Dauke",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    307.3110046386719,
+                    292.0799865722656,
+                    348.1109924316406,
+                    317.5199890136719
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G I 2",
+                "persons": [
+                    {
+                        "name": "Dr. Bentmann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    94.6709976196289,
+                    293.2799987792969,
+                    131.63099670410156,
+                    315.6000061035156
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G II 2",
+                "persons": [
+                    {
+                        "name": "Rybak",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    133.79100036621094,
+                    293.0400085449219,
+                    170.99099731445312,
+                    312.7200012207031
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M I 2",
+                "persons": [
+                    {
+                        "name": "Dr. Hauschild",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    688.1909790039062,
+                    297.1199951171875,
+                    724.9110107421875,
+                    315.3599853515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V II 2",
+                "persons": [
+                    {
+                        "name": "Dr. Löper",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    434.031005859375,
+                    297.75085674676586,
+                    469.5509948730469,
+                    311.760009765625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat SP 2",
+                "persons": [
+                    {
+                        "name": "Schneider",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    353.1510009765625,
+                    299.0400085449219,
+                    391.791015625,
+                    317.52001953125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IT 2",
+                "persons": [],
+                "bbox": [
+                    222.3509979248047,
+                    300.239990234375,
+                    260.27099609375,
+                    316.79998779296875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M II 2",
+                "persons": [
+                    {
+                        "name": "Dr. Frantzioch-Immenkeppel",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    727.0700073242188,
+                    302.4000244140625,
+                    762.5900268554688,
+                    324.4800109863281
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V I 2",
+                "persons": [],
+                "bbox": [
+                    396.1109924316406,
+                    303.1199951171875,
+                    432.59100341796875,
+                    359.0400085449219
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat D 2",
+                "persons": [
+                    {
+                        "name": "Dr. Streeck",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    176.75100708007812,
+                    305.760009765625,
+                    217.07101440429688,
+                    338.8800048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS II 2",
+                "persons": [
+                    {
+                        "name": "Merz",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    509.8699951171875,
+                    306.7200012207031,
+                    543.9500122070312,
+                    332.8800048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS III 2",
+                "persons": [],
+                "bbox": [
+                    545.1510009765625,
+                    306.7200012207031,
+                    578.510986328125,
+                    339.1199951171875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS I 2",
+                "persons": [
+                    {
+                        "name": "Dr. Berger",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    474.59100341796875,
+                    306.9599914550781,
+                    508.4309997558594,
+                    334.55999755859375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V II 3",
+                "persons": [],
+                "bbox": [
+                    434.031005859375,
+                    314.4000244140625,
+                    469.3110046386719,
+                    356.6400146484375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat B 2",
+                "persons": [],
+                "bbox": [
+                    583.3099975585938,
+                    313.67999267578125,
+                    624.1099853515625,
+                    343.44000244140625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G II 3",
+                "persons": [
+                    {
+                        "name": "Busch",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    133.55099487304688,
+                    315.1200256347656,
+                    170.510986328125,
+                    337.9200134277344
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M I 3",
+                "persons": [
+                    {
+                        "name": "Dr. Hecker",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    688.1909790039062,
+                    317.760009765625,
+                    725.1510009765625,
+                    332.6400146484375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G I 3",
+                "persons": [
+                    {
+                        "name": "Stein",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    94.6709976196289,
+                    318.0,
+                    131.63099670410156,
+                    336.4800109863281
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z 2",
+                "persons": [
+                    {
+                        "name": "Achsnich",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    49.55099868774414,
+                    319.3589699196781,
+                    89.87100219726562,
+                    333.3599853515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat SP 3",
+                "persons": [
+                    {
+                        "name": "Dr. Flümann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    353.1510009765625,
+                    319.67999267578125,
+                    391.791015625,
+                    345.3599853515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IT 3",
+                "persons": [
+                    {
+                        "name": "Dr. Dürig",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    222.3509979248047,
+                    319.9200134277344,
+                    260.27099609375,
+                    335.2799987792969
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat O 3",
+                "persons": [
+                    {
+                        "name": "Zander",
+                        "positionType": "MinR"
+                    },
+                    {
+                        "name": "Dr. Böllhoff",
+                        "positionType": "RR"
+                    }
+                ],
+                "bbox": [
+                    307.7909851074219,
+                    320.3999938964844,
+                    347.8709716796875,
+                    352.79998779296875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat KM 3",
+                "persons": [
+                    {
+                        "name": "Büttgen",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    628.6710205078125,
+                    321.3599853515625,
+                    666.3510131835938,
+                    340.79998779296875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E 2",
+                "persons": [
+                    {
+                        "name": "Roy",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    767.8699951171875,
+                    323.2799987792969,
+                    802.1900024414062,
+                    377.2799987792969
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M II 3",
+                "persons": [
+                    {
+                        "name": "Hunold",
+                        "positionType": "RD"
+                    }
+                ],
+                "bbox": [
+                    727.0700073242188,
+                    326.3999938964844,
+                    762.5900268554688,
+                    354.7200012207031
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M I 4",
+                "persons": [
+                    {
+                        "name": "Mengel",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    687.9509887695312,
+                    335.0400085449219,
+                    725.3909912109375,
+                    354.7200012207031
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS II 3",
+                "persons": [],
+                "bbox": [
+                    509.8699951171875,
+                    335.760009765625,
+                    544.1900024414062,
+                    354.4800109863281
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z 3",
+                "persons": [
+                    {
+                        "name": "Koch",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    49.31100082397461,
+                    336.358714305418,
+                    89.87100219726562,
+                    357.3599853515625
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Schultz",
+                        "positionType": "MinR"
+                    },
+                    {
+                        "name": "Taube",
+                        "positionType": "RD"
+                    }
+                ],
+                "bbox": [
+                    474.59100341796875,
+                    337.20001220703125,
+                    508.4309997558594,
+                    384.2400207519531
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G I 4",
+                "persons": [],
+                "bbox": [
+                    94.91100311279297,
+                    339.1199951171875,
+                    131.63101196289062,
+                    361.44000244140625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IT 4",
+                "persons": [
+                    {
+                        "name": "Reisen",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    222.3509979248047,
+                    337.91998291015625,
+                    260.27099609375,
+                    364.0799865722656
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G II 4",
+                "persons": [
+                    {
+                        "name": "Kuhrt",
+                        "positionType": "TB"
+                    }
+                ],
+                "bbox": [
+                    134.27099609375,
+                    340.3199768066406,
+                    170.65102942788795,
+                    363.3599853515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat D 3",
+                "persons": [
+                    {
+                        "name": "Christians",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    176.51100158691406,
+                    341.2799987792969,
+                    216.83099365234375,
+                    357.3599853515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS III 3",
+                "persons": [
+                    {
+                        "name": "Hermann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    545.1510009765625,
+                    341.760009765625,
+                    578.510986328125,
+                    380.8800048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat KM 4",
+                "persons": [],
+                "bbox": [
+                    628.6710205078125,
+                    342.9599914550781,
+                    666.3510131835938,
+                    362.1600036621094
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat B 3",
+                "persons": [
+                    {
+                        "name": "Dr. Romann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    583.3099975585938,
+                    346.0799865722656,
+                    624.5899658203125,
+                    368.3999938964844
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat SP 4",
+                "persons": [
+                    {
+                        "name": "Adolfs",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    353.1510009765625,
+                    347.2799987792969,
+                    391.5509948730469,
+                    372.4800109863281
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat O 4",
+                "persons": [
+                    {
+                        "name": "Vogelsang",
+                        "positionType": "TB'e"
+                    }
+                ],
+                "bbox": [
+                    307.3110046386719,
+                    354.7200012207031,
+                    347.8710021972656,
+                    384.239990234375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M I 5",
+                "persons": [
+                    {
+                        "name": "Schürmann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    687.9509887695312,
+                    356.8800048828125,
+                    725.1510009765625,
+                    376.08001708984375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M II 4",
+                "persons": [
+                    {
+                        "name": "Dr. Rein",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    727.0700073242188,
+                    356.8800048828125,
+                    762.5900268554688,
+                    382.8000183105469
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS II 4",
+                "persons": [],
+                "bbox": [
+                    510.1109924316406,
+                    357.3599853515625,
+                    543.9509887695312,
+                    386.3999938964844
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V II 4",
+                "persons": [
+                    {
+                        "name": "Bröhl",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    434.27099609375,
+                    358.79998779296875,
+                    469.3110046386719,
+                    374.3999938964844
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat D 4",
+                "persons": [
+                    {
+                        "name": "Dr. Kiel",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    176.51100158691406,
+                    359.2799987792969,
+                    216.59100341796875,
+                    373.67999267578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z 4",
+                "persons": [
+                    {
+                        "name": "Menz",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    49.55099868774414,
+                    360.2400207519531,
+                    89.87100219726562,
+                    382.32000732421875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V I 3",
+                "persons": [
+                    {
+                        "name": "Dr. Fahland",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    396.1109924316406,
+                    361.44000244140625,
+                    432.83099365234375,
+                    380.8800048828125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G I 5",
+                "persons": [],
+                "bbox": [
+                    94.91100311279297,
+                    364.08001708984375,
+                    131.63101196289062,
+                    389.0400085449219
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat KM 5",
+                "persons": [
+                    {
+                        "name": "Dr. Sturm",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    628.6710205078125,
+                    364.79998779296875,
+                    666.3510131835938,
+                    404.1600036621094
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IT 5",
+                "persons": [
+                    {
+                        "name": "Dr. Grosse",
+                        "positionType": "RD"
+                    }
+                ],
+                "bbox": [
+                    222.3509979248047,
+                    366.4800109863281,
+                    260.27099609375,
+                    388.55999755859375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat G II 5",
+                "persons": [],
+                "bbox": [
+                    133.55099487304688,
+                    366.7200012207031,
+                    170.510986328125,
+                    392.3999938964844
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat B 4",
+                "persons": [
+                    {
+                        "name": "Dr. Teichmann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    583.791015625,
+                    371.2799987792969,
+                    624.5910034179688,
+                    403.67999267578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat SP 5",
+                "persons": [
+                    {
+                        "name": "Denneborg",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    353.1510009765625,
+                    374.1600036621094,
+                    391.3110046386719,
+                    392.6400146484375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat D 5",
+                "persons": [
+                    {
+                        "name": "Bürger",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    176.51100158691406,
+                    376.0799865722656,
+                    216.59100341796875,
+                    391.67999267578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M I 6",
+                "persons": [
+                    {
+                        "name": "Nieter",
+                        "positionType": "MinR"
+                    },
+                    {
+                        "name": "Stange",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    687.9509887695312,
+                    378.7200012207031,
+                    724.9110107421875,
+                    418.55999755859375
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Dr. Breitkopf",
+                        "positionType": "MinR"
+                    },
+                    {
+                        "name": "Stamm",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    434.27099609375,
+                    379.44000244140625,
+                    469.7909851074219,
+                    425.52001953125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat E 3",
+                "persons": [
+                    {
+                        "name": "Dr. Weber",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    767.6300048828125,
+                    382.08001708984375,
+                    802.1900024414062,
+                    434.6400146484375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V I 4",
+                "persons": [
+                    {
+                        "name": "Pohl",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    396.1109924316406,
+                    383.5199890136719,
+                    432.83099365234375,
+                    412.55999755859375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS III 4",
+                "persons": [],
+                "bbox": [
+                    545.3909912109375,
+                    383.2799987792969,
+                    578.7509765625,
+                    408.7200012207031
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z 5",
+                "persons": [
+                    {
+                        "name": "Dr. Palm",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    49.55099868774414,
+                    384.4800109863281,
+                    90.35099792480469,
+                    408.96002197265625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M II 5",
+                "persons": [
+                    {
+                        "name": "Wessendorf",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    726.8309936523438,
+                    385.20001220703125,
+                    762.5910034179688,
+                    408.0
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS I 4",
+                "persons": [],
+                "bbox": [
+                    474.59100341796875,
+                    386.8800048828125,
+                    508.4309997558594,
+                    415.44000244140625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat O 5",
+                "persons": [],
+                "bbox": [
+                    307.5509948730469,
+                    386.6399841308594,
+                    347.8710021972656,
+                    411.3599853515625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IT 6",
+                "persons": [
+                    {
+                        "name": "Dr. Stach",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    222.11099243164062,
+                    390.9599914550781,
+                    260.031005859375,
+                    410.3999938964844
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat D 6",
+                "persons": [
+                    {
+                        "name": "Lümmen",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    176.51100158691406,
+                    394.08001708984375,
+                    216.59100341796875,
+                    415.9200134277344
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat SP 6",
+                "persons": [
+                    {
+                        "name": "Hamann",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    353.1510009765625,
+                    394.79998779296875,
+                    391.07098388671875,
+                    416.1600036621094
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat B 5",
+                "persons": [
+                    {
+                        "name": "Dr. Mantz",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    583.791015625,
+                    406.32000732421875,
+                    624.3510131835938,
+                    424.55999755859375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat KM 6",
+                "persons": [],
+                "bbox": [
+                    628.6710205078125,
+                    406.79998779296875,
+                    666.3510131835938,
+                    424.0799865722656
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z 6",
+                "persons": [
+                    {
+                        "name": "Dr. Latsch",
+                        "positionType": "TB"
+                    }
+                ],
+                "bbox": [
+                    49.55099868774414,
+                    411.6000061035156,
+                    90.35099792480469,
+                    428.6400146484375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat ÖS III 5",
+                "persons": [
+                    {
+                        "name": "Werner",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    545.3909912109375,
+                    411.3599853515625,
+                    578.7509765625,
+                    447.8399963378906
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat IT 7",
+                "persons": [
+                    {
+                        "name": "Dr. Maiwald",
+                        "positionType": "RD"
+                    }
+                ],
+                "bbox": [
+                    222.3509979248047,
+                    412.55999755859375,
+                    260.031005859375,
+                    441.3599853515625
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Dr. Fuchs",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    307.3110046386719,
+                    413.760009765625,
+                    347.6310119628906,
+                    438.96002197265625
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat V I 5",
+                "persons": [
+                    {
+                        "name": "Schnauhuber",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    396.1109924316406,
+                    415.44000244140625,
+                    432.83099365234375,
+                    437.5199890136719
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat SP 7",
+                "persons": [
+                    {
+                        "name": "Moog",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    353.1510009765625,
+                    417.8399963378906,
+                    391.07098388671875,
+                    442.79998779296875
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat D 7",
+                "persons": [
+                    {
+                        "name": "Dr. med",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    176.75100708007812,
+                    418.44000234604266,
+                    217.0709991455078,
+                    439.67999267578125
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M I 7",
+                "persons": [
+                    {
+                        "name": "Dr. Stock",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    688.1909790039062,
+                    420.9599914550781,
+                    724.9110107421875,
+                    440.1600036621094
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat B 6",
+                "persons": [],
+                "bbox": [
+                    583.791015625,
+                    427.67999267578125,
+                    624.1110229492188,
+                    447.8399963378906
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z 7",
+                "persons": [],
+                "bbox": [
+                    49.55099868774414,
+                    431.52001953125,
+                    90.83097274207681,
+                    446.07101555771305
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat M I 8",
+                "persons": [
+                    {
+                        "name": "Dr. Kloth",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    688.4310302734375,
+                    442.79998779296875,
+                    725.3910522460938,
+                    461.2799987792969
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z 8",
+                "persons": [
+                    {
+                        "name": "Atzler",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    49.79100036621094,
+                    449.2799987792969,
+                    90.35099792480469,
+                    467.5199890136719
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Conrad",
+                        "positionType": "MinR"
+                    }
+                ],
+                "bbox": [
+                    584.031005859375,
+                    450.7200012207031,
+                    624.3510131835938,
+                    468.239990234375
+                ]
+            },
+            {
+                "type": "Referat",
+                "name": "Referat Z 9",
+                "persons": [
+                    {
+                        "name": "König",
+                        "positionType": "TB"
+                    }
+                ],
+                "bbox": [
+                    49.55099868774414,
+                    470.3999938964844,
+                    90.35099792480469,
+                    485.5199890136719
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Werth",
+                        "positionType": "ORR"
+                    }
+                ],
+                "bbox": [
+                    620.75,
+                    493.20001220703125,
+                    725.8709716796875,
+                    516.9600219726562
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Schmitt-Königsberg",
+                        "positionType": "OAR"
+                    }
+                ],
+                "bbox": [
+                    655.791015625,
+                    493.20001220703125,
+                    725.8709716796875,
+                    516.9600219726562
+                ]
+            },
+            {
+                "type": null,
+                "name": "Herr Weber",
+                "persons": [
+                    {
+                        "name": "Herr Weber",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    620.75,
+                    521.280029296875,
+                    725.8709716796875,
+                    534.0
+                ]
+            },
+            {
+                "type": null,
+                "name": "Frau Köppen",
+                "persons": [
+                    {
+                        "name": "Frau Köppen",
+                        "positionType": null
+                    }
+                ],
+                "bbox": [
+                    655.791015625,
+                    521.280029296875,
+                    725.8709716796875,
+                    534.0
+                ]
+            },
+            {
+                "type": "TB'e",
+                "name": "TB'e Schäfer",
+                "persons": [
+                    {
+                        "name": "Schäfer",
+                        "positionType": "TB'e"
+                    }
+                ],
+                "bbox": [
+                    690.8309936523438,
+                    521.280029296875,
+                    725.8709716796875,
+                    534.4800415039062
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Jacob",
+                        "positionType": "OAR"
+                    }
+                ],
+                "bbox": [
+                    620.75,
+                    541.2000122070312,
+                    656.031005859375,
+                    562.0800170898438
+                ]
+            }
+        ]
+    },
+    "1": {
+        "fileName": "org_inneres.pdf",
+        "date": "11.08.2009",
+        "content": [
+            {
+                "type": "Parlamentarische Staatssekretärin",
+                "name": "Parlamentarische Staatssekretärin Bettina Hagedorn",
+                "persons": [
+                    {
+                        "name": "Bettina Hagedorn",
+                        "positionType": "Parlamentarische Staatssekretärin"
+                    }
+                ],
+                "bbox": [
+                    802.9550170898438,
+                    162.3250732421875,
+                    960.1950073242188,
+                    237.361083984375
+                ]
+            },
+            {
+                "type": "Parlamentarische Staatssekretärin",
+                "name": "Parlamentarische Staatssekretärin Christine Lambrecht",
+                "persons": [
+                    {
+                        "name": "Christine Lambrecht",
+                        "positionType": "Parlamentarische Staatssekretärin"
+                    }
+                ],
+                "bbox": [
+                    1415.238037109375,
+                    162.3250732421875,
+                    1572.47802734375,
+                    237.361083984375
+                ]
+            },
+            {
+                "type": "Minister",
+                "name": "Minister Olaf Scholz",
+                "persons": [
+                    {
+                        "name": "Olaf Scholz",
+                        "positionType": "Minister"
+                    }
+                ],
+                "bbox": [
+                    1100.261962890625,
+                    155.1689453125,
+                    1283.6749267578125,
+                    237.1309814453125
+                ]
+            },
+            {
+                "type": "Persönliche Referentin",
+                "name": "Persönliche Referentin Frau Wehmeyer",
+                "persons": [
+                    {
+                        "name": "Frau Wehmeyer",
+                        "positionType": "Persönliche Referentin"
+                    }
+                ],
+                "bbox": [
+                    856.31298828125,
+                    244.030029296875,
+                    906.8369750976562,
+                    286.050048828125
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Herr Mau-Linnekugel",
+                        "positionType": "Referent"
+                    }
+                ],
+                "bbox": [
+                    1468.595947265625,
+                    244.030029296875,
+                    1519.1199951171875,
+                    286.050048828125
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Link Vorsitzender ORR Heckel OARin Kling Herr Kaufmann ZIin Eberle Herr Kruse",
+                        "positionType": "OAR ORR OARin"
+                    }
+                ],
+                "bbox": [
+                    0.0,
+                    0.0,
+                    2383.93994140625,
+                    1683.780029296875
+                ]
+            },
+            {
+                "type": "Staatssekretär",
+                "name": "Staatssekretär Werner Gatzer",
+                "persons": [
+                    {
+                        "name": "Werner Gatzer",
+                        "positionType": "Staatssekretär"
+                    }
+                ],
+                "bbox": [
+                    805.7890014648438,
+                    318.22998046875,
+                    963.0289916992188,
+                    393.2659912109375
+                ]
+            },
+            {
+                "type": "Staatssekretär",
+                "name": "Staatssekretär Wolfgang Schmidt",
+                "persons": [
+                    {
+                        "name": "Wolfgang Schmidt",
+                        "positionType": "Staatssekretär"
+                    }
+                ],
+                "bbox": [
+                    1007.0490112304688,
+                    318.22998046875,
+                    1164.2890625,
+                    393.2659912109375
+                ]
+            },
+            {
+                "type": "Staatssekretär",
+                "name": "Staatssekretär Dr. Rolf Bösinger",
+                "persons": [
+                    {
+                        "name": "Dr. Rolf Bösinger",
+                        "positionType": "Staatssekretär"
+                    }
+                ],
                 "bbox": [
                     1211.14404296875,
                     318.22998046875,
@@ -16,10 +2459,126 @@
                 ]
             },
             {
+                "type": "Staatssekretär",
+                "name": "Staatssekretär Dr. Jörg Kukies",
+                "persons": [
+                    {
+                        "name": "Dr. Jörg Kukies",
+                        "positionType": "Staatssekretär"
+                    }
+                ],
+                "bbox": [
+                    1415.238037109375,
+                    318.22998046875,
+                    1572.47802734375,
+                    393.2659912109375
+                ]
+            },
+            {
+                "type": "Persönliche Referentin",
+                "name": "Persönliche Referentin",
+                "persons": [
+                    {
+                        "name": "",
+                        "positionType": "Persönliche Referentin"
+                    }
+                ],
+                "bbox": [
+                    802.4550170898438,
+                    398.5179443359375,
+                    852.97900390625,
+                    451.8759765625
+                ]
+            },
+            {
+                "type": "Stabsstelle",
+                "name": "Stabsstelle Innenrevision",
+                "persons": [
+                    {
+                        "name": "Dr. Weiland",
+                        "positionType": "MR"
+                    }
+                ],
+                "bbox": [
+                    857.72998046875,
+                    398.5179443359375,
+                    908.2539672851562,
+                    451.8759765625
+                ]
+            },
+            {
+                "type": "Persönliche Referentin RRin",
+                "name": "Persönliche Referentin RRin Dr. Klabunde",
+                "persons": [
+                    {
+                        "name": "Dr. Klabunde",
+                        "positionType": "Persönliche Referentin RRin"
+                    }
+                ],
+                "bbox": [
+                    1060.406982421875,
+                    398.5179443359375,
+                    1110.9310302734375,
+                    451.8759765625
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Wißborn",
+                        "positionType": "Referent RR"
+                    }
+                ],
+                "bbox": [
+                    1264.501953125,
+                    398.5179443359375,
+                    1315.0260009765625,
+                    451.8759765625
+                ]
+            },
+            {
+                "type": "Persönliche Referentin RDin",
+                "name": "Persönliche Referentin RDin Dr. Kuhn",
+                "persons": [
+                    {
+                        "name": ". Kuhn",
+                        "positionType": "Persönliche Referentin RDin"
+                    }
+                ],
+                "bbox": [
+                    1468.595947265625,
+                    398.5179443359375,
+                    1519.1199951171875,
+                    451.8759765625
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Dr. Karstendiek",
+                        "positionType": "MR"
+                    }
+                ],
+                "bbox": [
+                    913.0059814453125,
+                    398.5179443359375,
+                    966.364013671875,
+                    451.8759765625
+                ]
+            },
+            {
                 "type": "Abteilung",
                 "name": "Abteilung Z",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Stahl-Hoepner",
+                        "positionType": "MDin"
+                    }
+                ],
                 "bbox": [
                     230.3560028076172,
                     530.830078125,
@@ -30,8 +2589,12 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung L",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Herr Mikfeld",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     501.06500244140625,
                     530.830078125,
@@ -42,8 +2605,12 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung I",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Herr Dr. Schuknecht",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     706.5770263671875,
                     530.830078125,
@@ -54,8 +2621,12 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung II",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Mießen",
+                        "positionType": "MD"
+                    }
+                ],
                 "bbox": [
                     944.68701171875,
                     530.830078125,
@@ -66,8 +2637,12 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung III",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Hercher",
+                        "positionType": "MDin"
+                    }
+                ],
                 "bbox": [
                     1182.7969970703125,
                     530.830078125,
@@ -78,8 +2653,16 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung IV",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Sell",
+                        "positionType": "MD"
+                    },
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1388.3089599609375,
                     530.830078125,
@@ -90,8 +2673,12 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung V",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schröder",
+                        "positionType": "MD"
+                    }
+                ],
                 "bbox": [
                     1561.2230224609375,
                     530.830078125,
@@ -102,8 +2689,12 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung VII",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Herr Dr. Holle",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1734.135986328125,
                     530.830078125,
@@ -114,8 +2705,12 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung VIII",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1939.64794921875,
                     530.830078125,
@@ -126,8 +2721,12 @@
             {
                 "type": "Abteilung",
                 "name": "Abteilung E",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Westphal",
+                        "positionType": "MD"
+                    }
+                ],
                 "bbox": [
                     2116.81298828125,
                     530.830078125,
@@ -136,10 +2735,86 @@
                 ]
             },
             {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Bernhard",
+                        "positionType": "RDin"
+                    }
+                ],
+                "bbox": [
+                    314.89599609375,
+                    551.5889892578125,
+                    376.75799560546875,
+                    593.6090087890625
+                ]
+            },
+            {
+                "type": "Gleichstellungsbeauftragte RDin",
+                "name": "Gleichstellungsbeauftragte RDin Grunwald",
+                "persons": [
+                    {
+                        "name": "wald",
+                        "positionType": "Gleichstellungsbeauftragte RDin"
+                    }
+                ],
+                "bbox": [
+                    161.8249969482422,
+                    551.5889892578125,
+                    220.85299682617188,
+                    593.6090087890625
+                ]
+            },
+            {
+                "type": null,
+                "name": null,
+                "persons": [
+                    {
+                        "name": "Dr. Heller",
+                        "positionType": "Präsident"
+                    },
+                    {
+                        "name": "Schramm",
+                        "positionType": "RDin"
+                    },
+                    {
+                        "name": "Becker",
+                        "positionType": "MRin"
+                    },
+                    {
+                        "name": "Blesinger",
+                        "positionType": "MR"
+                    },
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    },
+                    {
+                        "name": "Schramm",
+                        "positionType": "RDin"
+                    },
+                    {
+                        "name": "Drechsel",
+                        "positionType": "OAR"
+                    }
+                ],
+                "bbox": [
+                    368.7539978027344,
+                    632.3759765625,
+                    427.781982421875,
+                    1040.06494140625
+                ]
+            },
+            {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung Z A",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schäper",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     173.41299438476562,
                     632.626953125,
@@ -150,8 +2825,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung Z B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Möller",
+                        "positionType": "MDgin"
+                    }
+                ],
                 "bbox": [
                     238.61000061035156,
                     632.626953125,
@@ -162,8 +2841,16 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung Z C",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Flätgen",
+                        "positionType": "MDg"
+                    },
+                    {
+                        "name": "Süptitz",
+                        "positionType": "ORR"
+                    }
+                ],
                 "bbox": [
                     303.8070068359375,
                     632.6270751953125,
@@ -175,7 +2862,6 @@
                 "type": "Unterabteilung",
                 "name": "Unterabteilung L A",
                 "persons": [],
-                "responsibilites": [],
                 "bbox": [
                     444.12200927734375,
                     632.6260986328125,
@@ -186,8 +2872,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung L B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Scholz",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     509.3190002441406,
                     632.6260986328125,
@@ -198,8 +2888,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung L C",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Herr Hebestreit",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     574.5159912109375,
                     632.6260986328125,
@@ -210,8 +2904,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung I A",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Herres",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     649.6339721679688,
                     632.6260986328125,
@@ -222,8 +2920,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung I B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schutt",
+                        "positionType": "MDgin"
+                    }
+                ],
                 "bbox": [
                     714.8309936523438,
                     632.6270751953125,
@@ -234,8 +2936,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung I C",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kothé",
+                        "positionType": "MDgin"
+                    }
+                ],
                 "bbox": [
                     780.0280151367188,
                     632.6260986328125,
@@ -246,8 +2952,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung II A",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Westermann",
+                        "positionType": "MDgin"
+                    }
+                ],
                 "bbox": [
                     855.14599609375,
                     632.626953125,
@@ -258,8 +2968,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung II B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kelleners",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     920.343017578125,
                     632.6270751953125,
@@ -270,8 +2984,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung II C",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Gerhardt",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     985.5390014648438,
                     632.6259765625,
@@ -282,8 +3000,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung II D",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Kühne",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1050.7359619140625,
                     632.6270751953125,
@@ -294,8 +3016,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung III A",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Hülsebusch",
+                        "positionType": "MDgin"
+                    }
+                ],
                 "bbox": [
                     1125.85400390625,
                     632.6259765625,
@@ -306,8 +3032,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung III B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Mildenberger",
+                        "positionType": "MDgin"
+                    }
+                ],
                 "bbox": [
                     1191.051025390625,
                     632.6270751953125,
@@ -318,8 +3048,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung III C",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Hofmann",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1256.248046875,
                     632.626953125,
@@ -330,8 +3064,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung IV A",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Misera",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1331.365966796875,
                     632.6270751953125,
@@ -342,8 +3080,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung IV B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kreienbaum",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1396.56298828125,
                     632.626953125,
@@ -354,8 +3096,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung IV C",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Möhlenbrock",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1461.760009765625,
                     632.6259765625,
@@ -366,8 +3112,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung V A",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Suhr",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1536.8780517578125,
                     632.626953125,
@@ -378,8 +3128,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung V B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Langner",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1602.074951171875,
                     632.6260986328125,
@@ -390,8 +3144,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung VII A",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Pleyer",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1677.1929931640625,
                     632.6259765625,
@@ -402,8 +3160,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung VII B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Wimmer",
+                        "positionType": "MDgin"
+                    }
+                ],
                 "bbox": [
                     1742.3900146484375,
                     632.6260986328125,
@@ -414,8 +3176,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung VII C",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Wolpers",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1807.5870361328125,
                     632.6270751953125,
@@ -427,7 +3193,6 @@
                 "type": "Unterabteilung",
                 "name": "Unterabteilung VIII A",
                 "persons": [],
-                "responsibilites": [],
                 "bbox": [
                     1882.7049560546875,
                     632.626953125,
@@ -438,8 +3203,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung VIII B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Offer",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     1947.9019775390625,
                     632.6259765625,
@@ -450,8 +3219,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung VIII C",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Schuy",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     2013.0989990234375,
                     632.6270751953125,
@@ -462,8 +3235,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung E A",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Meyer",
+                        "positionType": "MDgin"
+                    }
+                ],
                 "bbox": [
                     2092.468994140625,
                     632.626953125,
@@ -474,8 +3251,12 @@
             {
                 "type": "Unterabteilung",
                 "name": "Unterabteilung E B",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Steinheuer",
+                        "positionType": "MDg"
+                    }
+                ],
                 "bbox": [
                     2157.666015625,
                     632.626953125,
@@ -486,8 +3267,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schwenk",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     443.87200927734375,
                     706.0770263671875,
@@ -498,8 +3283,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Arnswald",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     649.3839721679688,
                     706.0770263671875,
@@ -510,8 +3299,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I C 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Fabig",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     779.7780151367188,
                     706.0780029296875,
@@ -522,8 +3315,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1742.1400146484375,
                     706.0770263671875,
@@ -534,8 +3331,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Dietrich",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     509.0690002441406,
                     706.0770263671875,
@@ -546,8 +3347,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L C 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schwamberger",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     574.2659912109375,
                     706.0770263671875,
@@ -558,8 +3363,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Hagedorn",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     920.093017578125,
                     711.7460327148438,
@@ -570,8 +3379,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. R. Köhler",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     714.5809936523438,
                     711.7470092773438,
@@ -582,8 +3395,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II D 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kleene-Debring",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1050.4859619140625,
                     711.7460327148438,
@@ -594,8 +3411,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII C 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Frank",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1807.3370361328125,
                     711.7470092773438,
@@ -606,8 +3427,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Liermann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1125.60400390625,
                     714.5810546875,
@@ -618,8 +3443,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Szepan",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1190.801025390625,
                     717.416015625,
@@ -630,8 +3459,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Reimeier",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1536.6280517578125,
                     720.25,
@@ -642,8 +3475,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Heipertz",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2092.218994140625,
                     720.2500610351562,
@@ -654,8 +3491,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Röhreke",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2157.416015625,
                     720.25,
@@ -666,8 +3507,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III C 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Narzynski",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     1255.998046875,
                     725.9200439453125,
@@ -678,8 +3523,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Goworek",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     854.89599609375,
                     725.9200439453125,
@@ -690,8 +3539,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Schleithoff",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1396.31298828125,
                     725.9200439453125,
@@ -702,8 +3555,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II C 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Hoepner",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     985.2890014648438,
                     731.5890502929688,
@@ -714,8 +3571,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Bosch",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1676.9429931640625,
                     731.5889892578125,
@@ -726,8 +3587,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schmid",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1947.6519775390625,
                     731.5889892578125,
@@ -736,10 +3601,14 @@
                 ]
             },
             {
-                "type": "Stabsstelle",
-                "name": "Stabsstelle der IT-Beauftragten der BFV; IT-Strategiemanagement",
-                "persons": [],
-                "responsibilites": [],
+                "type": "Referat",
+                "name": "Referat Z C 1",
+                "persons": [
+                    {
+                        "name": "Kirmße",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     303.5570068359375,
                     734.424072265625,
@@ -750,8 +3619,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII C 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     2012.8489990234375,
                     734.424072265625,
@@ -762,8 +3635,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV C 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Hensel",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1461.510009765625,
                     737.258056640625,
@@ -774,8 +3651,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Löbach",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1882.4549560546875,
                     742.927978515625,
@@ -784,10 +3665,14 @@
                 ]
             },
             {
-                "type": "Ministerium",
-                "name": "Ministerium); Personalvertretungsrecht; Grundsatzfragen des Bundesgleichstellungsgesetzes; Angelegenheiten der schwerbehinderten Besch\u00e4ftigten",
-                "persons": [],
-                "responsibilites": [],
+                "type": "Referat",
+                "name": "Referat Z B 1",
+                "persons": [
+                    {
+                        "name": "Dr. M. Köhler",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     238.36000061035156,
                     759.93603515625,
@@ -798,8 +3683,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Heger",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     173.16299438476562,
                     759.93505859375,
@@ -810,8 +3699,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schiemann",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     443.87200927734375,
                     762.77001953125,
@@ -822,8 +3715,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     509.0690002441406,
                     762.77001953125,
@@ -834,8 +3731,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L C 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     574.2659912109375,
                     762.77001953125,
@@ -846,8 +3747,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V B 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Stemmer",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1601.824951171875,
                     762.77001953125,
@@ -858,8 +3763,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Diekmann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     649.3839721679688,
                     765.60498046875,
@@ -870,8 +3779,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII C 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Höppner",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1807.3370361328125,
                     768.4400634765625,
@@ -882,8 +3795,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV A 1",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1331.115966796875,
                     768.4390258789062,
@@ -894,8 +3811,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I C 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Olbermann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     779.7780151367188,
                     768.4390258789062,
@@ -906,8 +3827,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Heuchert",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     920.093017578125,
                     771.2740478515625,
@@ -918,8 +3843,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Lang",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     1125.60400390625,
                     776.9429931640625,
@@ -930,8 +3859,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Hanke",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1536.6280517578125,
                     776.9430541992188,
@@ -942,8 +3875,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Klein",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     854.89599609375,
                     788.281982421875,
@@ -954,8 +3891,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Mazet",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1190.801025390625,
                     788.2820434570312,
@@ -966,8 +3907,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II C 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Piro",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     985.2890014648438,
                     791.1160278320312,
@@ -978,8 +3923,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Wichmann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1396.31298828125,
                     796.7860107421875,
@@ -990,8 +3939,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Dönnebrink",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     714.5809936523438,
                     808.125,
@@ -1002,8 +3955,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III C 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Keisinger",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1255.998046875,
                     810.958984375,
@@ -1014,8 +3971,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schlotter",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     2157.416015625,
                     810.958984375,
@@ -1026,8 +3987,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z C 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Asmussen",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     303.5570068359375,
                     813.7940063476562,
@@ -1038,8 +4003,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Wandel",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     1742.1400146484375,
                     813.7940063476562,
@@ -1050,8 +4019,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schmidt",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     173.16299438476562,
                     819.4630126953125,
@@ -1062,8 +4035,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Luchtmeier",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     443.87200927734375,
                     819.4630126953125,
@@ -1074,8 +4051,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L C 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Fenchel",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     574.2659912109375,
                     819.4630126953125,
@@ -1086,8 +4067,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Teichmann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1882.4549560546875,
                     822.2969970703125,
@@ -1098,8 +4083,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Brüker-Gaspers",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1947.6519775390625,
                     822.2979736328125,
@@ -1110,8 +4099,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L B 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     509.0690002441406,
                     822.2979736328125,
@@ -1122,8 +4115,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II D 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Knörzer",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1050.4859619140625,
                     825.1320190429688,
@@ -1134,8 +4131,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV C 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Rennings",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1461.510009765625,
                     825.1320190429688,
@@ -1146,8 +4147,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kranen",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2092.218994140625,
                     825.133056640625,
@@ -1158,8 +4163,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Debelius",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     649.3839721679688,
                     827.967041015625,
@@ -1170,8 +4179,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Fuchs",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     920.093017578125,
                     830.802001953125,
@@ -1182,8 +4195,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII C 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Conert",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1807.3370361328125,
                     830.801025390625,
@@ -1194,8 +4211,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I C 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr.",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     779.7780151367188,
                     833.6360473632812,
@@ -1206,8 +4227,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Harzer",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1676.9429931640625,
                     833.6370239257812,
@@ -1218,8 +4243,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Schneider",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     1536.6280517578125,
                     836.4710693359375,
@@ -1230,8 +4259,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V B 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Ermer",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1601.824951171875,
                     842.1400146484375,
@@ -1242,8 +4275,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II C 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Nöhrbaß",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     985.2890014648438,
                     856.3140869140625,
@@ -1254,8 +4291,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII C 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Hillebrecht",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2012.8489990234375,
                     856.3140869140625,
@@ -1266,8 +4307,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III B 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Rißmann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1190.801025390625,
                     859.1480102539062,
@@ -1278,8 +4323,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV A 2",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Hörster",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1331.115966796875,
                     859.1480102539062,
@@ -1288,10 +4337,14 @@
                 ]
             },
             {
-                "type": "Ministerium",
-                "name": "Ministerium); Internationales Dienstrecht; Haushalt Versorgung",
-                "persons": [],
-                "responsibilites": [],
+                "type": "Referat",
+                "name": "Referat Z B 2",
+                "persons": [
+                    {
+                        "name": "Dr. Löhr",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     238.36000061035156,
                     861.9830322265625,
@@ -1302,8 +4355,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Müller",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1125.60400390625,
                     867.6520385742188,
@@ -1314,8 +4371,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII B 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Becker",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1742.1400146484375,
                     870.4860229492188,
@@ -1326,8 +4387,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L C 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Hofmann",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     574.2659912109375,
                     876.156005859375,
@@ -1338,8 +4403,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Meißner",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     509.0690002441406,
                     878.70703125,
@@ -1350,8 +4419,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Bartz",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     173.16299438476562,
                     878.989990234375,
@@ -1362,8 +4435,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I B 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kahmann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     714.5809936523438,
                     878.9910888671875,
@@ -1374,8 +4451,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV B 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Bruns",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1396.31298828125,
                     881.8260498046875,
@@ -1386,8 +4467,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     443.87200927734375,
                     881.8260498046875,
@@ -1398,8 +4483,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z C 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kunzer",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     303.5570068359375,
                     884.6599731445312,
@@ -1410,8 +4499,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Snelting",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     649.3839721679688,
                     887.4949951171875,
@@ -1422,8 +4515,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E B 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Merz",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2157.416015625,
                     890.3289794921875,
@@ -1434,8 +4531,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII C 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1807.3370361328125,
                     890.3289794921875,
@@ -1446,8 +4547,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II B 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Nieder-Eichholz",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     920.093017578125,
                     893.1640014648438,
@@ -1458,8 +4563,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I C 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dippl",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     779.7780151367188,
                     893.1640625,
@@ -1470,8 +4579,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Holters",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1536.6280517578125,
                     895.998046875,
@@ -1482,8 +4595,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V B 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Nigbur",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1601.824951171875,
                     899.1170043945312,
@@ -1495,7 +4612,6 @@
                 "type": "Referat",
                 "name": "Referat VIII B 3",
                 "persons": [],
-                "responsibilites": [],
                 "bbox": [
                     1947.6519775390625,
                     901.6680908203125,
@@ -1506,8 +4622,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schoenmakers",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     2092.218994140625,
                     904.5030517578125,
@@ -1518,8 +4638,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII A 3a",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1676.9429931640625,
                     904.5030517578125,
@@ -1530,8 +4654,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III C 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "van Nahmen",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1255.998046875,
                     913.007080078125,
@@ -1542,8 +4670,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV C 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Unger",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1461.510009765625,
                     913.007080078125,
@@ -1554,8 +4686,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Siebels",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     854.89599609375,
                     913.007080078125,
@@ -1566,8 +4702,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II D 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Rath",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1050.4859619140625,
                     915.841064453125,
@@ -1578,8 +4718,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schmitt",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1125.60400390625,
                     927.1800537109375,
@@ -1590,8 +4734,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Pairan",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     1882.4549560546875,
                     930.0140380859375,
@@ -1602,8 +4750,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1190.801025390625,
                     930.0150146484375,
@@ -1614,8 +4766,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Ahrens",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     1742.1400146484375,
                     930.0139770507812,
@@ -1626,8 +4782,12 @@
             {
                 "type": "Referat",
                 "name": "Referat L C 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schelenz",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     574.2659912109375,
                     932.8489990234375,
@@ -1638,8 +4798,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II C 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Homann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     985.2890014648438,
                     935.68408203125,
@@ -1650,8 +4814,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z C 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Messtorff",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     303.5570068359375,
                     941.35302734375,
@@ -1662,8 +4830,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I A 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Hoekstra",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     649.3839721679688,
                     944.1870727539062,
@@ -1674,8 +4846,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV A 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Myßen",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1331.115966796875,
                     947.0230712890625,
@@ -1686,8 +4862,16 @@
             {
                 "type": "Referat",
                 "name": "Referat VII C 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Laux-Meiselbach",
+                        "positionType": "MR"
+                    },
+                    {
+                        "name": "Daske",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1807.3370361328125,
                     947.0220336914062,
@@ -1698,8 +4882,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V A 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Serwe",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1536.6280517578125,
                     955.5260620117188,
@@ -1710,8 +4898,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Homann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     714.5809936523438,
                     958.361083984375,
@@ -1722,8 +4914,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII C 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Bohm",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     2012.8489990234375,
                     958.3600463867188,
@@ -1734,8 +4930,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II B 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Lingenthal",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     920.093017578125,
                     964.030029296875,
@@ -1746,8 +4946,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z B 3",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Oswald",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     238.36000061035156,
                     964.030029296875,
@@ -1758,8 +4962,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII A 3b",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dietze",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     1676.9429931640625,
                     966.864990234375,
@@ -1770,8 +4978,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Claudi",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     173.16299438476562,
                     969.6990356445312,
@@ -1780,10 +4992,14 @@
                 ]
             },
             {
-                "type": "Amt",
-                "name": "Amt); Epl. 23 (Wirtschaftliche Zusammenarbeit und Entwicklung)",
-                "persons": [],
-                "responsibilites": [],
+                "type": "Referat",
+                "name": "Referat II D 4",
+                "persons": [
+                    {
+                        "name": "Herr John",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1050.4859619140625,
                     975.3690185546875,
@@ -1794,8 +5010,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Denecke",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     2092.218994140625,
                     975.3680419921875,
@@ -1806,8 +5026,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I C 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Baumann",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     779.7780151367188,
                     978.2030029296875,
@@ -1818,8 +5042,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dreier",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1947.6519775390625,
                     981.0380859375,
@@ -1830,8 +5058,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1396.31298828125,
                     983.8720092773438,
@@ -1842,8 +5074,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dinter",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2157.416015625,
                     986.7080078125,
@@ -1854,8 +5090,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII B 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Franke",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1742.1400146484375,
                     986.70703125,
@@ -1866,8 +5106,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schiffl",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     854.89599609375,
                     992.3770751953125,
@@ -1878,8 +5122,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V B 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Gerits",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     1601.824951171875,
                     995.2109985351562,
@@ -1890,8 +5138,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II C 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Hartkorn",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     985.2890014648438,
                     998.0460205078125,
@@ -1902,8 +5154,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I A 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Hüsges",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     649.3839721679688,
                     1003.7150268554688,
@@ -1914,8 +5170,16 @@
             {
                 "type": "Referat",
                 "name": "Referat Z C 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Stähler",
+                        "positionType": "MRin"
+                    },
+                    {
+                        "name": "Bohnert",
+                        "positionType": "ORR"
+                    }
+                ],
                 "bbox": [
                     303.5570068359375,
                     1006.550048828125,
@@ -1926,8 +5190,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Jakob",
+                        "positionType": "RDin"
+                    }
+                ],
                 "bbox": [
                     1882.4549560546875,
                     1009.384033203125,
@@ -1938,8 +5206,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III C 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Schmidt",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1255.998046875,
                     1015.0540771484375,
@@ -1950,8 +5222,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV C 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Reusch",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1461.510009765625,
                     1015.0540161132812,
@@ -1962,8 +5238,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III B 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Koszinowski",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1190.801025390625,
                     1015.0530395507812,
@@ -1974,8 +5254,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VIII C 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Pietras",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2012.8489990234375,
                     1017.8880004882812,
@@ -1986,8 +5270,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I B 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Wellmann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     714.5809936523438,
                     1020.7230224609375,
@@ -1998,8 +5286,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II B 7",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Neubauer",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     920.093017578125,
                     1026.39208984375,
@@ -2010,8 +5302,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Thöne",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1676.9429931640625,
                     1029.22705078125,
@@ -2022,8 +5318,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III A 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Tönshoff",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1125.60400390625,
                     1029.22607421875,
@@ -2034,8 +5334,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV A 4",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     1331.115966796875,
                     1032.06103515625,
@@ -2046,8 +5350,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II D 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kobsch",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1050.4859619140625,
                     1046.2349853515625,
@@ -2058,8 +5366,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z A 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Henter",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     173.16299438476562,
                     1066.0770263671875,
@@ -2070,8 +5382,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E A 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Wetz",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2092.218994140625,
                     1066.0770263671875,
@@ -2080,10 +5396,14 @@
                 ]
             },
             {
-                "type": "Ministerium",
-                "name": "Ministerium)",
-                "persons": [],
-                "responsibilites": [],
+                "type": "Referat",
+                "name": "Referat Z B 4a",
+                "persons": [
+                    {
+                        "name": "Riethues",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     238.36000061035156,
                     1071.7470703125,
@@ -2094,8 +5414,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E B 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Nortmann",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     2157.416015625,
                     1071.7470703125,
@@ -2106,8 +5430,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV B 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Staats",
+                        "positionType": "RD"
+                    }
+                ],
                 "bbox": [
                     1396.31298828125,
                     1074.58203125,
@@ -2118,8 +5446,12 @@
             {
                 "type": "Referat",
                 "name": "Referat VII A 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Böllhoff",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1676.9429931640625,
                     1091.589111328125,
@@ -2130,8 +5462,12 @@
             {
                 "type": "Referat",
                 "name": "Referat III C 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Bremer",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1255.998046875,
                     1094.424072265625,
@@ -2142,8 +5478,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II A 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Burckardt",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     854.89599609375,
                     1094.424072265625,
@@ -2154,8 +5494,12 @@
             {
                 "type": "Referat",
                 "name": "Referat V B 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Kemper",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1601.824951171875,
                     1102.927978515625,
@@ -2166,8 +5510,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV C 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Poppenberg",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1461.510009765625,
                     1111.4320068359375,
@@ -2178,8 +5526,12 @@
             {
                 "type": "Referat",
                 "name": "Referat I B 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Eckhardt",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     714.5809936523438,
                     1111.4320068359375,
@@ -2190,8 +5542,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II C 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Zuleger",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     985.2890014648438,
                     1114.2659912109375,
@@ -2202,8 +5558,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV A 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Hoffmann",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1331.115966796875,
                     1131.2740478515625,
@@ -2214,8 +5574,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E B 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     2157.416015625,
                     1142.612060546875,
@@ -2226,8 +5590,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z B 4b",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "C. Köhler",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     238.36000061035156,
                     1156.7860107421875,
@@ -2238,8 +5606,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV B 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Czakert",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1396.31298828125,
                     1159.62109375,
@@ -2250,8 +5622,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z A 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Kuhlmey",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     173.16299438476562,
                     1162.455078125,
@@ -2262,8 +5638,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E A 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Leuvering",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     2092.218994140625,
                     1173.7940673828125,
@@ -2274,8 +5654,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II A 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Schneider",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     854.89599609375,
                     1179.4630126953125,
@@ -2286,8 +5670,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV C 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Meurer",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1461.510009765625,
                     1182.298095703125,
@@ -2298,8 +5686,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV A 6",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. van Essen",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1331.115966796875,
                     1227.652099609375,
@@ -2310,8 +5702,12 @@
             {
                 "type": "Referat",
                 "name": "Referat Z B 5",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Pedack",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     238.36000061035156,
                     1236.156005859375,
@@ -2322,8 +5718,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II A 7",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "N.N.",
+                        "positionType": null
+                    }
+                ],
                 "bbox": [
                     854.89599609375,
                     1241.8250732421875,
@@ -2334,8 +5734,12 @@
             {
                 "type": "Referat",
                 "name": "Referat E A 7",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Korthals",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     2092.218994140625,
                     1253.1640625,
@@ -2346,8 +5750,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV C 7",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Hofmann",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1461.510009765625,
                     1267.3370361328125,
@@ -2358,8 +5766,12 @@
             {
                 "type": "Referat",
                 "name": "Referat II A 8",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Dr. Kalabuch",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     854.89599609375,
                     1307.02197265625,
@@ -2370,8 +5782,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV A 7",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Raven",
+                        "positionType": "MR"
+                    }
+                ],
                 "bbox": [
                     1331.115966796875,
                     1312.6910400390625,
@@ -2382,8 +5798,12 @@
             {
                 "type": "Referat",
                 "name": "Referat IV C 8",
-                "persons": [],
-                "responsibilites": [],
+                "persons": [
+                    {
+                        "name": "Buchwald",
+                        "positionType": "MRin"
+                    }
+                ],
                 "bbox": [
                     1461.510009765625,
                     1375.052978515625,
@@ -2392,63 +5812,5 @@
                 ]
             }
         ]
-    },
-    "1": {
-        "fileName": "bmf02.pdf",
-        "date": "22.08.2016",
-        "content": [
-            {
-                "type": "Fachbereich",
-                "name": "Fachbereich 1",
-                "persons": [
-                    {
-                        "name": "Hr. Noack",
-                        "positionType": "Hr.",
-                        "contact": "-1702"
-                    }
-                ],
-                "responsibilities": [
-                    {
-                        "respons01": "task1",
-                        "respons02": "task2"
-                    }
-                ],
-                "bbox": [
-                    300,
-                    0,
-                    500,
-                    200
-                ]
-            }
-        ]
-    },
-    "2": {
-        "fileName": "bmf03.pdf",
-        "date": "22.08.2018",
-        "content": [
-            {
-                "type": "Fachbereich",
-                "name": "Fachbereich 1",
-                "persons": [
-                    {
-                        "name": "Hr. Noack",
-                        "positionType": "Hr.",
-                        "contact": "-1702"
-                    }
-                ],
-                "responsibilities": [
-                    {
-                        "respons01": "task1",
-                        "respons02": "task2"
-                    }
-                ],
-                "bbox": [
-                    600,
-                    0,
-                    800,
-                    200
-                ]
-            }
-        ]
     }
-}
+}  
