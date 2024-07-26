@@ -50,6 +50,8 @@ class TextPipeline:
         self.analyser = None
         self.executor = None
 
+        components = nlp.pipe_names
+
         if llm_model != None:
             try:
                 with open_resource(data_path, "schema.json") as file:
@@ -60,14 +62,12 @@ class TextPipeline:
 
                     self.analyser = SemanticAnalysis(llm_model, llm_key, schema)
     
-                logger.info("Text Pipeline selected: %s",
-                            "|".join(nlp.pipe_names + [llm_model]))
+                components = nlp.pipe_names + [llm_model]
             except Exception as error:
                 logger.error("LLM initialisation failed: %s(%s)",
                              type(error).__name__, error)
-        else:
-            logger.info("Text Pipeline selected: %s",
-                        "|".join(nlp.pipe_names))
+
+        logger.info("Text Pipeline selected: %s", "|".join(components))
 
     def __enter__(self):
         return self
