@@ -64,9 +64,9 @@ def run():
                                     os.strerror(errno.ENOENT),
                                     input_path)
     finally:
+        executor.shutdown(wait=False, cancel_futures=True)
         # Signals text processing thread to shutdown
         task_queue.put(None)
-        executor.shutdown(wait=True, cancel_futures=True)
 
 def process_file(executor: Executor, task_queue: Queue, input: str, output: Optional[str]):
     drawings = pdf.open(input)
