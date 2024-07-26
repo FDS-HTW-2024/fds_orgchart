@@ -19,11 +19,14 @@ class SemanticAnalysis:
         self.schema = schema
 
     def analyse(self, text: str, ents: dict[str, Any]):
-        try:
-            value = parse_node_llm(self.model, self.schema, text, ents)
-            return (None, value)
-        except Exception as exception:
-            return (exception, ents)
+        return parse_node_llm(self.model, self.schema, text, ents)
+
+class LlmResponseError(Exception):
+    response: str
+
+    def __init__(self, response: str):
+        super().__init__(f"could not parse {repr(response)}")
+        self.response = response
 
 def collect_values(json, collected=None):
     if collected is None:
@@ -54,11 +57,11 @@ def parse_node_llm(llm: Model, schema: str, text: str, ents: dict[str, Any]):
 
     try:
         response_json = json.loads(response_text, strict = False)
-    except Exception as e:
-        # TODO: Log exception
-        # If the JSON from the response still cannot be repaired, this will
-        # throw an exception.
-        response_json = json.loads(repair_json(response_text), strict = False)
+    except Exception:
+        try:
+            response_json = json.loads(repair_json(response_text), strict = False)
+        except Exception:
+            raise LlmResponseError(response_text)
 
     response_values = collect_values(response_json)
 
@@ -82,7 +85,6 @@ def parse_node_llm(llm: Model, schema: str, text: str, ents: dict[str, Any]):
     response_json['unsorted'] = not_sorted
     response_json['hallucinated'] = hallucinated
 
-    print(response_json)
     return response_json
 
 def print_progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):

@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from importlib import resources
 import itertools
 import json
+import logging
 import os
 from typing import Any, Iterator, Optional
 
@@ -17,6 +18,8 @@ from orgxtract.semantic_analysis import SemanticAnalysis
 from . import data
 
 DEBUG = True
+
+logger = logging.getLogger(__package__)
 
 @dataclass(slots=True)
 class TextPipeline:
@@ -48,26 +51,38 @@ class TextPipeline:
         self.executor = None
 
         if llm_model != None:
-            with open_resource(data_path, "schema.json") as file:
-                schema = str(json.load(file))
+            try:
+                with open_resource(data_path, "schema.json") as file:
+                    schema = str(json.load(file))
 
-                if n_threads != None and 0 < n_threads:
-                    self.executor = ThreadPoolExecutor(max_workers=n_threads)
+                    if n_threads != None and 0 < n_threads:
+                        self.executor = ThreadPoolExecutor(max_workers=n_threads)
 
-                self.analyser = SemanticAnalysis(llm_model, llm_key, schema)
-
-        print(nlp.pipe_names)
+                    self.analyser = SemanticAnalysis(llm_model, llm_key, schema)
+    
+                logger.info("Text Pipeline selected: %s",
+                            "|".join(nlp.pipe_names + [llm_model]))
+            except Exception as error:
+                logger.error("LLM initialisation failed: %s(%s)",
+                             type(error).__name__, error)
+        else:
+            logger.info("Text Pipeline selected: %s",
+                        "|".join(nlp.pipe_names))
 
     def __enter__(self):
         return self
 
     def __exit__(self, exception_type, exception_value, exception_traceback):
         self.close()
-        
-    def process(self, texts: Iterator[str]):
+      
+    def pipe(self, texts: Iterator[str]):
         def run_analyser(content):
             (text, ents) = content
-            return self.analyser.analyse(text, ents)
+            try:
+                return self.analyser.analyse(text, ents)
+            except Exception as error:
+                logger.error("Analysis failed: %s(%s)}", type(error).__name__, error)
+                return ents
 
         contents = (sort_ents(doc) for doc in self.nlp.pipe(texts, n_process=1))
 
@@ -77,7 +92,7 @@ class TextPipeline:
             else:
                 return map(run_analyser, contents)
         else:
-            return ((None, ents) for (_, ents) in contents)
+            return contents
 
     def close(self):
         if self.executor != None:

@@ -2,6 +2,7 @@ import argparse
 from concurrent.futures import Executor, ThreadPoolExecutor
 import errno
 import json
+import logging
 import os
 from queue import SimpleQueue, Queue
 import sys
@@ -33,6 +34,8 @@ def run():
 
     if args.key == None and "API_KEY" in os.environ:
         config["key"] = os.environ["API_KEY"]
+
+    logging.basicConfig(level=logging.INFO)
 
     executor = ThreadPoolExecutor(max_workers=args.worker_threads)
     task_queue = Queue(1)
@@ -91,8 +94,7 @@ def process_drawing(drawing: Drawing, task_queue: Queue):
     task_queue.put((oneshot, inputs))
 
     outputs = oneshot.get()
-    # TODO: Log exceptions
-    content = [output for (_, output) in outputs if 0 < len(output)]
+    content = [output for output in outputs if 0 < len(output)]
 
     return {"content": content}
 
@@ -102,7 +104,7 @@ def process_text(task_queue: Queue, config):
                       llm_key=config.get("key"),
                       n_threads=config.get("worker_threads")) as pipeline:
         for (oneshot, inputs) in iter(task_queue.get, None):
-            outputs = tuple(pipeline.process(inputs))
+            outputs = tuple(pipeline.pipe(inputs))
 
             oneshot.put(outputs)
 
