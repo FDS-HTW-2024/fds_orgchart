@@ -1,5 +1,6 @@
 import argparse
 from concurrent.futures import Executor, ThreadPoolExecutor
+import errno
 import json
 import os
 from queue import SimpleQueue, Queue
@@ -33,9 +34,10 @@ def run():
     if args.key == None and "API_KEY" in os.environ:
         config["key"] = os.environ["API_KEY"]
 
-    with ThreadPoolExecutor(max_workers=args.worker_threads) as executor:
-        task_queue = Queue(1)
+    executor = ThreadPoolExecutor(max_workers=args.worker_threads)
+    task_queue = Queue(1)
 
+    try:
         # Process all text in a separate thread
         #
         # The text pipeline components are created once to avoid using too
@@ -58,11 +60,13 @@ def run():
                    
                 process_file(executor, task_queue, input_file, output_file)
         else:
-            raise FileNotFoundError()
-
-        # Shutdown text processing thread
+            raise FileNotFoundError(errno.ENOENT,
+                                    os.strerror(errno.ENOENT),
+                                    input_path)
+    finally:
+        # Signals text processing thread to shutdown
         task_queue.put(None)
-        text_processing.result()
+        executor.shutdown(wait=True, cancel_futures=True)
 
 def process_file(executor: Executor, task_queue: Queue, input: str, output: Optional[str]):
     drawings = pdf.open(input)
@@ -101,3 +105,9 @@ def process_text(task_queue: Queue, config):
             outputs = tuple(pipeline.process(inputs))
 
             oneshot.put(outputs)
+
+    # Shutdowns any waiting producer threads (process_drawing)
+    while 0 < task_queue.qsize():
+        (oneshot, _) = task_queue.get_nowait()
+
+        oneshot.put(())
