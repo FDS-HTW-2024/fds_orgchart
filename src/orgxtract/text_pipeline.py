@@ -92,7 +92,7 @@ class TextPipeline:
             else:
                 return map(run_analyser, contents)
         else:
-            return contents
+            return (ents for (_, ents) in contents)
 
     def close(self):
         if self.executor != None:
