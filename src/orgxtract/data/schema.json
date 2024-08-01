@@ -55,22 +55,30 @@
                 "LMR",
                 "LMR'in",
                 "RR'in",
-                "Hr.",
-                "Fr.",
                 "TB",
                 "TB'e",
+                "Lt.",
+                "Hptm.",
+                "Oberst",
+                "Prof."
+              ]
+            },
+            "salutation": {
+              "enum": [
+                "Hr.",
+                "Fr.",
                 "Herr",
                 "Frau",
-                "Fräulein",
+                "Fräulein"
+              ]
+            },
+            "title": {
+              "enum": [
                 "Dr.",
-                "Prof.",
                 "Mag.",
                 "Dipl.-Ing.",
                 "Dr. Med.",
-                "Dr. med. vet.",
-                "Lt.",
-                "Hptm.",
-                "Oberst"
+                "Dr. med. vet."
               ]
             },
             "contact": {

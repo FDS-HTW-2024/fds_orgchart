@@ -55,7 +55,9 @@ class TextPipeline:
         if llm_model != None:
             try:
                 with open_resource(data_path, "schema.json") as file:
-                    schema = str(json.load(file))
+                    schema = json.dumps(json.load(file),
+                                        ensure_ascii=False,
+                                        separators=(",", ":"))
 
                     if n_threads != None and 0 < n_threads:
                         self.executor = ThreadPoolExecutor(max_workers=n_threads)
@@ -96,7 +98,7 @@ class TextPipeline:
                     ents = entities_to_dict(doc)
 
                     try:
-                        yield self.analyser.analyse(text)
+                        yield self.analyser.analyse(doc.text)
                     except Exception as error:
                         logger.error("Analysis failed: %s(%s)}", type(error).__name__, error)
                         yield ents
@@ -279,7 +281,8 @@ def components(entity: Span):
             yield (entity[end - 1]._.orgx, start, end)
             start = end
 
-    yield (entity[start]._.orgx, start, len(entity))
+    if start < len(entity):
+        yield (entity[start]._.orgx, start, len(entity))
 
 def clean_text(span: Span):
     SP = span.doc.vocab["_SP"]

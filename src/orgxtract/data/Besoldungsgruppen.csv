@@ -140,6 +140,7 @@ A9,Inspektorin/Inspektor,Technische Bundesfernstraßen-/Technischer Bundesfernst
 A9,Inspektorin/Inspektor,Technische Post-/Technischer Post-
 A9,Inspektorin/Inspektor,Technische Regierungs-/Technischer Regierungs-
 A9,Inspektorin/Inspektor,Zoll-
+A9,Leutnantin/Leutnant,
 A10,Oberinspektorin/Oberinspektor,Archiv-
 A10,Oberinspektorin/Oberinspektor,bei der Bundesagentur für Arbeit
 A10,Oberinspektorin/Oberinspektor,Bibliotheks-
@@ -174,6 +175,7 @@ A11,Amtfrau/Amtmann,Technische Bundesfernstraßen-/Technischer Bundesfernstraße
 A11,Amtfrau/Amtmann,Technische Post-/Technischer Post-
 A11,Amtfrau/Amtmann,Technische Regierungs-/Technischer Regierungs-
 A11,Amtfrau/Amtmann,Zoll-
+A11,Hauptfrau/Hauptmann,
 A12,Amtsrätin/Amtsrat,Archiv-
 A12,Amtsrätin/Amtsrat,bei der Bundesagentur für Arbeit
 A12,Amtsrätin/Amtsrat,Bibliotheks-
@@ -192,6 +194,7 @@ A12,Amtsrätin/Amtsrat,Technische Bundesfernstraßen-/Technischer Bundesfernstra
 A12,Amtsrätin/Amtsrat,Technische Post-/Technischer Post-
 A12,Amtsrätin/Amtsrat,Technische Regierungs-/Technischer Regierungs-
 A12,Amtsrätin/Amtsrat,Zoll-
+A12,Hauptfrau/Hauptmann,
 A13,Oberamtsrätin/Oberamtsrat,Archiv-
 A13,Oberamtsrätin/Oberamtsrat,bei der Bundesagentur für Arbeit
 A13,Oberamtsrätin/Oberamtsrat,Bibliotheks-
@@ -292,6 +295,7 @@ A16,Leitende Direktorin/Leitender Direktor,Technische Bundesfernstraßen-/Techni
 A16,Leitende Direktorin/Leitender Direktor,Technische Regierungs-/Technischer Regierungs-
 A16,Leitende Direktorin/Leitender Direktor,Wissenschaftliche/Wissenschaftlicher
 A16,Ministerialrätin/Ministerialrat,
+A16,Oberstin/Oberst,
 B1,Direktorin und Professorin/Direktor und Professor,beim ORG
 B1,Direktorin und Professorin/Direktor und Professor,bei ORG
 B2,Direktorin/Direktor,als Beauftragte für das Ehrenamt bei der Bundesanstalt Technisches Hilfswerk/als Beauftragter für das Ehrenamt bei der Bundesanstalt Technisches Hilfswerk
@@ -322,6 +326,7 @@ B2,Direktorin und Professorin/Direktor und Professor,beim ORG
 B2,Direktorin und Professorin/Direktor und Professor,bei der ORG
 B2,Direktorin und Professorin/Direktor und Professor,bei der Bundesagentur für Arbeit
 B2,Direktorin und Professorin/Direktor und Professor,des Deutschen Zentrums für Schienenverkehrsforschung
+B2,Oberstin/Oberst,
 B2,Vizepräsidentin/Vizepräsident,
 B3,Direktorin/Direktor,als Beauftragte für die Netze des Bundes/als Beauftragter für die Netze des Bundes
 B3,Direktorin/Direktor,beim ORG
@@ -367,6 +372,7 @@ B3,Direktorin und Professorin/Direktor und Professor,des Kunsthistorischen Insti
 B3,Direktorin und Professorin/Direktor und Professor,des Wehrwissenschaftlichen Instituts für Schutztechnologien – ABC-Schutz
 B3,Direktorin und Professorin/Direktor und Professor,des Wehrwissenschaftlichen Instituts für Werk- und Betriebsstoffe
 B3,Ministerialrätin/Ministerialrat,
+B3,Oberstin/Oberst,
 B3,Vizepräsidentin/Vizepräsident,
 B4,Direktorin/Direktor,bei der ORG
 B4,Direktorin/Direktor,der Bundesanstalt für Verwaltungsdienstleistungen

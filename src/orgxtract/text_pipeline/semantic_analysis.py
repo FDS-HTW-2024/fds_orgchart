@@ -19,10 +19,14 @@ class SemanticAnalysis:
         self.schema = schema
 
     def analyse(self, text: str):
-        llm = self.model
-        schema = self.schema
+        prompt = (
+            r"""You are a model that parses unstructured content from organizational charts into a provided json schema. Only provide the resulting json without any other text or comments. You should not add any additional data under any circumstance. If you can't find some information, leave the field to null. The "name" field after type usually consists of the previously found "type" and an additional identifier like numbers or letters. The contact field only consists of numbers. """
+            r"""Here is an example of a parsed entity: {"type":"Abteilung","name":"Abteilung V","persons":[{"name":"Schröder","positionType":"MD"}],"responsibilities":["Föderale Finanzbeziehungen","Staats- und Verfassungsrecht","Rechtsangelegenheiten","Historiker-Kommission"]} . """
+            f"The json schema looks like this: {self.schema} . "
+            f"And this is the provided content: {text}"
+        )
 
-        response = llm.prompt('''You are a model that parses unstructured content from organizational charts into a provided json schema. Only provide the resulting json without any other text or comments. You should not add any additional data under any circumstance. If you can't find some information, leave the field to null. The "name" field after type usually consists of the previously found "type" and an additional identifier like numbers or letters. The contact field only consists of numbers. Here is an example of a parsed entity: { "type": "Abteilung", "name": "Abteilung V", "persons": [{ "name": "MD Schröder", "positionType": "MD" }] "responsibilities": [ "Föderale Finanzbeziehungen", "Staats- und Verfassungsrecht", "Rechtsangelegenheiten" "Historiker-Kommission" ] } The json schema looks like this:''' + schema + '. And this is the provided content: ' + text, temperature=0)
+        response = self.model.prompt(prompt, temperature=0)
 
         response_text = response.text()
         response_json = {}
