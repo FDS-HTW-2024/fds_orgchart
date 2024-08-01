@@ -118,7 +118,7 @@ function createSVG(data, identifier) {
         typeName.textContent = item.name;
         svg.appendChild(typeName);
 
-        item.persons.forEach(person => {
+        /*item.persons.forEach(person => {
             counter += 5
             const personName = person.name;
             const personText = document.createElementNS(svgNamespace, 'text');
@@ -129,7 +129,7 @@ function createSVG(data, identifier) {
             personText.setAttribute('fill', 'black');
             personText.textContent = personName;
             svg.appendChild(personText);
-        })
+        })*/
     })
 
     // Append the SVG to the container
