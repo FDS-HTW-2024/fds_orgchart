@@ -98,9 +98,25 @@ def process_drawing(drawing: Drawing, task_queue: Queue):
     task_queue.put((oneshot, inputs))
 
     outputs = oneshot.get()
-    content = [output for output in outputs if 0 < len(output)]
+    result = {}
+    metadata = {}
+    content = []
 
-    return {"content": content}
+    for output in outputs:
+        if "date" in output:
+            metadata["date"] = output["date"]
+            del output["date"]
+
+        if (output.get("name") != None or bool(output.get("persons"))):
+            content.append(output)
+            
+
+    if 0 < len(metadata):
+        result["metadata"] = metadata
+
+    result["content"] = content
+
+    return result
 
 def process_text(task_queue: Queue, config):
     with TextPipeline(data_path=config.get("data_path"),
