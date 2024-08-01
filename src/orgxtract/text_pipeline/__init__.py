@@ -202,6 +202,13 @@ def orgxtract_ruler(nlp: Language, name: str):
         {"label": "PER", "pattern": [
             {"_": {"is_orgx_per": True}, "OP": "+"}, {"TAG": "_SP", "OP": "?"}, {"POS": {"IN": ["NOUN", "PROPN"]}, "OP": "+"}
         ]},
+        {"label": "DATE", "pattern": [{"SHAPE": "dd.dd.dddd"}]},
+        {"label": "DATE", "pattern": [{"SHAPE": "dd.dddd"}]},
+        {"label": "DATE", "pattern": [{"SHAPE": "dd", "SPACY": False}, {"TEXT": "-", "SPACY": False}, {"SHAPE": "dd", "SPACY": False}, {"TEXT": "-", "SPACY": False}, {"SHAPE": "dddd"}]},
+        {"label": "DATE", "pattern": [{"SHAPE": "dd", "SPACY": False}, {"TEXT": "-", "SPACY": False}, {"SHAPE": "dddd"}]},
+        {"label": "DATE", "pattern": [{"SHAPE": "dd", "SPACY": False}, {"TEXT": "/", "SPACY": False}, {"SHAPE": "dd", "SPACY": False}, {"TEXT": "/", "SPACY": False}, {"SHAPE": "dddd"}]},
+        {"label": "DATE", "pattern": [{"SHAPE": "dd", "SPACY": False}, {"TEXT": "/", "SPACY": False}, {"SHAPE": "dddd"}]},
+        {"label": "DATE", "pattern": [{"SHAPE": "dd."}, {"POS": "NOUN"}, {"SHAPE": "dddd"}]},
     ])
 
     PER = nlp.vocab["PER"]
@@ -223,9 +230,9 @@ def entities_to_dict(doc: Doc):
 
     PER = doc.vocab["PER"]
     ORG = doc.vocab["ORG"]
+    DATE = doc.vocab["DATE"]
 
-    type = None
-    name = None
+    content = {"name": None}
     persons = []
 
     for ent in doc.ents:
@@ -236,42 +243,36 @@ def entities_to_dict(doc: Doc):
                 if orgx == OrgX.ORG_TYPE:
                     entity_type = clean_text(ent[start:end])
         elif ent.label == PER:
-            person_name = None
-            salutation = None
-            title = None
+            person = {"name": None}
 
             for (orgx, start, end) in ent._.orgx:
                 match orgx:
                     case OrgX.PER_POSITION:
                         entity_type = clean_text(ent[start:end])
+                        person["positionType"] = entity_type
                     case OrgX.PER_SALUTATION:
-                        salutation = clean_text(ent[start:end])
+                        person["salutation"] = clean_text(ent[start:end])
                     case OrgX.PER_TITLE:
-                        title  = clean_text(ent[start:end])
+                        person["title"]  = clean_text(ent[start:end])
                     case _:
-                        person_name = clean_text(ent[start:end])
+                        person["name"] = clean_text(ent[start:end])
 
-            persons.append({
-                "positionType": entity_type,
-                "salutation": salutation,
-                "title": title,
-                "name": person_name,
-            })
+            persons.append(person)
+        elif ent.label == DATE:
+            content["date"] = ent.text
 
         if ent.start == 0:
-            type = entity_type
-            name = clean_text(ent)
+            content["type"] = entity_type
+            content["name"] = clean_text(ent)
 
-    if type == None:
+    if "type" not in content:
         for (orgx, start, end) in components(doc[:doc.ents[0].start]):
             if orgx == OrgX.ORG_TYPE:
-                type = clean_text(doc[start:end])
+                content["type"] = clean_text(doc[start:end])
 
-    return {
-        "type": type,
-        "name": name,
-        "persons": persons,
-    }
+    content["persons"] = persons
+
+    return content
 
 def components(entity: Span):
     start = 0
