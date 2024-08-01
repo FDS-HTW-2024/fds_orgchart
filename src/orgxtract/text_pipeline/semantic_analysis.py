@@ -58,8 +58,10 @@ class SemanticAnalysis:
             if word not in provided_content:
                 hallucinated.append(word)
 
-        response_json['unsorted'] = not_sorted
-        response_json['hallucinated'] = hallucinated
+        response_json['error'] = {
+            'uncategorized': not_sorted,
+            'confabulated': hallucinated
+        }
 
         return response_json
 
