@@ -6,7 +6,12 @@ from pymupdf import Page, TEXTFLAGS_RAWDICT, TEXT_PRESERVE_IMAGES
 from orgxtract.drawing import Drawing, Line, Point, Rect, TextSpan
 
 def open(path: str) -> Iterator[Drawing]:
-    pdf = pymupdf.open(path)
+    """Returns an iterator yielding a Drawing for each PDF page
+
+    If the file at path does not exist or is invalid, it will raise either
+    FileNotFoundError or RuntimeError.
+    """
+    pdf = pymupdf.open(path, filetype="pdf")
 
     for page in pdf:
         yield extract_drawing(page)
