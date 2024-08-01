@@ -409,9 +409,9 @@ def entities_to_dict(doc: Doc):
             try:
                 (_, start, end) = next(filter(lambda orgx: orgx[0] == OrgX.ORG_TYPE,
                                    ent._.orgx))
-                org_type = ent[start:end].text
+                org_type = clean_text(ent[start:end])
             finally:
-                org_name = ent.text
+                org_name = clean_text(ent)
         elif ent.label == PER:
             position_type = None
             salutation = None
@@ -421,13 +421,13 @@ def entities_to_dict(doc: Doc):
             for (orgx, start, end) in ent._.orgx:
                 match orgx:
                     case OrgX.PER_POSITION:
-                        position_type = ent[start:end].text
+                        position_type = clean_text(ent[start:end])
                     case OrgX.PER_SALUTATION:
-                        salutation = ent[start:end].text
+                        salutation = clean_text(ent[start:end])
                     case OrgX.PER_TITLE:
-                        title  = ent[start:end].text
+                        title  = clean_text(ent[start:end])
                     case _:
-                        person_name = ent[start:end].text
+                        person_name = clean_text(ent[start:end])
 
             persons.append({
                 "positionType": position_type,
@@ -441,6 +441,11 @@ def entities_to_dict(doc: Doc):
         "name": org_name,
         "persons": persons,
     })
+
+def clean_text(span: Span):
+    SP = span.doc.vocab["_SP"]
+    fn = lambda token: token.text_with_ws if token.tag != SP else " "
+    return "".join(map(fn, span)).strip()
 
 def open_resource(data_path: Optional[str], resource: str):
     if data_path != None:
