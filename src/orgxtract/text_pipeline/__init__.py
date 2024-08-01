@@ -15,8 +15,8 @@ from spacy.matcher import Matcher, PhraseMatcher
 from spacy.pipeline import EntityRuler
 from spacy.tokens import Doc, Span, Token
 
-from orgxtract.semantic_analysis import SemanticAnalysis
-from . import data
+from .semantic_analysis import SemanticAnalysis
+from orgxtract import data
 
 DEBUG = True
 
