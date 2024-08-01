@@ -117,14 +117,6 @@ def extract_nodes(
 
     return junction_by_line
 
-def dedup[T](items: list[T]):
-    for i in reversed(range(1, len(items))):
-        item_j = items[i]
-        item_i = items[i - 1]
-
-        if item_i == item_j:
-            items.pop(i)
-
 def extract_text_blocks(
         rects: list[Rect],
         text_spans: list[TextSpan]) -> dict[int | None, list[int]]:
@@ -191,3 +183,11 @@ def generate_text(text_spans: list[TextSpan], text_block: list[int]):
                 yield "\n"
 
         yield text
+
+def dedup[T](items: list[T]):
+    for i in reversed(range(1, len(items))):
+        item_j = items[i]
+        item_i = items[i - 1]
+
+        if item_i == item_j:
+            items.pop(i)

@@ -215,16 +215,6 @@ def orgxtract_ruler(nlp: Language, name: str):
 
     return rule
 
-def components(entity: Span):
-    start = 0
-
-    for end in range(1, len(entity)):
-        if entity[end - 1]._.orgx != entity[end]._.orgx:
-            yield (entity[end - 1]._.orgx, start, end)
-            start = end
-
-    yield (entity[start]._.orgx, start, len(entity))
-
 def entities_to_dict(doc: Doc):
     if len(doc.ents) == 0:
         return {}
@@ -280,6 +270,16 @@ def entities_to_dict(doc: Doc):
         "name": name,
         "persons": persons,
     }
+
+def components(entity: Span):
+    start = 0
+
+    for end in range(1, len(entity)):
+        if entity[end - 1]._.orgx != entity[end]._.orgx:
+            yield (entity[end - 1]._.orgx, start, end)
+            start = end
+
+    yield (entity[start]._.orgx, start, len(entity))
 
 def clean_text(span: Span):
     SP = span.doc.vocab["_SP"]
