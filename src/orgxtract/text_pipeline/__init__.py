@@ -22,6 +22,13 @@ logger = logging.getLogger(__package__)
 
 @dataclass(slots=True)
 class TextPipeline:
+    """A pipeline to extract structured data from text
+
+    The TextPipeline takes care of threading, integration of LLMs and most
+    importantly the conversion of recognised named entities into a data
+    format made for further analysis.
+    """
+
     nlp: Language
     analyser: Optional[SemanticAnalysis]
     executor: Optional[Executor]
@@ -32,6 +39,27 @@ class TextPipeline:
             llm_model: Optional[str] = None,
             llm_key: Optional[str] = None,
             n_threads: Optional[int] = None):
+        """Creates a new TextPipeline
+
+        To use an LLM as named entity recognition (NER) system, only the name
+        of the model and optionally the key if it is a remote LLM need to be
+        provided. For remote LLMs using multiple threads can lead to a
+        significant speed boost because many requests can be sent at the
+        same time.
+
+        The data set used to find organigram entities can be configured by
+        providing a path to a folder containing files for the:
+          - schema (schema.json),
+          - organisation types (org_types),
+          - positions within an organization (per_positions) and abbreviations
+            (per_positions_abbr),
+          - salutations (per_salutations) and
+          - titles for a person (per_titles).
+
+        Note that you should not change the structure of the schema but modify
+        the enums only.
+        """
+
         nlp = spacy.load("de_core_news_md",
                          exclude=["parser", "lemmatizer", "attribute_ruler", "ner"])
 
@@ -78,6 +106,28 @@ class TextPipeline:
         self.close()
       
     def pipe(self, texts: Iterator[str]):
+        """Returns an iterator yielding dictionaries with the extracted data
+
+        The extracted data is roughly in the form of the JSON format.
+
+        {
+            "type": string,
+            "name": string,
+            "date": string,
+            "persons": [
+                {
+                    "positionType": string,
+                    "salutation": string,
+                    "title": string,
+                    "name": string,
+                },
+                ...
+            ]
+        }
+
+        Fields can be None or non-existent. Properly check the key before!
+        """
+
         contents = self.nlp.pipe(texts, n_process=1)
 
         if self.analyser != None:
@@ -107,6 +157,13 @@ class TextPipeline:
                 yield entities_to_dict(doc)
 
     def close(self):
+        """Frees any allocated resources
+
+        This frees the resources used for the thread pool. It is, however,
+        better to use Python's with statement instead of calling this
+        function manually.            
+        """
+
         if self.executor != None:
             self.executor.shutdown(cancel_futures=True)
 

@@ -11,6 +11,7 @@ def open(path: str) -> Iterator[Drawing]:
     If the file at path does not exist or is invalid, it will raise either
     FileNotFoundError or RuntimeError.
     """
+
     pdf = pymupdf.open(path, filetype="pdf")
 
     for page in pdf:

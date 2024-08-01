@@ -8,6 +8,7 @@ class Point(NamedTuple):
     The origin of coordinates is in the top left corner, which is different
     from the PDF coordinate system.
     """
+
     x: float = 0.0
     y: float = 0.0
 
@@ -27,6 +28,7 @@ class Rect(NamedTuple):
     axis-aligned box. It is used either as a bounding box for other drawing
     objects like TextSpan or as the visible box containing content.
     """
+
     x0: float = 0.0
     y0: float = 0.0
     x1: float = 0.0
@@ -43,6 +45,7 @@ class Line(NamedTuple):
     importance because many older organigrams draw rectangles as four (almost)
     connected lines.
     """
+
     p0: Point
     p1: Point
 
@@ -93,6 +96,7 @@ class TextSpan(NamedTuple):
     command, which means the bounding box is necessary to compute the words
     when characters are separately stored.
     """
+
     bbox: Rect
     text: str
 
@@ -103,6 +107,7 @@ class Drawing(NamedTuple):
     which allows to integrate other data sources easily. In PDF terms it is
     a single page.
     """
+
     width: float
     height: float
     rects: list[Rect]

@@ -9,7 +9,13 @@ from orgxtract.drawing import Drawing, Line, Point, Rect, TextSpan
 logger = logging.getLogger(__package__)
 
 class Document(NamedTuple):
-    # The cleaned and de-duplicated data from Drawing.
+    """Represents the organigram content extracted from a Drawing
+
+    It maintains the previously extracted drawing data. The organigram data
+    contains the text in organigram nodes, which is then fed into the text
+    pipeline later, and the detected rectangles from lines.
+    """
+
     width: float
     height: float
     rects: list[Rect]
@@ -26,6 +32,8 @@ class Document(NamedTuple):
 
     @staticmethod
     def extract(drawing: Drawing) -> Self:
+        """Creates a Document from a Drawing"""
+
         drawing.lines.sort(key=lambda l: (l.p0.x, l.p1.x, l.p0.y, l.p1.y))
         dedup(drawing.lines)
 
