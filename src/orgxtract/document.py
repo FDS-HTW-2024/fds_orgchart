@@ -1,9 +1,12 @@
 import bisect
 from collections import defaultdict
+import logging
 from sys import float_info
 from typing import Self, NamedTuple
 
 from orgxtract.drawing import Drawing, Line, Point, Rect, TextSpan
+
+logger = logging.getLogger(__package__)
 
 class Document(NamedTuple):
     # The cleaned and de-duplicated data from Drawing.
@@ -136,7 +139,7 @@ def extract_text_blocks(
         if rect != None:
             text_block_by_rect[rect].append(s)
         else:
-            print(f"[WARN]: {text_spans[s]} outside document found.")
+            logger.warn("%s outside document found", text_spans[s])
 
     # Sort text spans in reading order.
     for text_block in text_block_by_rect.values():
