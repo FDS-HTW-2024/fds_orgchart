@@ -78,23 +78,33 @@ class TextPipeline:
         self.close()
       
     def pipe(self, texts: Iterator[str]):
-        def run_analyser(content):
-            (text, ents) = content
-            try:
-                return self.analyser.analyse(text, ents)
-            except Exception as error:
-                logger.error("Analysis failed: %s(%s)}", type(error).__name__, error)
-                return ents
+        contents = self.nlp.pipe(texts, n_process=1)
 
-        contents = (entities_to_dict(doc) for doc in self.nlp.pipe(texts, n_process=1))
-
-        if self.analyser != None:    
+        if self.analyser != None:
             if self.executor != None:
-                return self.executor.map(run_analyser, contents)
+                futures = [(doc, self.executor.submit(self.analyser.analyse, doc.text))
+                           for doc in contents]
+
+                for (doc, future) in futures:
+                    ents = entities_to_dict(doc)
+
+                    try:
+                        yield future.result()
+                    except Exception as error:
+                        logger.error("Analysis failed: %s(%s)}", type(error).__name__, error)
+                        yield ents
             else:
-                return map(run_analyser, contents)
+                for doc in contents:
+                    ents = entities_to_dict(doc)
+
+                    try:
+                        yield self.analyser.analyse(text)
+                    except Exception as error:
+                        logger.error("Analysis failed: %s(%s)}", type(error).__name__, error)
+                        yield ents
         else:
-            return (ents for (_, ents) in contents)
+            for doc in contents:
+                yield entities_to_dict(doc)
 
     def close(self):
         if self.executor != None:
@@ -395,7 +405,7 @@ def components(entity: Span):
 
 def entities_to_dict(doc: Doc):
     if len(doc.ents) == 0:
-        return (doc.text, {})
+        return {}
 
     PER = doc.vocab["PER"]
     ORG = doc.vocab["ORG"]
@@ -443,11 +453,11 @@ def entities_to_dict(doc: Doc):
             if orgx == OrgX.ORG_TYPE:
                 type = clean_text(doc[start:end])
 
-    return (doc.text, {
+    return {
         "type": type,
         "name": name,
         "persons": persons,
-    })
+    }
 
 def clean_text(span: Span):
     SP = span.doc.vocab["_SP"]
