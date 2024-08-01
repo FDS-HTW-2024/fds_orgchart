@@ -1,5 +1,6 @@
 from concurrent.futures import Executor, ThreadPoolExecutor
 from dataclasses import dataclass
+from enum import auto, IntFlag
 from importlib import resources
 import itertools
 import json
@@ -34,7 +35,7 @@ class TextPipeline:
             llm_key: Optional[str] = None,
             n_threads: Optional[int] = None):
         nlp = spacy.load("de_core_news_md",
-                         exclude=["lemmatizer", "parser", "ner"])
+                         exclude=["parser", "lemmatizer", "attribute_ruler", "ner"])
 
         # There are many abbreviations for common words.
         with open_resource(data_path, "special_cases.jsonl") as file:
@@ -44,7 +45,8 @@ class TextPipeline:
 
         nlp.add_pipe("token_normalizer", after="tok2vec")
         nlp.add_pipe("line_break_resolver", after="tagger")
-        nlp.add_pipe("org_entity_marker", config={"data_path": data_path})
+        nlp.add_pipe("orgxtract_tagger", config={"data_path": data_path})
+        nlp.add_pipe("orgxtract_ruler")
 
         self.nlp = nlp
         self.analyser = None
@@ -84,7 +86,7 @@ class TextPipeline:
                 logger.error("Analysis failed: %s(%s)}", type(error).__name__, error)
                 return ents
 
-        contents = (sort_ents(doc) for doc in self.nlp.pipe(texts, n_process=1))
+        contents = (entities_to_dict(doc) for doc in self.nlp.pipe(texts, n_process=1))
 
         if self.analyser != None:    
             if self.executor != None:
@@ -108,7 +110,7 @@ def token_normalizer(nlp: Language, name: str):
         [{}, {"TEXT": "’n"}]
     ])
 
-    def normalize(doc):
+    def normalize(doc: Doc):
         matches = matcher(doc)
 
         if len(matches) == 0:
@@ -208,7 +210,7 @@ def line_break_resolver(nlp: Language, name: str):
     COMBO = nlp.vocab["COMBO"]
     SLASH = nlp.vocab["SLASH"]
 
-    def resolve(doc):
+    def resolve(doc: Doc):
         matches = matcher(doc)
 
         if len(matches) == 0:
@@ -274,130 +276,171 @@ def line_break_resolver(nlp: Language, name: str):
 
     return resolve
 
-Token.set_extension("is_org_type", default=False)
-Token.set_extension("is_per_prefix", default=False)
-Token.set_extension("is_per_post", default=False)
+class OrgX(IntFlag):
+    NONE = 0
+    ORG_TYPE = auto()
+    PER_POSITION = auto()
+    PER_SALUTATION = auto()
+    PER_TITLE = auto()
+    PER_NN = auto()
+    ORG = ORG_TYPE
+    PER = PER_POSITION | PER_SALUTATION | PER_TITLE | PER_NN
 
-Token.set_extension("is_per", getter=lambda token: (token._.is_per_prefix
-                                                    or token._.is_per_post))
+Token.set_extension("orgx", default=OrgX.NONE)
+Token.set_extension("is_orgx_org",
+                    getter=lambda token: token._.orgx & OrgX.ORG != OrgX.NONE)
+Token.set_extension("is_orgx_per",
+                    getter=lambda token: token._.orgx & OrgX.PER != OrgX.NONE)
 
-@Language.factory("org_entity_marker")
-def org_entity_marker(nlp: Language, name: str, data_path: Optional[str]):
+@Language.factory("orgxtract_tagger")
+def orgxtract_tagger(nlp: Language, name: str, data_path: Optional[str]):
     term_matcher = PhraseMatcher(nlp.vocab, validate=DEBUG)
 
     with open_resource(data_path, "org_types") as file:
         patterns = [nlp.make_doc(line.rstrip()) for line in file]
         term_matcher.add("ORG_TYPE", patterns)
 
-    with open_resource(data_path, "per_prefixes") as file:
-        patterns = [nlp.make_doc(line.rstrip()) for line in file]
-        term_matcher.add("PER_PREFIX", patterns)
-
-    with open_resource(data_path, "per_posts") as file, open_resource(data_path, "per_posts_abbr") as abbr:
+    with open_resource(data_path, "per_positions") as file, open_resource(data_path, "per_positions_abbr") as abbr:
         patterns = [nlp.make_doc(line.rstrip()) for line in file]
         patterns += [nlp.make_doc(line.rstrip()) for line in abbr]
-        term_matcher.add("PER_POST", patterns)
+        term_matcher.add("PER_POSITION", patterns)
 
-    term_matcher.add("PER", [nlp.make_doc("N.N."), nlp.make_doc("N. N.")])
+    with open_resource(data_path, "per_salutations") as file:
+        patterns = [nlp.make_doc(line.rstrip()) for line in file]
+        term_matcher.add("PER_SALUTATION", patterns)
+
+    with open_resource(data_path, "per_titles") as file:
+        patterns = [nlp.make_doc(line.rstrip()) for line in file]
+        term_matcher.add("PER_TITLE", patterns)
+
+    term_matcher.add("PER_NN", [nlp.make_doc("N.N."), nlp.make_doc("N. N.")])
 
     ORG_TYPE = nlp.vocab["ORG_TYPE"]
-    PER_PREFIX = nlp.vocab["PER_PREFIX"]
-    PER_POST = nlp.vocab["PER_POST"]
-    PER = nlp.vocab["PER"]
+    PER_POSITION = nlp.vocab["PER_POSITION"]
+    PER_SALUTATION = nlp.vocab["PER_SALUTATION"]
+    PER_TITLE = nlp.vocab["PER_TITLE"]
+    PER_NN = nlp.vocab["PER_NN"]
 
-    entity_matcher = EntityRuler(nlp, name, overwrite_ents=False, validate=DEBUG)
-    entity_matcher.add_patterns([
-        {"label": "ORG", "pattern": [
-            {"_": {"is_org_type": True}}, {"TAG": "_SP", "OP": "?"}, {"POS": {"IN": ["NOUN", "PROPN", "NUM", "X"]}, "OP": "+"}
-        ]},
-        {"label": "PER", "pattern": [
-            {"_": {"is_per": True}, "OP": "+"}, {"POS": {"IN": ["NOUN", "PROPN"]}, "OP": "+"}
-        ]},
-        {"label": "PER", "pattern": [
-            {"_": {"is_per_post": True}, "OP": "+"}, {"TAG": "_SP", "OP": "?"}, {"_": {"is_per": True}, "OP": "*"}, {"TAG": "_SP", "OP": "*"}, {"POS": {"IN": ["NOUN", "PROPN"]}, "OP": "+"}
-        ]},
+    filler = Matcher(nlp.vocab, validate=DEBUG)
+    filler.add("SPACE", [
+        [{"_": {"is_orgx_org": True}}, {"TAG": "_SP", "OP": "+"}, {"_": {"is_orgx_org": True}}],
+        [{"_": {"is_orgx_per": True}}, {"TAG": "_SP", "OP": "+"}, {"_": {"is_orgx_per": True}}],
     ])
 
-    def mark(doc):
-        term_matches = term_matcher(doc)
-        unnamed_persons = []
+    def tag(doc: Doc):
+        for (match_id, start, end) in term_matcher(doc):
+            tag = OrgX.NONE
 
-        for (match_id, start, end) in term_matches:
-            if match_id == PER:
-                unnamed_persons.append(Span(doc, start, end, "PER"))
-                continue
-
-            is_org_type = match_id == ORG_TYPE
-            is_per_prefix = match_id == PER_PREFIX
-            is_per_post = match_id == PER_POST
+            if match_id == ORG_TYPE:
+                tag = OrgX.ORG_TYPE
+            elif match_id == PER_POSITION:
+                tag = OrgX.PER_POSITION
+            elif match_id == PER_SALUTATION:
+                tag = OrgX.PER_SALUTATION
+            elif match_id == PER_TITLE:
+                tag = OrgX.PER_TITLE
+            elif match_id == PER_NN:
+                tag = OrgX.PER_NN
 
             for token in doc[start:end]:
-                token._.is_org_type = is_org_type
-                token._.is_per_prefix = is_per_prefix
-                token._.is_per_post = is_per_post
+                token._.orgx = tag
 
-        doc.set_ents(unnamed_persons)
+        for (_match_id, start, end) in filler(doc):
+            tag = doc[start]._.orgx
 
-        doc = entity_matcher(doc)
+            for token in doc[start + 1:end - 1]:
+                token._.orgx = tag
 
         return doc
 
-    return mark
+    return tag
 
-def sort_ents(doc):
-    content = {"type": None, "name": None, "persons": []}
+Span.set_extension("orgx", default=())
+
+@Language.factory("orgxtract_ruler")
+def orgxtract_ruler(nlp: Language, name: str):
+    entity_ruler = EntityRuler(nlp, name, overwrite_ents=False, validate=DEBUG)
+    entity_ruler.add_patterns([
+        {"label": "ORG", "pattern": [
+            {"_": {"orgx": OrgX.ORG_TYPE}}, {"TAG": "_SP", "OP": "?"}, {"_": {"is_orgx_per": False}, "POS": {"IN": ["NOUN", "PROPN", "NUM", "X", "ADP", "CCONJ", "DET"]}, "OP": "+"}
+        ]},
+        {"label": "PER", "pattern": [{"_": {"orgx": OrgX.PER_NN}, "OP": "+"}]},
+        {"label": "PER", "pattern": [
+            {"_": {"is_orgx_per": True}, "OP": "+"}, {"TAG": "_SP", "OP": "?"}, {"POS": {"IN": ["NOUN", "PROPN"]}, "OP": "+"}
+        ]},
+    ])
+
+    PER = nlp.vocab["PER"]
+    ORG = nlp.vocab["ORG"]
+
+    def rule(doc: Doc):
+        doc = entity_ruler(doc)
+
+        for entity in doc.ents:
+            entity._.orgx = tuple(components(entity))
+
+        return doc
+
+    return rule
+
+def components(entity: Span):
+    start = 0
+
+    for end in range(1, len(entity)):
+        if entity[end - 1]._.orgx != entity[end]._.orgx:
+            yield (entity[end - 1]._.orgx, start, end)
+            start = end
+
+    yield (entity[start]._.orgx, start, len(entity))
+
+def entities_to_dict(doc: Doc):
+    PER = doc.vocab["PER"]
+    ORG = doc.vocab["ORG"]
+
+    org_type = None
+    org_name = None
+    persons = []
 
     for ent in doc.ents:
-        if ent.start == 0:
-            if ent.label_ == "ORG":
-                content["name"] = ent.text.replace("\n\n", " ").replace("\n", " ")
+        if ent.label == ORG:
+            if org_name != None:
+                continue
 
-                for token in ent:
-                    if token._.is_org_type:
-                        if content["type"] == None:
-                            content["type"] = token.text
-                        else:
-                            content["type"] += " " + token.text
-            elif ent.label_ == "PER":
-                content["name"] = ent.text.replace("\n\n", " ").replace("\n", " ")
+            try:
+                (_, start, end) = next(filter(lambda orgx: orgx[0] == OrgX.ORG_TYPE,
+                                   ent._.orgx))
+                org_type = ent[start:end].text
+            finally:
+                org_name = ent.text
+        elif ent.label == PER:
+            position_type = None
+            salutation = None
+            title = None
+            person_name = None
 
-                for token in ent:
-                    if token._.is_per_post:
-                        if content["type"] == None:
-                            content["type"] = token.text
-                        else:
-                            content["type"] += " " + token.text
+            for (orgx, start, end) in ent._.orgx:
+                match orgx:
+                    case OrgX.PER_POSITION:
+                        position_type = ent[start:end].text
+                    case OrgX.PER_SALUTATION:
+                        salutation = ent[start:end].text
+                    case OrgX.PER_TITLE:
+                        title  = ent[start:end].text
+                    case _:
+                        person_name = ent[start:end].text
 
-        if ent.label_ == "PER":
-            person = {
-                "name": ent.text.replace("\n\n", " ").replace("\n", " "),
-                "positionType": None
-            }
+            persons.append({
+                "positionType": position_type,
+                "salutation": salutation,
+                "title": title,
+                "name": person_name,
+            })
 
-            for token in ent:
-                if token._.is_per_post:
-                    if person["positionType"] == None:
-                        person["positionType"] = token.text
-                    else:
-                        person["positionType"] += " " + token.text
-
-            if person["positionType"] != None:
-                person["name"] = person["name"].lstrip(person["positionType"]).lstrip()
-
-            content["persons"].append(person)
-
-    if content["type"] == None:
-        i = 0
-        for token in doc:
-            if token._.is_org_type:
-                i += 1
-            else:
-                break
-
-        if 0 < i:
-            content["type"] = doc[:i].text
-            
-    return (doc.text, content)
+    return (doc.text, {
+        "type": org_type,
+        "name": org_name,
+        "persons": persons,
+    })
 
 def open_resource(data_path: Optional[str], resource: str):
     if data_path != None:

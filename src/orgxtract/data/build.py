@@ -89,7 +89,7 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF-8")
 posts = sorted(posts, key=locale.strxfrm)
 locale.setlocale(locale.LC_ALL, "")
 
-with open(path / "per_posts", "w", encoding="utf-8") as terminology_file:
+with open(path / "per_positions", "w", encoding="utf-8") as terminology_file:
     for term in posts:
         terminology_file.write(term)
         terminology_file.write("\n")
@@ -111,4 +111,6 @@ def sort_terms_in_file(path: str):
             file.write("\n")
 
 sort_terms_in_file(path / "org_types")
-sort_terms_in_file(path / "per_posts_abbr")
+sort_terms_in_file(path / "per_positions_abbr")
+sort_terms_in_file(path / "per_salutations")
+sort_terms_in_file(path / "per_titles")
