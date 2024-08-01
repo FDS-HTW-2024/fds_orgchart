@@ -56,6 +56,10 @@ class TextPipeline:
           - salutations (per_salutations) and
           - titles for a person (per_titles).
 
+        By default the data path is set to the data module. Those files can
+        be used as basis for your custom files. However, it is not necessary
+        to provide every file.
+
         Note that you should not change the structure of the schema but modify
         the enums only.
         """

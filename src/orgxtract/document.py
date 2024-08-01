@@ -31,14 +31,19 @@ class Document(NamedTuple):
     text_contents: dict[int, str]
 
     @staticmethod
-    def extract(drawing: Drawing) -> Self:
-        """Creates a Document from a Drawing"""
+    def extract(drawing: Drawing, tolerance: float = 1.0) -> Self:
+        """Creates a Document from a Drawing
+
+        If many rectangles are drawn with four lines and there are gaps, it is
+        possible to still detect them as rectangles by increasing the
+        tolerance parameter.
+        """
 
         drawing.lines.sort(key=lambda l: (l.p0.x, l.p1.x, l.p0.y, l.p1.y))
         dedup(drawing.lines)
 
         # TODO: Calculate graph edges for edges
-        _junctions = extract_nodes(drawing.rects, drawing.lines)
+        _junctions = extract_nodes(drawing.rects, drawing.lines, tolerance)
 
         drawing.rects.append(Rect(0.0, 0.0, drawing.width, drawing.height))
         drawing.rects.sort()
@@ -62,7 +67,7 @@ class Document(NamedTuple):
 def extract_nodes(
         rects: list[Rect],
         lines: list[Line],
-        tolerance: float = 1.0) -> dict[int, list[tuple[int, Point]]]:
+        tolerance: float) -> dict[int, list[tuple[int, Point]]]:
     junction_by_line: defaultdict[int, list[tuple[int, Point]]] = defaultdict(list)
     j_min = 0
 
