@@ -274,21 +274,21 @@ def entities_to_dict(doc: Doc):
 
     return content
 
-def merge_dicts(spacy, llm):
-    for (llm_key, llm_value) in llm.items():
+def merge_dicts(spacy_extracted, llm_extracted):
+    for (llm_key, llm_value) in llm_extracted.items():
         if llm_value == None:
             continue
 
-        spacy_value = spacy.get(llm_key)
+        spacy_value = spacy_extracted.get(llm_key)
     
         if spacy_value == None:
-            spacy[llm_key] = llm_value
+            spacy_extracted[llm_key] = llm_value
         else:
             # TODO: Compare what provides more information.
             # TODO: Merge arrays somehow..
             pass
 
-    return spacy
+    return spacy_extracted
 
 def components(entity: Span):
     start = 0
