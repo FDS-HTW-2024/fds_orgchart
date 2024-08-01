@@ -394,34 +394,32 @@ def components(entity: Span):
     yield (entity[start]._.orgx, start, len(entity))
 
 def entities_to_dict(doc: Doc):
+    if len(doc.ents) == 0:
+        return (doc.text, {})
+
     PER = doc.vocab["PER"]
     ORG = doc.vocab["ORG"]
 
-    org_type = None
-    org_name = None
+    type = None
+    name = None
     persons = []
 
     for ent in doc.ents:
-        if ent.label == ORG:
-            if org_name != None:
-                continue
+        entity_type = None
 
-            try:
-                (_, start, end) = next(filter(lambda orgx: orgx[0] == OrgX.ORG_TYPE,
-                                   ent._.orgx))
-                org_type = clean_text(ent[start:end])
-            finally:
-                org_name = clean_text(ent)
+        if ent.label == ORG:
+            for (orgx, start, end) in ent._.orgx:
+                if orgx == OrgX.ORG_TYPE:
+                    entity_type = clean_text(ent[start:end])
         elif ent.label == PER:
-            position_type = None
+            person_name = None
             salutation = None
             title = None
-            person_name = None
 
             for (orgx, start, end) in ent._.orgx:
                 match orgx:
                     case OrgX.PER_POSITION:
-                        position_type = clean_text(ent[start:end])
+                        entity_type = clean_text(ent[start:end])
                     case OrgX.PER_SALUTATION:
                         salutation = clean_text(ent[start:end])
                     case OrgX.PER_TITLE:
@@ -430,15 +428,24 @@ def entities_to_dict(doc: Doc):
                         person_name = clean_text(ent[start:end])
 
             persons.append({
-                "positionType": position_type,
+                "positionType": entity_type,
                 "salutation": salutation,
                 "title": title,
                 "name": person_name,
             })
 
+        if ent.start == 0:
+            type = entity_type
+            name = clean_text(ent)
+
+    if type == None:
+        for (orgx, start, end) in components(doc[:doc.ents[0].start]):
+            if orgx == OrgX.ORG_TYPE:
+                type = clean_text(doc[start:end])
+
     return (doc.text, {
-        "type": org_type,
-        "name": org_name,
+        "type": type,
+        "name": name,
         "persons": persons,
     })
 
