@@ -89,7 +89,7 @@ class TextPipeline:
                     ents = entities_to_dict(doc)
 
                     try:
-                        yield future.result()
+                        yield merge_dicts(ents, future.result())
                     except Exception as error:
                         logger.error("Analysis failed: %s(%s)}", type(error).__name__, error)
                         yield ents
@@ -98,7 +98,7 @@ class TextPipeline:
                     ents = entities_to_dict(doc)
 
                     try:
-                        yield self.analyser.analyse(doc.text)
+                        yield merge_dicts(ents, self.analyser.analyse(doc.text))
                     except Exception as error:
                         logger.error("Analysis failed: %s(%s)}", type(error).__name__, error)
                         yield ents
@@ -273,6 +273,22 @@ def entities_to_dict(doc: Doc):
     content["persons"] = persons
 
     return content
+
+def merge_dicts(spacy, llm):
+    for (llm_key, llm_value) in llm.items():
+        if llm_value == None:
+            continue
+
+        spacy_value = spacy.get(llm_key)
+    
+        if spacy_value == None:
+            spacy[llm_key] = llm_value
+        else:
+            # TODO: Compare what provides more information.
+            # TODO: Merge arrays somehow..
+            pass
+
+    return spacy
 
 def components(entity: Span):
     start = 0
