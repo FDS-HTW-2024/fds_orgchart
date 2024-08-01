@@ -118,6 +118,7 @@ header h2 {
 .container-timeline {
     width: 1200px;
     margin: auto;
+    padding-top: 50px;
 }
 
 .timeline-ul {
