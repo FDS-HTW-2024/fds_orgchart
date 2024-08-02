@@ -49,6 +49,10 @@ pipenv run python -m orgxtract path/to/input -o path/to/output
 ```
 Use `--help` to see all parameters
 
+## Logging
+
+The package does use the Python logging module. It is enabled in the CLI and the level can be configured.
+
 ## License
 
 TBD
