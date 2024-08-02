@@ -67,4 +67,4 @@ We used a subset from the data from these websites.
 
 ## License
 
-TBD
+The code is licensed under the MIT license. For distribution, the licenses of the dependencies must be consulted.

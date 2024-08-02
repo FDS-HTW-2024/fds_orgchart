@@ -4,7 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "orgxtract"
-version = "0.0.1"
+version = "1.0.0"
+license = {file = "LICENSE"}
 requires-python = ">= 3.12"
 dependencies = [
     "pymupdf>=1.24.8",
