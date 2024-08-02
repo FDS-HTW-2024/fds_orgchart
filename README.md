@@ -53,6 +53,18 @@ Use `--help` to see all parameters
 
 The package does use the Python logging module. It is enabled in the CLI and the level can be configured.
 
+## Data Set
+
+We used a subset from the data from these websites.
+
+- https://www.auswaertiges-amt.de/de/service/terminologie/-/215262
+- https://de.wikipedia.org/wiki/Besoldungsordnung_B
+- https://www.gesetze-im-internet.de/bbesg/anlage_i.html
+- https://www.landesrecht-bw.de/bsbw/document/jlr-AmtsbezZusVBWV14Anlage2
+- https://www.verwaltungsvorschriften-im-internet.de/bsvwvbund_13022024_D3302001835.htm
+- https://www.verwaltungsvorschriften-im-internet.de/bsvwvbund_14092020_D3302001016.htm
+- https://de.wikipedia.org/wiki/Bundesministerium_(Deutschland)
+
 ## License
 
 TBD
