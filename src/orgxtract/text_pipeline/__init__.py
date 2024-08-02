@@ -336,6 +336,80 @@ def entities_to_dict(doc: Doc):
     return content
 
 def merge_dicts(spacy_extracted, llm_extracted):
+    # Clean llm output
+    confabulated = set(llm_extracted.get("error", {}).get("confabulated", []))
+    name = llm_extracted.get("name")
+
+    if name != None:
+        type = llm_extracted.get("type")
+
+        if type != None:
+            if type != name:
+                name = name.removeprefix(type).lstrip()
+        else:
+            llm_extracted.pop("type", None)
+
+        name = remove_confabulated_parts(name, confabulated)
+
+        if 0 < len(name):
+            llm_extracted["name"] = name
+        else:
+            llm_extracted.pop("name", None)
+
+    for person in llm_extracted.get("persons", []):
+        name = person.get("name")
+
+        if name != None:
+            position_type = person.get("positionType")
+            salutation = person.get("salutation")
+            title = person.get("title")
+
+            if position_type != None and position_type != "N.N." and position_type != "N. N.":
+                if position_type != name:
+                    name = name.removeprefix(position_type).lstrip()
+
+                position_type = remove_confabulated_parts(position_type, confabulated)
+
+                if 0 < len(position_type):
+                    person["positionType"] = position_type
+                else:
+                    person.pop("positionType", None)
+            else:
+                person.pop("positionType", None)
+
+            if salutation != None:
+                if salutation != name:
+                    name = name.removeprefix(salutation).lstrip()
+
+                salutation = remove_confabulated_parts(salutation, confabulated)
+
+                if 0 < len(salutation):
+                    person["salutation"] = salutation
+                else:
+                    person.pop("salutation", None)
+            else:
+                person.pop("salutation", None)
+
+            if title != None:
+                if title != name:
+                    name = name.removeprefix(title).lstrip()
+
+                title = remove_confabulated_parts(title, confabulated)
+
+                if 0 < len(title):
+                    person["title"] = title
+                else:
+                    person.pop("title", None)
+            else:
+                person.pop("title", None)
+
+            name = remove_confabulated_parts(name, confabulated)
+
+            if 0 < len(name):
+                person["name"] = name
+            else:
+                person.pop("name", None)
+
     for (llm_key, llm_value) in llm_extracted.items():
         if llm_value == None:
             continue
@@ -344,12 +418,39 @@ def merge_dicts(spacy_extracted, llm_extracted):
     
         if spacy_value == None:
             spacy_extracted[llm_key] = llm_value
-        else:
-            # TODO: Compare what provides more information.
-            # TODO: Merge arrays somehow..
-            pass
+
+        spacy_persons = spacy_extracted.get("persons", [])
+        llm_persons = llm_extracted.get("persons", [])
+        count = len(spacy_persons)
+
+        for llm_person in llm_persons:
+            has_match = False
+
+            for i in range(0, count):
+                spacy_person = spacy_persons[i]
+
+                if spacy_person.get("name") == llm_person.get("name"):
+                    for (key, value) in llm_person.items():
+                        if spacy_person.get(key) == None:
+                            spacy_person[key] = value
+
+                    has_match = True
+
+            if not has_match:
+                spacy_persons.append(llm_person)
+
+        spacy_extracted["persons"] = spacy_persons + llm_persons[count:]
 
     return spacy_extracted
+
+def remove_confabulated_parts(name: str, confabulated):
+    new_name = ""
+
+    for part in name.split():
+        if part not in confabulated:
+            new_name += part + " "
+
+    return new_name.rstrip()
 
 def components(entity: Span):
     start = 0
