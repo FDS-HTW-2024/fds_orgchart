@@ -31,7 +31,7 @@ def run():
     parser.add_argument("--log-level",
                         help="logging level",
                         choices=["NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
-                        default="INFO")
+                        default="WARNING")
 
     args = parser.parse_args()
     config = {key:value for (key, value) in vars(args).items() if value != None}
